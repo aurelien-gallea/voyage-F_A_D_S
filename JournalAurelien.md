@@ -14,8 +14,14 @@ projet de groupe à 4
 ### debut de la charte graphique accueil 
 
 ## jour 2:
-
+### register.php
 - je m'attaque au backend de la page register.php, créations des classes associés, ça fonctionne bien. la création de nouveaux utilisateurs est maintenant disponible. les tables utilisateurs et droits se remplissent automatiquement lors de la création d'un nouveau compte utilisateur.
+
+### header mobile:
 - dylan: header mobile en cours de création, quelques soucis d'importations de librairies pour tailwindcss
+
+### header pc:
 - flo: header pc en cours de création, même soucis que dylan.
+
+### logo + footer:
 - sylvia: création du logo + footer en cours.
