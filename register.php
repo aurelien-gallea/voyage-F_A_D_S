@@ -1,6 +1,6 @@
 <?php
     session_start();
-    var_dump('18'.date('dmYHi'). '75');
+    
     require_once('class/User.php');
     require_once('class/Security.php');
     require_once('class/Verify.php');
