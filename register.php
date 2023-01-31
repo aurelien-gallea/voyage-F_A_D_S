@@ -1,13 +1,13 @@
 <?php
     session_start();
-    
+    echo 'aa'.date('dmYHi'). '@A';
     require_once('class/User.php');
     require_once('class/Security.php');
     require_once('class/Verify.php');
-    if(!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password2']) &&!empty($_POST['email'])) {
+    if(!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['password2']) &&!empty($_POST['email'])) {
         if ($_POST['password'] == $_POST['password2']) {
             // protection des variables
-            $pseudo   = htmlspecialchars($_POST['pseudo']);
+            $login   = htmlspecialchars($_POST['login']);
             $password = htmlspecialchars($_POST['password']);
             $email    = htmlspecialchars($_POST['email']);
             
@@ -23,7 +23,7 @@
             // on chiffre le mdp
             $password = Security::hash($password);           
             // on ajoute l'utilisateur
-            $user = new User($pseudo, $password, $email);
+            $user = new User($login, $password, $email);
             $user->register();
             $user->baseRole();
             
@@ -48,7 +48,7 @@
 <body>
     <form action="register.php" method="post">
         <div>
-            <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
+            <input type="text" name="login" id="login" placeholder="login">
         </div>
         <div>
             <input type="text" name="password" id="password" placeholder="Mot De Passe">
