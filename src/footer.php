@@ -60,10 +60,10 @@
         </div>
       </div>
       <div class="bottom">
-        <center>
+      
           <span class="credit">Tasty Trip | </span>
           <span class="far fa-copyright"></span><span> 2023 All rights reserved.</span>
-        </center>
+        
       </div>
     </footer>
     </body>
