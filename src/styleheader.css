@@ -14,7 +14,7 @@
   background: #1c3738;
 }
 ::selection {
-  background: rgb(0, 123, 255, 0.3);
+  background: #1c3738;
 }
 .content {
   @apply max-w-[1250px] m-auto px-[30px] py-0;
