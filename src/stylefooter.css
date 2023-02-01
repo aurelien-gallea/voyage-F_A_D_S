@@ -16,7 +16,7 @@ footer {
     @apply relative mt-5 mb-0 mx-0 before:absolute before:content-[''] before:h-0.5 before:w-full before:-top-2.5 after:absolute after:content-[''] after:h-0.5 after:w-[15%] after:-top-2.5;
   }
   .box .content:before {
-    background: #1a1a1a;
+    background: #000f08;
   }
   .box .content:after {
     background: #f4fff8;
@@ -32,14 +32,14 @@ footer {
   }
   .left .content .social a span {
     @apply h-10 w-10 leading-10 text-center text-lg transition-[0.3s] rounded-[5px];
-    background: #1a1a1a;
+    background: #000f08;
   }
   .left .content .social a span:hover {
     background: #8baaad;
   }
   .center .content .fas {
     @apply text-[1.4375rem] h-[45px] w-[45px] leading-[45px] text-center transition-[0.3s] cursor-pointer rounded-[50%];
-    background: #1a1a1a;
+    background: #000f08;
   }
   .center .content .fas:hover {
     background: #8baaad;
@@ -58,8 +58,8 @@ footer {
   }
   .right form input,
   .right form textarea {
-    @apply w-full text-[1.0625rem] border pl-2.5 border-solid border-[#222222];
-    background: #151515;
+    @apply w-full text-[1.0625rem] border pl-2.5 border-solid border-[#000f08];
+    background: #000f08;
   }
   .right form input:focus,
   .right form textarea:focus {
