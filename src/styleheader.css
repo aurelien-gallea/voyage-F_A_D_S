@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  @apply box-border m-0 p-0;
+  font-family: "Poppins", sans-serif;
+}
+/* custom scroll bar */
+::-webkit-scrollbar {
+  @apply w-2.5;
+}
+::-webkit-scrollbar-track {
+  background: #000f08;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c3738;
+}
+::selection {
+  background: rgb(0, 123, 255, 0.3);
+}
+.content {
+  @apply max-w-[1250px] m-auto px-[30px] py-0;
+}
+.navbar {
+  @apply fixed w-full z-[2] transition-all duration-[0.3s] ease-[ease] px-0 py-[25px];
+}
+.navbar.sticky {
+  @apply shadow-[0px_3px_5px_0px_rgba(0,0,0,0.1)] px-0 py-2.5;
+  background: #000f08;
+}
+.navbar .content {
+  @apply flex items-center justify-between;
+}
+.navbar .logo a {
+  @apply text-[#f4fff8] text-3xl font-semibold no-underline;
+}
+.navbar .menu-list {
+  @apply inline-flex;
+}
+.menu-list li {
+  list-style: none;
+}
+.dropdown {
+  @apply w-full border rounded box-border resize-y mt-1.5 mb-4 p-3 border-solid border-[#ccc];
+}
+.menu-list li a {
+  @apply text-[#f4fff8] text-lg font-medium no-underline transition-all duration-[0.3s] ease-[ease] ml-[25px] hover:text-[#000f08];
+}
+.banner {
+  @apply h-screen bg-cover bg-center bg-fixed;
+  background: url("banner.jpg") no-repeat;
+}
+.about {
+  @apply px-0 py-[30px];
+}
+.about .title {
+  @apply text-[38px] font-bold;
+}
+.about p {
+  @apply text-justify pt-5;
+}
+.icon {
+  @apply text-white text-xl cursor-pointer hidden;
+}
+.menu-list .cancel-btn {
+  @apply absolute right-[30px] top-5;
+}
+@media (max-width: 1230px) {
+  .content {
+    @apply px-[60px] py-0;
+  }
+}
+@media (max-width: 1100px) {
+  .content {
+    @apply px-10 py-0;
+  }
+}
+@media (max-width: 900px) {
+  .content {
+    @apply px-[30px] py-0;
+  }
+}
+@media (max-width: 868px) {
+  body.disabled {
+    @apply overflow-hidden;
+  }
+  .icon {
+    @apply block;
+  }
+  .icon.hide {
+    @apply hidden;
+  }
+  .navbar .menu-list {
+    @apply fixed h-screen w-full max-w-[400px] block text-center transition-all duration-[0.3s] ease-[ease] px-0 py-10 -left-full top-0;
+    background: #1c3738;
+  }
+  .navbar.show .menu-list {
+    @apply left-[0%];
+  }
+  .navbar .menu-list li {
+    @apply mt-[45px];
+  }
+  .navbar .menu-list li a {
+    @apply text-[23px] ml-[-100%] transition-[0.6s] duration-[cubic-bezier(0.68,-0.55,0.265,1.55)];
+  }
+  .navbar.show .menu-list li a {
+    @apply ml-0;
+  }
+}
+@media (max-width: 380px) {
+  .navbar .logo a {
+    @apply text-[27px];
+  }
+}

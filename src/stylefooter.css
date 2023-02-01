@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+footer {
+    @apply fixed w-full bottom-0;
+    background: #1c3738;
+  }
+  .main-content {
+    @apply flex;
+  }
+  .main-content .box {
+    @apply basis-6/12 px-5 py-2.5;
+  }
+  .box h2 {
+    @apply text-lg font-semibold uppercase;
+  }
+  .box .content {
+    @apply relative mt-5 mb-0 mx-0 before:absolute before:content-[''] before:h-0.5 before:w-full before:-top-2.5 after:absolute after:content-[''] after:h-0.5 after:w-[15%] after:-top-2.5;
+  }
+  .box .content:before {
+    background: #1a1a1a;
+  }
+  .box .content:after {
+    background: #f4fff8;
+  }
+  .left .content p {
+    @apply text-justify;
+  }
+  .left .content .social {
+    @apply mt-5 mb-0 mx-0;
+  }
+  .left .content .social a {
+    @apply px-0.5 py-0;
+  }
+  .left .content .social a span {
+    @apply h-10 w-10 leading-10 text-center text-lg transition-[0.3s] rounded-[5px];
+    background: #1a1a1a;
+  }
+  .left .content .social a span:hover {
+    background: #8baaad;
+  }
+  .center .content .fas {
+    @apply text-[1.4375rem] h-[45px] w-[45px] leading-[45px] text-center transition-[0.3s] cursor-pointer rounded-[50%];
+    background: #1a1a1a;
+  }
+  .center .content .fas:hover {
+    background: #8baaad;
+  }
+  .center .content .text {
+    @apply text-[1.0625rem] font-medium pl-2.5;
+  }
+  .center .content .phone {
+    @apply mx-0 my-[15px];
+  }
+  .right form .text {
+    @apply text-[1.0625rem] text-[#656565] mb-0.5;
+  }
+  .right form .msg {
+    @apply mt-2.5;
+  }
+  .right form input,
+  .right form textarea {
+    @apply w-full text-[1.0625rem] border pl-2.5 border-solid border-[#222222];
+    background: #151515;
+  }
+  .right form input:focus,
+  .right form textarea:focus {
+    @apply outline-[#8baaad];
+  }
+  .right form input {
+    @apply h-[35px];
+  }
+  .right form .btn {
+    @apply mt-2.5;
+  }
+  .right form .btn button {
+    @apply h-10 w-full text-[1.0625rem] font-medium cursor-pointer transition-[0.3s] border-[none];
+    outline: none;
+    background: #8baaad;
+  }
+  .right form .btn button:hover {
+    background: #000f08;
+  }
+  .bottom center {
+    @apply text-[0.9375rem] p-[5px];
+    background: #000f08;
+  }
+  .bottom center span {
+    @apply text-[#656565];
+  }
+  .bottom center a {
+    @apply text-[#8baaad] no-underline hover:underline;
+  }
+  @media screen and (max-width: 900px) {
+    footer {
+      @apply relative bottom-0;
+    }
+    .main-content {
+      @apply flex-wrap flex-col;
+    }
+    .main-content .box {
+      @apply mx-0 my-[5px];
+    }
+  }
+  
