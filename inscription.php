@@ -14,18 +14,18 @@
 
             // doublon login
             if(Verify::loginAlreadyExist($login)) {
-                header('location:register.php?error=1&message=login déjà existant');
+                header('location:inscription.php?error=1&message=login déjà existant');
                 exit();
             }
 
             // verifications du mail
             if(!Verify::verifySyntax($email)) {
-                header('location:register.php?error=1&message=merci de rentrer un email valide !');
+                header('location:inscription.php?error=1&message=merci de rentrer un email valide !');
                 exit();
             }
             // doublon mail
             if(Verify::emailAlreadyExist($email)) {
-                header('location:register.php?error=1&message= mail déjà utilisé');
+                header('location:inscription.php?error=1&message= mail déjà utilisé');
                 exit();
             }
             
@@ -38,7 +38,7 @@
             
            
         } else {
-            header('location:register.php?error=1&message=merci de rentrer des mots de passe indentiques');
+            header('location:inscription.php?error=1&message=merci de rentrer des mots de passe indentiques');
             exit();
         }
     }
@@ -100,13 +100,14 @@
             <div id="divBtn" class="p-2  mb-10 w-full bg-color-5 text-center border rounded-md text-xl hover:bg-white hover:text-black">   
                 <button id="btn" class="w-full" type="submit">S'incrire</button>
             </div>
-        </form>
-    </div>
-    <?php
+            <?php
         if(isset($_GET['error']) && !empty($_GET['message'])) {
             echo '<p class="alert error">'.htmlspecialchars($_GET['message']).'</p>';
         } 
         ?>
+        </form>
+    </div>
+    
     </section>
     <script src="src/inscription.js"></script>
     </body>

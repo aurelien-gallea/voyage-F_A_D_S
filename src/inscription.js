@@ -13,47 +13,66 @@ const regexMail =
 const regexPass = new RegExp(
   "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
 );
+let used = 0;
+let usedMail = 0;
 
-function buttonStatus() {
-  if (login.value != "" && regexMail.test(email.value) && (password.value == password2.value) && (regexPass.test(password.value) && regexPass.test(password2.value))) {
-    
+function enabledBtn() {
     divBtn.style.filter = "opacity(1)";
     btn.disabled = false;
     btn.style.cursor = "pointer";
-    }
-  else {
+}
+
+function disabledBtn() {
     btn.disabled = true;
     btn.style.cursor = "not-allowed";
     divBtn.style.filter = "opacity(0.2)";
+}
+
+function buttonStatus() {
+  if (used== 0 && usedMail==0 && login.value.length >=2 && regexMail.test(email.value) && (password.value == password2.value) && (regexPass.test(password.value) && regexPass.test(password2.value))) {
+    
+    enabledBtn();
+    }
+  else {
+    disabledBtn();
   }
+}
+
+function fetchLogin() {
+  fetch('./src/infos.php')
+  .then(response => response.json())
+  .then(response => {
+    for(key in response) {
+      if(response[key].login === login.value) {
+        errorLogin.innerHTML = 'Identifiant déjà utilisé !'
+        errorLogin.classList.remove('text-red-500');
+        errorLogin.classList.add('text-orange-500');
+        errorLogin.style.visibility = "visible";
+        return used=1;
+      } 
+      errorLogin.innerHTML = 'Entrez un nom d\'utilisateur';
+      errorLogin.classList.remove('text-orange-500');
+      errorLogin.classList.add('text-red-500');
+
+      if(login.value != "" && login.value.length >= 2) {
+        errorLogin.style.visibility = "hidden";
+        
+      } else {
+        errorLogin.style.visibility = "visible";
+        
+      }
+    }
+    return used=0;
+  });
 }
 
 buttonStatus();
 
 login.addEventListener("keyup", () => {
+   fetchLogin();
+   console.log(used);
+   buttonStatus();
   
-    fetch('./src/infos.php')
-    .then(response => response.json())
-    .then(response => {
-      for(key in response) {
-        if(response[key].login === login.value) {
-          errorLogin.innerHTML = 'Identifiant déjà utilisé !'
-          errorLogin.classList.remove('text-red-500');
-          errorLogin.classList.add('text-orange-500');
-          errorLogin.style.visibility = "visible";
-          return;
-        } 
-        errorLogin.innerHTML = 'Entrez un nom d\'utilisateur';
-        errorLogin.classList.remove('text-orange-500');
-        errorLogin.classList.add('text-red-500');
-        if(login.value != "" && login.value.length > 2) {
-          errorLogin.style.visibility = "hidden";
-        } else {
-          errorLogin.style.visibility = "visible";
-        }
-      }
-    });
-  buttonStatus();
 });
 
 email.addEventListener("keyup", () => {
@@ -62,6 +81,7 @@ email.addEventListener("keyup", () => {
     errorEmail.innerHTML = "Utilisez un email valide"
     errorEmail.classList.remove('text-orange-500');
     errorEmail.classList.add('text-red-500');
+    buttonStatus();
   } else {
     fetch('./src/infos.php')
     .then(response => response.json())
@@ -72,15 +92,17 @@ email.addEventListener("keyup", () => {
           errorEmail.classList.remove('text-red-500');
           errorEmail.classList.add('text-orange-500');
           errorEmail.style.visibility = "visible";
-          btn.disabled = true;
-          return;
+          
+          return usedMail=1;
         }     
       }
+      return usedMail=0;
     });
     errorEmail.style.visibility = "hidden";
     errorEmail.innerHTML= ".";
-    buttonStatus();
+    
   }
+  buttonStatus();
 });
 
 password.addEventListener("keyup", () => {
@@ -91,9 +113,9 @@ password.addEventListener("keyup", () => {
       errorPassword.style.visibility = "visible";
     } else {
       errorPassword.style.visibility = "hidden";
-      buttonStatus();
     }
   }
+  buttonStatus();
 });
 password2.addEventListener("keyup", () => {
   if (password.value != password2.value) {
@@ -103,9 +125,9 @@ password2.addEventListener("keyup", () => {
       errorPassword.style.visibility = "visible";
     } else {
       errorPassword.style.visibility = "hidden";
-      buttonStatus();
     }
   }
+  buttonStatus();
 });
 
 btn.addEventListener('mouseover', () => {
