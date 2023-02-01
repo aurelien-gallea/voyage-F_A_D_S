@@ -30,10 +30,10 @@
         <li><a href="#">Membres</a></li>
          <select class="dropdown">
   <option value="">Sélectionnez un Membre</option>
-  <option value="afrique">Sylvia</option>
-  <option value="afrique">Aurelien</option>
+  <option value="asie">Sylvia</option>
+  <option value="europe">Aurelien</option>
   <option value="amerique">Dylan</option>
-  <option value="europe">Florian</option>
+  <option value="afrique">Florian</option>
 </select>
       
         <li><a href="#">Blog</a></li>
