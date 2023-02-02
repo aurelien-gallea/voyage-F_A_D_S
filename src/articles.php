@@ -45,10 +45,10 @@
     $result = mysqli_query($conn, $sql);
 
     // Boucle pour afficher chaque article
-    while ($article = mysqli_fetch_assoc($result)) {
-      echo "<h2>" . $article['titre'] . "</h2>";
-      echo "<p>" . $article['contenu'] . "</p>";
-      echo "<p>Publié le " . $article['date'] . "</p>";
+    while ($articles = mysqli_fetch_assoc($result)) {
+      echo "<h2>" . $articles['titre'] . "</h2>";
+      echo "<p>" . $articles['contenu'] . "</p>";
+      echo "<p>Publié le " . $articles['date'] . "</p>";
     }
 
     // Fermeture de la connexion à la base de données
