@@ -1,103 +1,149 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-footer {
-    @apply fixed w-full bottom-0;
-    background: #1c3738;
+footer{
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background: #1c3738;
+}
+.main-content{
+  display: flex;
+}
+.main-content .box{
+  flex-basis: 50%;
+  padding: 10px 20px;
+}
+.box h2{
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.box .content{
+  margin: 20px 0 0 0;
+  position: relative;
+}
+.box .content:before{
+  position: absolute;
+  content: '';
+  top: -10px;
+  height: 2px;
+  width: 100%;
+  background: #1a1a1a;
+}
+.box .content:after{
+  position: absolute;
+  content: '';
+  height: 2px;
+  width: 15%;
+  background: #f4fff8;
+  top: -10px;
+}
+.left .content p{
+  text-align: justify;
+}
+.left .content .social{
+  margin: 20px 0 0 0;
+}
+.left .content .social a{
+  padding: 0 2px;
+}
+.left .content .social a span{
+  height: 40px;
+  width: 40px;
+  background: #1a1a1a;
+  line-height: 40px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.left .content .social a span:hover{
+  background: #8baaad;
+}
+.center .content .fas{
+  font-size: 1.4375rem;
+  background: #1a1a1a;
+  height: 45px;
+  width: 45px;
+  line-height: 45px;
+  text-align: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.center .content .fas:hover{
+  background: #8baaad;
+}
+.center .content .text{
+  font-size: 1.0625rem;
+  font-weight: 500;
+  padding-left: 10px;
+}
+.center .content .phone{
+  margin: 15px 0;
+}
+.right form .text{
+  font-size: 1.0625rem;
+  margin-bottom: 2px;
+  color: #656565;
+}
+.right form .msg{
+  margin-top: 10px;
+}
+.right form input, .right form textarea{
+  width: 100%;
+  font-size: 1.0625rem;
+  background: #151515;
+  padding-left: 10px;
+  border: 1px solid #222222;
+}
+.right form input:focus,
+.right form textarea:focus{
+  outline-color: #8baaad;
+}
+.right form input{
+  height: 35px;
+}
+.right form .btn{
+  margin-top: 10px;
+}
+.right form .btn button{
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #8baaad;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .3s;
+}
+.right form .btn button:hover{
+  background: #000f08;
+}
+.bottom center{
+  padding: 5px;
+  font-size: 0.9375rem;
+  background: #000f08;
+}
+.bottom center span{
+  color: #656565;
+}
+.bottom center a{
+  color: #8baaad;
+  text-decoration: none;
+}
+.bottom center a:hover{
+  text-decoration: underline;
+}
+@media screen and (max-width: 900px) {
+  footer{
+    position: relative;
+    bottom: 0px;
   }
-  .main-content {
-    @apply flex;
+  .main-content{
+    flex-wrap: wrap;
+    flex-direction: column;
   }
-  .main-content .box {
-    @apply basis-6/12 px-5 py-2.5;
+  .main-content .box{
+    margin: 5px 0;
   }
-  .box h2 {
-    @apply text-lg font-semibold uppercase;
-  }
-  .box .content {
-    @apply relative mt-5 mb-0 mx-0 before:absolute before:content-[''] before:h-0.5 before:w-full before:-top-2.5 after:absolute after:content-[''] after:h-0.5 after:w-[15%] after:-top-2.5;
-  }
-  .box .content:before {
-    background: #000f08;
-  }
-  .box .content:after {
-    background: #f4fff8;
-  }
-  .left .content p {
-    @apply text-justify;
-  }
-  .left .content .social {
-    @apply mt-5 mb-0 mx-0;
-  }
-  .left .content .social a {
-    @apply px-0.5 py-0;
-  }
-  .left .content .social a span {
-    @apply h-10 w-10 leading-10 text-center text-lg transition-[0.3s] rounded-[5px];
-    background: #000f08;
-  }
-  .left .content .social a span:hover {
-    background: #8baaad;
-  }
-  .center .content .fas {
-    @apply text-[1.4375rem] h-[45px] w-[45px] leading-[45px] text-center transition-[0.3s] cursor-pointer rounded-[50%];
-    background: #000f08;
-  }
-  .center .content .fas:hover {
-    background: #8baaad;
-  }
-  .center .content .text {
-    @apply text-[1.0625rem] font-medium pl-2.5;
-  }
-  .center .content .phone {
-    @apply mx-0 my-[15px];
-  }
-  .right form .text {
-    @apply text-[1.0625rem] text-[#656565] mb-0.5;
-  }
-  .right form .msg {
-    @apply mt-2.5;
-  }
-  .right form input,
-  .right form textarea {
-    @apply w-full text-[1.0625rem] border pl-2.5 border-solid border-[#000f08];
-    background: #000f08;
-  }
-  .right form input:focus,
-  .right form textarea:focus {
-    @apply outline-[#8baaad];
-  }
-  .right form input {
-    @apply h-[35px];
-  }
-  .right form .btn {
-    @apply mt-2.5;
-  }
-  .right form .btn button {
-    @apply h-10 w-full text-[1.0625rem] font-medium cursor-pointer transition-[0.3s] border-[none];
-    outline: none;
-    background: #8baaad;
-  }
-  .right form .btn button:hover {
-    background: #000f08;
-  }
-  .bottom center {
-    @apply text-[0.9375rem] p-[5px];
-    background: #000f08;
-  }
-  .bottom center span {
-    @apply text-[#656565];
-  }
-  .bottom center a {
-    @apply text-[#8baaad] no-underline hover:underline;
-  }
-  @media screen and (max-width: 900px) {
-    footer {
-      @apply relative bottom-0;
-    }
-    .main-content {
-      @apply flex-wrap flex-col;
-    }
-    .main-content .box {
-      @apply mx-0 my-[5px];
-    }
-  }
-  
+}
