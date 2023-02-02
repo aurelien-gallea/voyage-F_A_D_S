@@ -93,7 +93,7 @@ footer{
   font-size: 1.0625rem;
   background: #f4fff8;
   padding-left: 10px;
-  border: 1px solid #222222;
+  border: 1px solid #000f08;
 }
 .right form input:focus,
 .right form textarea:focus{
@@ -117,7 +117,7 @@ footer{
   transition: .3s;
 }
 .right form .btn button:hover{
-  background: #000f08;
+  background: #4d4847;
 }
 .bottom center{
   padding: 5px;
