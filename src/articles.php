@@ -25,15 +25,10 @@
     </head>
     <h1><?= $titre ?></h1>
        <p><?= $contenu ?></p>
-    <body>
-    <!DOCTYPE html>
-<html>
-<head>
-  <title>Articles</title>
-  <style>
+
     
+  <style>
   </style>
-</head>
 <body>
   <h1>Articles</h1>
   <?php
