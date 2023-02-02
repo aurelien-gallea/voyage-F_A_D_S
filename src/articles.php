@@ -31,7 +31,7 @@
 <head>
   <title>Articles</title>
   <style>
-    /* Ajoutez votre CSS ici */
+    
   </style>
 </head>
 <body>
