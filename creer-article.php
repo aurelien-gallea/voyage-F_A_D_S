@@ -22,10 +22,7 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 	} else {
 		$message = 'Veuillez remplir tous les champs pour compléter la création de l\'article.';
 	}
-	#aut que par défaut il prenne gastronomie
 }
-
-#var_dump()
 ;?>
 
 <!DOCTYPE html>
