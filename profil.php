@@ -12,7 +12,7 @@ $email = $result['email'];
 var_dump($result);
 
 
-
+// formulaire changement login/email
 if (!empty($_POST['password'])) {
 
     // protection des variables
@@ -20,6 +20,7 @@ if (!empty($_POST['password'])) {
     $email    = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
     $password2 = htmlspecialchars($_POST['password2']);
+
 
     $_SESSION['login'] = $login;
     $_SESSION['id'] = $id;
@@ -32,14 +33,37 @@ if (!empty($_POST['password'])) {
 
         // MAJ des infos
         require('src/connectionDB.php');
-        $req = $bdd->prepare('UPDATE `utilisateurs` SET `login`=?,`password`=?,`email`=? WHERE id=?');
+        $req = $bdd->prepare('UPDATE `utilisateurs` SET `login`=?, `email`=? WHERE id=?');
+        $req->execute([$login, $email, $id]);
+        header('location:profil.php?success=1');
+        exit();
+    }
+}
 
-        //    on met à jour le mdp si le champs "nouveau MDP" est rempli !
-        if (!empty($password2)) {
-            $req->execute([$login, $password2, $email, $id]);
+// formulaire changement de mot de passe
+if (!empty($_POST['passChange1'])) {
+
+    $passChange1 = htmlspecialchars($_POST['passChange1']);
+    $passChange2 = htmlspecialchars($_POST['passChange2']);
+    $passChange3 = htmlspecialchars($_POST['passChange3']);
+
+    
+    // correspondance MDP entré et MDP de la BDD
+    if ($passChange1 == $result['password']) {
+        if ($passChange2 == $passChange3) {
+            // on change le mdp
+            require('src/connectionDB.php');
+            $req = $bdd->prepare('UPDATE `utilisateurs` SET `password`=? WHERE id=?');
+            $req->execute([$passChange2, $id]);
+            header('location:profil.php?success=2');
+            exit();
         } else {
-            $req->execute([$login, $password, $email, $id]);
+            header('location:profil.php?error=2');
+            exit();
         }
+    } else {
+        header('location:profil.php?error=1');
+        exit();
     }
 }
 
@@ -77,12 +101,13 @@ if (!empty($_POST['password'])) {
     <?php } ?>
     <section class="flex-grow">
 
-        <div class="container mx-auto m-16  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
+        <div class="container mx-auto mt-16  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
             <h1 class="text-center text-3xl m-5 font-light color-4">Modifier Profil</h1>
-            <div id="block1">
+            <div id="block1" class="">
+                <hr>
 
                 <form class="flex flex-col justify-center gap-5" action="profil.php" method="post">
-                <div class="mt-3">
+                    <div class="mt-3">
                         <h2 class="text-white text-xl">Changement identifiant / email</h2>
                     </div>
                     <div>
@@ -115,6 +140,7 @@ if (!empty($_POST['password'])) {
                 <button id="passWindow" class="mb-5 text-white hover:text-orange-500">changer le mot de passe ?</button>
             </div>
             <div id="block2">
+                <hr>
                 <form action="profil.php" method="post" class="flex flex-col justify-center gap-5">
 
 
@@ -122,23 +148,23 @@ if (!empty($_POST['password'])) {
                     <div class="mt-3">
                         <h2 class="text-white text-xl">Changement de mot de passe</h2>
                     </div>
-                    <div class="flex flex-col gap-3">
+                    <div class="flex flex-col gap-5">
                         <div class="flex  justify-center">
-                            <label for="passChange1" class="bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
-                            <input id="passChange1" class="p-2 rounded-r-md w-full text-xl" type="text" name="passChange1" id="passChange1" placeholder="Mot De Passe Actuel">
+                            <label for="passChange1" class="bg-color-3 p-2 mt-3 rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
+                            <input id="passChange1" class="p-2 rounded-r-md mt-3 w-full text-xl" type="text" name="passChange1" id="passChange1" placeholder="Mot De Passe Actuel">
                         </div>
                         <div class="flex  justify-center">
-                            <label for="passChange2" class="bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
+                            <label for="passChange2" class="bg-color-3 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
                             <input id="passChange2" class="p-2 rounded-r-md w-full text-xl" type="text" name="passChange2" id="passChange2" placeholder="Nouveau Mot De Passe">
                         </div>
                         <div>
                             <div class="flex  justify-center ">
-                                <label for="passChange3" class="bg-color-5 p-2   rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone mot de passe"></label>
+                                <label for="passChange3" class="bg-color-3 p-2   rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone mot de passe"></label>
                                 <input id="passChange3" class="p-2 rounded-r-md w-full text-xl" type="text" name="passChange3" id="passChange3" placeholder="Confirmer nouveau MDP ">
                             </div>
                         </div>
                         <div>
-                            <button id="btn2" class="p-2  my-5 w-full bg-color-5 text-center border rounded-md text-xl hover:bg-white hover:text-black">Soumettre</button>
+                            <button id="btn2" class="p-2  my-5 w-full bg-color-3 text-center text-white border rounded-md text-xl hover:bg-white hover:text-black">Soumettre</button>
                         </div>
                     </div>
 
@@ -147,10 +173,35 @@ if (!empty($_POST['password'])) {
                 <button id="userWindow" class="mb-5 text-white hover:text-orange-500">changer l'identifiant / l'email ?</button>
             </div>
 
+
         </div>
+    </section>
+    <section>
+    <?php
+        if (isset($_GET['success'])) { ?>
+            <div class="container p-3 text-white text-lg mx-auto flex flex-col items-center text-center mt-10  bg-green-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
+
+                <?php if (isset($_GET['success']) && $_GET['success'] == 1) { ?>
+                    <p>Login / Email mis à jour !</p>
+                <?php } else if (isset($_GET['success']) && $_GET['success'] == 2) { ?>
+                    <p>Mot de passe mis à jour !</p>
+                <?php } ?>
+            </div>
+        <?php } ?>
+        <?php
+        if (isset($_GET['error'])) { ?>
+            <div class="container p-3 text-white text-lg mx-auto flex flex-col items-center text-center mt-10  bg-red-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
+
+                <?php if (isset($_GET['error']) && $_GET['error'] == 1) { ?>
+                    <p>Mot de passe incorrect</p>
+                <?php } else if (isset($_GET['error']) && $_GET['error'] == 2) { ?>
+                    <p>Les mots de passe ne correspondent pas</p>
+                <?php } ?>
+            </div>
+        <?php } ?>
+
 
     </section>
-
     <script src="src/profil.js"></script>
 </body>
 
