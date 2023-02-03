@@ -105,7 +105,7 @@ try {
         <div class="article">
             <h2><?= htmlspecialchars($article['titre']) ?></h2>
             <p><?= htmlspecialchars($article['contenu']) ?></p>
-            <a href="#">Lire plus</a>
+            <a href="#">Afficher plus</a>
         </div>
     <?php endforeach;
      ?>
