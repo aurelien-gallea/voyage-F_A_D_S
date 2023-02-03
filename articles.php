@@ -18,7 +18,6 @@
 
 <?php
     // Connexion à la base de données
-    $conn = mysqli_connect("mysql:host=127.0.0.1", "root", "", "dbname=blog_voyage;charset=utf8");
     $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
     if(isset($_POST['id']) && !empty($_POST['id'])) {
        $get_id = htmlspecialchars($_POST['id']);
