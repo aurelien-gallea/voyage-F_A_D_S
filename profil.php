@@ -3,6 +3,7 @@ session_start();
 $id = 32;
 
 require('src/connectionDB.php');
+require_once('classes/Verify.php');
 $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 $req->execute([$id]);
 $result = $req->fetch();
@@ -25,6 +26,28 @@ if (!empty($_POST['password'])) {
     $_SESSION['login'] = $login;
     $_SESSION['id'] = $id;
 
+     // doublon login SI changement
+    if($login != $result['login']) {
+
+        if(Verify::loginAlreadyExist($login)) { // on verifie l'existence du doublon dans la bdd
+            header('location:profil.php?error=4&message=login déjà existant');
+            exit();
+        }
+    }
+
+    // verifications du format du mail
+    if(!Verify::verifySyntax($email)) {
+        header('location:profil.php?error=6&message=merci de rentrer un email valide !');
+        exit();
+    }
+    // doublon mail SI changement 
+    if($email != $result['email']) {
+
+        if(Verify::emailAlreadyExist($email)) { // on verifie l'existence du doublon dans la bdd
+            header('location:profil.php?error=5&message= mail déjà utilisé');
+            exit();
+        }
+    }
     //encryptage MDP
     // $password = Security::hash($password);
 
@@ -36,6 +59,9 @@ if (!empty($_POST['password'])) {
         $req = $bdd->prepare('UPDATE `utilisateurs` SET `login`=?, `email`=? WHERE id=?');
         $req->execute([$login, $email, $id]);
         header('location:profil.php?success=1');
+        exit();
+    } else {
+        header('location:profil.php?error=1');
         exit();
     }
 }
@@ -163,7 +189,7 @@ if (!empty($_POST['passChange1'])) {
                                 <input id="passChange3" class="p-2 rounded-r-md w-full text-xl" type="text" name="passChange3" id="passChange3" placeholder="Confirmer nouveau MDP ">
                             </div>
                         </div>
-                        <div>
+                        <div id="divBtn2">
                             <button id="btn2" class="p-2  my-5 w-full bg-color-3 text-center text-white border rounded-md text-xl hover:bg-white hover:text-black">Soumettre</button>
                         </div>
                     </div>
@@ -196,6 +222,8 @@ if (!empty($_POST['passChange1'])) {
                     <p>Mot de passe incorrect</p>
                 <?php } else if (isset($_GET['error']) && $_GET['error'] == 2) { ?>
                     <p>Les mots de passe ne correspondent pas</p>
+                <?php } else if (isset($_GET['error']) && $_GET['error'] >= 4) { ?>
+                    <p> <?= $_GET['message'] ?></p>
                 <?php } ?>
             </div>
         <?php } ?>
