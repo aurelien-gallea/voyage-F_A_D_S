@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3307
--- Généré le : jeu. 02 fév. 2023 à 13:52
--- Version du serveur : 10.10.2-MariaDB
--- Version de PHP : 8.0.26
+-- Hôte : 127.0.0.1
+-- Généré le : ven. 03 fév. 2023 à 23:44
+-- Version du serveur : 10.4.27-MariaDB
+-- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,18 +27,23 @@ SET time_zone = "+00:00";
 -- Structure de la table `articles`
 --
 
-DROP TABLE IF EXISTS `articles`;
-CREATE TABLE IF NOT EXISTS `articles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `id` int(11) NOT NULL,
+  `titre` varchar(80) NOT NULL,
   `article` text NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   `id_categorie` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `titre` varchar(80) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_utilisateur` (`id_utilisateur`),
-  UNIQUE KEY `id_categorie` (`id_categorie`)
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `articles`
+--
+
+INSERT INTO `articles` (`id`, `titre`, `article`, `id_utilisateur`, `id_categorie`, `date`) VALUES
+(1, 'hello', 'bonjour tous le monde', 32, 1, '2023-02-03 21:34:26'),
+(9, 'hello', 'bonjour tous le monde', 32, 1, '2023-02-03 21:58:11'),
+(10, 'hlo', 'bonjour tous le me', 32, 2, '2023-02-03 22:00:39');
 
 -- --------------------------------------------------------
 
@@ -46,12 +51,20 @@ CREATE TABLE IF NOT EXISTS `articles` (
 -- Structure de la table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
-CREATE TABLE IF NOT EXISTS `categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(80) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `categories`
+--
+
+INSERT INTO `categories` (`id`, `nom`) VALUES
+(1, 'nature'),
+(2, 'architecture'),
+(3, 'gastronomie'),
+(4, 'divertissement');
 
 -- --------------------------------------------------------
 
@@ -59,15 +72,17 @@ CREATE TABLE IF NOT EXISTS `categories` (
 -- Structure de la table `cat_art`
 --
 
-DROP TABLE IF EXISTS `cat_art`;
-CREATE TABLE IF NOT EXISTS `cat_art` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cat_art` (
   `id_art` int(11) NOT NULL,
-  `id_cat` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_cat` (`id_cat`),
-  UNIQUE KEY `id_art` (`id_art`)
+  `id_cat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `cat_art`
+--
+
+INSERT INTO `cat_art` (`id_art`, `id_cat`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -75,17 +90,21 @@ CREATE TABLE IF NOT EXISTS `cat_art` (
 -- Structure de la table `commentaires`
 --
 
-DROP TABLE IF EXISTS `commentaires`;
-CREATE TABLE IF NOT EXISTS `commentaires` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `commentaires` (
+  `id` int(11) NOT NULL,
   `commentaire` varchar(1024) NOT NULL,
   `id_article` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_article` (`id_article`),
-  UNIQUE KEY `id_utilisateur` (`id_utilisateur`)
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `commentaires`
+--
+
+INSERT INTO `commentaires` (`id`, `commentaire`, `id_article`, `id_utilisateur`, `date`) VALUES
+(3, 'very good value, input , input', 1, 32, '2023-02-03 22:40:22'),
+(4, 'this is beautiful', 1, 32, '2023-02-03 22:43:42');
 
 -- --------------------------------------------------------
 
@@ -93,14 +112,11 @@ CREATE TABLE IF NOT EXISTS `commentaires` (
 -- Structure de la table `droits`
 --
 
-DROP TABLE IF EXISTS `droits`;
-CREATE TABLE IF NOT EXISTS `droits` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `droits` (
+  `id` int(11) NOT NULL,
   `nom` varchar(80) NOT NULL,
-  `id_utilisateur` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_utilisateur` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `droits`
@@ -127,21 +143,19 @@ INSERT INTO `droits` (`id`, `nom`, `id_utilisateur`) VALUES
 -- Structure de la table `utilisateurs`
 --
 
-DROP TABLE IF EXISTS `utilisateurs`;
-CREATE TABLE IF NOT EXISTS `utilisateurs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `utilisateurs` (
+  `id` int(11) NOT NULL,
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`id`, `login`, `password`, `email`) VALUES
-(32, 'armin', 'e4f3e01bcd95f4152cdb512d7c4dcbc23c58be5478ad4b', 'sq'),
+(32, 'nicolas', 'aa', 'wow4ever@zz.zz'),
 (33, 'aa', 'e4fb19ac43f5c892279f07502d4ae18f809b3cf208ed4b', 'aa@aa.aa'),
 (34, 'aa', 'e4f6f748402441bbeb0832b4b95d0843aee3aa3f7f6d4b', 'aa@zz.zz'),
 (35, 'admin', 'e4f12da5dc841a47dc13e0c2923c859eaab93c6cd68d4b', 'aa@zz.bbb'),
@@ -156,6 +170,86 @@ INSERT INTO `utilisateurs` (`id`, `login`, `password`, `email`) VALUES
 (44, 'alfred', 'e4fa0a243467a19eee94f25614618458689b1e0063bd4b', 'zz@ds.dr');
 
 --
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_utilisateur` (`id_utilisateur`) USING BTREE,
+  ADD KEY `id_categorie` (`id_categorie`) USING BTREE;
+
+--
+-- Index pour la table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `cat_art`
+--
+ALTER TABLE `cat_art`
+  ADD UNIQUE KEY `id_art` (`id_art`) USING BTREE,
+  ADD KEY `id_cat` (`id_cat`) USING BTREE;
+
+--
+-- Index pour la table `commentaires`
+--
+ALTER TABLE `commentaires`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_article` (`id_article`) USING BTREE,
+  ADD KEY `id_utilisateur` (`id_utilisateur`) USING BTREE;
+
+--
+-- Index pour la table `droits`
+--
+ALTER TABLE `droits`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_utilisateur` (`id_utilisateur`);
+
+--
+-- Index pour la table `utilisateurs`
+--
+ALTER TABLE `utilisateurs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT pour la table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `commentaires`
+--
+ALTER TABLE `commentaires`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `droits`
+--
+ALTER TABLE `droits`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT pour la table `utilisateurs`
+--
+ALTER TABLE `utilisateurs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
 -- Contraintes pour les tables déchargées
 --
 
@@ -163,8 +257,7 @@ INSERT INTO `utilisateurs` (`id`, `login`, `password`, `email`) VALUES
 -- Contraintes pour la table `articles`
 --
 ALTER TABLE `articles`
-  ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `articles_ibfk_2` FOREIGN KEY (`id_categorie`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `cat_art`
