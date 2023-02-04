@@ -1,9 +1,10 @@
 <?php
 session_start();
-$id = 32;
+$id = 47;
 
 require('src/connectionDB.php');
 require_once('classes/Verify.php');
+require_once('classes/Security.php');
 $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 $req->execute([$id]);
 $result = $req->fetch();
@@ -13,7 +14,7 @@ $email = $result['email'];
 var_dump($result);
 
 
-// formulaire changement login/email
+// formulaire 1 changement login/email -----------------------------------------------
 if (!empty($_POST['password'])) {
 
     // protection des variables
@@ -49,7 +50,7 @@ if (!empty($_POST['password'])) {
         }
     }
     //encryptage MDP
-    // $password = Security::hash($password);
+    $password = Security::hash($password);
 
     // correspondance MDP entré et MDP de la BDD
     if ($password == $result['password']) {
@@ -66,17 +67,23 @@ if (!empty($_POST['password'])) {
     }
 }
 
-// formulaire changement de mot de passe
+// formulaire 2 changement de mot de passe ---------------------------------------
 if (!empty($_POST['passChange1'])) {
 
     $passChange1 = htmlspecialchars($_POST['passChange1']);
     $passChange2 = htmlspecialchars($_POST['passChange2']);
     $passChange3 = htmlspecialchars($_POST['passChange3']);
 
-    
+     //encryptage MDP
+     $passChange1 = Security::hash($passChange1);
+
     // correspondance MDP entré et MDP de la BDD
     if ($passChange1 == $result['password']) {
         if ($passChange2 == $passChange3) {
+
+            //encryptage MDP
+            $passChange2 = Security::hash($passChange2);
+
             // on change le mdp
             require('src/connectionDB.php');
             $req = $bdd->prepare('UPDATE `utilisateurs` SET `password`=? WHERE id=?');
@@ -189,8 +196,9 @@ if (!empty($_POST['passChange1'])) {
                                 <input id="passChange3" class="p-2 rounded-r-md w-full text-xl" type="text" name="passChange3" id="passChange3" placeholder="Confirmer nouveau MDP ">
                             </div>
                         </div>
+                        <small id="notMatch" class="text-red-500">Les Mots de passes ne correspondent pas</small>
                         <div id="divBtn2">
-                            <button id="btn2" class="p-2  my-5 w-full bg-color-3 text-center text-white border rounded-md text-xl hover:bg-white hover:text-black">Soumettre</button>
+                            <button id="btn2" class="p-2   w-full bg-color-3 text-center text-white border rounded-md text-xl hover:bg-white hover:text-black">Soumettre</button>
                         </div>
                     </div>
 
@@ -205,7 +213,7 @@ if (!empty($_POST['passChange1'])) {
     <section>
     <?php
         if (isset($_GET['success'])) { ?>
-            <div class="container p-3 text-white text-lg mx-auto flex flex-col items-center text-center mt-10  bg-green-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
+            <div class="container p-3 text-white text-lg mx-auto flex flex-col items-center text-center bg-green-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
 
                 <?php if (isset($_GET['success']) && $_GET['success'] == 1) { ?>
                     <p>Login / Email mis à jour !</p>
@@ -216,7 +224,7 @@ if (!empty($_POST['passChange1'])) {
         <?php } ?>
         <?php
         if (isset($_GET['error'])) { ?>
-            <div class="container p-3 text-white text-lg mx-auto flex flex-col items-center text-center mt-10  bg-red-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
+            <div class="container p-3 text-white text-lg mx-auto flex flex-col items-center text-center  bg-red-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
 
                 <?php if (isset($_GET['error']) && $_GET['error'] == 1) { ?>
                     <p>Mot de passe incorrect</p>

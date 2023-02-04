@@ -13,22 +13,22 @@ const regexMail =
 const regexPass = new RegExp(
   "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
 );
-let used = 0;
-let usedMail = 0;
+let used = 0; // doublon login
+let usedMail = 0; // doublon mail
 
-function enabledBtn() {
+function enabledBtn() { // activer le btn
     divBtn.style.filter = "opacity(1)";
     btn.disabled = false;
     btn.style.cursor = "pointer";
 }
 
-function disabledBtn() {
+function disabledBtn() { // desactiver btn
     btn.disabled = true;
     btn.style.cursor = "not-allowed";
     divBtn.style.filter = "opacity(0.2)";
 }
 
-function buttonStatus() {
+function buttonStatus() { // le status du bouton 
   if (used== 0 && usedMail==0 && login.value.length >=2 && regexMail.test(email.value) && (password.value == password2.value) && (regexPass.test(password.value) && regexPass.test(password2.value))) {
     
     enabledBtn();
@@ -38,7 +38,8 @@ function buttonStatus() {
   }
 }
 
-function fetchLogin() {
+// on recupère un json envoyé par le back pour vérifier si le login existe déjà
+function fetchLogin() { 
   fetch('./src/infos.php')
   .then(response => response.json())
   .then(response => {
@@ -66,15 +67,16 @@ function fetchLogin() {
   });
 }
 
-buttonStatus();
+buttonStatus(); // on initialise le bouton en disabled
 
+// input du login
 login.addEventListener("keyup", () => {
    fetchLogin();
-   console.log(used);
    buttonStatus();
   
 });
 
+//input du mail
 email.addEventListener("keyup", () => {
   if (!regexMail.test(email.value)) {
     errorEmail.style.visibility = "visible";
@@ -104,7 +106,7 @@ email.addEventListener("keyup", () => {
   }
   buttonStatus();
 });
-
+ // input password
 password.addEventListener("keyup", () => {
   if (password.value != password2.value) {
     errorPassword.style.visibility = "visible";
@@ -117,6 +119,8 @@ password.addEventListener("keyup", () => {
   }
   buttonStatus();
 });
+
+// input confirmation password
 password2.addEventListener("keyup", () => {
   if (password.value != password2.value) {
     errorPassword.style.visibility = "visible";
@@ -130,6 +134,8 @@ password2.addEventListener("keyup", () => {
   buttonStatus();
 });
 
+// on fait une derniere vérification lorsqu'on s'apprete a cliquer sur le bouton
+// ou faire tab dessus
 btn.addEventListener('mouseover', () => {
     buttonStatus();
 });
