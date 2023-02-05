@@ -10,6 +10,11 @@ $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 $req->execute([$id]);
 $result = $req->fetch();
 
+$req2 = $bdd->prepare('SELECT id, nom FROM categories');
+$req2->execute();
+#$result2 = $req2->fetchAll();
+#var_dump($result2);
+
 if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 	if (!empty($_POST['article_titre']) && !empty($_POST['article_contenu'])) {
 
@@ -17,13 +22,11 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 		$article_contenu = htmlspecialchars($_POST['article_contenu']);
 		#article_categorie = htmlspecialchars($_POST['article_categorie']);
 		$req = $bdd->prepare('INSERT INTO articles (titre, article, date_post, id_utilisateur) VALUES (?, ?, NOW(), ?)');
+		#en front on le mettra en fr
 		$req->execute(array($article_titre, $article_contenu, $id));
 
 		#$req = $bdd->prepare('INSERT INTO cat_art (id_art ,id_cat) VALUES (?, ?)');
 		#$req->execute(array($id, $));
-
-		$req2 = $bdd->prepare('SELECT id, nom FROM categories');
-		$req2->execute();
 
 		$message = 'Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !';
 	} else {
@@ -50,13 +53,22 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 
 	<br>
 
-	<select>
 		<?php
-		while ($ligne = $req2->fetch()) {
-			echo "<option value='" . $ligne['id_client'] . "'>" . $ligne['nom_client'] . "</option>";
+		$compteur = $req2->rowCount();
+		$arrayCat = [];
+		while ($ligne = $req2->fetch(PDO::FETCH_ASSOC)) {
+			array_push($arrayCat, $ligne);
 		}
+		while ($compteur > 0) {
+			echo "<select>";
+			echo "<option value=''> </option>";
+			$compteur--;
+		for ($i = 0 ; $i < count($arrayCat) ; $i++) {
+		echo "<option name=" . $arrayCat[$i]['id'] . " value='" . $arrayCat[$i]['id'] . "'>" . $arrayCat[$i]['nom'] . "</option>";
+		}
+		echo "</select>";
+	}
 		?>
-	</select>
 
 	<br />
 	<?php if (isset($message)) {
