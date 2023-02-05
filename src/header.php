@@ -13,7 +13,8 @@
       href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap"
       rel="stylesheet"
     />
-
+    <link rel="stylesheet" href="css/voyages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
@@ -21,7 +22,9 @@
     />
     <title>Document</title>
     <script>
-      tailwind.config = {
+      tailwind.config = { darkMode: 'class',
+  // ...
+  content: [],
         theme: {
           extend: {
             colors: {
@@ -67,14 +70,15 @@
   <!-- ----------------------------------body--------------------------- -->
 
   <body>
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white">
     <nav
-      class="    px-2 bg-blue/54 shadow-xl border-gray-200 dark:bg-gray-900 dark:border-gray-700"
+      class="    px-2 bg-blue/54 shadow-xl z-2 border-gray-200 dark:bg-gray-900 dark:border-gray-700"
     >
       <div
         class="  relative container flex flex-wrap items-center justify-between content-center mx-auto"
       >
         <a href="#" class="flex items-center pl-3">
-          <img src="../assets/logo2.png" class="h-8 mr-4 sm:h-14" alt="TastyTrip" />
+          <img src="assets/logo2.png" class="h-8 mr-4 sm:h-14" alt="TastyTrip" />
           <span
             class="self-center text-xl font-Unbounded whitespace-nowrap dark:text-white"
             >TastyTrip</span
@@ -83,7 +87,7 @@
         <button
           data-collapse-toggle="navbar-dropdown"
           type="button"
-          class=" z-50 top-10 inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          class="  top-10 inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="navbar-dropdown"
           aria-expanded="false"
         >
@@ -104,7 +108,7 @@
         </button>
         <div class=" hidden w-full md:block md:w-auto" id="navbar-dropdown">
           <ul
-            class=" flex flex-col p-4 mt-4 items-center border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white opacity-75 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+            class=" flex flex-col p-4 mt-4 items-center border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white opacity-85 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
           >
             <li>
               <a
@@ -119,7 +123,7 @@
               <button
                 id="dropdownNavbarLink"
                 data-dropdown-toggle="dropdownNavbar"
-                class="flex items-center justify-between w-full z-500  py-3 pl-3 pr-4 font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+                class="flex items-center justify-between w-full z-50  py-3 pl-3 pr-4 font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
               >
                 Continents
                 <svg
@@ -139,10 +143,10 @@
               <!-- Dropdown menu -->
               <div
                 id="dropdownNavbar"
-                class=" z-50 hidden font-normal bg-white opacity-80 divide-y divide-gray-100 rounded-lg shadow-xl w-44 dark:bg-gray-700 dark:divide-gray-600"
+                class="  hidden translate-y-6 font-normal bg-white opacity-95 divide-y divide-gray-100 rounded-lg shadow-xl w-36 dark:bg-gray-700 dark:divide-gray-600"
               >
                 <ul
-                  class="py-4 text-sm text-gray-700 dark:text-gray-400"
+                  class=" py-4 text-sm text-gray-700 dark:text-gray-400"
                   aria-labelledby="dropdownLargeButton"
                 >
                   <li>
@@ -201,7 +205,7 @@
               <!-- Dropdown menu -->
               <div
                 id="dropdownNavbar2"
-                class="z-10 hidden font-normal bg-white opacity-80 divide-y divide-gray-100 rounded-lg shadow-xl w-44 dark:bg-gray-700 dark:divide-gray-600"
+                class="z-10 hidden font-normal bg-white opacity-95 divide-y divide-gray-100 rounded-lg shadow-xl w-36 dark:bg-gray-700 dark:divide-gray-600"
               >
                 <ul
                   class="flex flex-col py-4 text-sm text-gray-700 dark:text-gray-400"
@@ -292,65 +296,4 @@
     </nav>
 
     <!-- ---------------------------------- fin de nav----------------------------->
-
-
-
-    <script>
-      var themeToggleDarkIcon = document.getElementById(
-        "theme-toggle-dark-icon"
-      );
-      var themeToggleLightIcon = document.getElementById(
-        "theme-toggle-light-icon"
-      );
-
-      // Change the icons inside the button based on previous settings
-      if (
-        localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        themeToggleLightIcon.classList.remove("hidden");
-      } else {
-        themeToggleDarkIcon.classList.remove("hidden");
-      }
-
-      var themeToggleBtn = document.getElementById("theme-toggle");
-
-      themeToggleBtn.addEventListener("click", function () {
-        // toggle icons inside button
-        themeToggleDarkIcon.classList.toggle("hidden");
-        themeToggleLightIcon.classList.toggle("hidden");
-
-        // if set via local storage previously
-        if (localStorage.getItem("color-theme")) {
-          if (localStorage.getItem("color-theme") === "light") {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("color-theme", "dark");
-          } else {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("color-theme", "light");
-          }
-
-          // if NOT set via local storage previously
-        } else {
-          if (document.documentElement.classList.contains("dark")) {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("color-theme", "light");
-          } else {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("color-theme", "dark");
-          }
-        }
-      });
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-  </body>
-</html>
-<?php
- if(isset($_GET['erreur'])){
- $erreur = $_GET['erreur'];
- if($erreur==1 )
- echo "<p class='alert''>Utilisateur ou mot de passe incorrect</p>";
- }
- ?>
+   </header>

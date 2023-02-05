@@ -1,5 +1,7 @@
+
 <?php
-include'header.php';
+
+// include'src/header.php';
 
 require_once('src/connectionDB.php');
 
@@ -20,14 +22,14 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
         $_SESSION['id']  =$id;  
        $_SESSION['login'] = $login;
         $_SESSION['password'] = $password;
-         header('location:blog.php');
+         header('location:articles.php');
        $count++;
        var_dump( $_SESSION['login']);
         exit();
     }
 }
     if($count!=1) {
-        header('Location: connectUser.php?erreur=1');
+        header('Location: connexion.php?erreur=1');
         $count = 0;
         var_dump( $_SESSION['login']);
         exit();
@@ -36,6 +38,17 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
 }
 
 ?>
+
+
+<?php 
+include'src/header.php';
+?>
+
+
+
+
+
+
 
 <!-- <form action="" method="post">
     <input type="text" name="login" placeholder="Nom d'utilisateur">
@@ -56,10 +69,10 @@ bg-color-5 hover:bg-color-2 focus:ring-color-3 focus:ring-4 focus:outline-none f
 
 
 <!-- Main modal -->
-<div id="authentication-modal" tabindex="-1" aria-hidden="true" class="flex content-center justify-center w-full z-20 h-screen m-auto p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+<div id="authentication-modal" tabindex="-1" aria-hidden="true" class="flex content-center justify-center w-full z-10 h-screen m-auto p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
     <div class="relative w-full h-full m-auto max-w-md md:h-auto">
         <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <div class="relative  backdrop-blur-md rounded-lg shadow dark:bg-gray-700">
         
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Connectez vous à TastyTrip!</h3>
@@ -70,8 +83,11 @@ bg-color-5 hover:bg-color-2 focus:ring-color-3 focus:ring-4 focus:outline-none f
                     </div>
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre mot de passe</label>
-                        <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-color-3 focus:border-color-3 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                    </div>
+                        <input type="password" name="password" id="password" placeholder="••••••••" value="secret" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-color-3 focus:border-color-3 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        <!-- toggle dans le mot de passe -->
+                        <span toggle="#password" id="toggleid" class="fa-solid after:fa-eye-slash fa-eye field-icon toggle-password"></span>
+                        
+                      </div>
                     <div class="flex justify-between">
                         <div class="flex items-start">
                             <div class="flex items-center h-5">
@@ -79,23 +95,44 @@ bg-color-5 hover:bg-color-2 focus:ring-color-3 focus:ring-4 focus:outline-none f
                             </div>
                             <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Se rappeler de moi</label>
                         </div>
-                        <a href="#" class="text-sm text-color-5 hover:underline dark:text-color-3">Mot de passe perdu?</a>
+                        <a href="#" class="text-sm text-color-5 hover:underline dark:text-color-5">Mot de passe perdu?</a>
                     </div>
                     <button type="submit" class="w-full text-white bg-color-5 hover:bg-color-5 focus:ring-4 focus:outline-none focus:ring-color-3 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-color-3 dark:hover:bg-color-5 dark:focus:ring-color-2">Connexion</button>
                     <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                        Non inscrit? <a href="#" class="text-color-5 hover:underline dark:text-color-3">Créer un compte</a>
+                        Non inscrit? <a href="inscription.php" class="text-color-5 hover:underline dark:text-color-5">Créer un compte</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div> 
-
-
-<video autoplay loop muted class="absolute z-0 opacity-50 w-auto min-w-full min-h-full max-w-none">
-    <source src="vid.mp4" type="video/mp4" />
+<video autoplay loop muted class="absolute z-auto opacity-60 w-auto min-w-full min-h-full max-w-none">
+    <source src="assets/vid.mp4" type="video/mp4" />
   </video>
 </div>
+
+
+<script>
+
+
+const passwordInput = document.querySelector("#password");
+const togglePassword = document.getElementById("toggleid");
+const eye=document.querySelector("fa-eye");
+
+
+togglePassword.addEventListener("click", function () {
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+      
+    } else {
+        passwordInput.type = "password";
+       
+    }
+});
+
+
+</script>
+
 
 
 
@@ -147,6 +184,8 @@ bg-color-5 hover:bg-color-2 focus:ring-color-3 focus:ring-4 focus:outline-none f
         }
       });
     </script>
+ <!-- <script src="src/hidePass.js"></script> -->
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
   </body>
