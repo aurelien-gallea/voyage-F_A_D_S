@@ -31,7 +31,7 @@ try {
 <body>
     <style>
         h1 {
-            font-size: 45px;
+            font-size: 35px;
             font-family: Georgia, 'Times New Roman', Times, serif;
             text-align: center;
             margin-top: 50px;
@@ -54,14 +54,14 @@ try {
         .article {
             width: 30%;
             border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 50px;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
             text-align: center;
         }
 
         .article h2 {
-            font-size: 34px;
+            font-size: 24px;
             font-family: "Gill Sans", sans-serif;
             margin-bottom: 20px;
             text-align: center;
