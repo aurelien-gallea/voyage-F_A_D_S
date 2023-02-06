@@ -104,6 +104,7 @@ try {
     <h1>Articles</h
 
   <div class="articles">
+  </div>
     <?php foreach ($articles as $article) : 
       ?>
         <div class="article">
@@ -111,7 +112,7 @@ try {
             <h3><?= htmlspecialchars($article['date']) ?></h3>
             <p><?= htmlspecialchars($article['article']) ?></p>
 
-            <a href="#">Afficher plus</a>
+            
         </div>
     <?php endforeach;
      ?>
