@@ -19,6 +19,12 @@ const regexPass = new RegExp(
     "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
   );
 
+// buttons update
+const artContainer = document.querySelectorAll('.artContainer'); // div pour cacher le titre + boutton update/delete
+const update = document.querySelectorAll('.update'); // boutton pour cacher la div 
+const btnContainer = document.querySelectorAll('.btnContainer');
+const artChange = document.querySelectorAll('.artChange');
+const cancelBtn = document.querySelectorAll('.cancelBtn');
 block2.style.display = "none"; // on cache par défaut le block2: le changement de mdp
 
 // activation du boutton
@@ -95,3 +101,31 @@ userWindow.addEventListener('click', (e) => {
 disabledForm2(pass1,'keyup');
 disabledForm2(pass2,'keyup');
 disabledForm2(pass3,'keyup');
+
+
+
+for (let i = 0; i < update.length; i++) {
+    console.log(update[0]);
+    update[i].addEventListener('click', (e) => {
+        e.preventDefault();
+
+            artChange[i].classList.toggle('hidden');
+            btnContainer[i].classList.toggle('hidden');
+            artContainer[i].classList.toggle('hidden');
+        });
+    }
+
+
+for (let i = 0; i < cancelBtn.length; i++) {
+    // console.log(key);
+    cancelBtn[i].addEventListener('click', (e) => {
+    e.preventDefault();
+    artChange[i].classList.toggle('hidden');
+    btnContainer[i].classList.toggle('hidden');
+    artContainer[i].classList.toggle('hidden');
+    console.log('ok');
+    });
+}
+    
+
+

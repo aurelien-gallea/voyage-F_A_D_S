@@ -1,18 +1,24 @@
 <?php
 session_start();
-$id = 47;
+$_SESSION['id'] = 33;
+$id = htmlspecialchars($_SESSION['id']); // il faudra utiliser $_SESSION['id']
 
 require('src/connectionDB.php');
 require_once('classes/Verify.php');
 require_once('classes/Security.php');
+require_once('classes/Update.php');
 $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 $req->execute([$id]);
 $result = $req->fetch();
 $id = $result['id'];
 $login = $result['login'];
 $email = $result['email'];
-var_dump($result);
+// var_dump($result);
 
+// les stats -------------------------------------------------------------------------
+$stats = $bdd->prepare('SELECT * FROM articles WHERE id_utilisateur=?');
+$stats->execute([$id]);
+$count = $stats->rowCount();
 
 // formulaire 1 changement login/email -----------------------------------------------
 if (!empty($_POST['password'])) {
@@ -27,24 +33,24 @@ if (!empty($_POST['password'])) {
     $_SESSION['login'] = $login;
     $_SESSION['id'] = $id;
 
-     // doublon login SI changement
-    if($login != $result['login']) {
+    // doublon login SI changement
+    if ($login != $result['login']) {
 
-        if(Verify::loginAlreadyExist($login)) { // on verifie l'existence du doublon dans la bdd
+        if (Verify::loginAlreadyExist($login)) { // on verifie l'existence du doublon dans la bdd
             header('location:profil.php?error=4&message=login déjà existant');
             exit();
         }
     }
 
     // verifications du format du mail
-    if(!Verify::verifySyntax($email)) {
+    if (!Verify::verifySyntax($email)) {
         header('location:profil.php?error=6&message=merci de rentrer un email valide !');
         exit();
     }
     // doublon mail SI changement 
-    if($email != $result['email']) {
+    if ($email != $result['email']) {
 
-        if(Verify::emailAlreadyExist($email)) { // on verifie l'existence du doublon dans la bdd
+        if (Verify::emailAlreadyExist($email)) { // on verifie l'existence du doublon dans la bdd
             header('location:profil.php?error=5&message= mail déjà utilisé');
             exit();
         }
@@ -74,8 +80,8 @@ if (!empty($_POST['passChange1'])) {
     $passChange2 = htmlspecialchars($_POST['passChange2']);
     $passChange3 = htmlspecialchars($_POST['passChange3']);
 
-     //encryptage MDP
-     $passChange1 = Security::hash($passChange1);
+    //encryptage MDP
+    $passChange1 = Security::hash($passChange1);
 
     // correspondance MDP entré et MDP de la BDD
     if ($passChange1 == $result['password']) {
@@ -99,6 +105,20 @@ if (!empty($_POST['passChange1'])) {
         exit();
     }
 }
+
+$arrayArt = []; // on initialise un array vide pour le remplir avec les articles
+
+// message en cas de modificiation / suppression -------------------------------------
+while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) { 
+    array_push($arrayArt, $articles); // on push dansu n tableau pour pouvoir header à ce niveau et echo plus bas
+    if (isset($_POST['delete']) && $_POST['delete'] == $articles['id']) {
+    $delete = htmlspecialchars($_POST['delete']);
+    Update::deleteArticle($delete, $articles['id_utilisateur']);
+    header('location:profil.php?success=3');
+    exit();
+    }
+}
+var_dump($arrayArt);
 
 ?>
 <!DOCTYPE html>
@@ -132,9 +152,15 @@ if (!empty($_POST['passChange1'])) {
             </tr>
         </table>
     <?php } ?>
+    <section>
+        <div class="container mx-auto m-4  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
+            <span class="text-center text-3xl m-5 font-light color-4">Mes stats</span>
+            <span class="text-2xl color-4 pb-3">articles écrit : <?php if (isset($count)) echo $count; ?> </span>
+        </div>
+    </section>
     <section class="flex-grow">
 
-        <div class="container mx-auto mt-16  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
+        <div class="container mx-auto   flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
             <h1 class="text-center text-3xl m-5 font-light color-4">Modifier Profil</h1>
             <div id="block1" class="">
                 <hr>
@@ -161,7 +187,7 @@ if (!empty($_POST['passChange1'])) {
                     <div>
                         <div class="flex justify-center">
                             <label for="password" class="bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
-                            <input id="password" class="p-2 rounded-r-md w-full text-xl" type="text" name="password" id="password" placeholder="Confirmer Mot De Passe">
+                            <input id="password" class="p-2 rounded-r-md w-full text-xl" type="password" name="password" id="password" placeholder="Confirmer Mot De Passe">
                         </div>
                     </div>
                     <small class="text-red-500 ">Confirmer votre MDP pour modifier les informations</small>
@@ -184,16 +210,16 @@ if (!empty($_POST['passChange1'])) {
                     <div class="flex flex-col gap-5">
                         <div class="flex  justify-center">
                             <label for="passChange1" class="bg-color-3 p-2 mt-3 rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
-                            <input id="passChange1" class="p-2 rounded-r-md mt-3 w-full text-xl" type="text" name="passChange1" id="passChange1" placeholder="Mot De Passe Actuel">
+                            <input id="passChange1" class="p-2 rounded-r-md mt-3 w-full text-xl" type="password" name="passChange1" id="passChange1" placeholder="Mot De Passe Actuel">
                         </div>
                         <div class="flex  justify-center">
                             <label for="passChange2" class="bg-color-3 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
-                            <input id="passChange2" class="p-2 rounded-r-md w-full text-xl" type="text" name="passChange2" id="passChange2" placeholder="Nouveau Mot De Passe">
+                            <input id="passChange2" class="p-2 rounded-r-md w-full text-xl" type="password" name="passChange2" id="passChange2" placeholder="Nouveau Mot De Passe">
                         </div>
                         <div>
                             <div class="flex  justify-center ">
                                 <label for="passChange3" class="bg-color-3 p-2   rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone mot de passe"></label>
-                                <input id="passChange3" class="p-2 rounded-r-md w-full text-xl" type="text" name="passChange3" id="passChange3" placeholder="Confirmer nouveau MDP ">
+                                <input id="passChange3" class="p-2 rounded-r-md w-full text-xl" type="password" name="passChange3" id="passChange3" placeholder="Confirmer nouveau MDP ">
                             </div>
                         </div>
                         <small id="notMatch" class="text-red-500">Les Mots de passes ne correspondent pas</small>
@@ -211,20 +237,22 @@ if (!empty($_POST['passChange1'])) {
         </div>
     </section>
     <section>
-    <?php
+        <?php
         if (isset($_GET['success'])) { ?>
-            <div class="container p-3 text-white text-lg mx-auto flex flex-col items-center text-center bg-green-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
+            <div class="container p-3 mt-3 text-white text-lg mx-auto flex flex-col items-center text-center bg-green-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
 
                 <?php if (isset($_GET['success']) && $_GET['success'] == 1) { ?>
                     <p>Login / Email mis à jour !</p>
                 <?php } else if (isset($_GET['success']) && $_GET['success'] == 2) { ?>
                     <p>Mot de passe mis à jour !</p>
-                <?php } ?>
+                <?php } else if (isset($_GET['success']) && $_GET['success'] == 3) { ?>
+                    <p>Article supprimé !</p>
+                <?php }?>
             </div>
         <?php } ?>
         <?php
         if (isset($_GET['error'])) { ?>
-            <div class="container p-3 text-white text-lg mx-auto flex flex-col items-center text-center  bg-red-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
+            <div class="container p-3 mt-3 text-white text-lg mx-auto flex flex-col items-center text-center  bg-red-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
 
                 <?php if (isset($_GET['error']) && $_GET['error'] == 1) { ?>
                     <p>Mot de passe incorrect</p>
@@ -236,7 +264,54 @@ if (!empty($_POST['passChange1'])) {
             </div>
         <?php } ?>
 
+    </section>
+    <section>
+        <div class="bg-color-3 text-white">
+            <div class="container mx-auto m-4 p-4 flex flex-col items-center  ">
+                <h2 class="text-3xl">Mes articles :</h2>
+            </div>
+            <div class="container mx-auto m-4  p-2  flex flex-col items-center  ">
 
+                <?php
+                
+                for($i=0; $i< count($arrayArt); $i++ ) { // on affiche les articles qu'on a push précédemment dans un tableau
+                    ?>
+                    <div class="artContainer text-white bg-color-2 my-2">
+                        <div class="flex justify-between w-screen container p-3">
+                            <h3>Titre : <?= $arrayArt[$i]['titre'] ?></h3>
+                            <div> dernière modification le : <?= $arrayArt[$i]['date'] ?> par <?= $login ?></div>
+                        </div>
+                        <p class="text-justify p-3"><?= $arrayArt[$i]['article'] ?></p>
+                    </div>
+                    <div>
+                        <form action="profil.php" method="post">
+                            <div class="btnContainer flex justify-between w-screen container p-3">
+                                <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?=$arrayArt[$i]['id'] ?>">modifier article</button>
+                                <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?=$arrayArt[$i]['id'] ?> ">Supprimer article</button>
+                            </div>
+                        
+                            <hr>
+                        </form>
+                    </div>
+                    <div class="artChange  mt-5 hidden">
+                    <div class="flex gap-8 mb-2">
+                    <label for="<?= $arrayArt[$i]['titre']?>">Titre :</label>
+                    <input class="bg-color-1 p-1 rounded" type="text" name="<?= $arrayArt[$i]['titre']?>" value="<?= $arrayArt[$i]['titre']?>">
+                    </div>
+                    <div class="flex gap-5 mb-8">
+                    <label for="<?= $arrayArt[$i]['id']?>">article :</label>
+                    <textarea class="bg-color-1 p-1 rounded" cols="70" rows="10" name="<?= $arrayArt[$i]['id']?>" value=""><?= $arrayArt[$i]['article']?></textarea>   
+                    </div>
+                    <div class="flex justify-between w-screen container p-3">
+                    <button class="cancelBtn border rounded p-3 hover:bg-white hover:text-black" type="submit" name="annuler">Annuler</button>
+                    <button class=" border rounded p-3 hover:bg-green-500" type="submit"name="confirmer">Confirmer</button>
+                    </div>
+                    </div>
+                <?php  
+
+                } ?>
+            </div>
+        </div>
     </section>
     <script src="src/profil.js"></script>
 </body>

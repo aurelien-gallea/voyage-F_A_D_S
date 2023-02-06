@@ -73,7 +73,7 @@
 
                     <div class="flex  justify-center"> 
                         <label for="email" class="bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/email.png" alt="icone email"></label>
-                        <input id="email" class="p-2 rounded-r-md  text-xl" type="text" name="email" id="email" placeholder="Email">
+                        <input id="email" class="p-2 rounded-r-md  text-xl" type="email" name="email" id="email" placeholder="Email">
                     </div>
                     <small id="errorEmail" class=" text-red-500">Utilisez un email valide</small>
                 </div>
@@ -81,14 +81,14 @@
 
                     <div class="flex  justify-center">
                         <label for="password" class="bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
-                        <input id="password" class="p-2 rounded-r-md  text-xl" type="text" name="password" id="password" placeholder="Mot De Passe">    
+                        <input id="password" class="p-2 rounded-r-md  text-xl" type="password" name="password" id="password" placeholder="Mot De Passe">    
                     </div>
                 </div> 
                 <div>
                     
                     <div class="flex  justify-center mt-2"> 
                         <label for="password2" class="bg-color-5 p-2  mt-3 rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone mot de passe"></label>
-                        <input id="password2" class="p-2 rounded-r-md mt-3 text-xl" type="text" name="password2" id="password2" placeholder="Confimer MDP">
+                        <input id="password2" class="p-2 rounded-r-md mt-3 text-xl" type="password" name="password2" id="password2" placeholder="Confimer MDP">
                     </div>
                     <div id="errorPassword">
                         <small class="text-red-500">Deux mots de passe identiques</small><br>
