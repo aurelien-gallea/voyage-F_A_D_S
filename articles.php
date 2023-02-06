@@ -1,14 +1,15 @@
 <?php
 // Connexion à la base de données
 session_start();
-try {
-    $bdd = new PDO("mysql:host=localhost;dbname=blog_voyage;charset=utf8", "root", "");
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erreur de connexion à la base de données : " . $e->getMessage());
-}
+$id = 33;
 
-$id = (int)$_POST['id'] ?? 0;
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
+$req = $bdd->prepare('SELECT * FROM articles WHERE id=?');
+
+$req->execute([$id]);
+$result = $req->fetch(); 
+
+
 if ($id) {
     try {
         $stmt = $bdd->prepare('SELECT * FROM articles WHERE id = :id');
@@ -28,7 +29,7 @@ if ($id) {
 }
 
 try {
-    $stmt = $bdd->query('SELECT * FROM articles ORDER BY date DESC');
+    $stmt = $bdd->query('SELECT * FROM articles ORDER BY articles_date DESC');
     $articles = $stmt->fetchAll();
 } catch (PDOException $e) {
     die("Erreur lors de la récupération des articles : " . $e->getMessage());
@@ -41,7 +42,7 @@ try {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Articles</title>
     
 </head>
 <body>
