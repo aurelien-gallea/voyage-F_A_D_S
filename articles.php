@@ -34,7 +34,7 @@ try {
             font-size: 35px;
             font-family: Georgia, 'Times New Roman', Times, serif;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 10px;
         }
         
         p {
