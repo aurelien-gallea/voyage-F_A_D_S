@@ -41,8 +41,8 @@ try {
             margin-top: 50px;
         }
         h3 {
-            font-size: 10px;
-            text-align: center;
+            font-size: 15px;
+            text-align: right;
             margin-top: 50px;
         }
         p {
