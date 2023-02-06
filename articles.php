@@ -8,45 +8,27 @@ $req = $bdd->prepare('SELECT * FROM articles WHERE id=?');
 
 $req->execute([$id]);
 $result = $req->fetch(); 
-
-
-if ($id) {
-    try {
-        $stmt = $bdd->prepare('SELECT * FROM articles WHERE id = :id');
-        $stmt->execute(['id' => $id]);
-        if ($stmt->rowCount() == 1) {
-            $article = $stmt->fetch();
-            $titre = htmlspecialchars($article['titre']);
-            $contenu = htmlspecialchars($article['contenu']);
-        } else {
-            throw new Exception('Cet article n\'existe pas...peut-être un jour ?');
-        }
-    } catch (Exception $e) {
-        die($e->getMessage());
-    }
-} else {
-    die('Erreur d\'affichage.');
-}
+$titre = $result['titre'];
+$contenu = $result['contenu'];
 
 try {
-    $stmt = $bdd->query('SELECT * FROM articles ORDER BY articles_date DESC');
+    $stmt = $bdd->query('SELECT * FROM articles ORDER BY date DESC');
     $articles = $stmt->fetchAll();
 } catch (PDOException $e) {
     die("Erreur lors de la récupération des articles : " . $e->getMessage());
 }
 ?>
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Articles</title>
-    
 </head>
 <body>
-<style>
+    <style>
         h1 {
             font-size: 36px;
             text-align: center;
@@ -99,13 +81,15 @@ try {
     <h1><?= $titre ?></h1>
     <p><?= $contenu ?></p>
 
-  <h1>Articles</h1>
+    <h1>Articles</h
+
   <div class="articles">
     <?php foreach ($articles as $article) : 
       ?>
         <div class="article">
             <h2><?= htmlspecialchars($article['titre']) ?></h2>
-            <p><?= htmlspecialchars($article['contenu']) ?></p>
+            <p><?= htmlspecialchars($result['contenu']) ?></p>
+
             <a href="#">Afficher plus</a>
         </div>
     <?php endforeach;
