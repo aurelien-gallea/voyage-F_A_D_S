@@ -39,10 +39,7 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
-      rel="stylesheet"
-    />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
 	<title>Créér votre propre article</title>
 </head>
 
@@ -50,16 +47,14 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 	<form method="POST">
 		<input type="text" name="article_titre" placeholder="Titre" /><br />
 		<textarea name="article_contenu" placeholder="Contenu de l'article..."></textarea><br />
-		<input type="submit" value="Valider" />
-	</form>
-
-	<br>
-
+		
 	<button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Catégories<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
 		</svg></button>
 
-	<!-- Dropdown menu -->
+	<!-- Dropdown menu 
+	doit faire marcher la barre de recherche -->
+
 	<div id="dropdownSearch" class="z-10 hidden bg-white rounded-lg shadow w-60 dark:bg-gray-700">
 		<div class="p-3">
 			<label for="input-group-search" class="sr-only">Recherche</label>
@@ -84,24 +79,23 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 				echo '<div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">';
 				$compteur--;
 			?>
-				<input id="checkbox-item-11" type="checkbox" value="<?= $arrayCat[$i]['id'] ?>" class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500'>
+				<input id="checkbox-item-11" type="checkbox" name="article_categorie" value="<?= $arrayCat[$i]['id'] ?>" class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500'>
 				<label for="checkbox-item-11" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"><?= $arrayCat[$i]['nom'] ?></label>
 			<?php }
 			echo '</div>';
 			echo "</li>";
-
-
 			?>
 		</ul>
 	</div>
+	<br>
+		<input type="submit" value="Valider" />
+	</form>
 
-
-	<br />
 	<?php if (isset($message)) {
 		echo $message;
 	} ?>
-	
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 </body>
 
 </html>
