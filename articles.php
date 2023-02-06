@@ -5,6 +5,7 @@ $id = 33;
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
 $req = $bdd->prepare('SELECT * FROM articles WHERE id=?');
 
+
 $req->execute([$id]);
 $result = $req->fetch(); 
 $titre = $result['titre'];
@@ -35,6 +36,7 @@ try {
             font-family: Georgia, 'Times New Roman', Times, serif;
             text-align: center;
             margin-top: 10px;
+
         }
         
         p {
@@ -112,7 +114,7 @@ try {
             <h3><?= htmlspecialchars($article['date']) ?></h3>
             <p><?= htmlspecialchars($article['article']) ?></p>
 
-            
+            <a href="article">Afficher plus</a>
         </div>
     <?php endforeach;
      ?>
