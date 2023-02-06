@@ -32,19 +32,11 @@ try {
     <style>
         h1 {
             font-size: 45px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
             text-align: center;
             margin-top: 50px;
         }
-        h2 {
-            font-size: 29px;
-            text-align: center;
-            margin-top: 50px;
-        }
-        h3 {
-            font-size: 15px;
-            text-align: right;
-            margin-top: 50px;
-        }
+        
         p {
             font-size: 25px;
             line-height: 1.5;
@@ -69,14 +61,24 @@ try {
         }
 
         .article h2 {
-            font-size: 24px;
+            font-size: 34px;
+            font-family: "Gill Sans", sans-serif;
             margin-bottom: 20px;
+            text-align: center;
+        }
+        .article h3 {
+            font-size: 14px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, serif;
+            margin-bottom: 10px;
+            text-align: right;
         }
 
         .article p {
             font-size: 16px;
+            font-family: Georgia, serif;
             line-height: 1.5;
             margin-bottom: 20px;
+            text-align: left;
         }
 
         .article span {
@@ -86,13 +88,15 @@ try {
         }
 
         .article a {
+            font-size: 18px;
             display: inline-block;
-            padding: 10px 20px;
+            padding: 1px 5px;
             background-color: #000f08;
             color: #f4fff8;
-            border-radius: 25px;
+            border-radius: 5px;
             text-decoration: none;
         }
+        
     </style>
     <h1><?= $titre ?></h1>
     <p><?= $article ?></p>
