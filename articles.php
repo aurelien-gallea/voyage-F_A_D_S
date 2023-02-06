@@ -1,5 +1,4 @@
 <?php
-// Connexion à la base de données
 session_start();
 $id = 33;
 
@@ -9,7 +8,8 @@ $req = $bdd->prepare('SELECT * FROM articles WHERE id=?');
 $req->execute([$id]);
 $result = $req->fetch(); 
 $titre = $result['titre'];
-$contenu = $result['contenu'];
+$article = $result['article'];
+$date = $result['date'];
 
 try {
     $stmt = $bdd->query('SELECT * FROM articles ORDER BY date DESC');
@@ -17,6 +17,7 @@ try {
 } catch (PDOException $e) {
     die("Erreur lors de la récupération des articles : " . $e->getMessage());
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +31,22 @@ try {
 <body>
     <style>
         h1 {
-            font-size: 36px;
+            font-size: 45px;
             text-align: center;
             margin-top: 50px;
         }
-
+        h2 {
+            font-size: 29px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h3 {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 50px;
+        }
         p {
-            font-size: 18px;
+            font-size: 25px;
             line-height: 1.5;
             padding: 20px;
             text-align: justify;
@@ -69,6 +79,12 @@ try {
             margin-bottom: 20px;
         }
 
+        .article span {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
         .article a {
             display: inline-block;
             padding: 10px 20px;
@@ -79,7 +95,7 @@ try {
         }
     </style>
     <h1><?= $titre ?></h1>
-    <p><?= $contenu ?></p>
+    <p><?= $article ?></p>
 
     <h1>Articles</h
 
@@ -88,7 +104,8 @@ try {
       ?>
         <div class="article">
             <h2><?= htmlspecialchars($article['titre']) ?></h2>
-            <p><?= htmlspecialchars($result['contenu']) ?></p>
+            <h3><?= htmlspecialchars($article['date']) ?></h3>
+            <p><?= htmlspecialchars($article['article']) ?></p>
 
             <a href="#">Afficher plus</a>
         </div>
