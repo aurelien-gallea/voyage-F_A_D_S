@@ -2,6 +2,13 @@
 <?php 
 include'src/header.php';
 ?>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <?php
 
     require_once('src/connectionDB.php');
@@ -12,32 +19,51 @@ include'src/header.php';
     $stmt->execute();
     $article = $stmt->fetch();
 
-    $stmt = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = :id_article");
-    $stmt->bindParam(':id_article', $id);
-    $stmt->execute();
-    $commentaires = $stmt->fetchAll();
+    // $stmt = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = :id_article");
+    // $stmt->bindParam(':id_article', $id);
+    // $stmt->execute();
+    // $commentaires = $stmt->fetchAll();
+    // // SELECT commentaires.`commentaire`, commentaires.`date`, utilisateurs.login FROM  commentaires INNER JOIN utilisateurs WHERE utilisateurs.id= commentaires.id_utilisateur
+    // $stmt = $bdd->prepare("SELECT utilisateurs.login FROM utilisateurs, commentaires WHERE utilisateurs.id= commentaires.id_utilisateur");
+    // //  $stmt->bindParam(':commentaires.id_utilisateur', $id);
+    // $stmt->execute();
+    // $login_utilisateur = $stmt->fetch();
 
-    $stmt = $bdd->prepare("SELECT utilisateurs.login FROM utilisateurs, commentaires WHERE utilisateurs.id= commentaires.id_utilisateur");
-    //  $stmt->bindParam(':commentaires.id_utilisateur', $id);
-    $stmt->execute();
-    $login_utilisateur = $stmt->fetch();
+// test
+    $stmt = $bdd->prepare("SELECT commentaires.*, utilisateurs.login FROM commentaires
+                       INNER JOIN utilisateurs ON utilisateurs.id = commentaires.id_utilisateur
+                       WHERE commentaires.id_article = :id_article");
+$stmt->bindParam(':id_article', $id_article, PDO::PARAM_INT);
+$stmt->execute();
+
+$commentaires = $stmt->fetchAll();
+
 
     
     // nouveau commentaire
     if (isset($_POST['submit_commentaire'])) {
       // Récupération des données du formulaire
       $commentaire = htmlspecialchars($_POST['commentaire']);
-      $id_utilisateur = $_POST['id_utilisateur'];
+      $login = $_COOKIE['login'];
+      $id = (int) $_GET['id'];
+
+      $stmt2 = $bdd->prepare(" INSERT INTO commentaires (id_utilisateur, id_article, commentaire, date)
+      SELECT utilisateurs.id, :id_article, :commentaire, NOW()
+      FROM utilisateurs
+      WHERE utilisateurs.login = :login");
+      $stmt2->bindParam(':id_article', $id, PDO::PARAM_INT);
+      $stmt2->bindParam(':commentaire', $commentaire, PDO::PARAM_STR);
+      $stmt2->bindParam(':login', $login, PDO::PARAM_STR);
+      $stmt2->execute();
+
+
+
       
-      // Requête pour insérer le nouveau commentaire en base de données
-      $stmt = $bdd->prepare("INSERT INTO commentaires (commentaire, id_article, id_utilisateur, date) VALUES (:commentaire, :id_article, :id_utilisateur, NOW())");
-      $stmt->bindParam(':commentaire', $commentaire);
-      $stmt->bindParam(':id_article', $id);
-      $stmt->bindParam(':id_utilisateur', $id_utilisateur);
-      $stmt->execute();
-      
-      // Redirection vers la même page pour afficher les commentaires actualisés
-      header('Location: article.php?id=' . $id);
+    //   // Redirection vers la même page pour afficher les commentaires actualisés
+    //   header("Location: ". $_SERVER['PHP_SELF']. "?id=". $id);
+    //   die();
+    // }
+      // header('Location: article.php?id='. $id);
       exit;
     }
     
@@ -64,8 +90,8 @@ include'src/header.php';
 <form action="article.php?id=<?php echo $id; ?>" method="post">
    <div class="w-5/6 mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
        <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
-           <label for="comment" class="sr-only">Votre commentaire</label>
-           <textarea id="comment" rows="4" class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write a comment..." required></textarea>
+           <label for="commentaire" class="sr-only">Votre commentaire</label>
+           <textarea name="commentaire" id="commentaire" rows="4" class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="votre commentaire..." required></textarea>
        </div>
        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
            <button type="submit" name="submit_commentaire" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-300 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
@@ -75,60 +101,30 @@ include'src/header.php';
        </div>
    </div>
 </form>
-
-      
-      <!-- Formulaire d'ajout de commentaires -->
-<!-- <h3>Ajouter un commentaire</h3>
-<form action="article.php?id=<?php echo $id; ?>" method="post">
-    <textarea name="contenu"></textarea>
-    <input type="submit" value="Envoyer">
-</form> -->
-<!-- affichage des commentaires -->
     
 
-    <?php foreach ($commentaires as $commentaire) { ?>
+    <!-- <?php foreach ($commentaires as $commentaire) { ?>
       <div class="block w-5/6 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
-    <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $login_utilisateur['login.utilisateurs']; ?><?php echo $commentaire['date']; ?></h5>  
+    <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+      <?php echo $commentaire['login'] . ' a posté le commentaire suivant : ' ?><?php echo $commentaire['date']; ?>
+    </h5>  
       <div class="comments">
     <p class="font-normal text-gray-700 dark:text-gray-400"><?php echo $commentaire['commentaire']; ?></p>
 </div>
 </div> 
- <?php } ?>
+ <?php } ?> -->
 
-
- 
-
-
-
-
-
-
-
-
-<?php
-// Traitement du formulaire
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupération des données du formulaire
-    // $contenu = $_POST['commentaire'];
-    
-    // Vérification des données
-    if (empty($contenu)) {
-        echo 'Le commentaire est vide';
-    } else {
-        // Enregistrement en base de données
-        $query = $bdd->prepare('INSERT INTO commentaires (id_article, id_utilisateur, commentaire) VALUES (:id_article, :id_utilisateur, :commentaire)');
-        $query->execute([
-            'id_article' => $id,
-            // 'id_utilisateur' => $_SESSION['utilisateurs']['id'],
-            'commentaire' => $contenu
-        ]);
-             header('Location: article.php?id=' . $id);
-        exit;
-    }
-}
-?>
-
+ <?php foreach ($commentaires as $commentaire) { ?>
+  <div class="block w-5/6 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+      <?php echo $commentaire['login'] . ' a posté le commentaire suivant : ' ?><?php echo $commentaire['date']; ?>
+    </h5>
+    <div class="comments">
+      <p class="font-normal text-gray-700 dark:text-gray-400"><?php echo $commentaire['commentaire']; ?></p>
+    </div>
+  </div> 
+<?php } ?>
 
 <script>
       var themeToggleDarkIcon = document.getElementById(

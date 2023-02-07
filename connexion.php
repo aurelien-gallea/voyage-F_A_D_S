@@ -15,14 +15,15 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
 
     while($resultat = $stmt->fetch()) {
         
-        
-    if($resultat['login'] == $login && $resultat['password'] == $password) {
+        var_dump($resultat);
+
+    if($resultat['login'] == $login &&  $password == $resultat['password']) {
         var_dump( $resultat['password'] == $pass);
         setcookie('login', htmlspecialchars($resultat['login']),time()+3600 ); 
         $_SESSION['id']  =$id;  
        $_SESSION['login'] = $login;
         $_SESSION['password'] = $password;
-         header('location:articles.php');
+         header('location:article.php');
        $count++;
        var_dump( $_SESSION['login']);
         exit();
@@ -44,19 +45,6 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
 include'src/header.php';
 ?>
 
-
-
-
-
-
-
-<!-- <form action="" method="post">
-    <input type="text" name="login" placeholder="Nom d'utilisateur">
-    <input type="password" name="password" placeholder="Mot de passe">
-    <input type="submit" name="submit" value="Se connecter">
-</form> -->
-
-
 <!-- Modal toggle -->
 <!-- 
 <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white
@@ -72,14 +60,14 @@ bg-color-5 hover:bg-color-2 focus:ring-color-3 focus:ring-4 focus:outline-none f
 <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="flex content-center justify-center w-full z-10 h-screen m-auto p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
     <div class="relative w-full h-full m-auto max-w-md md:h-auto">
         <!-- Modal content -->
-        <div class="relative  backdrop-blur-md rounded-lg shadow dark:bg-gray-700">
+        <div class="relative duration-700 ease-linear backdrop-blur-md rounded-lg shadow dark:bg-gray-700">
         
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Connectez vous à TastyTrip!</h3>
-                <form class="space-y-6" action="#">
+                <form class="space-y-6" action="" method="post">
                     <div>
-                        <label for="Login" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre Login</label>
-                        <input type="Login" name="Login" id="Login" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-color-3 focus:border-color-3 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Votre Login" required>
+                        <label for="login" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre Login</label>
+                        <input type="login" name="login" id="login" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-color-3 focus:border-color-3 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Votre Login" required>
                     </div>
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre mot de passe</label>
@@ -89,12 +77,12 @@ bg-color-5 hover:bg-color-2 focus:ring-color-3 focus:ring-4 focus:outline-none f
                         
                       </div>
                     <div class="flex justify-between">
-                        <div class="flex items-start">
-                            <div class="flex items-center h-5">
-                                <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded text-color-5 bg-gray-50 focus:ring-3 focus:ring-color-3 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-color-3 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required>
-                            </div>
+                        <!-- <div class="flex items-start"> -->
+                            <!-- <div class="flex items-center h-5"> -->
+                                <!-- <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded text-color-5 bg-gray-50 focus:ring-3 focus:ring-color-3 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-color-3 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required> -->
+                            <!-- </div>
                             <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Se rappeler de moi</label>
-                        </div>
+                        </div> -->
                         <a href="#" class="text-sm text-color-5 hover:underline dark:text-color-5">Mot de passe perdu?</a>
                     </div>
                     <button type="submit" class="w-full text-white bg-color-5 hover:bg-color-5 focus:ring-4 focus:outline-none focus:ring-color-3 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-color-3 dark:hover:bg-color-5 dark:focus:ring-color-2">Connexion</button>

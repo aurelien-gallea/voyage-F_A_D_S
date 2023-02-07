@@ -70,9 +70,9 @@
   <!-- ----------------------------------body--------------------------- -->
 
   <body>
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white  dark:bg-gray-900 ">
     <nav
-      class="    px-2 bg-blue/54 shadow-xl z-2 border-gray-200 dark:bg-gray-900 dark:border-gray-700"
+      class="    px-2 bg-blue/54 shadow-xl z-2  border-gray-200 dark:bg-gray-900 dark:border-gray-700"
     >
       <div
         class="  relative container flex flex-wrap items-center justify-between content-center mx-auto"
@@ -143,7 +143,7 @@
               <!-- Dropdown menu -->
               <div
                 id="dropdownNavbar"
-                class="  hidden translate-y-6 font-normal bg-white opacity-95 divide-y divide-gray-100 rounded-lg shadow-xl w-36 dark:bg-gray-700 dark:divide-gray-600"
+                class="  hidden  font-normal bg-white opacity-95 divide-y divide-gray-100 rounded-lg shadow-xl w-36 dark:bg-gray-700 dark:divide-gray-600"
               >
                 <ul
                   class=" py-4 text-sm text-gray-700 dark:text-gray-400"
@@ -185,7 +185,7 @@
               <button
                 id="dropdownNavbarLink2"
                 data-dropdown-toggle="dropdownNavbar2"
-                class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+                class="flex items-center justify-between w-full py-2 pl-3 pr-4  font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
               >
                 Membres
                 <svg
@@ -205,16 +205,16 @@
               <!-- Dropdown menu -->
               <div
                 id="dropdownNavbar2"
-                class="z-10 hidden font-normal bg-white opacity-95 divide-y divide-gray-100 rounded-lg shadow-xl w-36 dark:bg-gray-700 dark:divide-gray-600"
+                class="z-10 hidden font-normal  bg-white opacity-95 divide-y divide-gray-100 rounded-lg shadow-xl w-36 dark:bg-gray-700 dark:divide-gray-600"
               >
                 <ul
-                  class="flex flex-col py-4 text-sm text-gray-700 dark:text-gray-400"
+                  class="flex flex-col py-4 text-sm text-gray-700 dark:text-gray-400 "
                   aria-labelledby="dropdownLargeButton2"
                 >
                   <li>
                     <a
                       href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white "
                       >Sylvia</a
                     >
                   </li>
