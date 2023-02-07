@@ -120,20 +120,19 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
         Update::deleteArticle($delete, $articles['id_utilisateur']);
         header('location:profil.php?success=3');
         exit();
-        
-     // on met à jour le message
+
+        // on met à jour le message
     } else if (isset($_POST['confirm']) && $_POST['confirm'] == $articles['id']) {
-        $titre = htmlspecialchars($_POST[$articles['titre']]);
+        $titre = htmlspecialchars($_POST['titre-' . $articles['id']]);
         $article = htmlspecialchars($_POST[$articles['id']]);
 
         Update::updateArticle($titre, $article, $articles['id'], $articles['id_utilisateur']);
         // si des checkbox sont cochées pour changer les catégories ont met à jours celles-ci
-        if(!empty($_POST['categorie'])) {
+        if (!empty($_POST['categorie'])) {
             Update::deleteCatArt($articles['id']);
-            foreach($_POST['categorie'] as $value)
-            {
-            $categorie = htmlspecialchars($value);
-            Update::insertIntoCatArt($articles['id'], $categorie);
+            foreach ($_POST['categorie'] as $value) {
+                $categorie = htmlspecialchars($value);
+                Update::insertIntoCatArt($articles['id'], $categorie);
             }
         }
         header('location:profil.php?success=4');
@@ -156,7 +155,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
 <body>
     <!-- <?php
-    if (isset($_SESSION['login'])) { ?>
+            if (isset($_SESSION['login'])) { ?>
         <table>
             <tr>
                 <th>Pseudo :</th>
@@ -173,10 +172,10 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
             </tr>
         </table>
     <?php } ?> -->
-    
+
     <section class="flex-grow">
 
-        <div class="container mx-auto   flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
+        <div class="container mx-auto   flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-t-md">
             <h1 class="text-center text-3xl m-5 font-light color-4">Modifier Profil</h1>
             <div id="block1" class="">
                 <hr>
@@ -253,6 +252,15 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
         </div>
     </section>
     <section>
+        <div class="container w-4/5">
+
+        </div>
+        <div class="container mx-auto  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-b-md">
+            <span class="text-center text-3xl m-5 font-light color-4">Mes stats</span>
+            <span class="text-2xl color-4 pb-5">articles écrit : <?php if (isset($count)) echo $count; ?> </span>
+        </div>
+    </section>
+    <section>
         <?php
         if (isset($_GET['success'])) { ?>
             <div class="container p-3 mt-3 text-white text-lg mx-auto flex flex-col items-center text-center bg-green-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
@@ -283,15 +291,10 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
         <?php } ?>
 
     </section>
-    <section>
-        <div class="container mx-auto m-4  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
-            <span class="text-center text-3xl m-5 font-light color-4">Mes stats</span>
-            <span class="text-2xl color-4 pb-3">articles écrit : <?php if (isset($count)) echo $count; ?> </span>
-        </div>
-    </section>
+
     <section>
         <div class="bg-color-3 text-white">
-            <div class="container mx-auto m-4 p-4 flex flex-col items-center  ">
+            <div class="container mx-auto m-3 p-4 flex flex-col items-center  ">
                 <h2 class="text-3xl">Mes articles :</h2>
             </div>
             <div class="container mx-auto m-4  p-2  flex flex-col items-center  ">
@@ -332,7 +335,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             </div>
                             <div class="flex gap-8 mb-2">
                                 <label for="<?= $arrayArt[$i]['titre'] ?>">Titre :</label>
-                                <input class="bg-color-1 p-1 rounded" type="text" name="<?= $arrayArt[$i]['titre'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
+                                <input class="bg-color-1 p-1 rounded" type="text" name="<?= 'titre-' . $arrayArt[$i]['id'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
                             </div>
                             <div class="flex gap-5 mb-8">
                                 <label for="<?= $arrayArt[$i]['id'] ?>">article :</label>
