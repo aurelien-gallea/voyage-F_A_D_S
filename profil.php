@@ -127,6 +127,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
         $article = htmlspecialchars($_POST[$articles['id']]);
 
         Update::updateArticle($titre, $article, $articles['id'], $articles['id_utilisateur']);
+        // si des checkbox sont cochées pour changer les catégories ont met à jours celles-ci
         if(!empty($_POST['categorie'])) {
             Update::deleteCatArt($articles['id']);
             foreach($_POST['categorie'] as $value)
