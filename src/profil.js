@@ -15,7 +15,7 @@ const divBtn2 = document.querySelector("#divBtn2"); // div du button 2e formaula
 const btn2 = document.querySelector('#btn2'); // boutton 2e formulaire
 const userWindow = document.querySelector('#userWindow'); // lien vers le 1er form
 
-const regexPass = new RegExp(
+const regexPass = new RegExp( // on oblige l'utilisateur à nous rentrer un mdp contenant 8 caracteres: 1maj, 1min, 1caract spécial et 1 chiffre
     "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
   );
 
@@ -25,6 +25,7 @@ const update = document.querySelectorAll('.update'); // boutton pour cacher la d
 const btnContainer = document.querySelectorAll('.btnContainer');
 const artChange = document.querySelectorAll('.artChange');
 const cancelBtn = document.querySelectorAll('.cancelBtn');
+const confirmBtn = document.querySelectorAll('.confirmBtn');
 block2.style.display = "none"; // on cache par défaut le block2: le changement de mdp
 
 // activation du boutton
@@ -80,11 +81,25 @@ function disabledForm2(nameInput, event) {
     });
 }
 
+// on fait appraître / disparaître les blocs pour modifier l'article
+function showHidden(button) {
+    
+for (let i = 0; i < button.length; i++) {
+
+    button[i].addEventListener('click', (e) => {
+        e.preventDefault();
+
+            artChange[i].classList.toggle('hidden');
+            btnContainer[i].classList.toggle('hidden');
+            artContainer[i].classList.toggle('hidden');
+        });
+    }
+}
+
 //le lien qui fait apparaitre le 2e formulaire et disparaitre le 1er
 passWindow.addEventListener('click', (e) => {
     e.preventDefault();
     block2.style.display = "block";
-    
     block1.style.display = "none";
 });
 
@@ -102,30 +117,7 @@ disabledForm2(pass1,'keyup');
 disabledForm2(pass2,'keyup');
 disabledForm2(pass3,'keyup');
 
-
-
-for (let i = 0; i < update.length; i++) {
-    console.log(update[0]);
-    update[i].addEventListener('click', (e) => {
-        e.preventDefault();
-
-            artChange[i].classList.toggle('hidden');
-            btnContainer[i].classList.toggle('hidden');
-            artContainer[i].classList.toggle('hidden');
-        });
-    }
-
-
-for (let i = 0; i < cancelBtn.length; i++) {
-    // console.log(key);
-    cancelBtn[i].addEventListener('click', (e) => {
-    e.preventDefault();
-    artChange[i].classList.toggle('hidden');
-    btnContainer[i].classList.toggle('hidden');
-    artContainer[i].classList.toggle('hidden');
-    console.log('ok');
-    });
-}
-    
-
+// pour faire apparaître le bloc pour modifier un article
+showHidden(update);
+showHidden(cancelBtn);
 

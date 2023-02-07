@@ -15,12 +15,7 @@ $login = $result['login'];
 $email = $result['email'];
 // var_dump($result);
 
-// les stats -------------------------------------------------------------------------
-$stats = $bdd->prepare('SELECT * FROM articles WHERE id_utilisateur=?');
-$stats->execute([$id]);
-$count = $stats->rowCount();
-
-// formulaire 1 changement login/email -----------------------------------------------
+// formulaire n°1 changement login/email --------------------------------------------------------------
 if (!empty($_POST['password'])) {
 
     // protection des variables
@@ -73,7 +68,7 @@ if (!empty($_POST['password'])) {
     }
 }
 
-// formulaire 2 changement de mot de passe ---------------------------------------
+// formulaire n° 2 changement de mot de passe ---------------------------------------
 if (!empty($_POST['passChange1'])) {
 
     $passChange1 = htmlspecialchars($_POST['passChange1']);
@@ -105,21 +100,45 @@ if (!empty($_POST['passChange1'])) {
         exit();
     }
 }
+// articles ---------------------------------------------------------
+// les stats et les articles --------------------------------------------------------------------------
+$stats = $bdd->prepare('SELECT * FROM articles WHERE id_utilisateur=?');
+$stats->execute([$id]);
+$count = $stats->rowCount();
+
 
 $arrayArt = []; // on initialise un array vide pour le remplir avec les articles
+$arrayCat = []; // meme chose pour les catégories
+// message et actions en cas de modificiation / suppression -------------------------------------
+while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
+    // on push les donnees deja existantes dans un tableau pour pouvoir header à ce niveau et echo plus bas
+    array_push($arrayArt, $articles);
 
-// message en cas de modificiation / suppression -------------------------------------
-while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) { 
-    array_push($arrayArt, $articles); // on push dansu n tableau pour pouvoir header à ce niveau et echo plus bas
+    // on supprime le message
     if (isset($_POST['delete']) && $_POST['delete'] == $articles['id']) {
-    $delete = htmlspecialchars($_POST['delete']);
-    Update::deleteArticle($delete, $articles['id_utilisateur']);
-    header('location:profil.php?success=3');
-    exit();
+        $delete = htmlspecialchars($_POST['delete']);
+        Update::deleteArticle($delete, $articles['id_utilisateur']);
+        header('location:profil.php?success=3');
+        exit();
+        
+     // on met à jour le message
+    } else if (isset($_POST['confirm']) && $_POST['confirm'] == $articles['id']) {
+        $titre = htmlspecialchars($_POST[$articles['titre']]);
+        $article = htmlspecialchars($_POST[$articles['id']]);
+
+        Update::updateArticle($titre, $article, $articles['id'], $articles['id_utilisateur']);
+        if(!empty($_POST['categorie'])) {
+            Update::deleteCatArt($articles['id']);
+            foreach($_POST['categorie'] as $value)
+            {
+            $categorie = htmlspecialchars($value);
+            Update::insertIntoCatArt($articles['id'], $categorie);
+            }
+        }
+        header('location:profil.php?success=4');
+        exit();
     }
 }
-var_dump($arrayArt);
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -129,12 +148,13 @@ var_dump($arrayArt);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/voyages.css">
     <title>Profil</title>
 </head>
 
 <body>
-    <?php
+    <!-- <?php
     if (isset($_SESSION['login'])) { ?>
         <table>
             <tr>
@@ -151,13 +171,8 @@ var_dump($arrayArt);
                 <td> <?= $email ?></td>
             </tr>
         </table>
-    <?php } ?>
-    <section>
-        <div class="container mx-auto m-4  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
-            <span class="text-center text-3xl m-5 font-light color-4">Mes stats</span>
-            <span class="text-2xl color-4 pb-3">articles écrit : <?php if (isset($count)) echo $count; ?> </span>
-        </div>
-    </section>
+    <?php } ?> -->
+    
     <section class="flex-grow">
 
         <div class="container mx-auto   flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
@@ -247,7 +262,9 @@ var_dump($arrayArt);
                     <p>Mot de passe mis à jour !</p>
                 <?php } else if (isset($_GET['success']) && $_GET['success'] == 3) { ?>
                     <p>Article supprimé !</p>
-                <?php }?>
+                <?php } else if (isset($_GET['success']) && $_GET['success'] == 4) { ?>
+                    <p>Article mis à jour !</p>
+                <?php } ?>
             </div>
         <?php } ?>
         <?php
@@ -266,53 +283,75 @@ var_dump($arrayArt);
 
     </section>
     <section>
+        <div class="container mx-auto m-4  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
+            <span class="text-center text-3xl m-5 font-light color-4">Mes stats</span>
+            <span class="text-2xl color-4 pb-3">articles écrit : <?php if (isset($count)) echo $count; ?> </span>
+        </div>
+    </section>
+    <section>
         <div class="bg-color-3 text-white">
             <div class="container mx-auto m-4 p-4 flex flex-col items-center  ">
                 <h2 class="text-3xl">Mes articles :</h2>
             </div>
             <div class="container mx-auto m-4  p-2  flex flex-col items-center  ">
 
-                <?php
-                
-                for($i=0; $i< count($arrayArt); $i++ ) { // on affiche les articles qu'on a push précédemment dans un tableau
+                <form action="profil.php" method="post">
+                    <?php
+                    // on affiche les articles qu'on a push précédemment dans un tableau
+                    for ($i = 0; $i < count($arrayArt); $i++) {
+                        $newArray = Update::associateCatName($arrayArt[$i]['id'], $arrayCat);
                     ?>
-                    <div class="artContainer text-white bg-color-2 my-2">
-                        <div class="flex justify-between w-screen container p-3">
-                            <h3>Titre : <?= $arrayArt[$i]['titre'] ?></h3>
-                            <div> dernière modification le : <?= $arrayArt[$i]['date'] ?> par <?= $login ?></div>
-                        </div>
-                        <p class="text-justify p-3"><?= $arrayArt[$i]['article'] ?></p>
-                    </div>
-                    <div>
-                        <form action="profil.php" method="post">
-                            <div class="btnContainer flex justify-between w-screen container p-3">
-                                <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?=$arrayArt[$i]['id'] ?>">modifier article</button>
-                                <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?=$arrayArt[$i]['id'] ?> ">Supprimer article</button>
+                        <div class="artContainer text-white bg-color-2 my-2">
+                            <div class="flex justify-between w-screen container p-3">
+                                <h3>Titre : <?= $arrayArt[$i]['titre'] ?></h3>
+                                <div>catégories:<?php
+                                                for ($k = 0; $k < count($newArray); $k++) {
+                                                    echo '<span class="mx-2 p-2 bg-color-1 rounded">' . $newArray[$k] . '</span>';
+                                                }
+                                                ?> </div>
                             </div>
-                        
-                            <hr>
-                        </form>
-                    </div>
-                    <div class="artChange  mt-5 hidden">
-                    <div class="flex gap-8 mb-2">
-                    <label for="<?= $arrayArt[$i]['titre']?>">Titre :</label>
-                    <input class="bg-color-1 p-1 rounded" type="text" name="<?= $arrayArt[$i]['titre']?>" value="<?= $arrayArt[$i]['titre']?>">
-                    </div>
-                    <div class="flex gap-5 mb-8">
-                    <label for="<?= $arrayArt[$i]['id']?>">article :</label>
-                    <textarea class="bg-color-1 p-1 rounded" cols="70" rows="10" name="<?= $arrayArt[$i]['id']?>" value=""><?= $arrayArt[$i]['article']?></textarea>   
-                    </div>
-                    <div class="flex justify-between w-screen container p-3">
-                    <button class="cancelBtn border rounded p-3 hover:bg-white hover:text-black" type="submit" name="annuler">Annuler</button>
-                    <button class=" border rounded p-3 hover:bg-green-500" type="submit"name="confirmer">Confirmer</button>
-                    </div>
-                    </div>
-                <?php  
+                            <p class="text-justify p-3"><?= $arrayArt[$i]['article'] ?></p>
+                            <div class="text-right m-3"> dernière modification le : <?= $arrayArt[$i]['date'] ?> par <?= $login ?></div>
+                        </div>
+                        <div>
+                            <div class="btnContainer flex justify-between w-screen container p-3">
+                                <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier article</button>
+                                <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button>
+                            </div>
 
-                } ?>
+                            <hr>
+                        </div>
+                        <!-- bloc pour maj article -->
+                        <div class="artChange  mt-5 hidden">
+
+                            <div class="gap-5 mb-2">
+                                <label for="categories"> changer vos catégories ? (cochez les cases correspondantes) :</label>
+                                <?php Update::listOfCategories(); ?>
+
+                            </div>
+                            <div class="flex gap-8 mb-2">
+                                <label for="<?= $arrayArt[$i]['titre'] ?>">Titre :</label>
+                                <input class="bg-color-1 p-1 rounded" type="text" name="<?= $arrayArt[$i]['titre'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
+                            </div>
+                            <div class="flex gap-5 mb-8">
+                                <label for="<?= $arrayArt[$i]['id'] ?>">article :</label>
+                                <textarea class="bg-color-1 p-1 rounded" cols="70" rows="10" name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
+                            </div>
+                            <div class="flex justify-between w-screen container p-3">
+                                <button class="cancelBtn border rounded p-3 hover:bg-white hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?= $arrayArt[$i]['id'] ?>">Confirmer</button>
+                            </div>
+                        </div>
+
+                    <?php
+
+                    } ?>
+                </form>
             </div>
         </div>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+
     <script src="src/profil.js"></script>
 </body>
 
