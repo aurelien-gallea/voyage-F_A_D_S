@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/voyages.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@0.2.28/bundled/lenis.js"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
       rel="stylesheet"
@@ -112,7 +113,8 @@
           >
             <li>
               <a
-                href="#"
+                href="index.html"
+
                 class="block py-2 pl-3 pr-4 text-bg-custom-1C3738 bg-blue-30 rounded md:bg-transparent md:text-grey md:p-0 md:dark:text-white dark:bg-bg-custom-1C3738 md:dark:bg-transparent"
                 aria-current="page"
                 >Accueil</a
@@ -151,28 +153,31 @@
                 >
                   <li>
                     <a
-                      href="#"
+                      href="src/senegal.html"
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Afrique</a
                     >
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="src/espagne.html"
+
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Europe</a
                     >
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="src/coree.html"
+
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Asie</a
                     >
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="src/usa.html"
+
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Amérique</a
                     >
@@ -213,28 +218,32 @@
                 >
                   <li>
                     <a
-                      href="#"
+                      href="src/sylvia.html"
+
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white "
                       >Sylvia</a
                     >
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="src/Aurelien.html"
+
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Aurelien</a
                     >
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="src/Dylan.html"
+
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Dylan</a
                     >
                   </li>
                   <li>
                     <a
-                      href="#"
+                      href="src/Florian.html"
+
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Florian</a
                     >
@@ -252,7 +261,9 @@
 
             <li>
               <a
-                href="#"
+                href="src/contact.php"
+
+
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >Contact</a
               >

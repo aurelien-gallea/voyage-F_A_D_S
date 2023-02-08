@@ -2,14 +2,10 @@
 <?php 
 include'src/header.php';
 ?>
-<br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br><br>
 
 <?php
+//Récupération de l'id de l'article--------------------->
 
     require_once('src/connectionDB.php');
     $id = (int) $_GET['id'];
@@ -18,29 +14,35 @@ include'src/header.php';
     $stmt->bindParam(':id', $id);
     $stmt->execute();
     $article = $stmt->fetch();
+    $id_article = (int) $_GET['id'];
 
-    // $stmt = $bdd->prepare("SELECT * FROM commentaires WHERE id_article = :id_article");
-    // $stmt->bindParam(':id_article', $id);
-    // $stmt->execute();
-    // $commentaires = $stmt->fetchAll();
-    // // SELECT commentaires.`commentaire`, commentaires.`date`, utilisateurs.login FROM  commentaires INNER JOIN utilisateurs WHERE utilisateurs.id= commentaires.id_utilisateur
-    // $stmt = $bdd->prepare("SELECT utilisateurs.login FROM utilisateurs, commentaires WHERE utilisateurs.id= commentaires.id_utilisateur");
-    // //  $stmt->bindParam(':commentaires.id_utilisateur', $id);
-    // $stmt->execute();
-    // $login_utilisateur = $stmt->fetch();
-
-// test
+//  Récupération des commentaires, du login grace à la liaison sur l'ID des tables commentaires et utilisateurs.
     $stmt = $bdd->prepare("SELECT commentaires.*, utilisateurs.login FROM commentaires
                        INNER JOIN utilisateurs ON utilisateurs.id = commentaires.id_utilisateur
-                       WHERE commentaires.id_article = :id_article");
+                       WHERE commentaires.id_article = :id_article
+                       ORDER BY commentaires.date DESC");
 $stmt->bindParam(':id_article', $id_article, PDO::PARAM_INT);
 $stmt->execute();
 
 $commentaires = $stmt->fetchAll();
 
+//Catégories des commentaires
+//define arrey key "nom" (from categorie)
+
+
+$id_article= (int) $_GET['id'];
+$catName = $bdd->prepare("SELECT cat_art.id_cat, categories.nom 
+        FROM `cat_art` INNER JOIN categories 
+        ON categories.id = cat_art.id_cat 
+        WHERE cat_art.id_art = id_art");
+        // $catName->bindParam(':id_art', $id_article, PDO::PARAM_INT);
+$catName->execute();
+$cat=$catName->fetchAll();
+var_dump( $cat );
+
 
     
-    // nouveau commentaire
+// nouveau commentaire---------------------------->
     if (isset($_POST['submit_commentaire'])) {
       // Récupération des données du formulaire
       $commentaire = htmlspecialchars($_POST['commentaire']);
@@ -59,7 +61,7 @@ $commentaires = $stmt->fetchAll();
 
 
       
-    //   // Redirection vers la même page pour afficher les commentaires actualisés
+    //   // Redirection vers la même page pour afficher les commentaires actualisés->bug
     //   header("Location: ". $_SERVER['PHP_SELF']. "?id=". $id);
     //   die();
     // }
@@ -81,6 +83,10 @@ $commentaires = $stmt->fetchAll();
     <div class="flex flex-col justify-between p-4 leading-normal">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Article - <?php echo $article['titre']; ?></h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><?php echo $article['article']; ?></p>
+        <p class="mb-1 font-normal text-gray-900 dark:text-gray-400">catégorie : <?php foreach ($cat as $item) {
+    echo $item['nom'];
+}
+ ?></p>
     </div>
 </a>
 
@@ -103,17 +109,7 @@ $commentaires = $stmt->fetchAll();
 </form>
     
 
-    <!-- <?php foreach ($commentaires as $commentaire) { ?>
-      <div class="block w-5/6 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
-    <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-      <?php echo $commentaire['login'] . ' a posté le commentaire suivant : ' ?><?php echo $commentaire['date']; ?>
-    </h5>  
-      <div class="comments">
-    <p class="font-normal text-gray-700 dark:text-gray-400"><?php echo $commentaire['commentaire']; ?></p>
-</div>
-</div> 
- <?php } ?> -->
 
  <?php foreach ($commentaires as $commentaire) { ?>
   <div class="block w-5/6 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
