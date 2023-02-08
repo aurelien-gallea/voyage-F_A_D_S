@@ -31,29 +31,17 @@ try {
     <title>Articles</title>
 </head>
 <body>
-    <style>
-        h1 {
-            font-size: 35px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            text-align: center;
-            margin-top: 10px;
-
-        }
-        
-        p {
-            font-size: 25px;
-            line-height: 1.5;
-            padding: 20px;
-            text-align: justify;
-        }
-
+<style>
+        /* Ajoutez une couleur de fond pour le conteneur d'articles */
         .articles {
+            background-color: #f2f2f2;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             margin-top: 50px;
         }
 
+        /* Ajoutez une bordure pour les articles individuels */
         .article {
             width: 30%;
             border: 1px solid #ccc;
@@ -61,21 +49,34 @@ try {
             padding: 10px;
             margin-bottom: 10px;
             text-align: center;
+            background-color: #fff;
         }
 
+        /* Modifiez la taille de police et le style de police pour le titre de l'article */
+        h1 {
+            font-size: 35px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+            margin-top: 10px;
+
+        }
         .article h2 {
             font-size: 24px;
-            font-family: "Gill Sans", sans-serif;
+            font-family: Georgia, 'Times New Roman', Times, serif;
             margin-bottom: 20px;
             text-align: center;
         }
+        
+        /* Modifiez la couleur du texte pour le nom d'utilisateur */
         .article h3 {
             font-size: 14px;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, serif;
+            font-family: 'Arial', sans-serif;
             margin-bottom: 10px;
             text-align: right;
+            color: #333;
         }
 
+        /* Modifiez la taille de police et la police pour le contenu de l'article */
         .article p {
             font-size: 16px;
             font-family: Georgia, serif;
@@ -84,23 +85,18 @@ try {
             text-align: left;
         }
 
-        .article span {
-            font-size: 14px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
+        /* Modifiez la couleur de fond pour le bouton "Afficher plus" */
         .article a {
             font-size: 18px;
             display: inline-block;
-            padding: 1px 5px;
-            background-color: #000f08;
-            color: #f4fff8;
+            padding: 5px 10px;
+            background-color: #006699;
+            color: #fff;
             border-radius: 5px;
             text-decoration: none;
         }
-        
-    </style>
+</style>
+
     <br>
     <h1>Articles</h
 
