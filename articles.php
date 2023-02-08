@@ -52,7 +52,7 @@ try {
             background-color: #fff;
         }
 
-        /* Modifiez la taille de police et le style de police pour le titre de l'article */
+        /* Modifiez la taille de police et la police pour le titre de l'article */
         h1 {
             font-size: 35px;
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -73,6 +73,15 @@ try {
             font-family: 'Arial', sans-serif;
             margin-bottom: 10px;
             text-align: right;
+            color: #333;
+        }
+
+         /* Modifiez la couleur du texte pour le nom d'utilisateur */
+         .article h4 {
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 10px;
+            text-align: left;
             color: #333;
         }
 
@@ -107,7 +116,7 @@ try {
         <div class="article">
             <h2><?= htmlspecialchars($article['titre']) ?></h2>
             <h3><?= htmlspecialchars($article['date']) ?></h3>
-            <h3><?= htmlspecialchars($article['id_utilisateur']) ?></h3>
+            <h4><?= htmlspecialchars($article['id_utilisateur']) ?></h4>
             <p><?= htmlspecialchars($article['article']) ?></p>
 
             <a href="article">Afficher plus</a>
