@@ -3,6 +3,7 @@
 session_start();
 $id = 33;
 #$_SESSION['login'] = $login;
+require("classes/update.php");
 
 $bdd = new PDO("mysql:host=localhost;dbname=blog_voyage;charset=utf8", "root", "");
 $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
@@ -18,11 +19,14 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 
 		$article_titre = htmlspecialchars($_POST['article_titre']);
 		$article_contenu = htmlspecialchars($_POST['article_contenu']);
+		$article_categorie = htmlspecialchars($_POST['article_categorie']);
 		$req = $bdd->prepare('INSERT INTO articles (titre, article, date_post, id_utilisateur) VALUES (?, ?, NOW(), ?)');
 		$req->execute(array($article_titre, $article_contenu, $id));
 
-		#$req = $bdd->prepare('INSERT INTO cat_art (id_art ,id_cat) VALUES (?, ?)');
-		#$req->execute(array($id, $));
+		// foreach($article_categorie as ) {
+		// 	$req3= #$req = $bdd->prepare('INSERT INTO cat_art (id_art ,id_cat) VALUES (?, ?) ');
+		// 	#$req3->execute(array($id, $));
+		// }
 
 		$message = 'Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !';
 	} else {
@@ -77,8 +81,8 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 				echo '<div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">';
 				$compteur--;
 			?>
-				<input id="checkbox-item-11" type="checkbox" name="article_categorie" value="<?= $arrayCat[$i]['id'] ?>" class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500'>
-				<label for="checkbox-item-11" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"><?= $arrayCat[$i]['nom'] ?></label>
+				<input id="checkbox-item-<?=$i?>" type="checkbox" name="categorie[]" value="<?= $arrayCat[$i]['id'] ?>" class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500'>
+				<label for="checkbox-item-<?=$i?>" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"><?= $arrayCat[$i]['nom'] ?></label>
 			<?php }
 			echo '</div>';
 			echo "</li>";
@@ -89,7 +93,8 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 		<input type="submit" value="Valider" />
 	</form>
 
-	<?php var_dump($arrayCat); ?>
+	<?php var_dump($arrayCat);
+	var_dump($i); ?>
 
 	<?php if (isset($message)) {
 		echo $message;
