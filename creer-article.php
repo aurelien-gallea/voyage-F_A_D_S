@@ -91,6 +91,8 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 		<input type="submit" value="Valider" />
 	</form>
 
+	<?php var_dump($arrayCat); ?>
+
 	<?php if (isset($message)) {
 		echo $message;
 	} ?>
