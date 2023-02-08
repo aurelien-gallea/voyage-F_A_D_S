@@ -3,6 +3,7 @@ footer{
   bottom: 0px;
   width: 100%;
   background: #1c3738;
+  z-index: auto;
 }
 .main-content{
   display: flex;
