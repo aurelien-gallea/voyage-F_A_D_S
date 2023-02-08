@@ -50,6 +50,7 @@ try {
             margin-bottom: 30px;
             text-align: center;
             background-color: #fff;
+            margin: 0 auto;
         }
 
         /* Modifiez la taille de police et la police pour le titre de l'article */
