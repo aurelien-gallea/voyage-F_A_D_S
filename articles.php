@@ -11,6 +11,7 @@ $result = $req->fetch();
 $titre = $result['titre'];
 $article = $result['article'];
 $date = $result['date'];
+$login = $result['login'];
 
 try {
     $stmt = $bdd->query('SELECT * FROM articles ORDER BY date DESC');
@@ -100,9 +101,7 @@ try {
         }
         
     </style>
-    <h1><?= $titre ?></h1>
-    <p><?= $article ?></p>
-
+    <br>
     <h1>Articles</h
 
   <div class="articles">
@@ -112,6 +111,7 @@ try {
         <div class="article">
             <h2><?= htmlspecialchars($article['titre']) ?></h2>
             <h3><?= htmlspecialchars($article['date']) ?></h3>
+            <h3><?= htmlspecialchars($article['id_utilisateur']) ?></h3>
             <p><?= htmlspecialchars($article['article']) ?></p>
 
             <a href="article">Afficher plus</a>
