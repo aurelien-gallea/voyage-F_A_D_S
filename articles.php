@@ -6,11 +6,7 @@ $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "
 $req = $bdd->prepare('SELECT * FROM articles WHERE id=?');
 
 
-$req->execute([$id]);
-$result = $req->fetch(); 
-$titre = $result['titre'];
-$article = $result['article'];
-$date = $result['date'];
+$articles = $req->fetchAll();
 
 try {
     $stmt = $bdd->query('SELECT * FROM articles ORDER BY date DESC');
@@ -30,7 +26,29 @@ try {
     <title>Articles</title>
 </head>
 <body>
-    <style>
+<style>
+        /* Ajoutez une couleur de fond pour le conteneur d'articles */
+        .articles {
+            background-color: #f2f2f2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        /* Ajoutez une bordure pour les articles individuels */
+        .article {
+            width: 50%;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            background-color: #fff;
+            margin: 0 auto;
+        }
+
+        /* Modifiez la taille de police et la police pour le titre de l'article */
         h1 {
             font-size: 35px;
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -38,43 +56,40 @@ try {
             margin-top: 10px;
 
         }
-        
-        p {
-            font-size: 25px;
-            line-height: 1.5;
-            padding: 20px;
-            text-align: justify;
-        }
-
-        .articles {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-top: 50px;
-        }
-
-        .article {
-            width: 30%;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
         .article h2 {
             font-size: 24px;
-            font-family: "Gill Sans", sans-serif;
+            font-family: Georgia, 'Times New Roman', Times, serif;
             margin-bottom: 20px;
             text-align: center;
         }
+        
+        /* Modifiez la couleur du texte pour la date */
         .article h3 {
             font-size: 14px;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, serif;
+            font-family: 'Arial', sans-serif;
             margin-bottom: 10px;
             text-align: right;
+            color: #333;
         }
 
+         /* Modifiez la couleur du texte pour le nom d'utilisateur */
+         .article h4 {
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 10px;
+            text-align: left;
+            color: #333;
+        }
+         /* Modifiez la couleur du texte pour le nom d'utilisateur */
+         .article h5 {
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Modifiez la taille de police et la police pour le contenu de l'article */
         .article p {
             font-size: 16px;
             font-family: Georgia, serif;
@@ -83,28 +98,23 @@ try {
             text-align: left;
         }
 
-        .article span {
-            font-size: 14px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
+        /* Modifiez la couleur de fond pour le bouton "Afficher plus" */
         .article a {
             font-size: 18px;
-            display: inline-block;
-            padding: 1px 5px;
-            background-color: #000f08;
-            color: #f4fff8;
+            display: grid;
+            padding: 5px 10px;
+            background-color: #006699;
+            color: #fff;
             border-radius: 5px;
             text-decoration: none;
         }
-        
-    </style>
-    <h1><?= $titre ?></h1>
-    <p><?= $article ?></p>
+</style>
 
+    <br>
+    <br>
+    <br>
     <h1>Articles</h
-
+     <br>
   <div class="articles">
   </div>
     <?php foreach ($articles as $article) : 
@@ -112,6 +122,8 @@ try {
         <div class="article">
             <h2><?= htmlspecialchars($article['titre']) ?></h2>
             <h3><?= htmlspecialchars($article['date']) ?></h3>
+            <h4><?= htmlspecialchars($article['id_utilisateur']) ?></h4>
+            <h5><?= htmlspecialchars($article['id_categorie']) ?></h5>
             <p><?= htmlspecialchars($article['article']) ?></p>
 
             <a href="article">Afficher plus</a>
