@@ -3,5 +3,5 @@
     session_unset(); // desactiver
     session_destroy(); //detruire
     setcookie('login', '', time() - 1, '/');
-    header('location: articles.php');
+    header('location: ../articles.php');
     exit();

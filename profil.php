@@ -7,9 +7,7 @@ if(!isset($_SESSION['id'])) {
 }
 
 $id = htmlspecialchars($_SESSION['id']); // il faudra utiliser $_SESSION['id']
-// $login = htmlspecialchars($_SESSION['login']);
-var_dump($_SESSION['login']);
-// var_dump($id);
+
 require('src/connectionDB.php');
 require_once('classes/Verify.php');
 require_once('classes/Security.php');
@@ -17,10 +15,9 @@ require_once('classes/Update.php');
 $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 $req->execute([$id]);
 $result = $req->fetch();
-// $id = $result['id'];
 $login = $result['login'];
 $email = $result['email'];
-// var_dump($result);
+
 
 // formulaire n°1 changement login/email --------------------------------------------------------------
 if (!empty($_POST['password'])) {
@@ -156,30 +153,12 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/stylefooter.css">
     <link rel="stylesheet" href="css/voyages.css">
     <title>Profil</title>
 </head>
-
+   <?php require_once('src/header-blog.php'); ?>
 <body>
-    <!-- <?php
-            if (isset($_SESSION['login'])) { ?>
-        <table>
-            <tr>
-                <th>Pseudo :</th>
-                <td> <?= $login ?> </td>
-
-            </tr>
-            <tr>
-                <th>Password :</th>
-                <td> <?= $result['password'] ?></td>
-            </tr>
-            <tr>
-                <th>Email:</th>
-                <td> <?= $email ?></td>
-            </tr>
-        </table>
-    <?php } ?> -->
-
     <section class="flex-grow">
 
         <div class="container mx-auto   flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-t-md">
@@ -362,6 +341,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
             </div>
         </div>
     </section>
+    <?php require_once('src/footer.php'); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 
     <script src="src/profil.js"></script>
