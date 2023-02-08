@@ -80,6 +80,14 @@ try {
             text-align: left;
             color: #333;
         }
+         /* Modifiez la couleur du texte pour le nom d'utilisateur */
+         .article h5 {
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #333;
+        }
 
         /* Modifiez la taille de police et la police pour le contenu de l'article */
         .article p {
@@ -115,6 +123,7 @@ try {
             <h2><?= htmlspecialchars($article['titre']) ?></h2>
             <h3><?= htmlspecialchars($article['date']) ?></h3>
             <h4><?= htmlspecialchars($article['id_utilisateur']) ?></h4>
+            <h5><?= htmlspecialchars($article['id_categorie']) ?></h5>
             <p><?= htmlspecialchars($article['article']) ?></p>
 
             <a href="article">Afficher plus</a>
