@@ -18,7 +18,6 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 
 		$article_titre = htmlspecialchars($_POST['article_titre']);
 		$article_contenu = htmlspecialchars($_POST['article_contenu']);
-		#article_categorie = htmlspecialchars($_POST['article_categorie']);
 		$req = $bdd->prepare('INSERT INTO articles (titre, article, date_post, id_utilisateur) VALUES (?, ?, NOW(), ?)');
 		$req->execute(array($article_titre, $article_contenu, $id));
 
@@ -53,8 +52,7 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 		</svg></button>
 
 	<!-- Dropdown menu 
-	doit faire marcher la barre de recherche -->
-
+	Je dois faire marcher la barre de recherche -->
 	<div id="dropdownSearch" class="z-10 hidden bg-white rounded-lg shadow w-60 dark:bg-gray-700">
 		<div class="p-3">
 			<label for="input-group-search" class="sr-only">Recherche</label>
