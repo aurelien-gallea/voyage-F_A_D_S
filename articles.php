@@ -97,7 +97,7 @@ try {
         /* Modifiez la couleur de fond pour le bouton "Afficher plus" */
         .article a {
             font-size: 18px;
-            display: inline-block;
+            display: grid;
             padding: 5px 10px;
             background-color: #006699;
             color: #fff;
