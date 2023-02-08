@@ -96,8 +96,13 @@
                     </div>
                 </div>
             
-            <div id="divBtn" class="p-2  mb-10 w-full bg-color-5 text-center border rounded-md text-xl hover:bg-white hover:text-black">   
+            <div id="divBtn" class="p-2  mb-5 w-full bg-color-5 text-center border rounded-md text-xl hover:bg-white hover:text-black">   
                 <button id="btn" class="w-full" type="submit">S'incrire</button>
+            </div>
+            <div class="text-white mb-5">
+                <small>Déjà un compte ?
+                    <a class="hover:text-orange-500" href="connexion.php">Clique ici</a>
+                </small>
             </div>
             <?php
         if(isset($_GET['error']) && !empty($_GET['message'])) {
