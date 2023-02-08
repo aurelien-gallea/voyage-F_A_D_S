@@ -1,40 +1,43 @@
 <?php
 #On fait croire que l'utilisateur est connecté
 session_start();
-$id = 33;
-#$_SESSION['login'] = $login;
+
+if(!isset($_SESSION['id'])) {
+    header('location:connexion.php');
+    exit();
+}
+
 require("classes/update.php");
 
+//on se connecte à la bdd
 $bdd = new PDO("mysql:host=localhost;dbname=blog_voyage;charset=utf8", "root", "");
 $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 
-$req->execute([$id]);
-$result = $req->fetch();
-
 //Si le titre et le contenu ont été rempli alors ça envoie l'article dans la bdd
-if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
-	if (!empty($_POST['article_titre']) && !empty($_POST['article_contenu'])) {
+if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'])) {
+	if (!empty($_POST['article_titre']) && !empty($_POST['article_contenu']) && !empty($_POST['categorie'])) {
 
 		$article_titre = htmlspecialchars($_POST['article_titre']);
 		$article_contenu = htmlspecialchars($_POST['article_contenu']);
-		$article_categorie = htmlspecialchars($_POST['article_categorie']);
+		//Poste l'article 
 		$req = $bdd->prepare('INSERT INTO articles (titre, article, date_post, id_utilisateur) VALUES (?, ?, NOW(), ?)');
-		$req->execute(array($article_titre, $article_contenu, $id));
+		$req->execute(array($article_titre, $article_contenu, $_SESSION['id']));
 
-		// foreach($article_categorie as ) {
-		// 	$req3= #$req = $bdd->prepare('INSERT INTO cat_art (id_art ,id_cat) VALUES (?, ?) ');
-		// 	#$req3->execute(array($id, $));
-		// }
+		$lastID = $bdd->lastInsertId();
+		foreach ($_POST['categorie'] as $value) {
+			$categorie = htmlspecialchars($value);
+			Update::insertIntoCatArt($lastID, $categorie);
+		}
 
 		$message = 'Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !';
-	} else { //Si le texte ou/et le titre ne sont pas rentrés, alors ça affiche une erreur
+	}
+	else { //Si le texte ou/et le titre ne sont pas rentrés, alors ça affiche une erreur
 		$message = 'Veuillez remplir tous les champs pour compléter la création de l\'article.';
 	}
 }; ?>
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,16 +48,14 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'])) {
 </head>
 
 <body>
-	<form method="POST">
+	<form method="POST"> <!-- formulaire d'envoi-->
 		<input type="text" name="article_titre" placeholder="Titre" /><br />
 		<textarea name="article_contenu" placeholder="Contenu de l'article..."></textarea><br />
-
+		<!--Bouton catégorie avec le menu déroulant-->
 		<button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Catégories<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
 			</svg></button>
-
-		<!-- Dropdown menu 
-	Je dois faire marcher la barre de recherche -->
+		<!-- Dropdown menu Je dois faire marcher la barre de recherche -->
 		<div id="dropdownSearch" class="z-10 hidden bg-white rounded-lg shadow w-60 dark:bg-gray-700">
 			<div class="p-3">
 				<label for="input-group-search" class="sr-only">Recherche</label>
