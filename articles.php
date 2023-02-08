@@ -43,11 +43,11 @@ try {
 
         /* Ajoutez une bordure pour les articles individuels */
         .article {
-            width: 30%;
+            width: 50%;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
             text-align: center;
             background-color: #fff;
         }
@@ -108,7 +108,7 @@ try {
 
     <br>
     <h1>Articles</h
-
+     <br>
   <div class="articles">
   </div>
     <?php foreach ($articles as $article) : 
