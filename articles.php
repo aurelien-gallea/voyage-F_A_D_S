@@ -67,7 +67,7 @@ try {
             text-align: center;
         }
         
-        /* Modifiez la couleur du texte pour le nom d'utilisateur */
+        /* Modifiez la couleur du texte pour la date */
         .article h3 {
             font-size: 14px;
             font-family: 'Arial', sans-serif;
