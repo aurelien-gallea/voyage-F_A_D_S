@@ -6,12 +6,7 @@ $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "
 $req = $bdd->prepare('SELECT * FROM articles WHERE id=?');
 
 
-$req->execute([$id]);
-$result = $req->fetch(); 
-$titre = $result['titre'];
-$article = $result['article'];
-$date = $result['date'];
-$login = $result['login'];
+$articles = $req->fetchAll();
 
 try {
     $stmt = $bdd->query('SELECT * FROM articles ORDER BY date DESC');
@@ -107,6 +102,8 @@ try {
         }
 </style>
 
+    <br>
+    <br>
     <br>
     <h1>Articles</h
      <br>
