@@ -1,8 +1,15 @@
 <?php
 session_start();
-$_SESSION['id'] = 33;
-$id = htmlspecialchars($_SESSION['id']); // il faudra utiliser $_SESSION['id']
+// redirection si non connecté
+if(!isset($_SESSION['id'])) {
+    header('location:connexion.php');
+    exit();
+}
 
+$id = htmlspecialchars($_SESSION['id']); // il faudra utiliser $_SESSION['id']
+// $login = htmlspecialchars($_SESSION['login']);
+var_dump($_SESSION['login']);
+// var_dump($id);
 require('src/connectionDB.php');
 require_once('classes/Verify.php');
 require_once('classes/Security.php');
@@ -10,7 +17,7 @@ require_once('classes/Update.php');
 $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 $req->execute([$id]);
 $result = $req->fetch();
-$id = $result['id'];
+// $id = $result['id'];
 $login = $result['login'];
 $email = $result['email'];
 // var_dump($result);
@@ -330,8 +337,9 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
                             <div class="gap-5 mb-2">
                                 <label for="categories"> changer vos catégories ? (cochez les cases correspondantes) :</label>
+                                <div id="dropdownSearch" class="z-10 bg-white rounded-lg shadow w-60 dark:bg-gray-700">
                                 <?php Update::listOfCategories(); ?>
-
+                                </div>
                             </div>
                             <div class="flex gap-8 mb-2">
                                 <label for="<?= $arrayArt[$i]['titre'] ?>">Titre :</label>

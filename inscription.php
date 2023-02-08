@@ -4,6 +4,7 @@
     require_once('classes/User.php');
     require_once('classes/Security.php');
     require_once('classes/Verify.php');
+    
     if(!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['password2']) &&!empty($_POST['email'])) {
         if ($_POST['password'] == $_POST['password2']) {
 
@@ -35,7 +36,10 @@
             $user = new User($login, $password, $email);
             $user->register();
             $user->baseRole();
-            
+        
+            // redirection 
+            header('location:connexion.php');
+            exit();
            
         } else {
             header('location:inscription.php?error=1&message=merci de rentrer des mots de passe indentiques');
