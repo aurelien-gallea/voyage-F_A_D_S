@@ -128,6 +128,8 @@ try {
     $user->execute([$article['id_utilisateur']]);
     $result = $user->fetch();
 
+    
+
       ?>
          <div class="article">
             <h2><?= htmlspecialchars($article['titre']) ?></h2>
