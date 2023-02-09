@@ -110,7 +110,7 @@ try {
             padding: 5px 10px;
             background-color: #1c3738;
             color: #fff;
-            border-radius: 5px;
+            border-radius: 15px;
             text-decoration: none;
         }
 </style>
