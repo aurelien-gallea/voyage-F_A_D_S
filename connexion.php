@@ -69,7 +69,7 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>Page de Connexion</title>
     <script>
       tailwind.config = { darkMode: 'class',
   // ...
@@ -129,7 +129,7 @@ include'src/header.php';
 bg-color-5 hover:bg-color-2 focus:ring-color-3 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-color-1 dark:hover:bg-color-5 dark:focus:ring-color-2" type="button">
  Connexion
 </button> -->
-<div class="relative flex items-center justify-center h-screen mb-12 overflow-hidden ">
+<div class="relative flex items-center justify-center h-screen mt-12 overflow-hidden ">
 
 
 
@@ -149,9 +149,9 @@ bg-color-5 hover:bg-color-2 focus:ring-color-3 focus:ring-4 focus:outline-none f
                     </div>
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre mot de passe</label>
-                        <input type="password" name="password" id="password" placeholder="••••••••" value="secret" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-color-3 focus:border-color-3 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        <input type="password" name="password" id="password" placeholder="••••••••" value="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-color-3 focus:border-color-3 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                         <!-- toggle dans le mot de passe -->
-                        <span toggle="#password" id="toggleid" class="fa-solid after:fa-eye-slash fa-eye field-icon toggle-password"></span>
+                        <span toggle="#password" id="toggleid" class="fa-solid  fa-eye fa-eye-slash field-icon toggle-password"></span>
                         
                       </div>
                     <div class="flex justify-between">
@@ -161,6 +161,15 @@ bg-color-5 hover:bg-color-2 focus:ring-color-3 focus:ring-4 focus:outline-none f
                             <!-- </div>
                             <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Se rappeler de moi</label>
                         </div> -->
+                       <div class="text-red-600"> <?php
+if(isset($_GET['erreur'])){
+  $erreur=$_GET['erreur'];
+  if($erreur==1){
+    echo "<p class='alert'>login ou mot de passe incorrect</p>";
+
+  }
+}
+  ?></div>
                         <a href="#" class="text-sm text-white hover:underline dark:text-color-5">Mot de passe perdu?</a>
                     </div>
                     <button type="submit" class="w-full text-white bg-gray-600 hover:bg-color-5 focus:ring-4 focus:outline-none focus:ring-color-3 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-color-3 dark:hover:bg-color-5 dark:focus:ring-color-2">Connexion</button>
@@ -177,21 +186,26 @@ bg-color-5 hover:bg-color-2 focus:ring-color-3 focus:ring-4 focus:outline-none f
   </video>
 </div>
 
-
 <script>
-
-
 const passwordInput = document.querySelector("#password");
 const togglePassword = document.getElementById("toggleid");
-const eye=document.querySelector("fa-eye");
-
+const eye=document.querySelector("fa-eye-slash");
+togglePassword.classList.remove("fa-eye");
+        togglePassword.classList.add("fa-eye-slash");
 
 togglePassword.addEventListener("click", function () {
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
+        togglePassword.classList.remove("fa-eye-slash");
+        togglePassword.classList.add("fa-eye");
+       
+        
       
     } else {
         passwordInput.type = "password";
+        
+        togglePassword.classList.remove("fa-eye");
+        togglePassword.classList.add("fa-eye-slash");
        
     }
 });
@@ -200,7 +214,9 @@ togglePassword.addEventListener("click", function () {
 </script>
 
 
-
+<?php 
+include'src/footer.php';
+?>
 
 <script>
       var themeToggleDarkIcon = document.getElementById(
@@ -215,7 +231,7 @@ togglePassword.addEventListener("click", function () {
         localStorage.getItem("color-theme") === "dark" ||
         (!("color-theme" in localStorage) &&
           window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
+         ) {
         themeToggleLightIcon.classList.remove("hidden");
       } else {
         themeToggleDarkIcon.classList.remove("hidden");
@@ -256,16 +272,7 @@ togglePassword.addEventListener("click", function () {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
   </body>
 </html>
-<?php 
-include'src/footer.php';
-?><?php
-if(isset($_GET['erreur'])){
-  $erreur=$_GET['erreur'];
-  if($erreur==1){
-    echo "<p class='alert'>Utilisateur ou mot de passe incorrect</p>";
-  }
-}
-  ?>
+
 
 
 
