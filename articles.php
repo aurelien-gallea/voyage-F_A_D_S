@@ -87,18 +87,10 @@ try {
 
          /* Modifiez la couleur du texte pour le nom d'utilisateur */
          .article h4 {
-            font-size: 14px;
-            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            font-family: 'Georgia', sans-serif;
             margin-bottom: 10px;
             text-align: left;
-            color: #333;
-        }
-         /* Modifiez la couleur du texte pour le nom d'utilisateur */
-         .article h5 {
-            font-size: 14px;
-            font-family: 'Arial', sans-serif;
-            margin-bottom: 10px;
-            text-align: center;
             color: #333;
         }
 
