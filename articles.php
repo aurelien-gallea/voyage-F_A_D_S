@@ -108,7 +108,7 @@ try {
             font-size: 18px;
             display: grid;
             padding: 5px 10px;
-            background-color: #006699;
+            background-color: #1c3738;
             color: #fff;
             border-radius: 5px;
             text-decoration: none;
