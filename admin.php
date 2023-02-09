@@ -16,6 +16,10 @@ require_once('classes/Update.php');
 // on recupère un tableau des tous les utilisateurs
 $arrayUsers = [];
 $arrayUsers = Update::selectAllUsers($arrayUsers);
+$arrayStatus = [];
+$arrayStatus = Update::selectAllStatus($arrayStatus);
+$arrayCats = [];
+$arrayCats = Update::allCategories($arrayCats);
 
 // $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 // $req->execute([$id]);
@@ -169,89 +173,10 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 <?php require_once('src/header-blog.php'); ?>
 
 <body>
-    <section class="flex-grow mt-32">
-
-        <div class="container mx-auto   flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-t-md">
-            <h1 class="text-center text-3xl m-5 font-light color-4">Modifier Profil</h1>
-            <div id="block1" class="">
-                <hr>
-
-                <form class="flex flex-col justify-center gap-5" action="admin.php" method="post">
-                    <div class="mt-3">
-                        <h2 class="text-white text-xl">Changement identifiant / email</h2>
-                    </div>
-                    <div>
-                        <div class="flex  justify-center">
-                            <label for="login" class="bg-color-5 p-2 mt-3 rounded-l-md"><img width="30" src="assets/utilisateur.png" alt="icone utilisateur"> </label>
-                            <input id="login" class="p-2 rounded-r-md w-full mt-3 text-xl" type="text" name="login" id="login" value="<?= $login ?>">
-                        </div>
-
-                    </div>
-                    <div>
-
-                        <div class="flex  justify-center">
-                            <label for="email" class="bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/email.png" alt="icone email"></label>
-                            <input id="email" class="p-2 rounded-r-md w-full text-xl" type="text" name="email" id="email" value="<?= $email ?>">
-                        </div>
-
-                    </div>
-                    <div>
-                        <div class="flex justify-center">
-                            <label for="password" class="bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
-                            <input id="password" class="p-2 rounded-r-md w-full text-xl" type="password" name="password" id="password" placeholder="Confirmer Mot De Passe">
-                        </div>
-                    </div>
-                    <small class="text-red-500 ">Confirmer votre MDP pour modifier les informations</small>
-
-                    <div id="divBtn" class="p-2  w-full bg-color-5 text-center border rounded-md text-xl hover:bg-white hover:text-black">
-                        <button id="btn" class="w-full" type="submit">Modifier mes informations</button>
-                    </div>
-                </form>
-                <button id="passWindow" class="mb-5 text-white hover:text-orange-500">changer le mot de passe ?</button>
-            </div>
-            <div id="block2">
-                <hr>
-                <form action="admin.php" method="post" class="flex flex-col justify-center gap-5">
-
-
-
-                    <div class="mt-3">
-                        <h2 class="text-white text-xl">Changement de mot de passe</h2>
-                    </div>
-                    <div class="flex flex-col gap-5">
-                        <div class="flex  justify-center">
-                            <label for="passChange1" class="bg-color-3 p-2 mt-3 rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
-                            <input id="passChange1" class="p-2 rounded-r-md mt-3 w-full text-xl" type="password" name="passChange1" id="passChange1" placeholder="Mot De Passe Actuel">
-                        </div>
-                        <div class="flex  justify-center">
-                            <label for="passChange2" class="bg-color-3 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
-                            <input id="passChange2" class="p-2 rounded-r-md w-full text-xl" type="password" name="passChange2" id="passChange2" placeholder="Nouveau Mot De Passe">
-                        </div>
-                        <div>
-                            <div class="flex  justify-center ">
-                                <label for="passChange3" class="bg-color-3 p-2   rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone mot de passe"></label>
-                                <input id="passChange3" class="p-2 rounded-r-md w-full text-xl" type="password" name="passChange3" id="passChange3" placeholder="Confirmer nouveau MDP ">
-                            </div>
-                        </div>
-                        <small id="notMatch" class="text-red-500">Les Mots de passes ne correspondent pas</small>
-                        <div id="divBtn2">
-                            <button id="btn2" class="p-2   w-full bg-color-3 text-center text-white border rounded-md text-xl hover:bg-white hover:text-black">Soumettre</button>
-                        </div>
-                    </div>
-
-
-                </form>
-                <button id="userWindow" class="mb-5 text-white hover:text-orange-500">changer l'identifiant / l'email ?</button>
-            </div>
-
-
-        </div>
-    </section>
+    
     <section>
-        <div class="container w-4/5">
-
-        </div>
-        <div class="container mx-auto  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-b-md">
+        <h1 class="mt-32 text-center text-4xl"> Panel Admin</h1>
+        <div class="container mx-auto mt-4 flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-b-md">
             <span class="text-center text-3xl m-5 font-light color-4">Les stats du blog</span>
             <span class="text-2xl color-4 pb-5">articles écrit : <?php if (isset($count)) echo $count; ?> </span>
             <span class="text-2xl color-4 pb-5">commentaires écrit : <?php if (isset($arrayComs)) echo $nbComs; ?> </span>
@@ -309,8 +234,33 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                 <h3>ID : <span class="text-red-500"> <?= $arrayUsers[$i]['id'] ?> </span></h3>
                                 <p>login : <span class="text-blue-500">  <?= $arrayUsers[$i]['login']?> </span></p>
                                 <span> email : <?= $arrayUsers[$i]['email'] ?></span>
+                                <p>Droits: <span class="<?php echo ($arrayStatus[$i]['droits'] == 'admin') ? 'text-red-500' : ''; ?> "><?= $arrayStatus[$i]['droits'] ?></span></p>
                             </div>
 
+                        </div>
+                        <div>
+                            <div class="btnContainer flex justify-between w-screen container p-3">
+                                <!-- <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier article</button> -->
+                                <!-- <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button> -->
+                            </div>
+
+                            <hr>
+                        </div>
+                    <?php  } ?>
+
+                </div>
+                <div class="container mx-auto m-4  p-2  flex flex-col items-center  ">
+                    <h2 class="text-3xl">Les catégories :</h2>
+                </div>
+                <div class="container mx-auto my-2  p-2  flex flex-col items-center  ">
+                
+                <?php
+                    for ($i = 0; $i < count($arrayCats); $i++) {?>
+                        <div class="artContainer text-white bg-color-2 my-2">
+                            <div class="flex gap-5 justify-between  container p-3">
+                                <h3>ID : <span class="text-red-500"> <?= $arrayCats[$i]['id'] ?> </span></h3>
+                                <p>Nom : <span class="text-blue-500">  <?= $arrayCats[$i]['nom']?> </span></p>
+                            </div>
                         </div>
                         <div>
                             <div class="btnContainer flex justify-between w-screen container p-3">

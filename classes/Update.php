@@ -43,7 +43,15 @@ class Update
         $insertIntoCatArt = $bdd->prepare('INSERT INTO cat_art (id_art, id_cat) VALUES (?,?)');
         $insertIntoCatArt->execute([$id_article, $id_categorie]);
     }
-
+    public static function allCategories($array) {
+        require('src/connectionDB.php');
+        $catList = $bdd->prepare('SELECT * FROM categories');
+        $catList->execute();
+        while ($ligne = $catList->fetch(PDO::FETCH_ASSOC)) {
+            array_push($array, $ligne);
+        }
+        return $array;
+    }
     public static function listOfCategories()
     {
         require('src/connectionDB.php');
@@ -109,6 +117,16 @@ class Update
         
         while ($allUsersResponse = $coms->fetch(PDO::FETCH_ASSOC)) {
             array_push($array, $allUsersResponse);
+        }
+        return $array;
+    }
+    public static function selectAllStatus($array) {
+        require('src/connectionDB.php');
+        $status = $bdd->prepare('SELECT utilisateurs.login,  droits.nom AS droits, droits.id_utilisateur FROM utilisateurs INNER JOIN droits ON droits.id_utilisateur = utilisateurs.id');
+        $status->execute();
+        
+        while ($allUsersStatus = $status->fetch(PDO::FETCH_ASSOC)) {
+            array_push($array, $allUsersStatus);
         }
         return $array;
     }
