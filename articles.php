@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id = 33;
+$id = 33; 
 
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
 
@@ -22,9 +22,7 @@ try {
     $articles = $stmt->fetchAll();
     
 
-    // Requête pour récupérer les logins des utilisateurs
-    $stmt = $bdd->query('SELECT login FROM utilisateurs');
-    $logins = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    
 } catch (PDOException $e) {
     die("Erreur lors de la récupération des logins : " . $e->getMessage());
 
@@ -133,6 +131,11 @@ try {
   <div class="articles">
   </div>
     <?php foreach ($articles as $article) : 
+    // Requête pour récupérer les logins des utilisateurs
+    $stmt = $bdd->prepare('SELECT login FROM utilisateurs WHERE id =?' );
+        $stmt->execute(array($articles[id]));
+    $logins = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
       ?>
          <div class="article">
             <h2><?= htmlspecialchars($article['titre']) ?></h2>
