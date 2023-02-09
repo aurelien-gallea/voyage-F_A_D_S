@@ -134,10 +134,10 @@ try {
   </div>
     <?php foreach ($articles as $article) : 
       ?>
-        <div class="article">
+         <div class="article">
             <h2><?= htmlspecialchars($article['titre']) ?></h2>
             <h3><?= htmlspecialchars($article['date']) ?></h3>
-            <h4><?= htmlspecialchars($article['id_utilisateur']) ?></h4>
+            <h4>Écrit par : <?= htmlspecialchars($logins['login']) ?></h4>
             <p><?= htmlspecialchars($article['article']) ?></p>
 
             <a href="article.php?id=<?= $article['id'] ?>">Afficher plus</a>
