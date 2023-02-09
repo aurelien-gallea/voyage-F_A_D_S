@@ -125,7 +125,7 @@ try {
             <h4><?= htmlspecialchars($article['id_utilisateur']) ?></h4>
             <p><?= htmlspecialchars($article['article']) ?></p>
 
-            <a href="article">Afficher plus</a>
+            <a href="article.php">Afficher plus</a>
         </div>
     <?php endforeach;
      ?>
