@@ -170,7 +170,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <link rel="stylesheet" href="css/voyages.css">
     <title>Panel Admin</title>
 </head>
-<?php require_once('src/header-blog.php'); ?>
+<?php  require_once('src/header-blog.php'); ?>
 
 <body>
     
@@ -229,7 +229,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
 
                     ?>
-                        <div class="artContainer text-white bg-color-2 my-2">
+                        <div class="text-white bg-color-2 my-2">
                             <div class="flex gap-5 justify-between  container p-3">
                                 <h3>ID : <span class="text-red-500"> <?= $arrayUsers[$i]['id'] ?> </span></h3>
                                 <p>login : <span class="text-blue-500">  <?= $arrayUsers[$i]['login']?> </span></p>
@@ -239,10 +239,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
                         </div>
                         <div>
-                            <div class="btnContainer flex justify-between w-screen container p-3">
-                                <!-- <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier article</button> -->
-                                <!-- <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button> -->
-                            </div>
+                            
 
                             <hr>
                         </div>
@@ -256,17 +253,14 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                 
                 <?php
                     for ($i = 0; $i < count($arrayCats); $i++) {?>
-                        <div class="artContainer text-white bg-color-2 my-2">
+                        <div class="text-white bg-color-2 my-2">
                             <div class="flex gap-5 justify-between  container p-3">
                                 <h3>ID : <span class="text-red-500"> <?= $arrayCats[$i]['id'] ?> </span></h3>
                                 <p>Nom : <span class="text-blue-500">  <?= $arrayCats[$i]['nom']?> </span></p>
                             </div>
                         </div>
                         <div>
-                            <div class="btnContainer flex justify-between w-screen container p-3">
-                                <!-- <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier article</button> -->
-                                <!-- <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button> -->
-                            </div>
+                           
 
                             <hr>
                         </div>
@@ -288,7 +282,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         $username = $bdd->prepare('SELECT login FROM utilisateurs WHERE id=?');
                         $username->execute([$arrayArt[$i]['id_utilisateur']]);
                         $result = $username->fetch();
-
+                        
                     ?>
                         <div class="artContainer text-white bg-color-2 my-2">
                             <div class="flex justify-between w-screen container p-3">
@@ -370,7 +364,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <?php require_once('src/footer.php'); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 
-    <script src="src/profil.js"></script>
+    <script src="src/admin.js"></script>
 </body>
 
 </html>
