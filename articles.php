@@ -87,7 +87,7 @@ try {
 
          /* Modifiez la couleur du texte pour le nom d'utilisateur */
          .article h4 {
-            font-size: 18px;
+            font-size: 16px;
             font-family: 'Georgia', sans-serif;
             margin-bottom: 10px;
             text-align: left;
