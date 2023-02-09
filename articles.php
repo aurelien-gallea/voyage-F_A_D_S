@@ -132,15 +132,15 @@ try {
   </div>
     <?php foreach ($articles as $article) : 
     // Requête pour récupérer les logins des utilisateurs
-    $stmt = $bdd->prepare('SELECT login FROM utilisateurs WHERE id =?' );
-        $stmt->execute(array($articles[id]));
-    $logins = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    $user = $bdd->prepare('SELECT login FROM utilisateurs WHERE id= ?');
+    $user->execute([$article['id_utilisateur']]);
+    $result = $user->fetch();
 
       ?>
          <div class="article">
             <h2><?= htmlspecialchars($article['titre']) ?></h2>
             <h3><?= htmlspecialchars($article['date']) ?></h3>
-            <h4>Écrit par : <?= htmlspecialchars($logins['login']) ?></h4>
+            <h4><?= htmlspecialchars($result['login']) ?></h4>
             <p><?= htmlspecialchars($article['article']) ?></p>
 
             <a href="article.php?id=<?= $article['id'] ?>">Afficher plus</a>
