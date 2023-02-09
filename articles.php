@@ -26,7 +26,7 @@ try {
     $stmt = $bdd->query('SELECT login FROM utilisateurs');
     $logins = $stmt->fetchAll(PDO::FETCH_COLUMN);
 } catch (PDOException $e) {
-    die("Erreur lors de la récupération des articles et des logins : " . $e->getMessage());
+    die("Erreur lors de la récupération des logins : " . $e->getMessage());
 
  }
 
