@@ -3,17 +3,32 @@ session_start();
 $id = 33;
 
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
-$req = $bdd->prepare('SELECT * FROM articles WHERE id=?');
 
+if (isset($_GET['id'])) {
+  $id = intval($_GET['id']);
 
-$articles = $req->fetchAll();
+  try {
+      $stmt = $bdd->prepare('SELECT * FROM articles WHERE id=?');
+      $stmt->execute(array($id));
+      $article = $stmt->fetch();
+  } catch (PDOException $e) {
+      die("Erreur lors de la récupération de l'article : " . $e->getMessage());
+  }
+}
 
 try {
+    // Requête pour récupérer les articles
     $stmt = $bdd->query('SELECT * FROM articles ORDER BY date DESC');
     $articles = $stmt->fetchAll();
+    
+
+    // Requête pour récupérer les logins des utilisateurs
+    $stmt = $bdd->query('SELECT login FROM utilisateurs');
+    $logins = $stmt->fetchAll(PDO::FETCH_COLUMN);
 } catch (PDOException $e) {
-    die("Erreur lors de la récupération des articles : " . $e->getMessage());
-}
+    die("Erreur lors de la récupération des articles et des logins : " . $e->getMessage());
+
+ }
 
 ?>
 
