@@ -10,11 +10,24 @@ class Update
         $delete->execute([$id_article, $id_utilisateur]);
         return true;
     }
+    public static function deleteArticleModeration($id_article)
+    {
+        require('src/connectionDB.php');
+        $delete = $bdd->prepare('DELETE FROM articles WHERE id=?');
+        $delete->execute([$id_article]);
+        return true;
+    }
     public static function updateArticle($titre, $article, $id_article, $id_utilisateur)
     {
         require('src/connectionDB.php');
         $update = $bdd->prepare('UPDATE `articles` SET `titre`=?,`article`=? WHERE id=? AND id_utilisateur=?');
         $update->execute([$titre, $article, $id_article, $id_utilisateur]);
+        return true;
+    }
+    public static function updateArticleModeration($titre, $article, $id_article) {
+        require('src/connectionDB.php');
+        $update = $bdd->prepare('UPDATE `articles` SET `titre`=?,`article`=? WHERE id=?');
+        $update->execute([$titre, $article, $id_article]);
         return true;
     }
     public static function deleteCatArt($id_article)
@@ -64,5 +77,39 @@ class Update
             array_push($arrayCat, $categories['nom']);
         }
         return $arrayCat;
+    }
+
+    public static function selectCommentsByUser($id_user, $arrayComs) {
+
+        require('src/connectionDB.php');
+        $coms = $bdd->prepare('SELECT * FROM commentaires WHERE id_utilisateur = ?');
+        $coms->execute([$id_user]);
+        
+        while ($comsResponse = $coms->fetch(PDO::FETCH_ASSOC)) {
+            array_push($arrayComs, $comsResponse);
+        }
+        return $arrayComs;
+    }
+    public static function selectAllComments($arrayComs) {
+
+        require('src/connectionDB.php');
+        $coms = $bdd->prepare('SELECT * FROM commentaires');
+        $coms->execute();
+        
+        while ($comsResponse = $coms->fetch(PDO::FETCH_ASSOC)) {
+            array_push($arrayComs, $comsResponse);
+        }
+        return $arrayComs;
+    }
+    public static function selectAllUsers($array) {
+
+        require('src/connectionDB.php');
+        $coms = $bdd->prepare('SELECT id, login, email FROM utilisateurs');
+        $coms->execute();
+        
+        while ($allUsersResponse = $coms->fetch(PDO::FETCH_ASSOC)) {
+            array_push($array, $allUsersResponse);
+        }
+        return $array;
     }
 }

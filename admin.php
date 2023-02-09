@@ -1,22 +1,27 @@
 <?php
 session_start();
 // redirection si non connecté
-if (!isset($_SESSION['id'])) {
-    header('location:connexion.php');
-    exit();
-}
+// if (!isset($_SESSION['id'])) {
+//     header('location:connexion.php');
+//     exit();
+// }
 
-$id = htmlspecialchars($_SESSION['id']); // il faudra utiliser $_SESSION['id']
+// $id = htmlspecialchars($_SESSION['id']); // il faudra utiliser $_SESSION['id']
 
 require('src/connectionDB.php');
 require_once('classes/Verify.php');
 require_once('classes/Security.php');
 require_once('classes/Update.php');
-$req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
-$req->execute([$id]);
-$result = $req->fetch();
-$login = $result['login'];
-$email = $result['email'];
+
+// on recupère un tableau des tous les utilisateurs
+$arrayUsers = [];
+$arrayUsers = Update::selectAllUsers($arrayUsers);
+
+// $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
+// $req->execute([$id]);
+// $result = $req->fetch();
+// $login = $result['login'];
+// $email = $result['email'];
 
 
 // formulaire n°1 changement login/email --------------------------------------------------------------
@@ -36,21 +41,21 @@ if (!empty($_POST['password'])) {
     if ($login != $result['login']) {
 
         if (Verify::loginAlreadyExist($login)) { // on verifie l'existence du doublon dans la bdd
-            header('location:profil.php?error=4&message=login déjà existant');
+            header('location:admin.php?error=4&message=login déjà existant');
             exit();
         }
     }
 
     // verifications du format du mail
     if (!Verify::verifySyntax($email)) {
-        header('location:profil.php?error=6&message=merci de rentrer un email valide !');
+        header('location:admin.php?error=6&message=merci de rentrer un email valide !');
         exit();
     }
     // doublon mail SI changement 
     if ($email != $result['email']) {
 
         if (Verify::emailAlreadyExist($email)) { // on verifie l'existence du doublon dans la bdd
-            header('location:profil.php?error=5&message= mail déjà utilisé');
+            header('location:admin.php?error=5&message= mail déjà utilisé');
             exit();
         }
     }
@@ -64,10 +69,10 @@ if (!empty($_POST['password'])) {
         require('src/connectionDB.php');
         $req = $bdd->prepare('UPDATE `utilisateurs` SET `login`=?, `email`=? WHERE id=?');
         $req->execute([$login, $email, $id]);
-        header('location:profil.php?success=1');
+        header('location:admin.php?success=1');
         exit();
     } else {
-        header('location:profil.php?error=1');
+        header('location:admin.php?error=1');
         exit();
     }
 }
@@ -93,30 +98,30 @@ if (!empty($_POST['passChange1'])) {
             require('src/connectionDB.php');
             $req = $bdd->prepare('UPDATE `utilisateurs` SET `password`=? WHERE id=?');
             $req->execute([$passChange2, $id]);
-            header('location:profil.php?success=2');
+            header('location:admin.php?success=2');
             exit();
         } else {
-            header('location:profil.php?error=2');
+            header('location:admin.php?error=2');
             exit();
         }
     } else {
-        header('location:profil.php?error=1');
+        header('location:admin.php?error=1');
         exit();
     }
 }
 // articles ---------------------------------------------------------
 // les stats et les articles --------------------------------------------------------------------------
-$stats = $bdd->prepare('SELECT * FROM articles WHERE id_utilisateur=?');
-$stats->execute([$id]);
+$stats = $bdd->prepare('SELECT * FROM articles');
+$stats->execute();
 $count = $stats->rowCount();
 
 
 $arrayArt = []; // on initialise un array vide pour le remplir avec les articles
 $arrayCat = []; // meme chose pour les catégories
 $arrayComs = []; // pour les commentaires
-$commentaries = Update::selectCommentsByUser($id, $arrayComs);
+$commentaries = Update::selectAllComments($arrayComs);
 $nbComs = count($commentaries);
-// var_dump($nbComs);
+
 // message et actions en cas de modificiation / suppression -------------------------------------
 while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     // on push les donnees deja existantes dans un tableau pour pouvoir header à ce niveau et echo plus bas
@@ -125,8 +130,8 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     // on supprime le message
     if (isset($_POST['delete']) && $_POST['delete'] == $articles['id']) {
         $delete = htmlspecialchars($_POST['delete']);
-        Update::deleteArticle($delete, $articles['id_utilisateur']);
-        header('location:profil.php?success=3');
+        Update::deleteArticleModeration($delete);
+        header('location:admin.php?success=3');
         exit();
 
         // on met à jour le message
@@ -134,7 +139,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
         $titre = htmlspecialchars($_POST['titre-' . $articles['id']]);
         $article = htmlspecialchars($_POST[$articles['id']]);
 
-        Update::updateArticle($titre, $article, $articles['id'], $articles['id_utilisateur']);
+        Update::updateArticleModeration($titre, $article, $articles['id']);
         // si des checkbox sont cochées pour changer les catégories ont met à jours celles-ci
         if (!empty($_POST['categorie'])) {
             Update::deleteCatArt($articles['id']);
@@ -143,7 +148,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                 Update::insertIntoCatArt($articles['id'], $categorie);
             }
         }
-        header('location:profil.php?success=4');
+        header('location:admin.php?success=4');
         exit();
     }
 }
@@ -159,7 +164,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
     <link rel="stylesheet" href="css/voyages.css">
-    <title>Profil</title>
+    <title>Panel Admin</title>
 </head>
 <?php require_once('src/header-blog.php'); ?>
 
@@ -171,7 +176,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
             <div id="block1" class="">
                 <hr>
 
-                <form class="flex flex-col justify-center gap-5" action="profil.php" method="post">
+                <form class="flex flex-col justify-center gap-5" action="admin.php" method="post">
                     <div class="mt-3">
                         <h2 class="text-white text-xl">Changement identifiant / email</h2>
                     </div>
@@ -206,7 +211,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
             </div>
             <div id="block2">
                 <hr>
-                <form action="profil.php" method="post" class="flex flex-col justify-center gap-5">
+                <form action="admin.php" method="post" class="flex flex-col justify-center gap-5">
 
 
 
@@ -247,7 +252,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
         </div>
         <div class="container mx-auto  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-b-md">
-            <span class="text-center text-3xl m-5 font-light color-4">Mes stats</span>
+            <span class="text-center text-3xl m-5 font-light color-4">Les stats du blog</span>
             <span class="text-2xl color-4 pb-5">articles écrit : <?php if (isset($count)) echo $count; ?> </span>
             <span class="text-2xl color-4 pb-5">commentaires écrit : <?php if (isset($arrayComs)) echo $nbComs; ?> </span>
         </div>
@@ -285,17 +290,55 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     </section>
 
     <section>
-        <div class="bg-color-3 text-white">
-            <div class="container mx-auto m-3 p-4 flex flex-col items-center  ">
-                <h2 class="text-3xl">Mes articles :</h2>
-            </div>
-            <div class="container mx-auto m-4  p-2  flex flex-col items-center  ">
 
-                <form action="profil.php" method="post">
+        <div class="bg-color-3 text-white">
+            <form action="admin.php" method="post">
+                <div class="container mx-auto m-4  p-2  flex flex-col items-center  ">
+                    <h2 class="text-3xl">Les utilisateurs du blog :</h2>
+                </div>
+                <div class="container mx-auto my-2  p-2  flex flex-col items-center  ">
+
+
                     <?php
+                    for ($i = 0; $i < count($arrayUsers); $i++) {
+
+
+                    ?>
+                        <div class="artContainer text-white bg-color-2 my-2">
+                            <div class="flex gap-5 justify-between  container p-3">
+                                <h3>ID : <span class="text-red-500"> <?= $arrayUsers[$i]['id'] ?> </span></h3>
+                                <p>login : <span class="text-blue-500">  <?= $arrayUsers[$i]['login']?> </span></p>
+                                <span> email : <?= $arrayUsers[$i]['email'] ?></span>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="btnContainer flex justify-between w-screen container p-3">
+                                <!-- <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier article</button> -->
+                                <!-- <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button> -->
+                            </div>
+
+                            <hr>
+                        </div>
+                    <?php  } ?>
+
+                </div>
+                <div class="container mx-auto m-3 p-4 flex flex-col items-center  ">
+                    <h2 class="text-3xl">Les articles du blog :</h2>
+                </div>
+                <div class="container mx-auto m-4  p-2  flex flex-col items-center  ">
+
+                    <?php
+
                     // on affiche les articles qu'on a push précédemment dans un tableau
                     for ($i = 0; $i < count($arrayArt); $i++) {
+                        // association de la catégorie à l'article
                         $newArray = Update::associateCatName($arrayArt[$i]['id'], $arrayCat);
+                        // affichage de l'auteur de l'article
+                        $username = $bdd->prepare('SELECT login FROM utilisateurs WHERE id=?');
+                        $username->execute([$arrayArt[$i]['id_utilisateur']]);
+                        $result = $username->fetch();
+
                     ?>
                         <div class="artContainer text-white bg-color-2 my-2">
                             <div class="flex justify-between w-screen container p-3">
@@ -307,7 +350,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                                 ?> </div>
                             </div>
                             <p class="text-justify p-3"><?= $arrayArt[$i]['article'] ?></p>
-                            <div class="text-right m-3"> dernière modification le : <?= $arrayArt[$i]['date'] ?> par <?= $login ?></div>
+                            <div class="text-right m-3"> dernière modification le : <?= $arrayArt[$i]['date'] ?> par <span class="text-blue-500 font-bold"><?= $result['login'] ?></span></div>
                         </div>
                         <div>
                             <div class="btnContainer flex justify-between w-screen container p-3">
@@ -343,30 +386,35 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     <?php
 
                     } ?>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </section>
     <section>
         <div class="bg-color-3 text-white my-3">
             <div class="container mx-auto m-3 p-4 flex flex-col items-center  ">
-                <h2 class="text-3xl">Mes Commentaires :</h2>
+                <h2 class="text-3xl">Les Commentaires des utilisateurs :</h2>
             </div>
             <div class="container mx-auto flex flex-col items-center  ">
                 <span> Cliquez sur le commentaire pour être redirigé vers l'article, pour pouvoir le modifier</span>
                 <?php
                 // on affiche les commentaires qu'on a push précédemment dans un tableau
-                for ($i = 0; $i < $nbComs; $i++) { ?>
-                <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>">
-                    <div class="artContainer text-white bg-color-2 my-2 hover:bg-gray-500">
-                        <div class="flex flex-col justify-between w-screen container p-3">
-                            <span> <?= $login ?> a posté le commentaire suivant le : <?= $commentaries[$i]['date'] ?></span>
-                            <p> <?= $commentaries[$i]['commentaire'] ?></p>
+                for ($i = 0; $i < $nbComs; $i++) {
+
+                    // affichage de l'auteur du commentaire
+                    $username = $bdd->prepare('SELECT login FROM utilisateurs WHERE id=?');
+                    $username->execute([$commentaries[$i]['id_utilisateur']]);
+                    $author = $username->fetch(); ?>
+                    <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>">
+                        <div class="artContainer text-white bg-color-2 my-2 hover:bg-gray-500">
+                            <div class="flex flex-col justify-between w-screen container p-3">
+                                <p><span class="text-blue-500 font-bold"> <?= $author['login'] ?></span> a posté le commentaire suivant le : <?= $commentaries[$i]['date'] ?></p>
+                                <p> <?= $commentaries[$i]['commentaire'] ?></p>
+                            </div>
+                            <hr>
                         </div>
-                        <hr>
-                    </div>
-                </a>
-                    <?php } ?>
+                    </a>
+                <?php } ?>
             </div>
     </section>
     <?php require_once('src/footer.php'); ?>
