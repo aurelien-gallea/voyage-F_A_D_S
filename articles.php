@@ -244,6 +244,7 @@ try {
             flex-wrap: wrap;
             justify-content: space-between;
             margin: 0 auto;
+            
         }
 
         /* Ajoutez une bordure pour les articles individuels */
