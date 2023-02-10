@@ -14,8 +14,9 @@ $bdd = new PDO("mysql:host=localhost;dbname=blog_voyage;charset=utf8", "root", "
 $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 
 //Si le titre et le contenu ont été rempli alors ça envoie l'article dans la bdd
+if ('POST' == $_SERVER['REQUEST_METHOD']) {
 if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'])) {
-	if (!empty($_POST['article_titre']) && !empty($_POST['article_contenu'])) {
+	if (!empty($_POST['article_titre']) && !empty($_POST['article_contenu']) && ($_POST['categorie']) > 0) {
 
 		//variable avec le contenu du titre et de l'article
 		$article_titre = htmlspecialchars($_POST['article_titre']);
@@ -25,29 +26,26 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'
 		$req = $bdd->prepare('INSERT INTO `articles` (`titre`, `article`, `id_utilisateur`) VALUES (?, ?, ?)');
 		$req->execute(array($article_titre, $article_contenu, $_SESSION['id']));
 
-		//lie les catégories choisit à l'article
 		$lastID = $bdd->prepare('SELECT MAX(id) FROM articles');
 		$lastID->execute();
-		$idArticle=$lastID->fetch();
+		$idArticle = $lastID->fetch();
 
-		var_dump($idArticle["MAX(id)"]);
-		if (!empty($_POST['categorie'])) {
-
+		//lie les catégories choisit à l'article
+			update::deleteCatArt($idArticle);
 			foreach ($_POST['categorie'] as $value) {
 				$categorie = htmlspecialchars($value);
 				Update::insertIntoCatArt($idArticle["MAX(id)"], $categorie);
-			} 
-		}
-		var_dump(($_POST['categorie']));
+			}
+
 		header('location:creer-article.php?success=1');
 		exit; //redirection pour empécher le renvoie du formulaire via f5 et bug
-		
-	} 
-	else { //Si le texte ou/et le titre/catégories ne sont pas rentrés, alors ça affiche une erreur
-	header('location:creer-article.php?success=0');
-	exit;
-	}
-} ?>
+	} else {
+		//Si le texte ou/et le titre/catégories ne sont pas rentrés, alors ça affiche une erreur
+		header('location:creer-article.php?error=1');
+		exit;
+		} 
+}
+}?>
 
 <!----------------------------------- HTML --------------------------------->
 <!DOCTYPE html>
@@ -150,15 +148,15 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'
 			<!----------------- Si article bien envoyé : ------------------->
 			<?php
 			if (isset($_GET['success']) && $_GET['success'] == 1) {
-				$message = 'Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !';
+				$message = '<a href="https://openclassrooms.com/fr/">Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !</a>';
 				echo $message;
 			}
-				//Bouton aller sur l'article et bouton retourner au blog
-				//Bouton creer un nouvel article ?
-			elseif (isset($_GET['success']) && $_GET['success'] == 0) { 		
-			$message2 = 'Veuillez remplir tous les champs pour compléter la création de l\'article.';
-			echo $message2;
-			}?>
+			//Bouton aller sur l'article et bouton retourner au blog
+			//Bouton creer un nouvel article ?
+			elseif (isset($_GET['error']) && $_GET['error'] == 1) {
+				$message2 = 'Veuillez remplir tous les champs pour compléter la création de l\'article.';
+				echo $message2;
+			} ?>
 
 			<article>
 				<p>
