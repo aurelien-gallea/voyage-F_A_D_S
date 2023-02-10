@@ -170,10 +170,10 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <link rel="stylesheet" href="css/voyages.css">
     <title>Panel Admin</title>
 </head>
-<?php  require_once('src/header-blog.php'); ?>
+<?php require_once('src/header-blog.php'); ?>
 
 <body>
-    
+
     <section>
         <h1 class="mt-32 text-center text-4xl"> Panel Admin</h1>
         <div class="container mx-auto mt-4 flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-b-md">
@@ -214,14 +214,15 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
     </section>
 
-    <section>
+    <form action="admin.php" method="post">
+        <section>
 
-        <div class="bg-color-3 text-white">
-            <form action="admin.php" method="post">
-                <div class="container mx-auto m-4  p-2  flex flex-col items-center  ">
+            <div class="bg-color-3 text-white">
+                <div class="container mx-auto m-4  p-2 gap-2  flex flex-col md:flex-row justify-center items-center">
                     <h2 class="text-3xl">Les utilisateurs du blog :</h2>
+                    <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-1">Ouvrir menu</span>
                 </div>
-                <div class="container mx-auto my-2  p-2  flex flex-col items-center  ">
+                <div class="menu-content container mx-auto my-2  p-2  flex flex-col items-center  ">
 
 
                     <?php
@@ -232,45 +233,50 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         <div class="text-white bg-color-2 my-2">
                             <div class="flex gap-5 justify-between  container p-3">
                                 <h3>ID : <span class="text-red-500"> <?= $arrayUsers[$i]['id'] ?> </span></h3>
-                                <p>login : <span class="text-blue-500">  <?= $arrayUsers[$i]['login']?> </span></p>
+                                <p>login : <span class="text-blue-500"> <?= $arrayUsers[$i]['login'] ?> </span></p>
                                 <span> email : <?= $arrayUsers[$i]['email'] ?></span>
                                 <p>Droits: <span class="<?php echo ($arrayStatus[$i]['droits'] == 'admin') ? 'text-red-500' : ''; ?> "><?= $arrayStatus[$i]['droits'] ?></span></p>
                             </div>
 
                         </div>
                         <div>
-                            
+
 
                             <hr>
                         </div>
                     <?php  } ?>
-
                 </div>
-                <div class="container mx-auto m-4  p-2  flex flex-col items-center  ">
+            </div>
+            <div class="bg-color-3 text-white">
+                <div class="container mx-auto m-4  p-2 gap-2  flex flex-col md:flex-row justify-center items-center">
                     <h2 class="text-3xl">Les catégories :</h2>
+                    <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-1">Ouvrir menu</span>
                 </div>
-                <div class="container mx-auto my-2  p-2  flex flex-col items-center  ">
-                
-                <?php
-                    for ($i = 0; $i < count($arrayCats); $i++) {?>
+                <div class="menu-content container mx-auto my-2  p-2  flex flex-col items-center  ">
+
+                    <?php
+                    for ($i = 0; $i < count($arrayCats); $i++) { ?>
                         <div class="text-white bg-color-2 my-2">
                             <div class="flex gap-5 justify-between  container p-3">
                                 <h3>ID : <span class="text-red-500"> <?= $arrayCats[$i]['id'] ?> </span></h3>
-                                <p>Nom : <span class="text-blue-500">  <?= $arrayCats[$i]['nom']?> </span></p>
+                                <p>Nom : <span class="text-blue-500"> <?= $arrayCats[$i]['nom'] ?> </span></p>
                             </div>
                         </div>
                         <div>
-                           
+
 
                             <hr>
                         </div>
                     <?php  } ?>
 
                 </div>
-                <div class="container mx-auto m-3 p-4 flex flex-col items-center  ">
+            </div>
+            <div class="bg-color-3 text-white">
+                <div class="container mx-auto m-4  p-2 gap-2  flex flex-col md:flex-row justify-center items-center">
                     <h2 class="text-3xl">Les articles du blog :</h2>
+                    <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-1">Ouvrir menu</span>
                 </div>
-                <div class="container mx-auto m-4  p-2  flex flex-col items-center  ">
+                <div class="menu-content container mx-auto m-4  p-2  flex flex-col items-center  ">
 
                     <?php
 
@@ -282,7 +288,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         $username = $bdd->prepare('SELECT login FROM utilisateurs WHERE id=?');
                         $username->execute([$arrayArt[$i]['id_utilisateur']]);
                         $result = $username->fetch();
-                        
+
                     ?>
                         <div class="artContainer text-white bg-color-2 my-2">
                             <div class="flex justify-between w-screen container p-3">
@@ -331,36 +337,37 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
                     } ?>
                 </div>
-            </form>
-        </div>
-    </section>
-    <section>
-        <div class="bg-color-3 text-white my-3">
-            <div class="container mx-auto m-3 p-4 flex flex-col items-center  ">
-                <h2 class="text-3xl">Les Commentaires des utilisateurs :</h2>
             </div>
-            <div class="container mx-auto flex flex-col items-center  ">
-                <span> Cliquez sur le commentaire pour être redirigé vers l'article, pour pouvoir le modifier</span>
-                <?php
-                // on affiche les commentaires qu'on a push précédemment dans un tableau
-                for ($i = 0; $i < $nbComs; $i++) {
+        </section>
+        <section>
+            <div class="bg-color-3 text-white">
+                <div class="container mx-auto m-4  p-2 gap-2  flex flex-col md:flex-row justify-center items-center">
+                    <h2 class="text-3xl">Les Commentaires des utilisateurs :</h2>
+                    <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-1">Ouvrir menu</span>
+                </div>
+                <div class="menu-content container mx-auto flex flex-col items-center ">
+                    <span> Cliquez sur le commentaire pour être redirigé vers l'article, pour pouvoir le modifier</span>
+                    <?php
+                    // on affiche les commentaires qu'on a push précédemment dans un tableau
+                    for ($i = 0; $i < $nbComs; $i++) {
 
-                    // affichage de l'auteur du commentaire
-                    $username = $bdd->prepare('SELECT login FROM utilisateurs WHERE id=?');
-                    $username->execute([$commentaries[$i]['id_utilisateur']]);
-                    $author = $username->fetch(); ?>
-                    <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>">
-                        <div class="artContainer text-white bg-color-2 my-2 hover:bg-gray-500">
-                            <div class="flex flex-col justify-between w-screen container p-3">
-                                <p><span class="text-blue-500 font-bold"> <?= $author['login'] ?></span> a posté le commentaire suivant le : <?= $commentaries[$i]['date'] ?></p>
-                                <p> <?= $commentaries[$i]['commentaire'] ?></p>
+                        // affichage de l'auteur du commentaire
+                        $username = $bdd->prepare('SELECT login FROM utilisateurs WHERE id=?');
+                        $username->execute([$commentaries[$i]['id_utilisateur']]);
+                        $author = $username->fetch(); ?>
+                        <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>">
+                            <div class="artContainer text-white bg-color-2 my-2 hover:bg-gray-500">
+                                <div class="flex flex-col justify-between w-screen container p-3">
+                                    <p><span class="text-blue-500 font-bold"> <?= $author['login'] ?></span> a posté le commentaire suivant le : <?= $commentaries[$i]['date'] ?></p>
+                                    <p> <?= $commentaries[$i]['commentaire'] ?></p>
+                                </div>
+                                <hr>
                             </div>
-                            <hr>
-                        </div>
-                    </a>
-                <?php } ?>
-            </div>
-    </section>
+                        </a>
+                    <?php } ?>
+                </div>
+        </section>
+    </form>
     <?php require_once('src/footer.php'); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 
