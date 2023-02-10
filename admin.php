@@ -1,5 +1,23 @@
 <?php
 session_start();
+
+require('src/connectionDB.php');
+require_once('classes/Verify.php');
+require_once('classes/Security.php');
+require_once('classes/Update.php');
+// on vérfie que l'utilisateur est bien un admin
+if (isset($_SESSION['id'])) {
+    $adminStatus = Update::selectStatusByUser($_SESSION['id']);
+    if ($adminStatus['droits'] != 'admin') {
+        header('location:articles.php');
+        exit();
+    }
+} else {
+    header('location:connexion.php');
+    exit();
+}
+
+
 // redirection si non connecté
 // if (!isset($_SESSION['id'])) {
 //     header('location:connexion.php');
@@ -8,18 +26,17 @@ session_start();
 
 // $id = htmlspecialchars($_SESSION['id']); // il faudra utiliser $_SESSION['id']
 
-require('src/connectionDB.php');
-require_once('classes/Verify.php');
-require_once('classes/Security.php');
-require_once('classes/Update.php');
 
-// on recupère un tableau des tous les utilisateurs
+
+// on recupère un tableau des tous les utilisateurs avec leur droits
 $arrayUsers = [];
 $arrayUsers = Update::selectAllUsers($arrayUsers);
 $arrayStatus = [];
-$arrayStatus = Update::selectAllStatus($arrayStatus);
+$arrayStatus = Update::selectAllStatusByUser($arrayStatus);
 $arrayCats = [];
 $arrayCats = Update::allCategories($arrayCats);
+$status = Update::selectStatusByUser(32);
+$status = $status['droits'];
 
 // $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 // $req->execute([$id]);
@@ -27,6 +44,17 @@ $arrayCats = Update::allCategories($arrayCats);
 // $login = $result['login'];
 // $email = $result['email'];
 
+for ($z=0; $z < count($arrayUsers) ; $z++) { 
+    // on supprime l'utilisateur
+
+    if (isset($_POST['delete']) && $_POST['delete'] == "user-" .$arrayUsers[$z]['id']) {
+        // $delete = htmlspecialchars($_POST['delete']);
+        // Update::deleteArticleModeration($delete);
+        header('location:admin.php?success=30');
+        exit();
+        
+    }
+}
 
 // formulaire n°1 changement login/email --------------------------------------------------------------
 if (!empty($_POST['password'])) {
@@ -50,22 +78,6 @@ if (!empty($_POST['password'])) {
         }
     }
 
-    // verifications du format du mail
-    if (!Verify::verifySyntax($email)) {
-        header('location:admin.php?error=6&message=merci de rentrer un email valide !');
-        exit();
-    }
-    // doublon mail SI changement 
-    if ($email != $result['email']) {
-
-        if (Verify::emailAlreadyExist($email)) { // on verifie l'existence du doublon dans la bdd
-            header('location:admin.php?error=5&message= mail déjà utilisé');
-            exit();
-        }
-    }
-    //encryptage MDP
-    $password = Security::hash($password);
-
     // correspondance MDP entré et MDP de la BDD
     if ($password == $result['password']) {
 
@@ -81,38 +93,6 @@ if (!empty($_POST['password'])) {
     }
 }
 
-// formulaire n° 2 changement de mot de passe ---------------------------------------
-if (!empty($_POST['passChange1'])) {
-
-    $passChange1 = htmlspecialchars($_POST['passChange1']);
-    $passChange2 = htmlspecialchars($_POST['passChange2']);
-    $passChange3 = htmlspecialchars($_POST['passChange3']);
-
-    //encryptage MDP
-    $passChange1 = Security::hash($passChange1);
-
-    // correspondance MDP entré et MDP de la BDD
-    if ($passChange1 == $result['password']) {
-        if ($passChange2 == $passChange3) {
-
-            //encryptage MDP
-            $passChange2 = Security::hash($passChange2);
-
-            // on change le mdp
-            require('src/connectionDB.php');
-            $req = $bdd->prepare('UPDATE `utilisateurs` SET `password`=? WHERE id=?');
-            $req->execute([$passChange2, $id]);
-            header('location:admin.php?success=2');
-            exit();
-        } else {
-            header('location:admin.php?error=2');
-            exit();
-        }
-    } else {
-        header('location:admin.php?error=1');
-        exit();
-    }
-}
 // articles ---------------------------------------------------------
 // les stats et les articles --------------------------------------------------------------------------
 $stats = $bdd->prepare('SELECT * FROM articles');
@@ -240,9 +220,34 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
                         </div>
                         <div>
-
+                            <div class="btnContainer flex justify-between w-screen container p-3">
+                                <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?=$arrayUsers[$i]['id']?>">modifier droits</button>
+                                <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= "user-" . $arrayUsers[$i]['id']?>">Supprimer </button>
+                            </div>
 
                             <hr>
+                        </div>
+                        <!-- bloc pour maj utilisateurs -->
+                        <div class="artChange  mt-5 hidden">
+
+                            <div class="gap-5 mb-2">
+                                <label for="categories"> changer les droits ? (cochez la case correspondante) :</label>
+                                <div>
+                                    <ul>
+                                        <li><input type="radio" name="droits" id="membre"><label class="px-2" for="membre">Membre</label></li>
+                                        <li><input type="radio" name="droits" id="moderateur"><label class="px-2" for="moderateur">Moderateur</label></li>
+                                        <li><input type="radio" name="droits" id="admin"><label class="px-2" for="admin">Admin</label></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex gap-8 mb-2">
+                                <label for="<?= $arrayUsers[$i]['login'] ?>">Login:</label>
+                                <input class="bg-color-1 p-1 rounded" type="text" name="<?= 'login-' . $arrayUsers[$i]['id'] ?>" value="<?= $arrayUsers[$i]['login'] ?>">
+                            </div>
+                            <div class="flex justify-between w-screen container p-3">
+                                <button class="cancelBtn border rounded p-3 hover:bg-white hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?= "user-" . $arrayUsers[$i]['id'] ?>">Confirmer</button>
+                            </div>
                         </div>
                     <?php  } ?>
                 </div>

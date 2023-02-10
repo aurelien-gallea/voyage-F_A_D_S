@@ -120,7 +120,7 @@ class Update
         }
         return $array;
     }
-    public static function selectAllStatus($array) {
+    public static function selectAllStatusByUser($array) {
         require('src/connectionDB.php');
         $status = $bdd->prepare('SELECT utilisateurs.login,  droits.nom AS droits, droits.id_utilisateur FROM utilisateurs INNER JOIN droits ON droits.id_utilisateur = utilisateurs.id');
         $status->execute();
@@ -129,5 +129,21 @@ class Update
             array_push($array, $allUsersStatus);
         }
         return $array;
+    }
+    public static function selectStatusByUser($id_user) {
+        require('src/connectionDB.php');
+        $status = $bdd->prepare('SELECT droits.nom AS droits FROM utilisateurs INNER JOIN droits ON droits.id_utilisateur = utilisateurs.id WHERE utilisateurs.id=?');
+        $status->execute([$id_user]);
+        $response = $status->fetch();
+    
+        return $response;
+    }
+
+    public static function updateStatus($newStatus, $id_user) {
+        require('src/connectionDB.php');
+        $status = $bdd->prepare('UPDATE `droits` SET `nom`=? WHERE `id_utilisateur`=?  ');
+        $status->execute($newStatus, $id_user);
+
+        
     }
 }
