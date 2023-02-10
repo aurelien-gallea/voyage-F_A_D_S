@@ -39,14 +39,14 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'
 			} 
 		}
 		var_dump(($_POST['categorie']));
-		//header('location:creer-article.php?success=1');
-		//exit; //redirection pour empécher le renvoie du formulaire via f5 et bug
-		//
+		header('location:creer-article.php?success=1');
+		exit; //redirection pour empécher le renvoie du formulaire via f5 et bug
+		
 	} 
-	// else { //Si le texte ou/et le titre/catégories ne sont pas rentrés, alors ça affiche une erreur
-	// 	// header('location:creer-article.php?success=0');
-	// 	// exit;
-	// }
+	else { //Si le texte ou/et le titre/catégories ne sont pas rentrés, alors ça affiche une erreur
+	header('location:creer-article.php?success=0');
+	exit;
+	}
 } ?>
 
 <!----------------------------------- HTML --------------------------------->
@@ -155,10 +155,10 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'
 			}
 				//Bouton aller sur l'article et bouton retourner au blog
 				//Bouton creer un nouvel article ?
-			// } elseif (isset($_GET['success']) && $_GET['success'] == 0) { 		
-			// 	$message2 = 'Veuillez remplir tous les champs pour compléter la création de l\'article.';
-			// 	echo $message2;
-			// 	}?>
+			elseif (isset($_GET['success']) && $_GET['success'] == 0) { 		
+			$message2 = 'Veuillez remplir tous les champs pour compléter la création de l\'article.';
+			echo $message2;
+			}?>
 
 			<article>
 				<p>
