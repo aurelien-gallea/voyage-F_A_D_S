@@ -15,27 +15,38 @@ $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 
 //Si le titre et le contenu ont été rempli alors ça envoie l'article dans la bdd
 if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'])) {
-	if (!empty($_POST['article_titre']) && !empty($_POST['article_contenu']) && !empty($_POST['categorie'])) {
+	if (!empty($_POST['article_titre']) && !empty($_POST['article_contenu'])) {
 
+		//variable avec le contenu du titre et de l'article
 		$article_titre = htmlspecialchars($_POST['article_titre']);
 		$article_contenu = htmlspecialchars($_POST['article_contenu']);
-		//Poste l'article 
-		$req = $bdd->prepare('INSERT INTO articles (titre, article, id_utilisateur) VALUES (?, ?, ?)');
+
+		//Poste l'article par rapport à l'utilisateur
+		$req = $bdd->prepare('INSERT INTO `articles` (`titre`, `article`, `id_utilisateur`) VALUES (?, ?, ?)');
 		$req->execute(array($article_titre, $article_contenu, $_SESSION['id']));
 
 		//lie les catégories choisit à l'article
-		$lastID = $bdd->lastInsertId();
-		foreach ($_POST['categorie'] as $value) {
-			$categorie = htmlspecialchars($value);
-			Update::insertIntoCatArt($lastID, $categorie);
+		$lastID = $bdd->prepare('SELECT MAX(id) FROM articles');
+		$lastID->execute();
+		$idArticle=$lastID->fetch();
+
+		var_dump($idArticle["MAX(id)"]);
+		if (!empty($_POST['categorie'])) {
+
+			foreach ($_POST['categorie'] as $value) {
+				$categorie = htmlspecialchars($value);
+				Update::insertIntoCatArt($idArticle["MAX(id)"], $categorie);
+			} 
 		}
-		header('location:creer-article.php?success=1');
-		exit; //redirection pour empécher le renvoie du formulaire via f5 et bug
+		var_dump(($_POST['categorie']));
+		//header('location:creer-article.php?success=1');
+		//exit; //redirection pour empécher le renvoie du formulaire via f5 et bug
 		//
-	} else { //Si le texte ou/et le titre/catégories ne sont pas rentrés, alors ça affiche une erreur
-		header('location:creer-article.php?success=0');
-		exit;
-	}
+	} 
+	// else { //Si le texte ou/et le titre/catégories ne sont pas rentrés, alors ça affiche une erreur
+	// 	// header('location:creer-article.php?success=0');
+	// 	// exit;
+	// }
 } ?>
 
 <!----------------------------------- HTML --------------------------------->
@@ -141,12 +152,13 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'
 			if (isset($_GET['success']) && $_GET['success'] == 1) {
 				$message = 'Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !';
 				echo $message;
+			}
 				//Bouton aller sur l'article et bouton retourner au blog
 				//Bouton creer un nouvel article ?
-			} elseif (isset($_GET['success']) && $_GET['success'] == 0) { 		
-				$message2 = 'Veuillez remplir tous les champs pour compléter la création de l\'article.';
-				echo $message2;
-				}?>
+			// } elseif (isset($_GET['success']) && $_GET['success'] == 0) { 		
+			// 	$message2 = 'Veuillez remplir tous les champs pour compléter la création de l\'article.';
+			// 	echo $message2;
+			// 	}?>
 
 			<article>
 				<p>
