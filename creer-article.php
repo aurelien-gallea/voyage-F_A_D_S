@@ -15,37 +15,37 @@ $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 
 //Si le titre et le contenu ont été rempli alors ça envoie l'article dans la bdd
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
-if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'])) {
-	if (!empty($_POST['article_titre']) && !empty($_POST['article_contenu']) && ($_POST['categorie']) > 0) {
+	if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'])) {
+		if (!empty($_POST['article_titre']) && !empty($_POST['article_contenu']) && ($_POST['categorie']) > 0) {
 
-		//variable avec le contenu du titre et de l'article
-		$article_titre = htmlspecialchars($_POST['article_titre']);
-		$article_contenu = htmlspecialchars($_POST['article_contenu']);
+			//variable avec le contenu du titre et de l'article
+			$article_titre = htmlspecialchars($_POST['article_titre']);
+			$article_contenu = htmlspecialchars($_POST['article_contenu']);
 
-		//Poste l'article par rapport à l'utilisateur
-		$req = $bdd->prepare('INSERT INTO `articles` (`titre`, `article`, `id_utilisateur`) VALUES (?, ?, ?)');
-		$req->execute(array($article_titre, $article_contenu, $_SESSION['id']));
+			//Poste l'article par rapport à l'utilisateur
+			$req = $bdd->prepare('INSERT INTO `articles` (`titre`, `article`, `id_utilisateur`) VALUES (?, ?, ?)');
+			$req->execute(array($article_titre, $article_contenu, $_SESSION['id']));
 
-		$lastID = $bdd->prepare('SELECT MAX(id) FROM articles');
-		$lastID->execute();
-		$idArticle = $lastID->fetch();
+			$lastID = $bdd->prepare('SELECT MAX(id) FROM articles');
+			$lastID->execute();
+			$idArticle = $lastID->fetch();
 
-		//lie les catégories choisit à l'article
+			//lie les catégories choisit à l'article
 			update::deleteCatArt($idArticle);
 			foreach ($_POST['categorie'] as $value) {
 				$categorie = htmlspecialchars($value);
 				Update::insertIntoCatArt($idArticle["MAX(id)"], $categorie);
 			}
 
-		header('location:creer-article.php?success=1');
-		exit; //redirection pour empécher le renvoie du formulaire via f5 et bug
-	} else {
-		//Si le texte ou/et le titre/catégories ne sont pas rentrés, alors ça affiche une erreur
-		header('location:creer-article.php?error=1');
-		exit;
-		} 
-}
-}?>
+			header('location:creer-article.php?success=1');
+			exit; //redirection pour empécher le renvoie du formulaire via f5 et bug
+		} else {
+			//Si le texte ou/et le titre/catégories ne sont pas rentrés, alors ça affiche une erreur
+			header('location:creer-article.php?error=1');
+			exit;
+		}
+	}
+} ?>
 
 <!----------------------------------- HTML --------------------------------->
 <!DOCTYPE html>
@@ -128,7 +128,8 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'
 	<section class="flex-grow">
 		<div class="mt-32 mb-10">
 			<!---------------------- Formulaire d'article ---------------------->
-			<form method="POST">
+			<div>
+			<form method="POST" class="flex content-center justify-center">
 				<input type="text" name="article_titre" maxlength="80" placeholder="Titre" /><br />
 				<textarea name="article_contenu" maxlength="5000" placeholder="Contenu de l'article..."></textarea><br />
 				<!--Bouton catégorie avec le menu déroulant-->
@@ -144,10 +145,21 @@ if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'
 				<br>
 				<input type="submit" value="Valider" />
 			</form>
+			</div>
+
+			<!-- <div class="w-full max-w-xs">
+				<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+					<label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
+					<textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+				</form>
+			</div> -->
 
 			<!----------------- Si article bien envoyé : ------------------->
 			<?php
 			if (isset($_GET['success']) && $_GET['success'] == 1) {
+				// $lastID = $bdd->prepare('SELECT MAX(id) FROM articles');
+				// $lastID->execute();
+				// $idArticle = $lastID->fetch();
 				$message = '<a href="https://openclassrooms.com/fr/">Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !</a>';
 				echo $message;
 			}
