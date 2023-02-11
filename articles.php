@@ -2,32 +2,38 @@
 session_start();
 $id = 33; 
 
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage2;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
 
-if (isset($_GET['id'])) {
-  $id = intval($_GET['id']);
-
+if (isset($_POST['tri'])) {
   try {
-      $stmt = $bdd->prepare('SELECT * FROM articles WHERE id=?');
-      $stmt->execute(array($id));
-      $article = $stmt->fetch();
+    $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage2;charset=utf8", "root", "");
+    switch ($_POST['tri']) {
+      case 'date_desc':
+        $articles = $bdd->prepare('SELECT * FROM articles ORDER BY date DESC');
+        break;
+      case 'date_asc':
+        $articles = $bdd->prepare('SELECT * FROM articles ORDER BY date ASC');
+        break;
+      case 'login':
+        $articles = $bdd->prepare('SELECT articles.*, utilisateurs.login FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id ORDER BY utilisateurs.login');
+        break;
+      case 'categories':
+        $articles = $bdd->prepare('SELECT articles.*, categories.nom FROM articles INNER JOIN cat_art ON articles.id = cat_art.id_art INNER JOIN categories ON categories.id = cat_art.id_cat ORDER BY categories.nom');
+        break;
+    }
+    $articles->execute();
   } catch (PDOException $e) {
-      die("Erreur lors de la récupération de l'article : " . $e->getMessage());
+    echo "Erreur : " . $e->getMessage();
+  }
+} else {
+  try {
+    $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage2;charset=utf8", "root", "");
+    $articles = $bdd->prepare('SELECT * FROM articles');
+    $articles->execute();
+  } catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
   }
 }
-
-try {
-    // Requête pour récupérer les articles
-    $stmt = $bdd->query('SELECT * FROM articles ORDER BY date DESC');
-    $articles = $stmt->fetchAll();
-    
-
-    
-} catch (PDOException $e) {
-    die("Erreur lors de la récupération des logins : " . $e->getMessage());
-
- }
-
 ?>
 
 <!DOCTYPE html>
@@ -233,7 +239,19 @@ try {
 
     <!-- ---------------------------------- fin de nav----------------------------->
    </header>
-
+   <br>
+   <br> 
+   <br>
+   <form action="articles2.php" method="post">
+  <select name="tri">
+    <option value="date_desc">Date décroissante</option>
+    <option value="date_asc">Date croissante</option>
+    <option value="login">Utilisateur</option>
+    <option value="categories">Catégories</option>
+  </select>
+  <br>
+  <input type="submit" value="Trier">
+</form>
 <body>
 <style>
   
@@ -244,7 +262,7 @@ try {
             flex-wrap: wrap;
             justify-content: space-between;
             margin: 0 auto;
-            
+            margin-top: 40px;
         }
 
         /* Ajoutez une bordure pour les articles individuels */
@@ -254,7 +272,7 @@ try {
             border-radius: 55px;
             padding: 20px;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.7);
             margin: 20px auto;
             
             
@@ -265,16 +283,17 @@ try {
             background-attachment: fixed;
             background-size: cover;
 }
-
-
-        /* Modifiez la taille de police et la police pour le titre de l'article */
         h1 {
             font-size: 35px;
             font-family: Georgia, 'Times New Roman', Times, serif;
-            text-align: center;
-            margin-top: 10px;
+            text-align: left;
+            margin-top: -100px;
+            margin-bottom: -10px;
+            margin-left: 330px;
             color: #fff;
+            text-decoration: underline;
 
+       /* Modifiez la taille de police et la police pour le titre de l'article */
         }
         .article h2 {
             font-size: 24px;
@@ -307,7 +326,7 @@ try {
          font-size: 16px;
          font-family: 'Georgia', sans-serif;
          margin-bottom: 10px;
-         text-align: center;
+         text-align: right;
          color: #333;
 }
 
@@ -332,16 +351,37 @@ try {
             border-radius: 55px;
             text-decoration: none;
         }
+        form {
+           width: 500px;
+           margin: 0 auto;
+           text-align: center;
+}
+
+select {
+  width: 40%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+    input[type="submit"] {
+       background-color: #f4fff8;
+       color: black;
+       padding: 5px 10px;
+       border-radius: 5px;
+       border: none;
+       cursor: pointer;
+}
+
+
 </style>
-    
-    
-    <br>
-    <br>
-    <br>
     <h1>Articles</h1>
     <br>
   <div class="articles">
   </div>
+  
   <?php foreach ($articles as $article) : 
   // Requête pour récupérer les logins des utilisateurs
   $user = $bdd->prepare('SELECT login FROM utilisateurs WHERE id= ?');
@@ -353,6 +393,7 @@ try {
   $catName->execute([$article['id']]);
   
   ?>
+  
   <div class="article">
     <h2><?= htmlspecialchars($article['titre']) ?></h2>
     <h3><?= htmlspecialchars($article['date']) ?></h3>
@@ -364,6 +405,7 @@ try {
     <a href="article.php?id=<?= $article['id'] ?>">Afficher plus</a>
   </div>
 <?php endforeach; ?>
+
 </div>
   <br>
   <br>
