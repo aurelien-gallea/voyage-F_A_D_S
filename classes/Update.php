@@ -142,8 +142,20 @@ class Update
     public static function updateStatus($newStatus, $id_user) {
         require('src/connectionDB.php');
         $status = $bdd->prepare('UPDATE `droits` SET `nom`=? WHERE `id_utilisateur`=?  ');
-        $status->execute($newStatus, $id_user);
+        $status->execute([$newStatus, $id_user]);
 
         
+    }
+    public static function deleteUser($id_utilisateur)
+    {
+        require('src/connectionDB.php');
+        $delete = $bdd->prepare('DELETE FROM utilisateurs WHERE id=? ');
+        $delete->execute([$id_utilisateur]);
+        
+    }
+    public static function updateUser($login, $id_utilisateur) {
+        require('src/connectionDB.php');
+        $req = $bdd->prepare('UPDATE `utilisateurs` SET `login`=? WHERE id=?');
+        $req->execute([$login,$id_utilisateur]);
     }
 }
