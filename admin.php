@@ -56,7 +56,6 @@ for ($z = 0; $z < count($arrayUsers); $z++) {
                 header('location:admin.php?error=4&message=login déjà existant');
                 exit();
             }
-              
         }
 
         // si un bouton radio est coché on change le rôle de l'utilisateur
@@ -71,8 +70,8 @@ for ($z = 0; $z < count($arrayUsers); $z++) {
             }
             Update::updateStatus($newRole, $arrayUsers[$z]['id']);
         }
-         // MAJ des infos
-            Update::updateUser($newLogin, $arrayUsers[$z]['id']);
+        // MAJ des infos
+        Update::updateUser($newLogin, $arrayUsers[$z]['id']);
         header('location:admin.php?success=' . $newRole . $arrayUsers[$z]['id'] . $newLogin . $arrayUsers[$z]['login']);
         exit();
     }
@@ -197,15 +196,22 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                         <div class="text-white bg-color-2 my-2">
                             <div class="flex gap-5 justify-between  container p-3">
-                                <h3>ID : <span class="text-red-500"> <?= $arrayUsers[$i]['id'] ?> </span></h3>
-                                <p>login : <span class="text-blue-500"> <?= $arrayUsers[$i]['login'] ?> </span></p>
+                                <h3>ID : <span class="text-yellow-500"> <?= $arrayUsers[$i]['id'] ?> </span></h3>
+                                <p>login : <span class="<?php if ($arrayStatus[$i]['droits'] == 'admin') {
+                                                            echo  'text-red-500';
+                                                        } else if ($arrayStatus[$i]['droits'] == 'moderateur') {
+                                                            echo 'text-green-500';
+                                                        } else {
+                                                            echo 'text-blue-500';
+                                                        }
+                                                        ?>"> <?= $arrayUsers[$i]['login'] ?> </span></p>
                                 <span> email : <?= $arrayUsers[$i]['email'] ?></span>
                                 <p>Droits: <span class="<?php if ($arrayStatus[$i]['droits'] == 'admin') {
                                                             echo  'text-red-500';
                                                         } else if ($arrayStatus[$i]['droits'] == 'moderateur') {
                                                             echo 'text-green-500';
                                                         } else {
-                                                            echo '';
+                                                            echo 'text-blue-500';
                                                         }
                                                         ?> "><?= $arrayStatus[$i]['droits'] ?></span></p>
                             </div>
@@ -297,7 +303,14 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                                 ?> </div>
                             </div>
                             <p class="text-justify p-3"><?= $arrayArt[$i]['article'] ?></p>
-                            <div class="text-right m-3"> dernière modification le : <?= $arrayArt[$i]['date'] ?> par <span class="text-blue-500 font-bold"><?= $result['login'] ?></span></div>
+                            <div class="text-right m-3"> dernière modification le : <?= $arrayArt[$i]['date'] ?> par <span class="<?php if ($arrayStatus[$i]['droits'] == 'admin') {
+                                                                                                                                        echo  'text-red-500';
+                                                                                                                                    } else if ($arrayStatus[$i]['droits'] == 'moderateur') {
+                                                                                                                                        echo 'text-green-500';
+                                                                                                                                    } else {
+                                                                                                                                        echo 'text-blue-500';
+                                                                                                                                    }
+                                                                                                                                    ?>"><?= $result['login'] ?></span></div>
                         </div>
                         <div>
                             <div class="btnContainer flex justify-between w-screen container p-3">
@@ -355,7 +368,14 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>">
                             <div class="artContainer text-white bg-color-2 my-2 hover:bg-gray-500">
                                 <div class="flex flex-col justify-between w-screen container p-3">
-                                    <p><span class="text-blue-500 font-bold"> <?= $author['login'] ?></span> a posté le commentaire suivant le : <?= $commentaries[$i]['date'] ?></p>
+                                    <p><span class="<?php if ($arrayStatus[$i]['droits'] == 'admin') {
+                                                        echo  'text-red-500';
+                                                    } else if ($arrayStatus[$i]['droits'] == 'moderateur') {
+                                                        echo 'text-green-500';
+                                                    } else {
+                                                        echo 'text-blue-500';
+                                                    }
+                                                    ?>"> <?= $author['login'] ?></span> a posté le commentaire suivant le : <?= $commentaries[$i]['date'] ?></p>
                                     <p> <?= $commentaries[$i]['commentaire'] ?></p>
                                 </div>
                                 <hr>
