@@ -325,7 +325,7 @@ if (isset($_POST['tri'])) {
          display: inline-block;
          font-size: 16px;
          font-family: 'Georgia', sans-serif;
-         margin-bottom: 10px;
+         margin-bottom: 30px;
          text-align: right;
          color: #333;
 }
