@@ -41,7 +41,7 @@ for ($z = 0; $z < count($arrayUsers); $z++) {
     if (isset($_POST['delete']) && $_POST['delete'] == "user-" . $arrayUsers[$z]['id']) {
         $delete = htmlspecialchars($_POST['delete']);
         Update::deleteUser($arrayUsers[$z]['id']);
-        header('location:admin.php?success=30');
+        header('location:admin.php?success=5');
         exit();
 
         // on modifie des droits et/ou son login
@@ -76,6 +76,35 @@ for ($z = 0; $z < count($arrayUsers); $z++) {
         exit();
     }
 }
+// les catégories ---------------------------------------------------
+
+// ajouter une catégorie ----------------------------------------
+if (isset($_POST['addNew']) && $_POST['addNew'] == "cat") {
+    $newCat = htmlspecialchars($_POST['addCat']);
+    Update::addNewCat($newCat);
+    header('location:admin.php?success=5');
+    exit();
+}
+for ($c = 0; $c < count($arrayCats); $c++) {
+    // on supprime la catégorie
+
+    if (isset($_POST['delete']) && $_POST['delete'] == 'cat-' . $arrayCats[$c]['id']) {
+        $delete = htmlspecialchars($_POST['delete']);
+        Update::deleteCategorie($arrayCats[$c]['id']);
+        header('location:admin.php?success=5');
+        exit();
+
+        // on modifie le nom de la catégorie
+
+    } else if (isset($_POST['confirm']) && $_POST['confirm'] == 'cat-' . $arrayCats[$c]['id']) {
+        $newCatName = htmlspecialchars($_POST['catName-' . $arrayCats[$c]['id']]);
+        if ($newCatName != $arrayCats[$c]['nom']) {
+            Update::updateCatName($newCatName, $arrayCats[$c]['id']);
+            header('location:admin.php?success=5');
+            exit();
+        }
+    }
+}
 
 // articles ---------------------------------------------------------
 // les stats et les articles --------------------------------------------------------------------------
@@ -90,6 +119,28 @@ $arrayComs = []; // pour les commentaires
 $commentaries = Update::selectAllComments($arrayComs);
 $nbComs = count($commentaries);
 
+// commentaires ---------------------------------------------------------------
+
+for ($d = 0; $d < count($commentaries); $d++) {
+    // on supprime le commentaire
+
+    if (isset($_POST['delete']) && $_POST['delete'] =='com-' . $commentaries[$d]['id']) {
+        $delete = htmlspecialchars($_POST['delete']);
+        Update::deleteCom($commentaries[$d]['id']);
+        header('location:admin.php?success=5');
+        exit();
+
+        // on modifie le commentaire
+
+    } else if (isset($_POST['confirm']) && $_POST['confirm'] == 'com-' . $commentaries[$d]['id']) {
+        $newCom = htmlspecialchars($_POST['newCom-' . $commentaries[$d]['id']]);
+        if ($newCom != $commentaries[$c]['id']) {
+            Update::updateCom($newCom, $commentaries[$d]['id']);
+            header('location:admin.php?success=5');
+            exit();
+        }
+    }
+}
 // message et actions en cas de modificiation / suppression -------------------------------------
 while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     // on push les donnees deja existantes dans un tableau pour pouvoir header à ce niveau et echo plus bas
@@ -159,22 +210,24 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     <p>Article supprimé !</p>
                 <?php } else if (isset($_GET['success']) && $_GET['success'] == 4) { ?>
                     <p>Article mis à jour !</p>
-                <?php } ?>
+                <?php } else if (isset($_GET['success']) && $_GET['success'] == 5) { ?>
+                    <p>données mises à jour !</p>
             </div>
-        <?php } ?>
-        <?php
-        if (isset($_GET['error'])) { ?>
-            <div class="container p-3 mt-3 text-white text-lg mx-auto flex flex-col items-center text-center  bg-red-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
+    <?php }
+            } ?>
+    <?php
+    if (isset($_GET['error'])) { ?>
+        <div class="container p-3 mt-3 text-white text-lg mx-auto flex flex-col items-center text-center  bg-red-500 md:w-2/4 2xl:w-1/4 md:rounded-md">
 
-                <?php if (isset($_GET['error']) && $_GET['error'] == 1) { ?>
-                    <p>Mot de passe incorrect</p>
-                <?php } else if (isset($_GET['error']) && $_GET['error'] == 2) { ?>
-                    <p>Les mots de passe ne correspondent pas</p>
-                <?php } else if (isset($_GET['error']) && $_GET['error'] >= 4) { ?>
-                    <p> <?= $_GET['message'] ?></p>
-                <?php } ?>
-            </div>
-        <?php } ?>
+            <?php if (isset($_GET['error']) && $_GET['error'] == 1) { ?>
+                <p>Mot de passe incorrect</p>
+            <?php } else if (isset($_GET['error']) && $_GET['error'] == 2) { ?>
+                <p>Les mots de passe ne correspondent pas</p>
+            <?php } else if (isset($_GET['error']) && $_GET['error'] >= 4) { ?>
+                <p> <?= $_GET['message'] ?></p>
+            <?php } ?>
+        </div>
+    <?php } ?>
 
     </section>
 
@@ -195,7 +248,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
                     ?>
                         <div class="text-white bg-color-2 my-2">
-                            <div class="flex gap-5 justify-between  container p-3">
+                            <div class="flex flex-col md:flex-row gap-5 justify-between  container p-3">
                                 <h3>ID : <span class="text-yellow-500"> <?= $arrayUsers[$i]['id'] ?> </span></h3>
                                 <p>login : <span class="<?php if ($arrayStatus[$i]['droits'] == 'admin') {
                                                             echo  'text-red-500';
@@ -218,7 +271,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
                         </div>
                         <div>
-                            <div class="btnContainer flex justify-between w-screen container p-3">
+                            <div class="btnContainer flex justify-center gap-10 container p-3">
                                 <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayUsers[$i]['id'] ?>">modifier droits</button>
                                 <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= "user-" . $arrayUsers[$i]['id'] ?>">Supprimer </button>
                             </div>
@@ -238,11 +291,11 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                     </ul>
                                 </div>
                             </div>
-                            <div class="flex gap-8 mb-2">
+                            <div class="flex flex-col md:flex-row gap-2 mb-2">
                                 <label for="<?= $arrayUsers[$i]['login'] ?>">Login:</label>
                                 <input class="bg-color-1 p-1 rounded" type="text" name="<?= 'login-' . $arrayUsers[$i]['id'] ?>" value="<?= $arrayUsers[$i]['login'] ?>">
                             </div>
-                            <div class="flex justify-between w-screen container p-3">
+                            <div class="flex justify-between  container p-3">
                                 <button class="cancelBtn border rounded p-3 hover:bg-white hover:text-black" type="submit" name="cancel">Annuler</button>
                                 <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?= "user-" . $arrayUsers[$i]['id'] ?>">Confirmer</button>
                             </div>
@@ -255,20 +308,39 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     <h2 class="text-3xl">Les catégories :</h2>
                     <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-1">Ouvrir menu</span>
                 </div>
-                <div class="menu-content container mx-auto my-2  p-2  flex flex-col items-center  ">
 
+                <div class="menu-content container mx-auto my-2  p-2  flex flex-col items-center  ">
+                    <hr>
+                    <div class="flex flex-wrap items-center gap-5 my-2">
+                        <label for="addCat">Ajouter une catégorie :</label>
+                        <input type="text" name="addCat" class="bg-color-1">
+                        <button type="submit" class=" border p-2 rounded-xl" name="addNew" value="cat">Ajouter</button>
+                    </div>
+                    <hr>
                     <?php
+                    // on affiche les catégories ------------------------------------------
                     for ($i = 0; $i < count($arrayCats); $i++) { ?>
-                        <div class="text-white bg-color-2 my-2">
-                            <div class="flex gap-5 justify-between  container p-3">
+                        <div class="text-white  my-2">
+                            <div class="flex bg-color-2 gap-5 justify-between  container p-3">
                                 <h3>ID : <span class="text-red-500"> <?= $arrayCats[$i]['id'] ?> </span></h3>
                                 <p>Nom : <span class="text-blue-500"> <?= $arrayCats[$i]['nom'] ?> </span></p>
                             </div>
+                            <div class="btnContainer flex justify-center gap-10 container p-3">
+                                <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayCats[$i]['id'] ?>">Modifier</button>
+                                <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= 'cat-' . $arrayCats[$i]['id'] ?>">Supprimer</button>
+                            </div>
                         </div>
-                        <div>
+                        <!-- bloc pour maj categories -->
+                        <div class="artChange  mt-5 hidden">
+                            <div class="flex flex-col md:flex-row gap-8 mb-2">
+                                <label for="<?= $arrayCats[$i]['id'] ?>">Changer le nom :</label>
+                                <input class="bg-color-1 p-1 rounded" type="text" name="<?= 'catName-' . $arrayCats[$i]['id'] ?>" value="<?= $arrayCats[$i]['nom'] ?>">
+                            </div>
 
-
-                            <hr>
+                            <div class="flex justify-between  container p-3">
+                                <button class="cancelBtn border rounded p-3 hover:bg-white hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?= 'cat-' . $arrayCats[$i]['id'] ?>">Confirmer</button>
+                            </div>
                         </div>
                     <?php  } ?>
 
@@ -294,26 +366,19 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
                     ?>
                         <div class="artContainer text-white bg-color-2 my-2">
-                            <div class="flex justify-between w-screen container p-3">
+                            <div class="flex flex-col md:flex-row flex-wrap justify-between  container p-3">
                                 <h3>Titre : <?= $arrayArt[$i]['titre'] ?></h3>
-                                <div>catégories:<?php
+                                <div class="flex flex-wrap gap-1">catégories:<?php
                                                 for ($k = 0; $k < count($newArray); $k++) {
-                                                    echo '<span class="mx-2 p-2 bg-color-1 rounded">' . $newArray[$k] . '</span>';
+                                                    echo '<small class="mx-2 p-2 bg-color-1 rounded">' . $newArray[$k] . '</small>';
                                                 }
                                                 ?> </div>
                             </div>
                             <p class="text-justify p-3"><?= $arrayArt[$i]['article'] ?></p>
-                            <div class="text-right m-3"> dernière modification le : <?= $arrayArt[$i]['date'] ?> par <span class="<?php if ($arrayStatus[$i]['droits'] == 'admin') {
-                                                                                                                                        echo  'text-red-500';
-                                                                                                                                    } else if ($arrayStatus[$i]['droits'] == 'moderateur') {
-                                                                                                                                        echo 'text-green-500';
-                                                                                                                                    } else {
-                                                                                                                                        echo 'text-blue-500';
-                                                                                                                                    }
-                                                                                                                                    ?>"><?= $result['login'] ?></span></div>
+                            <div class="text-right m-3"> dernière modification le : <?= $arrayArt[$i]['date'] ?> par <span class="text-blue-500"><?= $result['login'] ?></span></div>
                         </div>
                         <div>
-                            <div class="btnContainer flex justify-between w-screen container p-3">
+                            <div class="btnContainer flex justify-center gap-10  container p-3">
                                 <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier article</button>
                                 <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button>
                             </div>
@@ -329,15 +394,15 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                     <?php Update::listOfCategories(); ?>
                                 </div>
                             </div>
-                            <div class="flex gap-8 mb-2">
+                            <div class="flex flex-col gap-3 mb-2">
                                 <label for="<?= $arrayArt[$i]['titre'] ?>">Titre :</label>
                                 <input class="bg-color-1 p-1 rounded" type="text" name="<?= 'titre-' . $arrayArt[$i]['id'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
                             </div>
-                            <div class="flex gap-5 mb-8">
+                            <div class="flex flex-col gap-3 mb-8">
                                 <label for="<?= $arrayArt[$i]['id'] ?>">article :</label>
-                                <textarea class="bg-color-1 p-1 rounded" cols="70" rows="10" name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
+                                <textarea class="bg-color-1 p-1 rounded w-full h-80"  name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
                             </div>
-                            <div class="flex justify-between w-screen container p-3">
+                            <div class="flex  justify-between  container p-3">
                                 <button class="cancelBtn border rounded p-3 hover:bg-white hover:text-black" type="submit" name="cancel">Annuler</button>
                                 <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?= $arrayArt[$i]['id'] ?>">Confirmer</button>
                             </div>
@@ -356,7 +421,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-1">Ouvrir menu</span>
                 </div>
                 <div class="menu-content container mx-auto flex flex-col items-center ">
-                    <span> Cliquez sur le commentaire pour être redirigé vers l'article, pour pouvoir le modifier</span>
+                    <span> Cliquez sur le commentaire pour être redirigé vers la page de  l'article</span>
                     <?php
                     // on affiche les commentaires qu'on a push précédemment dans un tableau
                     for ($i = 0; $i < $nbComs; $i++) {
@@ -367,28 +432,38 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         $author = $username->fetch(); ?>
                         <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>">
                             <div class="artContainer text-white bg-color-2 my-2 hover:bg-gray-500">
-                                <div class="flex flex-col justify-between w-screen container p-3">
-                                    <p><span class="<?php if ($arrayStatus[$i]['droits'] == 'admin') {
-                                                        echo  'text-red-500';
-                                                    } else if ($arrayStatus[$i]['droits'] == 'moderateur') {
-                                                        echo 'text-green-500';
-                                                    } else {
-                                                        echo 'text-blue-500';
-                                                    }
-                                                    ?>"> <?= $author['login'] ?></span> a posté le commentaire suivant le : <?= $commentaries[$i]['date'] ?></p>
+                                <div class="flex flex-col justify-between  container p-3">
+                                    <p><span class="text-blue-500"> <?= $author['login'] ?></span> a posté le commentaire suivant le : <?= $commentaries[$i]['date'] ?></p>
                                     <p> <?= $commentaries[$i]['commentaire'] ?></p>
                                 </div>
                                 <hr>
                             </div>
                         </a>
+                        <div class="btnContainer flex justify-center gap-10  container p-3">
+                            <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?=$commentaries[$i]['id']?>">Modifier</button>
+                            <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?='com-' . $commentaries[$i]['id']?>">Supprimer</button>
+                        </div>
+                         <!-- bloc pour maj commentaires -->
+                         <div class="artChange  mt-5 hidden">
+                            <div class="flex flex-col md:flex-row gap-2 mb-2">
+                                <label for="<?= $commentaries[$i]['id'] ?>">Changer le commentaire:</label>
+                                <textarea  class="bg-color-1 p-1 rounded w-full h-60" type="text" name="<?='newCom-' . $commentaries[$i]['id']?>"><?= $commentaries[$i]['commentaire']?></textarea> 
+                            </div>
+
+                            <div class="flex justify-between gap-5 container p-3">
+                                <button class="cancelBtn border rounded p-3 hover:bg-white hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?='com-' . $commentaries[$i]['id']?>">Confirmer</button>
+                            </div>
+                        </div>
                     <?php } ?>
                 </div>
+
         </section>
     </form>
     <?php require_once('src/footer.php'); ?>
+    <script src="src/admin.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 
-    <script src="src/admin.js"></script>
 </body>
 
 </html>

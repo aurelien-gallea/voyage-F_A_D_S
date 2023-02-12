@@ -35,7 +35,7 @@ function showHidden(button) {
 
       artChange[i].classList.toggle("hidden");
       btnContainer[i].classList.toggle("hidden");
-      artContainer[i].classList.toggle("hidden");
+      // artContainer[i].classList.toggle("hidden");
     });
   }
 }

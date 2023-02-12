@@ -66,7 +66,7 @@ class Update
     <?php  for ($i = 0; $i < count($arrayCatList); $i++) { ?>
             <li>
             <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-            <input id="checkbox-item-<?=$i?>" type="checkbox" name="categorie[]" value="<?= $arrayCatList[$i]['id'] ?>" class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500'>
+            <input class="checkbox-item-<?=$i?>" type="checkbox" name="categorie[]" value="<?= $arrayCatList[$i]['id'] ?>" class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500'>
             <label for="checkbox-item-<?=$i?>" class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"><?= $arrayCatList[$i]['nom'] ?></label>
     <?php } ?>
             </div>
@@ -138,7 +138,6 @@ class Update
     
         return $response;
     }
-
     public static function updateStatus($newStatus, $id_user) {
         require('src/connectionDB.php');
         $status = $bdd->prepare('UPDATE `droits` SET `nom`=? WHERE `id_utilisateur`=?  ');
@@ -157,5 +156,30 @@ class Update
         require('src/connectionDB.php');
         $req = $bdd->prepare('UPDATE `utilisateurs` SET `login`=? WHERE id=?');
         $req->execute([$login,$id_utilisateur]);
+    }
+    public static function addNewCat($newCat) {
+        require('src/connectionDB.php');
+        $req= $bdd->prepare('INSERT INTO categories (nom) VALUES (?)');
+        $req->execute([$newCat]);
+    }
+    public static function deleteCategorie($id_cat) {
+        require('src/connectionDB.php');
+        $delete = $bdd->prepare('DELETE FROM categories WHERE id=? ');
+        $delete->execute([$id_cat]);
+    }
+    public static function updateCatName($newCatName, $id_cat) {
+        require('src/connectionDB.php');
+        $req = $bdd->prepare('UPDATE `categories` SET `nom`=? WHERE id=?');
+        $req->execute([$newCatName,$id_cat]);
+    }
+    public static function deleteCom($id_com) {
+        require('src/connectionDB.php');
+        $delete = $bdd->prepare('DELETE FROM commentaires WHERE id=? ');
+        $delete->execute([$id_com]);
+    }
+    public static function updateCom($newCom, $id_com) {
+        require('src/connectionDB.php');
+        $req = $bdd->prepare('UPDATE `commentaires` SET `commentaire`=? WHERE id=?');
+        $req->execute([$newCom,$id_com]);
     }
 }
