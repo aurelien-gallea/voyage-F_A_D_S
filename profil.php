@@ -202,7 +202,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         <button id="btn" class="w-full" type="submit">Modifier mes informations</button>
                     </div>
                 </form>
-                <button id="passWindow" class="mb-5 text-white hover:text-orange-500">changer le mot de passe ?</button>
+                <button id="passWindow" class="my-5 text-white hover:text-orange-500">changer le mot de passe ?</button>
             </div>
             <div id="block2">
                 <hr>
@@ -236,7 +236,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
 
                 </form>
-                <button id="userWindow" class="mb-5 text-white hover:text-orange-500">changer l'identifiant / l'email ?</button>
+                <button id="userWindow" class="my-5 text-white hover:text-orange-500">changer l'identifiant / l'email ?</button>
             </div>
 
 
@@ -248,8 +248,8 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
         </div>
         <div class="container mx-auto  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-b-md">
             <span class="text-center text-3xl m-5 font-light color-4">Mes stats</span>
-            <span class="text-2xl color-4 pb-5">articles écrit : <?php if (isset($count)) echo $count; ?> </span>
-            <span class="text-2xl color-4 pb-5">commentaires écrit : <?php if (isset($arrayComs)) echo $nbComs; ?> </span>
+            <span class="text-2xl color-4 pb-5">articles écrits : <?php if (isset($count)) echo $count; ?> </span>
+            <span class="text-2xl color-4 pb-5">commentaires écrits : <?php if (isset($arrayComs)) echo $nbComs; ?> </span>
         </div>
     </section>
     <section>

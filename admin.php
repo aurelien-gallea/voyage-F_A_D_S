@@ -193,8 +193,8 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
         <h1 class="mt-32 text-center text-4xl"> Panel Admin</h1>
         <div class="container mx-auto mt-4 flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-b-md">
             <span class="text-center text-3xl m-5 font-light color-4">Les stats du blog</span>
-            <span class="text-2xl color-4 pb-5">articles écrit : <?php if (isset($count)) echo $count; ?> </span>
-            <span class="text-2xl color-4 pb-5">commentaires écrit : <?php if (isset($arrayComs)) echo $nbComs; ?> </span>
+            <span class="text-2xl color-4 pb-5">articles écrits : <?php if (isset($count)) echo $count; ?> </span>
+            <span class="text-2xl color-4 pb-5">commentaires écrits : <?php if (isset($arrayComs)) echo $nbComs; ?> </span>
         </div>
     </section>
     <section>
@@ -236,7 +236,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
             <div class="bg-color-3 text-white">
                 <div class="container mx-auto m-4  p-2 gap-2  flex flex-col md:flex-row justify-center items-center">
-                    <h2 class="text-3xl">Les utilisateurs du blog :</h2>
+                    <h2 class="text-3xl">Les utilisateurs :</h2>
                     <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-1">Ouvrir menu</span>
                 </div>
                 <div class="menu-content container mx-auto my-2  p-2  flex flex-col items-center  ">
@@ -348,7 +348,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
             </div>
             <div class="bg-color-3 text-white">
                 <div class="container mx-auto m-4  p-2 gap-2  flex flex-col md:flex-row justify-center items-center">
-                    <h2 class="text-3xl">Les articles du blog :</h2>
+                    <h2 class="text-3xl">Les articles :</h2>
                     <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-1">Ouvrir menu</span>
                 </div>
                 <div class="menu-content container mx-auto m-4  p-2  flex flex-col items-center  ">
@@ -417,7 +417,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
         <section>
             <div class="bg-color-3 text-white">
                 <div class="container mx-auto m-4  p-2 gap-2  flex flex-col md:flex-row justify-center items-center">
-                    <h2 class="text-3xl">Les Commentaires des utilisateurs :</h2>
+                    <h2 class="text-3xl">Les Commentaires :</h2>
                     <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-1">Ouvrir menu</span>
                 </div>
                 <div class="menu-content container mx-auto flex flex-col items-center ">
