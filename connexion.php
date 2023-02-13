@@ -16,7 +16,6 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
 
     while($resultat = $stmt->fetch()) {
         
-        // var_dump($resultat);
 
     if($resultat['login'] == $login &&  $password == $resultat['password']) {
         // var_dump( $resultat['password'] == $pass);
@@ -30,14 +29,13 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
           
        $count++;
       //  var_dump( $_SESSION['login']);
-      header('location:article.php');
+      header('location:articles.php');
         exit();
     }
 }
     if($count!=1) {
         
         $count = 0;
-        // var_dump( $_SESSION['login']);
 
         header('Location: connexion.php?erreur=1');
         exit();
@@ -198,8 +196,7 @@ togglePassword.addEventListener("click", function () {
         passwordInput.type = "text";
         togglePassword.classList.remove("fa-eye-slash");
         togglePassword.classList.add("fa-eye");
-       
-        
+             
       
     } else {
         passwordInput.type = "password";
