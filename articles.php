@@ -391,12 +391,15 @@ select {
   // Requête pour récupérer les noms des catégories associées à un article
   $catName = $bdd->prepare('SELECT categories.nom FROM `cat_art` INNER JOIN categories ON categories.id = cat_art.id_cat WHERE cat_art.id_art = ?');
   $catName->execute([$article['id']]);
+
+  setlocale(LC_ALL, 'fr_FR.UTF-8');
+  $date = strftime('%d/%m/%Y à %I:%M', strtotime($article['date']));
   
   ?>
   
   <div class="article">
     <h2><?= htmlspecialchars($article['titre']) ?></h2>
-    <h3><?= htmlspecialchars($article['date']) ?></h3>
+    <h3><?= htmlspecialchars($date) ?></h3>
     <h4><?= htmlspecialchars($result['login']) ?></h4>
     <?php while ($cat = $catName->fetch()): ?>
       <h5><?= htmlspecialchars($cat['nom']) ?></h5>
