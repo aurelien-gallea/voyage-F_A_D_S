@@ -377,7 +377,7 @@ select {
 
 
 </style>
-    <h1>Articles</h1>
+    
     <br>
   <div class="articles">
   </div>
