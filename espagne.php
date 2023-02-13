@@ -13,11 +13,13 @@ session_start();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
     <link rel="stylesheet" href="css/voyages.css">
-    <title>Profil</title>
+    <link href="assets/esp-favicon.ico" rel="icon" type="image/x-icon" />
+    <title>Découvrez l'Espagne | Tasty Trip</title>
 </head>
 
 <body>
     <?php require_once('src/header.php'); ?>
+    
     <div class="mt-32">
         <h1 class="text-center text-5xl mb-10">Envie d'aventures ? Visitez l'Espagne</h1>
         <img src="./assets/esp-bg.jpg" alt="une mere tiens la main de son enfant dans une rue espagnole">
@@ -230,9 +232,9 @@ session_start();
             <hr>
         </article>
     </section>
-
+    <div class="fixed bottom-0 bg-color-5 z-10 progress"></div>
+    <?php require_once('src/footer.php'); ?>
 </body>
-<?php require_once('src/footer.php'); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-
+<script src="src/espagne.js"></script>
 </html>

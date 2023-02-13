@@ -175,6 +175,8 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
     <link rel="stylesheet" href="css/voyages.css">
+    <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
+
     <title>Panel Admin</title>
 </head>
 <?php require_once('src/header-blog.php'); ?>
@@ -354,9 +356,9 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <div class="border rounded my-4">
                         <div class="artContainer text-white bg-color-2">
-                            <div class="flex flex-col md:flex-row flex-wrap justify-between  container p-3">
+                            <div class="flex flex-col  gap-3 flex-wrap justify-between container p-3">
                                 <h3 class="text-xl mb-2">Titre : <?= $arrayArt[$i]['titre'] ?></h3>
-                                <div class="flex flex-wrap gap-1">catégories:<?php
+                                <div class="flex flex-wrap gap-1 items-center">catégories:<?php
                                                 for ($k = 0; $k < count($newArray); $k++) {
                                                     echo '<small class="mx-2 p-2 bg-color-1 rounded">' . $newArray[$k] . '</small>';
                                                 }
