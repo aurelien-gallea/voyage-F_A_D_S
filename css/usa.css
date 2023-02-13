@@ -1,12 +1,11 @@
-body {
-    background-image: url('assets/usaflag.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    backdrop-filter: brightness(150%) blur(5px);
-    
-  }
-  p {
+h1 {
+    text-align: justify;
+    font-weight: 200;
+}
+h2 {
+    color: #fff;
+}
+h3 {
     background-color: #111;
     color: #fff;
     padding: 10px;
@@ -15,32 +14,22 @@ body {
     text-align: center;
     font-size: 1em;
 }
-h1 {
-    color: #111;
+img {
+    border-radius: 10%; 
+    max-width: 100%; 
+    height: auto;
+
+      
+}
+div {
     text-align: center;
 }
-h2 {
-    color: #111;
-}
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #333;
-    color: #fff;
-  }
-  
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 20px;
-  }
-  
-  h1 {
-    font-size: 2em;
+footer {
     margin: 0;
+    padding: 10px;
+    width: 100%;
   }
   
+    
   
   
