@@ -25,14 +25,6 @@ $arrayStatus = [];
 $arrayStatus = Update::selectAllStatusByUser($arrayStatus);
 $arrayCats = [];
 $arrayCats = Update::allCategories($arrayCats);
-$status = Update::selectStatusByUser(32);
-$status = $status['droits'];
-
-// $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
-// $req->execute([$id]);
-// $result = $req->fetch();
-// $login = $result['login'];
-// $email = $result['email'];
 
 for ($z = 0; $z < count($arrayUsers); $z++) {
 
@@ -72,7 +64,7 @@ for ($z = 0; $z < count($arrayUsers); $z++) {
         }
         // MAJ des infos
         Update::updateUser($newLogin, $arrayUsers[$z]['id']);
-        header('location:admin.php?success=' . $newRole . $arrayUsers[$z]['id'] . $newLogin . $arrayUsers[$z]['login']);
+        header('location:admin.php?success=5');
         exit();
     }
 }
@@ -252,23 +244,9 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         <div class="text-white bg-color-2 ">
                             <div class="flex flex-col md:flex-row gap-5 justify-between  container p-3">
                                 <h3>ID : <span class="text-yellow-500"> <?= $arrayUsers[$i]['id'] ?> </span></h3>
-                                <p>login : <span class="<?php if ($arrayStatus[$i]['droits'] == 'admin') {
-                                    echo  'text-red-500';
-                                } else if ($arrayStatus[$i]['droits'] == 'moderateur') {
-                                    echo 'text-green-500';
-                                } else {
-                                    echo 'text-blue-500';
-                                }
-                                ?>"> <?= $arrayUsers[$i]['login'] ?> </span></p>
+                                <p>login : <span class="<?= Update::printStatus($arrayStatus[$i]['droits'])?>"> <?= $arrayUsers[$i]['login'] ?> </span></p>
                                 <span> email : <?= $arrayUsers[$i]['email'] ?></span>
-                                <p>Droits: <span class="<?php if ($arrayStatus[$i]['droits'] == 'admin') {
-                                    echo  'text-red-500';
-                                } else if ($arrayStatus[$i]['droits'] == 'moderateur') {
-                                    echo 'text-green-500';
-                                } else {
-                                                            echo 'text-blue-500';
-                                                        }
-                                                        ?> "><?= $arrayStatus[$i]['droits'] ?></span></p>
+                                <p>Droits: <span class="<?= Update::printStatus($arrayStatus[$i]['droits'])?>"><?= $arrayStatus[$i]['droits'] ?></span></p>
                             </div>
                             
                         </div>
@@ -367,10 +345,12 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         // association de la catégorie à l'article
                         $newArray = Update::associateCatName($arrayArt[$i]['id'], $arrayCat);
                         // affichage de l'auteur de l'article
-                        $username = $bdd->prepare('SELECT login FROM utilisateurs WHERE id=?');
+                        $username = $bdd->prepare('SELECT id, login FROM utilisateurs WHERE id=?');
                         $username->execute([$arrayArt[$i]['id_utilisateur']]);
                         $result = $username->fetch();
-
+                        $status = $bdd->prepare('SELECT nom FROM droits WHERE id_utilisateur=?');
+                        $status->execute([$result['id']]);
+                        $statusByUser = $status->fetch();
                     ?>
                     <div class="border rounded my-4">
                         <div class="artContainer text-white bg-color-2">
@@ -385,7 +365,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             <hr>
                             <p class="text-justify p-3"><?= $arrayArt[$i]['article'] ?></p>
                             <hr>
-                            <div class="text-right m-3 bg-color-2"> dernière modification le : <?= DateToFr::dateFR($arrayArt[$i]['date']);  ?> par <span class="text-blue-500"><?= $result['login'] ?></span></div>
+                            <div class="text-right m-3 bg-color-2"> dernière modification le : <?= DateToFr::dateFR($arrayArt[$i]['date']);  ?> par <span class="<?= Update::printStatus($statusByUser['nom']) ?>"><?= $result['login'] ?></span></div>
                             <hr>
                         </div>
                         <div>
@@ -434,16 +414,24 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     <span> Cliquez sur le commentaire pour être redirigé vers la page de  l'article</span>
                     <?php
                     // on affiche les commentaires qu'on a push précédemment dans un tableau
+                    
                     for ($i = 0; $i < $nbComs; $i++) {
-                        // affichage de l'auteur du commentaire
-                        $username = $bdd->prepare('SELECT login FROM utilisateurs WHERE id=?');
+
+                        // affichage de l'auteur du commentaire et ses droits associés
+                        $username = $bdd->prepare('SELECT id, login FROM utilisateurs WHERE id=?');
                         $username->execute([$commentaries[$i]['id_utilisateur']]);
-                        $author = $username->fetch(); ?>
+                        $author = $username->fetch(); 
+                        $status = $bdd->prepare('SELECT nom FROM droits WHERE id_utilisateur=?');
+                        $status->execute([$author['id']]);
+                        $statusByUser = $status->fetch();
+
+                        
+                        ?>
                     <div class="border rounded my-4">
                         <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>">
                             <div class="artContainer text-white bg-color-2 hover:bg-gray-500">
                                 <div class="flex flex-col justify-between  container p-3">
-                                    <p><span class="text-blue-500 text-xl"> <?= $author['login'] ?></span> a posté le commentaire suivant le : <?=DateToFr::dateFR($commentaries[$i]['date'])  ?></p>
+                                    <p><span class="<?=Update::printStatus($statusByUser['nom']) ?>"> <?= $author['login']  ?></span> a posté le commentaire suivant le : <?=DateToFr::dateFR($commentaries[$i]['date'])  ?></p>
                                     <p> <?= $commentaries[$i]['commentaire'] ?></p>
                                 </div>
                                 <hr>

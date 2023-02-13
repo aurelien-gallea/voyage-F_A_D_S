@@ -145,6 +145,16 @@ class Update
 
         
     }
+    public static function printStatus($authorStatus) {
+        if($authorStatus == 'admin') {
+            return 'text-red-500';
+        }
+        else if ($authorStatus == 'moderateur') {
+            return 'text-green-500';
+        } else {
+            return 'text-blue-500';
+        }
+    }
     public static function deleteUser($id_utilisateur)
     {
         require('src/connectionDB.php');
