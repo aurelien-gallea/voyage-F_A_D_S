@@ -118,7 +118,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
 <!-------------------------------------body------------------------------->
 
-<body>
+<body class="dark:bg-gray-300">
 
 	<!----------------------------- Header ----------------------------------->
 	<?php
@@ -155,14 +155,13 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 			<!----------------- Si article bien envoyé : ------------------->
 			<?php
 			if (isset($_GET['success']) && $_GET['success'] == 1) {
-				// $lastID = $bdd->prepare('SELECT MAX(id) FROM articles');
-				// $lastID->execute();
-				// $idArticle = $lastID->fetch();
-				$message = '<a href="">Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !</a>';
+				$lastID = $bdd->prepare('SELECT MAX(id) FROM articles');
+				$lastID->execute();
+				$idArticle = $lastID->fetch();
+				$message = '<a class="flex flex-col justify-center items-center font-medium leading-tight text-xl mt-0 mb-2 text-white bg-blue-500" href="http://localhost/voyage-F_A_D_S/article.php?id=' . $idArticle["MAX(id)"] . '">Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !</a>';
 				echo $message;
 			}
-			//Bouton aller sur l'article et bouton retourner au blog
-			//Bouton creer un nouvel article ?
+			//Bouton aller sur l'article POST2
 			elseif (isset($_GET['error']) && $_GET['error'] == 1) {
 				$message2 = '<h3 class="flex flex-col justify-center items-center font-medium leading-tight text-xl mt-0 mb-2 text-red-600">Veuillez remplir tous les champs pour compléter la création de l\'article.</h2>';
 				echo $message2;
