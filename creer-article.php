@@ -6,6 +6,7 @@ if (!isset($_SESSION['id'])) {
 	header('location:connexion.php');
 	exit();
 }
+
 //pour les fonctions static
 require("classes/update.php");
 //on se connecte à la bdd
