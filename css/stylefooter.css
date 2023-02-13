@@ -21,14 +21,17 @@ footer{
   margin: 20px 0 0 0;
   position: relative;
 }
-.box .content:before{
+.box .content:before {
   position: absolute;
   content: '';
   top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
   height: 2px;
-  width: 100%;
+  width: 50%;
   background: #1a1a1a;
 }
+
 .box .content:after{
   position: absolute;
   content: '';
