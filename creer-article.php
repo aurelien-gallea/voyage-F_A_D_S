@@ -6,11 +6,11 @@ if (!isset($_SESSION['id'])) {
 	header('location:connexion.php');
 	exit();
 }
-
+//pour les fonctions static
 require("classes/update.php");
-
 //on se connecte à la bdd
-$bdd = new PDO("mysql:host=localhost;dbname=blog_voyage;charset=utf8", "root", "");
+require("src/connectionDB.php");
+
 $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 
 //Si le titre et le contenu ont été rempli alors ça envoie l'article dans la bdd
