@@ -352,13 +352,13 @@ if (isset($_POST['tri'])) {
             text-decoration: none;
         }
         form {
-           width: 500px;
-           margin: 0 auto;
-           text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 select {
-  width: 40%;
+  width: 20%;
   padding: 10px;
   font-size: 16px;
   margin-bottom: 20px;
@@ -366,14 +366,25 @@ select {
   text-align: center;
 }
 
-    input[type="submit"] {
-       background-color: #f4fff8;
-       color: black;
-       padding: 5px 10px;
-       border-radius: 5px;
-       border: none;
-       cursor: pointer;
+input[type="submit"] {
+  background-color: #f4fff8;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  form {
+    width: 100%;
+  }
+  
+  select {
+    width: 100%;
+  }
+}
+
 
 
 </style>
