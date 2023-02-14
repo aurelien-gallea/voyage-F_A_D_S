@@ -56,9 +56,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/stylefooter.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/stylefooter.css">
     <link rel="stylesheet" href="css/voyages.css">
+    <link rel="stylesheet" href="css/tailwind-need.css">
+    <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
 
     <title>S'inscrire</title>
@@ -124,6 +126,7 @@
     </section>
     <?php require_once('src/footer.php'); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <script src="src/tailwind-need-body.js"></script>
     <script src="src/inscription.js"></script>
     </body>
     
