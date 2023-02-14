@@ -8,8 +8,8 @@
       <div
         class="  relative container flex flex-wrap items-center justify-between content-center mx-auto"
       >
-        <a href="#" class="flex items-center pl-3">
-          <img src="assets/logo2.png" class="h-8 mr-4 sm:h-14" alt="TastyTrip" />
+        <a href="index.php" class="flex items-center pl-3">
+          <img src="assets/logo2.png" class="h-8 mr-4 sm:h-14 md:h-16" alt="TastyTrip" />
           <span
             class="self-center text-xl font-Unbounded whitespace-nowrap dark:text-white"
             >TastyTrip</span
@@ -43,7 +43,7 @@
           >
             <li>
               <a
-                href="index.html"
+                href="index.php"
 
                 class="block py-2 pl-3 pr-4 text-bg-custom-1C3738 bg-blue-30 rounded md:bg-transparent md:text-grey md:p-0 md:dark:text-white dark:bg-bg-custom-1C3738 md:dark:bg-transparent"
                 aria-current="page"
@@ -83,14 +83,14 @@
                 >
                   <li>
                     <a
-                      href="src/senegal.html"
+                      href="senegal.php"
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Afrique</a
                     >
                   </li>
                   <li>
                     <a
-                      href="src/espagne.html"
+                      href="espagne.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Europe</a
@@ -98,7 +98,7 @@
                   </li>
                   <li>
                     <a
-                      href="src/coree.html"
+                      href="inde.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Asie</a
@@ -106,7 +106,7 @@
                   </li>
                   <li>
                     <a
-                      href="src/usa.html"
+                      href="usa.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Amérique</a
@@ -148,7 +148,7 @@
                 >
                   <li>
                     <a
-                      href="src/sylvia.html"
+                      href="inde.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white "
                       >Sylvia</a
@@ -156,7 +156,7 @@
                   </li>
                   <li>
                     <a
-                      href="src/Aurelien.html"
+                      href="espagne.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Aurelien</a
@@ -164,7 +164,7 @@
                   </li>
                   <li>
                     <a
-                      href="src/Dylan.html"
+                      href="usa.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Dylan</a
@@ -172,7 +172,7 @@
                   </li>
                   <li>
                     <a
-                      href="src/Florian.html"
+                      href="senegal.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Florian</a
@@ -183,19 +183,16 @@
             </li>
             <li>
               <a
-                href="#"
+                href="articles.php"
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >Blog</a
               >
             </li>
-
             <li>
               <a
-                href="src/contact.php"
-
-
+                href="contact.php"
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Contact</a
+                >contact</a
               >
             </li>
             <li>

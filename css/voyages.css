@@ -1,42 +1,44 @@
+/* palette de couleur du site */
+
 .color-1 {
-    color: #000F08;
+    color: #111827; /*dark mode flowbite*/
 }
 
 .color-2 {
-    color: #1C3738;
+    color: #8BAAAD; /*couleur du logo*/
 
 }
 
 .color-3 {
-    color: #4D4847;
+    color: #90323D; /*contrasté*/
 }
 
 .color-4 {
-    color: #F4FFF8;
+    color: #FCF6B1; /* fond */
 }
 
 .color-5 {
-    color: #8BAAAD;
+    color: #F18F01AD; /* couleur complémentaire*/
 }
 
 .bg-color-1 {
-    background: #000F08;
+    background: #111827; /*dark mode flowbite*/
 }
 
 .bg-color-2 {
-    background: #1C3738;
+    background: #8BAAAD; /*couleur du logo*/
 }
 
 .bg-color-3 {
-    background: #4D4847;
+    background: #90323D; /*contrasté*/
 }
 
 .bg-color-4 {
-    background: #F4FFF8;
+    background: #FCF6B1; /* fond */
 }
 
 .bg-color-5 {
-    background: #8BAAAD;
+    background: #F18F01AD; /* couleur complémentaire*/
 }
 
 
