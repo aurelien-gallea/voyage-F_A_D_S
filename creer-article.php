@@ -131,8 +131,8 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 			<!---------------------- Formulaire d'article ---------------------->
 			<div class="flex flex-col justify-center items-center">
 				<article class="flex flex-col justify-center items-center">
-					<h2 class="font-medium leading-tight text-4xl mt-0 mb-2 text-green-700">Creer un article</h2>
-					<h5 class="ml-10 font-medium leading-tight text-xl mt-0 mb-2 text-blue-600">Créez votre propre article ! Partagez vos voyages ou encore vos expériences culinaires exotiques !</H>
+					<h2 class="font-medium leading-tight text-4xl mt-0 mb-2 text-color-2">Creer un article</h2>
+					<h5 class="ml-10 font-medium leading-tight text-xl mt-0 mb-2 text-color-1">Créez votre propre article ! Partagez vos voyages ou encore vos expériences culinaires exotiques !</H>
 				</article>
 				<form method="POST" class="mt-5 w-3/6 mt-25 flex flex-col content-center justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 dark:bg-gray-900 dark:border-gray-700">
 					<input type="text" name="article_titre" maxlength="80" class="block p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Titre" /><br />
