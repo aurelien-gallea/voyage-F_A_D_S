@@ -98,6 +98,9 @@ if (isset($_POST['tri'])) {
       .bg-custom-F4FFF8 {
         background-color: #f4fff8;
       }
+
+    
+
     </style>
   </head>
   <?php require_once('src/header-blog.php'); ?>
@@ -110,8 +113,8 @@ if (isset($_POST['tri'])) {
    <br>
    <form action="articles.php" method="post">
   <select name="tri">
-    <option value="date_desc">Date décroissante</option>
     <option value="date_asc">Date croissante</option>
+    <option value="date_desc">Date décroissante</option>
     <option value="login">Utilisateur</option>
     <option value="categories">Catégories</option>
   </select>
@@ -348,6 +351,7 @@ input[type="submit"] {
         
       </div>
     </footer>
+    
 </body>
 </html>
 
