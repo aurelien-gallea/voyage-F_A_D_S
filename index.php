@@ -263,27 +263,27 @@
 	<h1>Bienvenue sur Tasty Trip</h1>
 	<ul>
 		<li>
-			<a href="usa.html">
+			<a href="usa.php">
 				<img src="assets/vignette usa.png" alt="USA">
 				<span>Visiter les USA</span>
 			</a>
 		</li>
 		<li>
-			<a href="espagne.html">
+			<a href="espagne.php">
 				<img src="assets/vignette espagne.png" alt="Espagne">
 				<span>Visiter l'Espagne</span>
 			</a>
 		</li>
 		<li>
-			<a href="senegal.html">
+			<a href="senegal.php">
 				<img src="assets/vignette senegal.png" alt="Sénégal">
 				<span>Visiter le Sénégal</span>
 			</a>
 		</li>
 		<li>
-			<a href="coree.html">
-				<img src="assets/vignette coree.png" alt="Corée">
-				<span>Visiter la Corée</span>
+			<a href="coree.php">
+				<img src="assets/vignette inde.png" alt="Corée">
+				<span>Visiter l'Inde</span>
 			</a>
 		</li>
 		<li>
