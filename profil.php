@@ -161,7 +161,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/stylefooter.css">
-    <link rel="stylesheet" href="css/voyages.css">
+    <!-- <link rel="stylesheet" href="css/voyages.css"> -->
     <link rel="stylesheet" href="css/tailwind-need.css">
     <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -170,10 +170,10 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 </head>
 <?php require_once('src/header-blog.php'); ?>
 
-<body>
-    <section class="flex-grow mt-32">
+<body class="dark:bg-color-1">
+    <section class="flex-grow mt-28">
 
-        <div class="container mx-auto p-2  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-t-md">
+        <div class="container mx-auto p-2  flex flex-col items-center bg-color-5 dark:bg-color-3 md:w-2/4 2xl:w-1/4 md:rounded-t-md">
             <h1 class="text-center text-3xl m-5 font-light color-4">Modifier Profil</h1>
             <div id="block1" class="">
                 <hr>
@@ -184,27 +184,27 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     </div>
                     <div>
                         <div class="flex  justify-center">
-                            <label for="login" class="bg-color-5 p-2 mt-3 rounded-l-md"><img width="30" src="assets/utilisateur.png" alt="icone utilisateur"> </label>
+                            <label for="login" class="bg-color-4 dark:bg-color-5 p-2 mt-3 rounded-l-md"><img width="30" src="assets/utilisateur.png" alt="icone utilisateur"> </label>
                             <input id="login" class="p-2 rounded-r-md  mt-3 text-xl" type="text" name="login" id="login" value="<?= $login ?>">
                         </div>
                     </div>
                     <div>
 
                         <div class="flex  justify-center">
-                            <label for="email" class="bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/email.png" alt="icone email"></label>
+                            <label for="email" class="bg-color-4 dark:bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/email.png" alt="icone email"></label>
                             <input id="email" class="p-2 rounded-r-md  text-xl" type="text" name="email" id="email" value="<?= $email ?>">
                         </div>
 
                     </div>
                     <div>
                         <div class="flex justify-center">
-                            <label for="password" class="bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
+                            <label for="password" class="bg-color-4 dark:bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
                             <input id="password" class="p-2 rounded-r-md  text-xl" type="password" name="password" id="password" placeholder="Confirmer Mot De Passe">
                         </div>
                     </div>
                     <small class="text-red-500 ">Confirmer votre MDP pour modifier les informations</small>
 
-                    <div id="divBtn" class="p-2  w-full bg-color-5 text-center border rounded-md text-xl hover:bg-white hover:text-black">
+                    <div id="divBtn" class="p-2  w-full bg-color-4 dark:bg-color-5 text-center border rounded-md text-xl hover:bg-white hover:text-black">
                         <button id="btn" class="w-full" type="submit">Modifier mes informations</button>
                     </div>
                 </form>
@@ -221,22 +221,22 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     </div>
                     <div class="flex flex-col gap-5">
                         <div class="flex  justify-center">
-                            <label for="passChange1" class="bg-color-3 p-2 mt-3 rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
+                            <label for="passChange1" class="bg-color-3 dark:bg-color-4 p-2 mt-3 rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
                             <input id="passChange1" class="p-2 rounded-r-md mt-3 text-xl" type="password" name="passChange1" id="passChange1" placeholder="Mot De Passe Actuel">
                         </div>
                         <div class="flex  justify-center">
-                            <label for="passChange2" class="bg-color-3 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
+                            <label for="passChange2" class="bg-color-3 dark:bg-color-4 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
                             <input id="passChange2" class="p-2 rounded-r-md text-xl" type="password" name="passChange2" id="passChange2" placeholder="Nouveau Mot De Passe">
                         </div>
                         <div>
                             <div class="flex  justify-center ">
-                                <label for="passChange3" class="bg-color-3 p-2   rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone mot de passe"></label>
+                                <label for="passChange3" class="bg-color-3 dark:bg-color-4 p-2   rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone mot de passe"></label>
                                 <input id="passChange3" class="p-2 rounded-r-md text-xl" type="password" name="passChange3" id="passChange3" placeholder="Confirmer nouveau MDP ">
                             </div>
                         </div>
                         <small id="notMatch" class="text-red-500">Les Mots de passes ne correspondent pas</small>
                         <div id="divBtn2">
-                            <button id="btn2" class="p-2   w-full bg-color-3 text-center text-white border rounded-md text-xl hover:bg-white hover:text-black">Soumettre</button>
+                            <button id="btn2" class="p-2   w-full bg-color-3 dark:bg-color-4 text-center text-white border rounded-md text-xl hover:bg-white hover:text-black">Soumettre</button>
                         </div>
                     </div>
 
@@ -252,7 +252,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
         <div class="container w-4/5">
 
         </div>
-        <div class="container mx-auto  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-b-md">
+        <div class="container mx-auto text-white flex flex-col items-center dark:bg-color-5 bg-color-3 md:w-2/4 2xl:w-1/4 md:rounded-b-md">
             <span class="text-center text-3xl m-5 font-light color-4">Mes stats</span>
             <span class="text-2xl color-4 pb-5">articles écrits : <?php if (isset($count)) echo $count; ?> </span>
             <span class="text-2xl color-4 pb-5">commentaires écrits : <?php if (isset($arrayComs)) echo $nbComs; ?> </span>
@@ -291,7 +291,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     </section>
 
     <section>
-        <div class="bg-color-3 text-white">
+        <div class="bg-color-3 dark:text-white">
             <div class="container mx-auto m-3 p-4 flex flex-col items-center  ">
                 <h2 class="text-3xl">Mes articles :</h2>
             </div>
@@ -304,23 +304,23 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         $newArray = Update::associateCatName($arrayArt[$i]['id'], $arrayCat);
                     ?>
                         <div class="border rounded my-6">
-                            <div class="artContainer text-white bg-color-2">
+                            <div class="artContainer text-black dark:text-white bg-color-4 dark:bg-color-1">
                                 <div class="flex flex-col  justify-center container p-3">
                                     <h3 class="text-xl mb-2">Titre : <?= $arrayArt[$i]['titre'] ?></h3>
                                     <div class="flex flex-wrap items-center gap-1">catégories:<?php
                                                                                     for ($k = 0; $k < count($newArray); $k++) {
-                                                                                        echo '<span class="mx-2 p-2 bg-color-1 rounded">' . $newArray[$k] . '</span>';
+                                                                                        echo '<span class="mx-2 p-2 bg-color-5 rounded">' . $newArray[$k] . '</span>';
                                                                                     }
                                                                                     ?> </div>
                                 </div>
                                 <hr>
                                 <p class="text-justify p-3"><?= $arrayArt[$i]['article'] ?></p>
                                 <hr>
-                                <div class="text-right m-3 bg-color-2"> dernière modification le : <?= DateToFr::dateFr($arrayArt[$i]['date']) ?> par <?= $login ?></div>
+                                <div class="text-right m-3 "> dernière modification le : <?= DateToFr::dateFr($arrayArt[$i]['date']) ?> par <?= $login ?></div>
                                 <hr>
                             </div>
                             <div>
-                                <div class="btnContainer flex justify-between gap-10 container p-3">
+                                <div class="btnContainer text-black dark:text-white bg-white dark:bg-color-3 flex justify-between gap-10 container p-3">
                                     <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier article</button>
                                     <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button>
                                 </div>
@@ -336,11 +336,11 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                 </div>
                                 <div class="flex flex-col gap-3 mb-2">
                                     <label for="<?= $arrayArt[$i]['titre'] ?>">Titre :</label>
-                                    <input class="bg-color-1 p-1 rounded" type="text" name="<?= 'titre-' . $arrayArt[$i]['id'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
+                                    <input class="dark:bg-color-1 p-1 rounded" type="text" name="<?= 'titre-' . $arrayArt[$i]['id'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
                                 </div>
                                 <div class="flex flex-col gap-3 mb-8">
                                     <label for="<?= $arrayArt[$i]['id'] ?>">article :</label>
-                                    <textarea class="bg-color-1 p-1 rounded w-full h-80" name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
+                                    <textarea class="dark:bg-color-1 p-1 rounded w-full h-80" name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
                                 </div>
                                 <div class="flex justify-between container p-3">
                                     <button class="cancelBtn border rounded p-3 hover:bg-white hover:text-black" type="submit" name="cancel">Annuler</button>
@@ -367,7 +367,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                 for ($i = 0; $i < $nbComs; $i++) { ?>
                     <div class="border rounded my-4">
                         <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>">
-                            <div class="artContainer text-white bg-color-2 hover:bg-gray-500">
+                            <div class="artContainer text-white text-black dark:text-white bg-white dark:bg-color-1 hover:bg-gray-500">
                                 <div class="flex flex-col justify-between  container p-3">
                                    <p> <span class="text-blue-500 text-xl"> <?= $login ?> </span> a posté le commentaire suivant le : <?= DateToFr::dateFR($commentaries[$i]['date']) ?></span></p>
                                     <p> <?= $commentaries[$i]['commentaire'] ?></p>
