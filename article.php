@@ -246,56 +246,86 @@ $cat=$catName->fetchAll();
        <h5 class=" text-sm font-bold tracking-tight text-gray-900 dark:text-white"> 
           <?php echo $commentaire['login'] . ' a posté le commentaire suivant : le ' ?><?php echo DateToFr::dateFr($commentaire['date']); ?>
        </h5>
-       <button id="toggle-div">modifier</button>
+
+       <div></div>
+       <!-- <button id="toggle-div"class="update"name="upadate"value="<?= $commentaire['id'] ?>">modifier</button> -->
 
        <!-- ----textarea modification de commentaire--- -->
-       <div id="my-div" style="display: none; " class="w-5/6 mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+       <div id="my-div" style=" " class="hidden artChange w-5/6 mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
        <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
            <label for="commentaire" class="sr-only">Votre commentaire</label>
            <textarea maxlength="1024" name="commentaire" id="commentaire" rows="4" class="w-full px-0 text-sm text-gray-900 break-words bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="votre commentaire..."   ></textarea>
        </div>
        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
-           <button type="submit" name="submit_commentaire" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-300 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+           <!-- <button type="submit" name="submit_commentaire" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-300 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
                modifier le commentaire
-           </button>
+           </button> -->
            
        </div>
    </div>
    <!-- ---------------------------------- -->
-   <!-- <script>
-  document.getElementById("toggle-div").addEventListener("click", function(){
-var div = document.getElementById("my-div");
-if (div.style.display === "none") {
-div.style.display = "block";
-} else {
-div.style.display = "none";
-}
-});
-</script> -->
+   <script>
+//   document.getElementById("toggle-div").addEventListener("click", function(){
+// var div = document.getElementById("my-div");
+// if (div.style.display === "none") {
+// div.style.display = "block";
+// } else {
+// div.style.display = "none";
+// }
+// });
+
+// buttons update
+const artContainer = document.querySelectorAll('.artContainer'); // div pour cacher le titre + boutton update/delete
+const update = document.querySelectorAll('#toggle-div'); // boutton pour cacher la div 
+const btnContainer = document.querySelectorAll('.btnContainer');
+const artChange = document.querySelectorAll('.my-div');
+const cancelBtn = document.querySelectorAll('.cancelBtn');
+const confirmBtn = document.querySelectorAll('.confirmBtn');
+block2.style.display = "none"; // on cache par défaut le block2: le changement de mdp
+
+function showHidden(button) {
+    
+    for (let i = 0; i < button.length; i++) {
+    
+        button[i].addEventListener('click', (e) => {
+            e.preventDefault();
+    
+                artChange[i].classList.toggle('hidden');
+                btnContainer[i].classList.toggle('hidden');
+                artContainer[i].classList.toggle('hidden');
+            });
+        }
+    }
+
+</script>
   <div class="flex justify-between">
           <div class="flex  px-2 py-2  dark:border-gray-600">
-              <button type="submit" value="<?= $commentaire['id'] ?>"name="modif_commentaire" class="inline-flex items-center py-1 px-2 text-xs font-medium text-center text-white bg-blue-400 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+              <!-- <button type="submit" value="<?= $commentaire['id'] ?>"name="modif_commentaire" class="inline-flex items-center py-1 px-2 text-xs font-medium text-center text-white bg-blue-400 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
                modifier
-              </button>
+              </button> -->
            
           </div>
 
            <div class="flex  px-2 py-2  dark:border-gray-600">
             <!-- bouton modal -->
-            </div>
+  </div>
 
-           <button data-modal-target="staticModal" data-modal-toggle="staticModal"
+<!-- <button data-modal-target="staticModal" data-modal-toggle="staticModal"
            class="inline-flex items-center py-1 px-2  text-white bg-red-900 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
   Modifier
-</button>
-             <!-------- en modal ----click>modal>etes vous sure de suppr> choix suppr ou close------------>
-             <!-- bouton modal -->
-           </div>
-           <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" 
+</button> -->
+             
+             
+ </div>
+
+
+<!-------- en modal ----click>modal>etes vous sure de suppr> choix suppr ou close------------------------------------->
+
+
+<button data-modal-target="popup-modal" data-modal-toggle="popup-modal" 
            class="inline-flex items-center py-1 px-2  text-white bg-red-900 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
   Supprimer
 </button>
-
 
             <!-- -----fenetre modal supression--- -->
   <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">

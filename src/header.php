@@ -83,14 +83,14 @@
                 >
                   <li>
                     <a
-                      href="senegal.html"
+                      href="senegal.php"
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Afrique</a
                     >
                   </li>
                   <li>
                     <a
-                      href="espagne.html"
+                      href="espagne.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Europe</a
@@ -98,7 +98,7 @@
                   </li>
                   <li>
                     <a
-                      href="coree.html"
+                      href="inde.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Asie</a
@@ -106,7 +106,7 @@
                   </li>
                   <li>
                     <a
-                      href="usa.html"
+                      href="usa.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Amérique</a
@@ -148,7 +148,7 @@
                 >
                   <li>
                     <a
-                      href="coree.html"
+                      href="inde.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white "
                       >Sylvia</a
@@ -156,7 +156,7 @@
                   </li>
                   <li>
                     <a
-                      href="espagne.html"
+                      href="espagne.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Aurelien</a
@@ -164,7 +164,7 @@
                   </li>
                   <li>
                     <a
-                      href="usa.html"
+                      href="usa.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Dylan</a
@@ -172,7 +172,7 @@
                   </li>
                   <li>
                     <a
-                      href="senegal.html"
+                      href="senegal.php"
 
                       class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >Florian</a
@@ -188,7 +188,13 @@
                 >Blog</a
               >
             </li>
-
+            <li>
+              <a
+                href="contact.php"
+                class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >contact</a
+              >
+            </li>
             <li>
               <button
                 title="toggle navigation"

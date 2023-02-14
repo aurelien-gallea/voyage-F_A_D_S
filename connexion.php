@@ -121,16 +121,7 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
 include'src/header.php';
 ?>
 
-<!-- Modal toggle -->
-<!-- 
-<button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white
-bg-color-5 hover:bg-color-2 focus:ring-color-3 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-color-1 dark:hover:bg-color-5 dark:focus:ring-color-2" type="button">
- Connexion
-</button> -->
 <div class="relative flex items-center justify-center h-screen mt-12 overflow-hidden ">
-
-
-
 
 <!-- Main modal -->
 <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="flex content-center justify-center w-full z-10 h-screen m-auto p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
