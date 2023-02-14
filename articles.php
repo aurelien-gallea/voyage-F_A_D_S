@@ -27,7 +27,7 @@ if (isset($_POST['tri'])) {
   }
 } else {
   try {
-    $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage2;charset=utf8", "root", "");
+    $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
     $articles = $bdd->prepare('SELECT * FROM articles');
     $articles->execute();
   } catch (PDOException $e) {
