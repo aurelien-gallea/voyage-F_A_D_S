@@ -249,31 +249,31 @@
 	<ul>
 		<li>
 			<a href="usa.html">
-				<img src="vignette usa.png" alt="USA">
+				<img src="assets/vignette usa.png" alt="USA">
 				<span>Visiter les USA</span>
 			</a>
 		</li>
 		<li>
 			<a href="espagne.html">
-				<img src="vignette espagne.png" alt="Espagne">
+				<img src="assets/vignette espagne.png" alt="Espagne">
 				<span>Visiter l'Espagne</span>
 			</a>
 		</li>
 		<li>
 			<a href="senegal.html">
-				<img src="vignette senegal.png" alt="Sénégal">
+				<img src="assets/vignette senegal.png" alt="Sénégal">
 				<span>Visiter le Sénégal</span>
 			</a>
 		</li>
 		<li>
 			<a href="coree.html">
-				<img src="vignette coree.png" alt="Corée">
+				<img src="assets/vignette coree.png" alt="Corée">
 				<span>Visiter la Corée</span>
 			</a>
 		</li>
 		<li>
 			<a href="blog.php">
-				<img src="blog-thumbnail.jpg" alt="Blog">
+				<img src="assets/vignette blog.png" alt="Blog">
 				<span>Blog</span>
 			</a>
 		</li>
