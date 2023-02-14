@@ -56,14 +56,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/stylefooter.css">
     <link rel="stylesheet" href="css/voyages.css">
+    <link rel="stylesheet" href="css/tailwind-need.css">
+    <script src="src/tailwind-need.js"></script>
+    <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
+
     <title>S'inscrire</title>
 </head>
+<?php require_once('src/header-blog.php'); ?>
 
 <body class="flex flex-col min-h-screen">
     <section class="flex-grow">
 
-        <div class="container mx-auto m-16  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
+        <div class="container mx-auto m-32  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
             <h1 class="text-center text-3xl m-5 font-light color-4">Nouveau compte</h1>
             <form class="flex flex-col justify-center" action="inscription.php" method="post">
                 <div>
@@ -117,6 +124,9 @@
     </div>
     
     </section>
+    <?php require_once('src/footer.php'); ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <script src="src/tailwind-need-body.js"></script>
     <script src="src/inscription.js"></script>
     </body>
     
