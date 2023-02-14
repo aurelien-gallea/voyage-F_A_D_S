@@ -98,6 +98,9 @@ if (isset($_POST['tri'])) {
       .bg-custom-F4FFF8 {
         background-color: #f4fff8;
       }
+
+    
+
     </style>
   </head>
   <?php require_once('src/header-blog.php'); ?>
@@ -348,6 +351,7 @@ input[type="submit"] {
         
       </div>
     </footer>
+    
 </body>
 </html>
 
