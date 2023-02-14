@@ -1,0 +1,55 @@
+/* palette de couleur du site */
+
+.color-1 {
+    color: #111827; /*dark mode flowbite*/
+}
+
+.color-2 {
+    color: #8BAAAD; /*couleur du logo*/
+
+}
+
+.color-3 {
+    color: #90323D; /*contrasté*/
+}
+
+.color-4 {
+    color: #FCF6B1; /* fond */
+}
+
+.color-5 {
+    color: #F18F01AD; /* couleur complémentaire*/
+}
+
+.bg-color-1 {
+    background: #111827; /*dark mode flowbite*/
+}
+
+.bg-color-2 {
+    background: #8BAAAD; /*couleur du logo*/
+}
+
+.bg-color-3 {
+    background: #90323D; /*contrasté*/
+}
+
+.bg-color-4 {
+    background: #FCF6B1; /* fond */
+}
+
+.bg-color-5 {
+    background: #F18F01AD; /* couleur complémentaire*/
+}
+
+
+
+/* ------___Page connexion___---------------------------------------------------------------- */
+
+.field-icon {
+    float: right;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+}
