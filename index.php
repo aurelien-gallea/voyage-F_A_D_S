@@ -8,6 +8,8 @@
       href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@latest/dist/tailwind.min.css">
+
     <link rel="stylesheet" href="css/voyages.css">
     <link rel="stylesheet" href="stylefooter.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -259,41 +261,42 @@
     <!-- ---------------------------------- fin de nav----------------------------->
    </header>
 
-<body>
-	<h1>Bienvenue sur Tasty Trip</h1>
-	<ul>
-		<li>
-			<a href="usa.php">
-				<img src="assets/vignette usa.png" alt="USA">
-				<span>Visiter les USA</span>
-			</a>
-		</li>
-		<li>
-			<a href="espagne.php">
-				<img src="assets/vignette espagne.png" alt="Espagne">
-				<span>Visiter l'Espagne</span>
-			</a>
-		</li>
-		<li>
-			<a href="senegal.php">
-				<img src="assets/vignette senegal.png" alt="Sénégal">
-				<span>Visiter le Sénégal</span>
-			</a>
-		</li>
-		<li>
-			<a href="coree.php">
-				<img src="assets/vignette inde.png" alt="Corée">
-				<span>Visiter l'Inde</span>
-			</a>
-		</li>
-		<li>
-			<a href="blog.php">
-				<img src="assets/vignette blog.png" alt="Blog">
-				<span>Blog</span>
-			</a>
-		</li>
-	</ul>
+   <body class="bg-gray-100">
+  <h1 class="text-3xl font-bold mb-8">Bienvenue sur Tasty Trip</h1>
+  <ul class="grid grid-cols-2 gap-4">
+    <li class="bg-white rounded-lg shadow-md overflow-hidden">
+      <a href="usa.php">
+        <img src="assets/vignette usa.jfif" alt="USA" class="w-full h-48 object-cover">
+        <span class="block text-lg font-medium text-gray-800 py-4 px-6">Visiter les USA</span>
+      </a>
+    </li>
+    <li class="bg-white rounded-lg shadow-md overflow-hidden">
+      <a href="espagne.php">
+        <img src="assets/vignette espagne.jfif" alt="Espagne" class="w-full h-48 object-cover">
+        <span class="block text-lg font-medium text-gray-800 py-4 px-6">Visiter l'Espagne</span>
+      </a>
+    </li>
+    <li class="bg-white rounded-lg shadow-md overflow-hidden">
+      <a href="senegal.php">
+        <img src="assets/vignette sénégal.jfif" alt="Sénégal" class="w-full h-48 object-cover">
+        <span class="block text-lg font-medium text-gray-800 py-4 px-6">Visiter le Sénégal</span>
+      </a>
+    </li>
+    <li class="bg-white rounded-lg shadow-md overflow-hidden">
+      <a href="inde.php">
+        <img src="assets/vignette inde.jfif" alt="Inde" class="w-full h-48 object-cover">
+        <span class="block text-lg font-medium text-gray-800 py-4 px-6">Visiter l'Inde</span>
+      </a>
+    </li>
+    <li class="bg-white rounded-lg shadow-md overflow-hidden">
+      <a href="blog.php">
+        <img src="assets/vignette blog.jpg" alt="Blog" class="w-full h-48 object-cover">
+        <span class="block text-lg font-medium text-gray-800 py-4 px-6">Blog</span>
+      </a>
+    </li>
+  </ul>
 </body>
+<br>
 <footer>
       <div class="main-content">
         <div class="left box">
