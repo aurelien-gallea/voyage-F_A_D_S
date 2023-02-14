@@ -23,10 +23,7 @@
 <?php require_once('src/header-blog.php'); ?>
 
 
-
-
-
-   <body class="bg-gray-100">
+<body class="bg-gray-100">
   <h1 class="text-3xl font-bold mb-8">Bienvenue sur Tasty Trip</h1>
   <ul class="grid grid-cols-2 gap-4">
     <li class="bg-white rounded-lg shadow-md overflow-hidden">
