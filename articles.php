@@ -1,12 +1,12 @@
 <?php
 session_start();
 $id = 33; 
+require("src/connectionDB.php");
 
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
 
 if (isset($_POST['tri'])) {
-  try {
-    $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
+  
+    
     switch ($_POST['tri']) {
       case 'date_desc':
         $articles = $bdd->prepare('SELECT * FROM articles ORDER BY date DESC');
@@ -22,12 +22,10 @@ if (isset($_POST['tri'])) {
         break;
     }
     $articles->execute();
-  } catch (PDOException $e) {
-    echo "Erreur : " . $e->getMessage();
-  }
-} else {
+  }  
+ else {
   try {
-    $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
+    
     $articles = $bdd->prepare('SELECT * FROM articles');
     $articles->execute();
   } catch (PDOException $e) {
