@@ -1,12 +1,12 @@
 
-  <header class="fixed top-0 left-0 right-0 z-50 mb-15 bg-white  dark:bg-gray-900 ">
+  <header class="fixed  top-0 left-0 right-0 z-1 mb-10 bg-white  dark:bg-gray-900 ">
     <nav
       class="    px-2 bg-blue/54 shadow-xl z-2  border-gray-200 dark:bg-gray-900 dark:border-gray-700"
     >
       <div
         class="  relative container flex flex-wrap items-center justify-between content-center mx-auto"
       >
-        <a href="#" class="flex items-center pl-3">
+        <a href="index.php" class="flex items-center pl-3">
           <img src="assets/logo2.png" class="h-8 mr-4 sm:h-14" alt="TastyTrip" />
           <span
             class="self-center text-xl font-Unbounded whitespace-nowrap dark:text-white"
@@ -41,7 +41,7 @@
           >
             <li>
               <a
-                href="index.html"
+                href="index.php"
 
                 class="block py-2 pl-3 pr-4 text-bg-custom-1C3738 bg-blue-30 rounded md:bg-transparent md:text-grey md:p-0 md:dark:text-white dark:bg-bg-custom-1C3738 md:dark:bg-transparent"
                 aria-current="page"
@@ -50,14 +50,14 @@
             </li>
             <li>
               <a
-                href="../articles.php"
+                href="articles.php"
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 > articles</a
               >
             </li>
             <li>
               <a
-                href="../creer-article.php"
+                href="creer-article.php"
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >créer un article</a
               >
@@ -65,14 +65,14 @@
           
             <li>
               <a
-                href="../profil.php"
+                href="profil.php"
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >profil</a
               >
             </li>
             <li>
               <a
-                href="../admin.php"
+                href="admin.php"
 
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >admin</a
@@ -80,7 +80,7 @@
             </li>
             <li>
               <a
-                href="logout.php"
+                href="src/logout.php"
 
 
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
