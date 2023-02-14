@@ -15,12 +15,12 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/voyages.css">
     <link rel="stylesheet" href="css/stylefooter.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@0.2.28/bundled/lenis.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/voyages.css">
     <title>Au coeur de l'Inde | Tasty Trip</title>
     <script>
         tailwind.config = {
@@ -67,17 +67,16 @@ session_start();
         .bg-custom-F4FFF8 {
             background-color: #f4fff8;
         }
-    </style>
+    </style> -->
 </head>
 
 <!----------------------------------Body-------------------------------------------->
 
 <body>
     <?php require_once('src/header.php'); ?>
-    
-    <div class="flex items-center justify-center h-screen mb-12 bg-fixed bg-center bg-cover custom-img">
-        <div class="p-5 text-2xl text-white bg-purple-300 bg-opacity-50 rounded-xl">
-        L'Inde, un voyage spirituel
+    <div class="z-10 flex items-center justify-center h-screen mb-12 bg-fixed bg-center h-screen bg-cover" src="assets/inde.jpeg">
+        <div class="p-5 text-2xl text-white bg-orange-300 bg-opacity-50 rounded-xl">
+            L'Inde, un voyage spirituel
         </div>
     </div>
     <div class="max-w-lg m-auto">
@@ -142,59 +141,60 @@ session_start();
         </p>
     </div>
     <!-- <div class="mt-32"> -->
-        <!-- <h1 class="text-center text-5xl mb-10">L'Inde, un voyage spirituel</h1> -->
+    <!-- <h1 class="text-center text-5xl mb-10">L'Inde, un voyage spirituel</h1> -->
     <!-- <img src="" alt="Le mausolée de Safdar Jung"> -->
 
     <!----------------------------------- Footer ------------------------------------>
     <?php require_once('src/footer.php'); ?>
+    <!-------------- Dark Mode ------------------------->
     <script>
-		var themeToggleDarkIcon = document.getElementById(
-			"theme-toggle-dark-icon"
-		);
-		var themeToggleLightIcon = document.getElementById(
-			"theme-toggle-light-icon"
-		);
+        var themeToggleDarkIcon = document.getElementById(
+            "theme-toggle-dark-icon"
+        );
+        var themeToggleLightIcon = document.getElementById(
+            "theme-toggle-light-icon"
+        );
 
-		// Change the icons inside the button based on previous settings
-		if (
-			localStorage.getItem("color-theme") === "dark" ||
-			(!("color-theme" in localStorage) &&
-				window.matchMedia("(prefers-color-scheme: dark)").matches)
-		) {
-			themeToggleLightIcon.classList.remove("hidden");
-		} else {
-			themeToggleDarkIcon.classList.remove("hidden");
-		}
+        // Change the icons inside the button based on previous settings
+        if (
+            localStorage.getItem("color-theme") === "dark" ||
+            (!("color-theme" in localStorage) &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            themeToggleLightIcon.classList.remove("hidden");
+        } else {
+            themeToggleDarkIcon.classList.remove("hidden");
+        }
 
-		var themeToggleBtn = document.getElementById("theme-toggle");
+        var themeToggleBtn = document.getElementById("theme-toggle");
 
-		themeToggleBtn.addEventListener("click", function() {
-			// toggle icons inside button
-			themeToggleDarkIcon.classList.toggle("hidden");
-			themeToggleLightIcon.classList.toggle("hidden");
+        themeToggleBtn.addEventListener("click", function() {
+            // toggle icons inside button
+            themeToggleDarkIcon.classList.toggle("hidden");
+            themeToggleLightIcon.classList.toggle("hidden");
 
-			// if set via local storage previously
-			if (localStorage.getItem("color-theme")) {
-				if (localStorage.getItem("color-theme") === "light") {
-					document.documentElement.classList.add("dark");
-					localStorage.setItem("color-theme", "dark");
-				} else {
-					document.documentElement.classList.remove("dark");
-					localStorage.setItem("color-theme", "light");
-				}
+            // if set via local storage previously
+            if (localStorage.getItem("color-theme")) {
+                if (localStorage.getItem("color-theme") === "light") {
+                    document.documentElement.classList.add("dark");
+                    localStorage.setItem("color-theme", "dark");
+                } else {
+                    document.documentElement.classList.remove("dark");
+                    localStorage.setItem("color-theme", "light");
+                }
 
-				// if NOT set via local storage previously
-			} else {
-				if (document.documentElement.classList.contains("dark")) {
-					document.documentElement.classList.remove("dark");
-					localStorage.setItem("color-theme", "light");
-				} else {
-					document.documentElement.classList.add("dark");
-					localStorage.setItem("color-theme", "dark");
-				}
-			}
-		});
-	</script>
+                // if NOT set via local storage previously
+            } else {
+                if (document.documentElement.classList.contains("dark")) {
+                    document.documentElement.classList.remove("dark");
+                    localStorage.setItem("color-theme", "light");
+                } else {
+                    document.documentElement.classList.add("dark");
+                    localStorage.setItem("color-theme", "dark");
+                }
+            }
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 </body>
 
