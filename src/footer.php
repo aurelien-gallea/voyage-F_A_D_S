@@ -33,7 +33,7 @@
         <div class="right box">
           <h2>Nous Contacter</h2>
           <div class="content">
-            <form ="#">
+          <a href="contact.php">Nous Contacter ici</a>
              
               </div>
             </form>
