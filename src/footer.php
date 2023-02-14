@@ -33,7 +33,7 @@
         <div class="right box">
           <h2>Nous Contacter</h2>
           <div class="content">
-          <a href="contact.php"></a>
+          <a href="contact.php"><span>Nous Contacter ici</span></a>
       <div class="bottom">
       
           <span class="credit">Tasty Trip | </span>
