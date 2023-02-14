@@ -1,44 +1,44 @@
 /* palette de couleur du site */
 
 .color-1 {
-    color: #111827; /*dark mode flowbite*/
+    color: #111827!important; /*dark mode flowbite*/
 }
 
 .color-2 {
-    color: #8BAAAD; /*couleur du logo*/
+    color: #8BAAAD!important; /*couleur du logo*/
 
 }
 
 .color-3 {
-    color: #90323D; /*contrasté*/
+    color: #90323D!important; /*contrasté*/
 }
 
 .color-4 {
-    color: #FCF6B1; /* fond */
+    color: #FCF6B1!important; /* fond */
 }
 
 .color-5 {
-    color: #F18F01AD; /* couleur complémentaire*/
+    color: #F18F01AD!important; /* couleur complémentaire*/
 }
 
 .bg-color-1 {
-    background: #111827; /*dark mode flowbite*/
+    background: #111827!important; /*dark mode flowbite*/
 }
 
 .bg-color-2 {
-    background: #8BAAAD; /*couleur du logo*/
+    background: #8BAAAD!important; /*couleur du logo*/
 }
 
 .bg-color-3 {
-    background: #90323D; /*contrasté*/
+    background: #90323D!important; /*contrasté*/
 }
 
 .bg-color-4 {
-    background: #FCF6B1; /* fond */
+    background: #FCF6B1!important; /* fond */
 }
 
 .bg-color-5 {
-    background: #F18F01AD; /* couleur complémentaire*/
+    background: #F18F01AD!important; /* couleur complémentaire*/
 }
 
 
