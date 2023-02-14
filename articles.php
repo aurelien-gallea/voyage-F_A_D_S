@@ -6,7 +6,7 @@ $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "
 
 if (isset($_POST['tri'])) {
   try {
-    $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage2;charset=utf8", "root", "");
+    $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
     switch ($_POST['tri']) {
       case 'date_desc':
         $articles = $bdd->prepare('SELECT * FROM articles ORDER BY date DESC');
