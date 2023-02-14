@@ -21,34 +21,34 @@ session_start();
     <title>Découvrez l'Espagne | Tasty Trip</title>
 </head>
 
-<body>
+<body class="dark:bg-color-1 dark:text-white text-lg">
     <?php require_once('src/header.php'); ?>
 
-    <div class="mt-32">
-        <h1 class="text-center text-5xl mb-10">Envie d'aventures ? Visitez l'Espagne</h1>
+    <div class="mt-28">
+        <h1 class="font-unbounded text-center text-4xl mb-10 text-color-3 dark:text-color-4">Envie d'aventures ? Visitez l'Espagne</h1>
         <img src="./assets/esp-bg.jpg" alt="une mere tiens la main de son enfant dans une rue espagnole">
     </div>
     <section>
-        <hr>
-        <article class="mt-20">
+        
+        <article class="mt-10">
             <div class="  m-10">
-                <h2 class="text-4xl font-bold ">Barcelone</h2>
-                <span>Capitale de la Catalogne</span>
+                <h2 class="font-unbounded text-4xl font-bold text-color-3 dark:text-color-4">Barcelone</h2>
+                <span class="text-light font-unbounded">Capitale de la Catalogne</span>
             </div>
             <div>
                 <img src="./assets/esp-barca-bg.jpg" alt="barcelone par vue aerienne">
             </div>
             <div class="container mx-auto">
                 <div class="m-10">
-                    <h3 class="text-xl font-light">Découvrez une architecture hors du commun et du temps !</h3>
+                    <h3 class="font-unbounded text-xl font-light">Découvrez une architecture hors du commun et du temps !</h3>
                 </div>
                 <hr>
                 <div class="m-10 container mx-auto">
                     <div>
-                        <h3 class="text-2xl font-bold px-5">La Sagrada Familia</h3>
+                        <h3 class="font-unbounded text-2xl font-bold px-5 text-color-3 dark:text-color-4">La Sagrada Familia</h3>
                     </div>
-                    <div class="flex flex-col lg:flex-row items-center p-5 gap-5 mt-5">
-                        <div class="lg:w-1/2 w-full">
+                    <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
+                        <div class="lg:w-1/2 w-full flex justify-center  items-center lg:justify-start">
                             <img src="./assets/esp-sagrada-familia.jpg" alt="la sagrada familia">
                         </div>
                         <div class="lg:w-1/2  w-full">
@@ -66,10 +66,10 @@ session_start();
                 <hr>
                 <div class="m-10 container mx-auto">
                     <div>
-                        <h3 class="text-2xl font-bold px-5">Le Parc Güell</h3>
+                        <h3 class="font-unbounded text-2xl font-bold px-5 text-color-3 dark:text-color-4">Le Parc Güell</h3>
                     </div>
                     <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
-                        <div class="lg:w-1/2 w-full lg:order-2">
+                        <div class="lg:w-1/2 w-full lg:order-2 flex justify-center items-center lg:justify-end">
                             <img src="./assets/esp-parc-guell.jpg" alt="le parc güell">
                         </div>
                         <div class="lg:w-1/2  w-full">
@@ -85,8 +85,8 @@ session_start();
                 <hr>
                 <div class="m-10 container mx-auto flex flex-col items-center">
                     <div>
-                        <h3 class="text-2xl font-bold px-5">La Rambla, l'avenue phare de Barcelone</h3>
-                        <p class="font-light p-5">une découverte inoubliable !</p>
+                        <h3 class="font-unbounded text-2xl font-bold px-5 text-color-3 dark:text-color-4">La Rambla, l'avenue phare de Barcelone</h3>
+                        <p class="font-unbounded font-light p-5">une découverte inoubliable !</p>
                     </div>
                     <div>
                         <img src="./assets/esp-la-rambla-barcelone.png" alt="plan de la rambla barcelone">
@@ -95,10 +95,10 @@ session_start();
 
                 <div class="my-10 container mx-auto">
                     <div>
-                        <h3 class="text-2xl font-light p-5">Mercat De La Boqueria</h3>
+                        <h3 class="font-unbounded text-2xl font-light p-5 text-color-3 dark:text-color-4">Mercat De La Boqueria</h3>
                     </div>
                     <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
-                        <div class="lg:w-1/2 w-full">
+                        <div class="lg:w-1/2 w-full flex justify-center items-center lg:justify-start">
                             <img src="./assets/esp-las-ramblas.jpg" alt="mercat de la boqueria">
                         </div>
                         <div class="lg:w-1/2  w-full">
@@ -115,10 +115,10 @@ session_start();
                 </div>
                 <div class="m-10 container mx-auto">
                     <div>
-                        <h3 class="text-2xl font-light p-5">La statue de Colomb - 'Mirador de Colón'</h3>
+                        <h3 class="font-unbounded text-2xl font-light p-5 text-color-3 dark:text-color-4">La statue de Colomb - 'Mirador de Colón'</h3>
                     </div>
                     <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
-                        <div class="lg:w-1/2 w-full lg:order-2">
+                        <div class="lg:w-1/2 w-full lg:order-2 flex justify-center items-center lg:justify-end">
                             <img src="./assets/esp-monument_colomb_barcellona.jpg" alt="la statue de christophe colomb">
                         </div>
                         <div class="lg:w-1/2  w-full">
@@ -134,11 +134,11 @@ session_start();
                 </div>
                 <div class="m-10 container mx-auto">
                     <div>
-                        <h3 class="text-2xl font-light px-5">Plaça Reial</h3>
-                        <span class="px-5">La place dans le quartier gothique de Barcelone</span>
+                        <h3 class="font-unbounded text-2xl font-light px-5 text-color-3 dark:text-color-4">Plaça Reial</h3>
+                        <span class="font-unbounded px-5">La place dans le quartier gothique de Barcelone</span>
                     </div>
-                    <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
-                        <div class="lg:w-1/2 w-full">
+                    <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5 ">
+                        <div class="lg:w-1/2 w-full flex justify-center items-center lg:justify-start">
                             <img src="./assets/esp-placareialbarcelone.jpg" alt="la placa reial">
                         </div>
                         <div class="lg:w-1/2  w-full">
@@ -154,10 +154,10 @@ session_start();
 
                 <div class="m-10 container mx-auto">
                     <div>
-                        <h3 class="text-2xl font-bold px-5">Crème catalane - L'instant gourmand</h3>
+                        <h3 class="font-unbounded text-2xl font-bold px-5 text-color-3 dark:text-color-4">Crème catalane - L'instant gourmand</h3>
                     </div>
                     <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
-                        <div class="lg:w-1/2 w-full lg:order-2">
+                        <div class="lg:w-1/2 w-full lg:order-2 flex justify-center items-center lg:justify-end">
                             <img src="./assets/esp-Crema_Catalana.jpg" alt="Crème catalane">
                         </div>
                         <div class="lg:w-1/2  w-full">
@@ -172,7 +172,7 @@ session_start();
         <hr>
         <article>
             <div class="  m-10">
-                <h2 class="text-4xl font-bold ">Madrid</h2>
+                <h2 class="text-4xl font-bold  text-color-3 dark:text-color-4">Madrid</h2>
                 <span>La Capitale</span>
             </div>
             <div>
@@ -185,10 +185,10 @@ session_start();
                 <hr>
                 <div class="m-10 container mx-auto">
                     <div>
-                        <h3 class="text-2xl font-bold px-5">Le Palais royal</h3>
+                        <h3 class="text-2xl font-bold px-5 text-color-3 dark:text-color-4">Le Palais royal</h3>
                     </div>
                     <div class="flex flex-col lg:flex-row items-center p-5 gap-5 mt-5">
-                        <div class="lg:w-1/2 w-full">
+                        <div class="lg:w-1/2 w-full flex justify-center items-center lg:justify-start">
                             <img src="./assets/esp-palais.jpg" alt="le palais royal">
                         </div>
                         <div class="lg:w-1/2  w-full">
@@ -203,10 +203,10 @@ session_start();
             </div>
             <div class="m-10 container mx-auto">
                 <div>
-                    <h3 class="text-2xl font-bold px-5">Stade Santiago-Bernabéu</h3>
+                    <h3 class="text-2xl font-bold px-5 text-color-3 dark:text-color-4">Stade Santiago-Bernabéu</h3>
                 </div>
-                <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
-                    <div class="lg:w-1/2 w-full lg:order-2">
+                <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5 mb-10">
+                    <div class="lg:w-1/2 w-full lg:order-2 flex justify-center items-center lg:justify-end">
                         <img src="./assets/esp-bernabeu.jpg" alt="Stade Santiago-Bernabéu">
                     </div>
                     <div class="lg:w-1/2  w-full">
@@ -216,14 +216,14 @@ session_start();
 
                     </div>
                 </div>
+                <hr>
             </div>
-            <hr>
             <div class="m-10 container mx-auto">
                 <div>
-                    <h3 class="text-2xl font-bold px-5">Cocido madrilène - l'instant Gastronomie</h3>
+                    <h3 class="text-2xl font-bold px-5 text-color-3 dark:text-color-4">Cocido madrilène - l'instant Gastronomie</h3>
                 </div>
                 <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
-                    <div class="lg:w-1/2 w-full">
+                    <div class="lg:w-1/2 w-full flex justify-center items-center lg:justify-start">
                         <img src="./assets/esp-CocidoMadrileño.jpg" alt="Cocido madrilène">
                     </div>
                     <div class="lg:w-1/2  w-full">
@@ -234,11 +234,12 @@ session_start();
                     </div>
                 </div>
             </div>
-            <hr>
+            
         </article>
     </section>
-    <div class="fixed bottom-0 bg-color-5 z-10 progress"></div>
-    <?php require_once('src/footer.php'); ?>
+    <div class="fixed bottom-0 bg-color-3 dark:bg-color-4 z-10 progress"></div>
+        <?php require_once('src/footer.php'); ?>
+   
     <script src="src/espagne.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script src="src/tailwind-need-body.js"></script>
