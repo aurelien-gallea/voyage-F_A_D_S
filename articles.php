@@ -113,8 +113,8 @@ if (isset($_POST['tri'])) {
    <br>
    <form action="articles.php" method="post">
   <select name="tri">
-    <option value="date_desc">Date décroissante</option>
     <option value="date_asc">Date croissante</option>
+    <option value="date_desc">Date décroissante</option>
     <option value="login">Utilisateur</option>
     <option value="categories">Catégories</option>
   </select>
