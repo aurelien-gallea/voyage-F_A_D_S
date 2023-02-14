@@ -303,9 +303,9 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                         <div class="border rounded my-6">
                             <div class="artContainer text-white bg-color-2">
-                                <div class="flex flex-col md:flex-row flex-wrap justify-between container p-3">
+                                <div class="flex flex-col  justify-center container p-3">
                                     <h3 class="text-xl mb-2">Titre : <?= $arrayArt[$i]['titre'] ?></h3>
-                                    <div class="flex flex-wrap gap-1">catégories:<?php
+                                    <div class="flex flex-wrap items-center gap-1">catégories:<?php
                                                                                     for ($k = 0; $k < count($newArray); $k++) {
                                                                                         echo '<span class="mx-2 p-2 bg-color-1 rounded">' . $newArray[$k] . '</span>';
                                                                                     }
