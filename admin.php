@@ -175,6 +175,8 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
     <link rel="stylesheet" href="css/voyages.css">
+    <link rel="stylesheet" href="css/tailwind-need.css">
+    <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
 
     <title>Panel Admin</title>
@@ -464,7 +466,6 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <?php require_once('src/footer.php'); ?>
     <script src="src/admin.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-
+    <script src="src/tailwind-need-body.js"></script>
 </body>
-
 </html>

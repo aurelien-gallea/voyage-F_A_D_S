@@ -12,19 +12,22 @@ session_start();
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
-    <link rel="stylesheet" href="css/voyages.css">
+    <!-- <link rel="stylesheet" href="css/voyages.css"> -->
+    <link rel="stylesheet" href="css/tailwind-need.css">
+    <script src="src/tailwind-need.js"></script>
     <link href="assets/esp-favicon.ico" rel="icon" type="image/x-icon" />
     <title>Découvrez l'Espagne | Tasty Trip</title>
 </head>
 
 <body>
     <?php require_once('src/header.php'); ?>
-    
+
     <div class="mt-32">
         <h1 class="text-center text-5xl mb-10">Envie d'aventures ? Visitez l'Espagne</h1>
         <img src="./assets/esp-bg.jpg" alt="une mere tiens la main de son enfant dans une rue espagnole">
     </div>
     <section>
+        <hr>
         <article class="mt-20">
             <div class="  m-10">
                 <h2 class="text-4xl font-bold ">Barcelone</h2>
@@ -234,7 +237,9 @@ session_start();
     </section>
     <div class="fixed bottom-0 bg-color-5 z-10 progress"></div>
     <?php require_once('src/footer.php'); ?>
+    <script src="src/espagne.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <script src="src/tailwind-need-body.js"></script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-<script src="src/espagne.js"></script>
+
 </html>
