@@ -14,7 +14,7 @@ session_start();
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
-    <!-- <link rel="stylesheet" href="css/voyages.css"> -->
+    <link rel="stylesheet" href="css/voyages.css">
     <link rel="stylesheet" href="css/tailwind-need.css">
     <script src="src/tailwind-need.js"></script>
     <link href="assets/ind-favicon.png" rel="icon" type="image/x-icon" />
@@ -24,14 +24,16 @@ session_start();
 <body>
     <?php require_once('src/header.php'); ?>
 <div>
-    <section class="pt-40 pb-32 relative">
+    <!-- Parallax -->
+    <section class="pt-40 pb-64 relative">
         <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-100 bg-fixed" style="background-image:url(assets/inde.jpeg)"></div>
     </section>
 
     <section class="h-[500px]">
-    <h1 class="mb-32 text-4xl font-bold text-center leading-none tracking-tight color-3 md:text-5xl lg:text-6xl dark:text-white">L'Inde, un voyage spirituel</h1>
+    <h1 class="text-4xl font-bold text-center leading-none tracking-tight color-3 md:text-5xl lg:text-6xl">L'Inde, un voyage spirituel</h1>
     </section>
 
+    <!-- Parallax -->
     <section class="pt-40 pb-32 relative">
         <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-100 bg-fixed" style="background-image:url(assets/inde.jpeg)"></div>
     </section>
