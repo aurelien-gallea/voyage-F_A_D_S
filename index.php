@@ -20,7 +20,7 @@
       rel="stylesheet"
     />
 </head>
-<?php require_once('src/header-blog.php'); ?>
+<?php require_once('src/header.php'); ?>
 
 
 <body class="bg-gray-100">
