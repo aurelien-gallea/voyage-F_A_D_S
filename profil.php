@@ -156,8 +156,10 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/stylefooter.css">
     <link rel="stylesheet" href="css/voyages.css">
     <link rel="stylesheet" href="css/tailwind-need.css">
@@ -303,9 +305,9 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                         <div class="border rounded my-6">
                             <div class="artContainer text-white bg-color-2">
-                                <div class="flex flex-col md:flex-row flex-wrap justify-between container p-3">
+                                <div class="flex flex-col  justify-center container p-3">
                                     <h3 class="text-xl mb-2">Titre : <?= $arrayArt[$i]['titre'] ?></h3>
-                                    <div class="flex flex-wrap gap-1">catégories:<?php
+                                    <div class="flex flex-wrap items-center gap-1">catégories:<?php
                                                                                     for ($k = 0; $k < count($newArray); $k++) {
                                                                                         echo '<span class="mx-2 p-2 bg-color-1 rounded">' . $newArray[$k] . '</span>';
                                                                                     }
