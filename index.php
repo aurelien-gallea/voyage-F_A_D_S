@@ -23,6 +23,7 @@
 <?php require_once('src/header.php'); ?>
 
 <br>
+<br>
 <body class="bg-gray-100">
   <h1 class="text-3xl font-bold mb-8">Bienvenue sur Tasty Trip</h1>
   <ul class="grid grid-cols-2 gap-4">
