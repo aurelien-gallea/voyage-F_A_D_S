@@ -42,7 +42,6 @@ session_start();
                         <br>
                         <br>
                         <br>
-                        <br>
                         Le site funéraire fut réalisé dans les années 1560, sous le patronage du fils d’Humayun, le grand empereur Akbar. Des artisans indiens et perses travaillèrent ensemble à la construction de cette tombe-jardin, beaucoup plus grande que toutes celles jamais construites auparavant dans le monde islamique. La tombe-jardin de Humayun est un exemple de charbagh (jardin à quatre quadrants où sont représentés les quatre fleuves du paradis coranique) avec des pièces d’eau reliées entre elles par des canaux. De grandes portes d’entrée donnent sur le jardin au sud et à l’ouest avec des pavillons situés au centre des murs des côtés est et nord.
                     </p>
                 </div>
@@ -63,7 +62,6 @@ session_start();
                 <div class="lg:w-2/3  w-full">
                     <p class="mt-10 text-justify text-center font-mono">
                         Old Delhi est l’ancienne capitale de l’empire Moghol. Originellement appelé Shahjahanabad, c’est un condensé de l’Inde à l’état pur. Des millions d’habitants, des ruelles tortueuses dans tous les sens, des odeurs d’épices et d’encens, des rickshaws, des klaxons et des embouteillages. La vie, grouillante et effervescente, est rythmée par l’appel du muezzin de la Grande Mosquée.Le cœur historique de la ville recense de nombreuses choses à voir ou à faire. <br>
-                        <br>
                         <br>
                         <br>
                         Chandni Chowk est l’un des marchés les plus anciens de Old Delhi. Ce quartier de Old Delhi offre la meilleure nourriture de rue de toute la ville. Le marché se trouve sur la rue du même nom, et s’étend entre le Fort Rouge et la porte de Lahore. La rue est découpée en différents secteurs, suivant les produits venus. La traversée vous prendra facilement plusieurs heures.
