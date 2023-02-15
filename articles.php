@@ -111,6 +111,7 @@ if (isset($_POST['tri'])) {
    <br>
    <br> 
    <br>
+   <br>
    <form action="articles.php" method="post">
   <select name="tri">
     <option value="date_asc">Date croissante</option>
@@ -292,6 +293,8 @@ input[type="submit"] {
 </div>
   <br>
   <br>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <script src="src/tailwind-need-body.js"></script> 
     </body>
   <footer class="text-white">
   <link rel="stylesheet" href="stylefooter.css" />
