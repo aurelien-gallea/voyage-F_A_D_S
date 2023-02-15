@@ -51,7 +51,7 @@
       </a>
     </li>
     <li class="bg-white rounded-lg shadow-md overflow-hidden">
-      <a href="blog.php">
+      <a href="articles.php">
         <img src="assets/vignette blog.jpg" alt="Blog" class="w-full h-48 object-cover">
         <span class="block text-lg font-medium text-gray-800 py-4 px-6">Blog</span>
       </a>
