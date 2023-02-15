@@ -192,6 +192,8 @@
 					   La ville abrite également de nombreux parcs et espaces verts, ainsi que le Liberty Bell, un symbole important de la liberté américaine.</p>
 				   
 					<br><br>Activités :  Il y a beaucoup d'activités à faire dans la ville, telles que la visite de l'Independence Hall, où la Déclaration d'Indépendance a été signée en 1776, ou le Musée d'Art de Philadelphie, qui abrite une collection remarquable de peintures américaines et européennes. Les amateurs de sport peuvent assister à un match des Eagles de Philadelphie ou des 76ers de Philadelphie au Lincoln Financial Field ou au Wells Fargo Center.
+					<br><br>
+						<img src="assets/cheesesteak.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
 					<br><br>Gastronomie : Philadelphie est célèbre pour son "cheesesteak", un sandwich au steak haché et au fromage fondu qui est un must pour les gourmets. La ville est également connue pour ses pretzels frais, ses hoagies (sandwichs au pain long) et ses délicieux desserts, tels que le water ice et les beignets. Il y a également une scène culinaire en constante évolution, avec de nombreux restaurants proposant une cuisine inventive et des plats locaux.
 
 
