@@ -21,7 +21,7 @@ session_start();
     <title>Découvrez l'Espagne | Tasty Trip</title>
 </head>
 
-<body class="dark:bg-color-1 dark:text-white text-lg">
+<body class="min-h-screen flex flex-col items-center dark:bg-color-1 dark:text-white text-lg">
     <?php require_once('src/header.php'); ?>
 
     <div class="mt-28">
@@ -89,7 +89,7 @@ session_start();
                         <p class="font-unbounded font-light p-5">une découverte inoubliable !</p>
                     </div>
                     <div>
-                        <img src="./assets/esp-la-rambla-barcelone.png" alt="plan de la rambla barcelone">
+                        <img class="bg-white" src="./assets/esp-la-rambla-barcelone.png" alt="plan de la rambla barcelone">
                     </div>
                 </div>
 

@@ -183,13 +183,13 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
     <title>Panel Admin</title>
 </head>
-<?php require_once('src/header-blog.php'); ?>
 
-<body>
+<body class="min-h-screen flex flex-col dark:bg-color-1">
+    <?php require_once('src/header-blog.php'); ?>
 
     <section>
-        <h1 class="font-unbounded mt-32 text-center text-4xl"> Panel Admin</h1>
-        <div class="container mx-auto mt-4 text-color-3 dark:text-color-4 flex flex-col items-center bg-color-5 dark:bg-color-1 md:w-2/4 2xl:w-1/4 md:rounded-md">
+        <h1 class="font-unbounded mt-32 text-center text-4xl dark:text-color-4"> Panel Admin</h1>
+        <div class="container mx-auto mt-4 text-color-3 dark:text-color-4 flex flex-col items-center bg-color-5 dark:bg-color-3 md:w-2/4 2xl:w-1/4 md:rounded-md">
             <span class="text-center text-3xl m-5 font-light ">Les stats du blog</span>
             <span class="text-2xl pb-5">articles écrits : <?php if (isset($count)) echo $count; ?> </span>
             <span class="text-2xl pb-5">commentaires écrits : <?php if (isset($arrayComs)) echo $nbComs; ?> </span>
@@ -229,7 +229,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
     </section>
 
-    <form action="admin.php" method="post">
+    <form class="flex-grow" action="admin.php" method="post">
         <section>
 
             <div class="bg-color-3 ">

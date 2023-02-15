@@ -168,13 +168,13 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
     <title>Profil</title>
 </head>
-<?php require_once('src/header-blog.php'); ?>
 
-<body class="dark:bg-color-1">
-    <section class="flex-grow mt-28">
+<body class="min-h-screen flex flex-col dark:bg-color-1">
+    <?php require_once('src/header-blog.php'); ?>
+    <section class=" mt-28">
 
         <div class="container mx-auto p-2  flex flex-col items-center bg-color-5 dark:bg-color-3 md:w-2/4 2xl:w-1/4 md:rounded-t-md">
-            <h1 class="font-unbounded text-center text-3xl m-5 font-light color-4">Modifier Profil</h1>
+            <h1 class="font-unbounded text-center text-3xl m-5 font-light text-color-3 dark:text-color-4">Modifier Profil</h1>
             <div id="block1" class="">
                 <hr>
 
@@ -184,27 +184,27 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     </div>
                     <div>
                         <div class="flex  justify-center">
-                            <label for="login" class="bg-color-4 dark:bg-color-5 p-2 mt-3 rounded-l-md"><img width="30" src="assets/utilisateur.png" alt="icone utilisateur"> </label>
+                            <label for="login" class="bg-color-3 dark:bg-color-4 p-2 mt-3 rounded-l-md"><img width="30" src="assets/utilisateur.png" alt="icone utilisateur"> </label>
                             <input id="login" class="p-2 rounded-r-md  mt-3 text-xl" type="text" name="login" id="login" value="<?= $login ?>">
                         </div>
                     </div>
                     <div>
 
                         <div class="flex  justify-center">
-                            <label for="email" class="bg-color-4 dark:bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/email.png" alt="icone email"></label>
+                            <label for="email" class="bg-color-3 dark:bg-color-4 p-2  rounded-l-md"><img width="30" src="assets/email.png" alt="icone email"></label>
                             <input id="email" class="p-2 rounded-r-md  text-xl" type="text" name="email" id="email" value="<?= $email ?>">
                         </div>
 
                     </div>
                     <div>
                         <div class="flex justify-center">
-                            <label for="password" class="bg-color-4 dark:bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
+                            <label for="password" class="bg-color-3 dark:bg-color-4 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
                             <input id="password" class="p-2 rounded-r-md  text-xl" type="password" name="password" id="password" placeholder="Confirmer Mot De Passe">
                         </div>
                     </div>
                     <small class="text-red-500 ">Confirmer votre MDP pour modifier les informations</small>
 
-                    <div id="divBtn" class="p-2  w-full bg-color-4 dark:bg-color-5 text-center border rounded-md text-xl hover:bg-white hover:text-black">
+                    <div id="divBtn" class="p-2  w-full bg-color-3 dark:bg-color-4 text-center border rounded-md text-xl hover:bg-white hover:text-black">
                         <button id="btn" class="w-full" type="submit">Modifier mes informations</button>
                     </div>
                 </form>
@@ -290,7 +290,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
     </section>
 
-    <section>
+    <section >
         <div class="bg-color-3 dark:text-white">
             <div class=" text-white container mx-auto m-3 p-4 flex flex-col items-center">
                 <h2 class="font-unbounded text-2xl mt-2">Mes articles :</h2>
@@ -355,7 +355,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
             </div>
         </div>
     </section>
-    <section>
+    <section class="flex-grow">
         <div class="bg-color-3 text-white my-3">
             <div class="container mx-auto m-3 p-4 flex flex-col md:flex-row justify-center items-center  ">
                 <h2 class="font-unbounded text-2xl">Mes Commentaires :</h2>
