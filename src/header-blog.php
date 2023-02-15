@@ -1,4 +1,4 @@
-
+<?php require_once('classes/Update.php'); ?>
   <header class="fixed  top-0 left-0 right-0 z-1 mb-10 bg-white  dark:bg-gray-900 ">
     <nav
       class="    px-2 bg-blue/54 shadow-xl z-2  border-gray-200 dark:bg-gray-900 dark:border-gray-700"
@@ -70,6 +70,11 @@
                 >Profil</a
               >
             </li>
+            <?php
+            if (isset($_SESSION['id'])) {
+              $adminStatus = Update::selectStatusByUser($_SESSION['id']);
+              if ($adminStatus['droits'] != 'admin') {  ?>
+
             <li>
               <a
                 href="admin.php"
@@ -78,14 +83,33 @@
                 >Admin</a
               >
             </li>
+
+                 
+                
+             <? }
+                else {?>
+              
+
+
+            <?php   
+          }} ?>
+           
+
             <li>
-              <a
-                href="src/logout.php"
 
 
+            <?php  if(empty($_SESSION)) {?>
+              <a  href="connexion.php"
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Se déconnecter</a
-              >
+                >Se connecter</a> 
+
+                <?php }
+                else{?>
+              <a  href="src/logout.php"
+                class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Se déconnecter</a>  
+                <?php } ?>
+            
             </li>
             <li>
               <button
