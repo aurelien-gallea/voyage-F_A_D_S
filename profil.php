@@ -174,7 +174,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <section class="flex-grow mt-28">
 
         <div class="container mx-auto p-2  flex flex-col items-center bg-color-5 dark:bg-color-3 md:w-2/4 2xl:w-1/4 md:rounded-t-md">
-            <h1 class="text-center text-3xl m-5 font-light color-4">Modifier Profil</h1>
+            <h1 class="font-unbounded text-center text-3xl m-5 font-light color-4">Modifier Profil</h1>
             <div id="block1" class="">
                 <hr>
 
@@ -253,7 +253,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
         </div>
         <div class="container mx-auto text-white flex flex-col items-center dark:bg-color-5 bg-color-3 md:w-2/4 2xl:w-1/4 md:rounded-b-md">
-            <span class="text-center text-3xl m-5 font-light color-4">Mes stats</span>
+            <span class="font-unbounded text-center text-3xl m-5 font-light color-4">Mes stats</span>
             <span class="text-2xl color-4 pb-5">articles écrits : <?php if (isset($count)) echo $count; ?> </span>
             <span class="text-2xl color-4 pb-5">commentaires écrits : <?php if (isset($arrayComs)) echo $nbComs; ?> </span>
         </div>
@@ -292,10 +292,10 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
     <section>
         <div class="bg-color-3 dark:text-white">
-            <div class="container mx-auto m-3 p-4 flex flex-col items-center  ">
-                <h2 class="text-3xl">Mes articles :</h2>
+            <div class=" text-white container mx-auto m-3 p-4 flex flex-col items-center">
+                <h2 class="font-unbounded text-2xl mt-2">Mes articles :</h2>
             </div>
-            <div class="menu-content container mx-auto m-4  p-2  flex flex-col items-center  ">
+            <div class="menu-content container mx-auto m-4  p-2 flex flex-col md:w-1/2">
 
                 <form action="profil.php" method="post">
                     <?php
@@ -304,7 +304,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         $newArray = Update::associateCatName($arrayArt[$i]['id'], $arrayCat);
                     ?>
                         <div class="border rounded my-6">
-                            <div class="artContainer text-black dark:text-white bg-color-4 dark:bg-color-1">
+                            <div class="artContainer text-black dark:text-white bg-white dark:bg-color-1">
                                 <div class="flex flex-col  justify-center container p-3">
                                     <h3 class="text-xl mb-2">Titre : <?= $arrayArt[$i]['titre'] ?></h3>
                                     <div class="flex flex-wrap items-center gap-1">catégories:<?php
@@ -314,15 +314,15 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                                                                     ?> </div>
                                 </div>
                                 <hr>
-                                <p class="text-justify p-3"><?= $arrayArt[$i]['article'] ?></p>
+                                <p class="break-words p-3 "><?= $arrayArt[$i]['article'] ?></p>
                                 <hr>
-                                <div class="text-right m-3 "> dernière modification le : <?= DateToFr::dateFr($arrayArt[$i]['date']) ?> par <?= $login ?></div>
+                                <div class="text-right p-3 "> dernière modification le : <?= DateToFr::dateFr($arrayArt[$i]['date']) ?> par <?= $login ?></div>
                                 <hr>
                             </div>
                             <div>
-                                <div class="btnContainer text-black dark:text-white bg-white dark:bg-color-3 flex justify-between gap-10 container p-3">
-                                    <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier article</button>
-                                    <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button>
+                                <div class="btnContainer container text-black dark:text-white bg-white dark:bg-color-3 flex flex-wrap justify-between gap-2  p-3">
+                                    <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier</button>
+                                    <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer</button>
                                 </div>
                             </div>
                             <!-- bloc pour maj article -->
@@ -358,9 +358,9 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <section>
         <div class="bg-color-3 text-white my-3">
             <div class="container mx-auto m-3 p-4 flex flex-col md:flex-row justify-center items-center  ">
-                <h2 class="text-3xl">Mes Commentaires :</h2>
+                <h2 class="font-unbounded text-2xl">Mes Commentaires :</h2>
             </div>
-            <div class="container mx-auto flex flex-col items-center  ">
+            <div class="container mx-auto m-4 flex flex-col md:w-1/2  ">
                 <span> Cliquez sur le commentaire pour être redirigé vers l'article, pour pouvoir le modifier</span>
                 <?php
                 // on affiche les commentaires qu'on a push précédemment dans un tableau

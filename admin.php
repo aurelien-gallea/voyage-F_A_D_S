@@ -237,7 +237,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     <h2 class="font-unbounded text-2xl">Les utilisateurs :</h2>
                     <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-5 dark:bg-color-1">Ouvrir menu</span>
                 </div>
-                <div class="menu-content container mx-auto my-2  p-2  flex flex-col items-center  ">
+                <div class="menu-content container mx-auto my-2  p-2  flex flex-col md:w-1/2 ">
 
 
                     <?php
@@ -260,7 +260,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         <div>
                             <div class="btnContainer flex justify-center gap-10 container p-3">
                                 <button class="update border rounded p-3 hover:bg-color-5" type="submit" name="update" value="<?= $arrayUsers[$i]['id'] ?>">modifier droits</button>
-                                <button class=" border rounded p-3 hover:bg-color-3" type="submit" name="delete" value="<?= "user-" . $arrayUsers[$i]['id'] ?>">Supprimer </button>
+                                <button class=" border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?= "user-" . $arrayUsers[$i]['id'] ?>">Supprimer </button>
                             </div>
                             
                         </div>
@@ -296,7 +296,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-5 dark:bg-color-1">Ouvrir menu</span>
                 </div>
 
-                <div class="menu-content container mx-auto my-2  p-2  flex flex-col items-center  ">
+                <div class="menu-content container mx-auto my-2  p-2  flex flex-col md:w-1/2 ">
                     <div class="flex flex-wrap text-white items-center gap-5 my-2">
                         <label for="addCat">Ajouter une catégorie :</label>
                         <input type="text" name="addCat" class=" text-black dark:text-white dark:bg-color-1">
@@ -317,7 +317,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             <hr>
                             <div class="btnContainer flex justify-center gap-10 container p-3">
                                 <button class="update border rounded p-3 hover:bg-color-5" type="submit" name="update" value="<?= $arrayCats[$i]['id'] ?>">Modifier</button>
-                                <button class=" border rounded p-3 hover:bg-color-3" type="submit" name="delete" value="<?= 'cat-' . $arrayCats[$i]['id'] ?>">Supprimer</button>
+                                <button class=" border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?= 'cat-' . $arrayCats[$i]['id'] ?>">Supprimer</button>
                             </div>
                         </div>
                         <!-- bloc pour maj categories -->
@@ -342,7 +342,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     <h2 class="font-unbounded text-2xl">Les articles :</h2>
                     <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-5 dark:bg-color-1">Ouvrir menu</span>
                 </div>
-                <div class="menu-content container mx-auto m-4  p-2  flex flex-col items-center  ">
+                <div class="menu-content container mx-auto m-4  p-2  flex flex-col md:w-1/2  ">
 
                     <?php
 
@@ -369,7 +369,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                                 ?> </div>
                             </div>
                             <hr>
-                            <p class="text-justify p-3"><?= $arrayArt[$i]['article'] ?></p>
+                            <p class="break-all  p-3"><?= $arrayArt[$i]['article'] ?></p>
                             <hr>
                             <div class="text-right"> dernière modification le : <?= DateToFr::dateFR($arrayArt[$i]['date']);  ?> par <span class="<?= Update::printStatus($statusByUser['nom']) ?>"><?= $result['login'] ?></span></div>
                             <hr>
@@ -377,7 +377,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         <div>
                             <div class="btnContainer flex justify-center gap-10  container p-3">
                                 <button class="update border rounded p-3 hover:bg-color-5" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier article</button>
-                                <button class=" border rounded p-3 hover:bg-color-3" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button>
+                                <button class=" border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button>
                             </div>
 
                         </div>
@@ -416,7 +416,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     <h2 class="font-unbounded text-2xl">Les Commentaires :</h2>
                     <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-5 dark:bg-color-1">Ouvrir menu</span>
                 </div>
-                <div class="menu-content container mx-auto flex flex-col items-center ">
+                <div class="menu-content container mx-auto flex flex-col md:w-1/2">
                     <span> Cliquez sur le commentaire pour être redirigé vers la page de  l'article</span>
                     <?php
                     // on affiche les commentaires qu'on a push précédemment dans un tableau
@@ -445,7 +445,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         </a>
                         <div class="btnContainer flex justify-center gap-10  container p-3">
                             <button class="update border rounded p-3 hover:bg-color-5" type="submit" name="update" value="<?=$commentaries[$i]['id']?>">Modifier</button>
-                            <button class=" border rounded p-3 hover:bg-color-3" type="submit" name="delete" value="<?='com-' . $commentaries[$i]['id']?>">Supprimer</button>
+                            <button class=" border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?='com-' . $commentaries[$i]['id']?>">Supprimer</button>
                         </div>
                          <!-- bloc pour maj commentaires -->
                          <div class="artChange  mt-5 hidden p-2">
