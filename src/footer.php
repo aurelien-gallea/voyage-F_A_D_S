@@ -39,9 +39,10 @@
     </div>
   </div>
   <div class="bottom">
-    <div class="container">
-    <span class="text-white ml-2 inline-block">Tasty Trip | </span>
-      <span class="text-white ml-2 inline-block">2023 All rights reserved.</span>
-    </div>
+  <div class="container">
+    <span class="text-white ml-4 inline-block">Tasty Trip | </span>
+    <span class="text-white inline-block">2023 All rights reserved.</span>
   </div>
+</div>
+
 </footer>
