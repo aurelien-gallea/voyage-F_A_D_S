@@ -180,6 +180,8 @@
 						 <br><br>
 						<img src="assets/Chicagobean.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
 						 <br><br>Gastronomie : Chicago est célèbre pour sa pizza deep-dish, une tarte épaisse avec une croûte croustillante et une garniture généreuse de fromage et de sauce tomate. Il y a aussi la cuisine de rue, comme les hot-dogs à la Chicago, garnis de moutarde, d'oignons, de cornichons et de piments. La ville offre également une grande variété de restaurants gastronomiques, des steakhouses aux restaurants de fruits de mer en passant par les restaurants fusion. Enfin, ne manquez pas de goûter la cuisine polonaise traditionnelle à la Pączki Day, qui est célébrée tous les ans en février. 
+						 <br><br>
+						<img src="assets/chicagopizza.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
 						</div>
 				   <div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <div class="flex flex-col items-center">
