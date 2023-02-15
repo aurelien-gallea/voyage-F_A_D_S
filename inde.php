@@ -33,7 +33,7 @@ session_start();
         <section class=" w-full bg-color-5">
             <h1 class="text-4xl font-bold text-center leading-none tracking-tight text-color-3 md:text-5xl lg:text-6xl italic">L'Inde, un voyage spirituel...</h1>
             <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl">Tombe de Humayun à Delhi</h2>
-            <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
+            <div class="flex flex-col lg:flex-row p-5 mt-5">
                 <div class="flex items-center lg:w-1/3 lg:order-1 m-20 ">
                     <img src="./assets/tomb.png" alt="Tombe de Humayun, Delhi">
                 </div>
@@ -56,7 +56,7 @@ session_start();
 
         <section class="bg-color-3">
             <h2 class="font-bold text-center leading-none tracking-tight text-color-4 md:text-5xl">Vieux Delhi</h2>
-            <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
+            <div class="flex flex-col lg:flex-row p-5 mt-5">
                 <div class="lg:w-1/3 lg:order-1 m-10">
                     <img src="./assets/olddelhi.png" alt="Un vendeur de ce qui semble être des beignets les fait frire dans une marmite dans une rue bondée">
                 </div>
@@ -78,7 +78,7 @@ session_start();
 
         <section class="bg-color-2">
             <h2 class="font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl">Parc national Sanjay Gandhi</h2>
-            <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
+            <div class="flex flex-col lg:flex-row p-5 mt-5">
                 <div class="lg:w-1/3 lg:order-1 m-10">
                     <img src="./assets/parc.png" alt="Une vue d'au-dessus du parc avec des arbres">
                 </div>
@@ -99,7 +99,7 @@ session_start();
 
         <section class="bg-color-4">
             <h1 class="text-4xl font-bold text-center leading-none tracking-tight text-color-3 md:text-5xl lg:text-6xl italic">...mais aussi appétissant.</h1>
-            <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
+            <div class="flex flex-col lg:flex-row p-5 mt-5">
                 <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl">Naan / nân</h2>
                 <div class="lg:w-1/3 lg:order-1 mt-10">
                     <img src="./assets/naan.png" alt="Quelques pains naans empilés sur une assiette noire">
@@ -115,7 +115,7 @@ session_start();
             </div>
             <br>
             <br>
-            <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
+            <div class="flex flex-col lg:flex-row p-5 mt-5">
                 <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl">Dhal / Dal</h2>
                 <div class="lg:w-1/3 lg:order-1 mt-10">
                     <img src="./assets/dhal.png" alt="Un plat de curry dhal vu du dessus aux touches orangés et rouges">

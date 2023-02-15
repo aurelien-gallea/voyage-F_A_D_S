@@ -14,9 +14,11 @@ require("src/connectionDB.php");
 
 $req = $bdd->prepare('SELECT * FROM utilisateurs WHERE id=?');
 
-//Si le titre et le contenu ont été rempli alors ça envoie l'article dans la bdd
+//Si on clique sur le bouton valider, on entre dans la boucle
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
+	//Si les trois existent et on une valeur (donc pas null)
 	if (isset($_POST['article_titre'], $_POST['article_contenu'], $_POST['categorie'])) {
+		//Si on a bien rentré une valeur pour le contenu ET le titre et que si au moins une catégorie est choisie
 		if (!empty($_POST['article_titre']) && !empty($_POST['article_contenu']) && ($_POST['categorie']) > 0) {
 
 			//variable avec le contenu du titre et de l'article
