@@ -2,6 +2,29 @@
 <html>
 	<head>
 		<title>USA</title>
+		<script>
+      tailwind.config = { darkMode: 'class',
+  // ...
+  content: [],
+        theme: {
+          extend: {
+            colors: {
+        'color-1': '#000F08',
+        'color-2': '#1C3738',
+        'color-3': '#4D4847',
+        'color-4': '#F4FFF8',
+        'color-5': '#8BAAAD',
+      },
+            opacity: {
+              54: ".24",
+            },
+            fontFamily: {
+              Unbounded: ['"Unbounded"'],
+            },
+          },
+        },
+      };
+    </script>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/usa.css" />
