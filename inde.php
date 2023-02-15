@@ -2,6 +2,7 @@
 session_start();
 
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -54,12 +55,12 @@ session_start();
         </section>
 
         <section class="bg-color-3">
-            <h2 class="font-bold text-center leading-none tracking-tight color-1 md:text-5xl">Vieux Delhi</h2>
+            <h2 class="font-bold text-center leading-none tracking-tight color-4 md:text-5xl">Vieux Delhi</h2>
             <div class="flex flex-col lg:flex-row p-5 gap-5 mt-5">
                 <div class="lg:w-1/3 lg:order-1 m-10">
                     <img src="./assets/olddelhi.png" alt="Un vendeur de ce qui semble être des beignets les fait frire dans une marmite dans une rue bondée">
                 </div>
-                <div class="lg:w-2/3  w-full">
+                <div class="lg:w-2/3 text-white w-full">
                     <p class="mt-10 text-justify text-center font-mono">
                         Old Delhi est l’ancienne capitale de l’empire Moghol. Originellement appelé Shahjahanabad, c’est un condensé de l’Inde à l’état pur. Des millions d’habitants, des ruelles tortueuses dans tous les sens, des odeurs d’épices et d’encens, des rickshaws, des klaxons et des embouteillages. La vie, grouillante et effervescente, est rythmée par l’appel du muezzin de la Grande Mosquée.Le cœur historique de la ville recense de nombreuses choses à voir ou à faire. <br>
                         <br>

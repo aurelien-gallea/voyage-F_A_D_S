@@ -45,6 +45,10 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 			header('location:creer-article.php?error=1');
 			exit;
 		}
+	} else {
+		//Si le texte ou/et le titre/catégories ne sont pas rentrés, alors ça affiche une erreur
+		header('location:creer-article.php?error=1');
+		exit;
 	}
 } ?>
 
