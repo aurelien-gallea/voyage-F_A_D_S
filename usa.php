@@ -339,7 +339,7 @@
 				   
 				   Participer à une excursion dans les îles hawaïennes: Honolulu est le point de départ idéal pour explorer les îles hawaïennes, avec des excursions en bateau, en avion ou en hélicoptère pour visiter les îles voisines telles que Maui, Kauai et le Big Island.
 				   <br><br>
-					   <img src="assets/plathawaii.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+					   
 				   <br><br>Gastronomie : Honolulu propose une cuisine variée, allant des plats hawaïens traditionnels à la cuisine asiatique, en passant par la cuisine américaine moderne. Les plats célèbres incluent le poke, le spam musubi, le loco moco et le manapua. Il y a également de nombreux restaurants renommés qui proposent une cuisine inventive, ainsi que des stands de nourriture pop-up et des trucks à nourriture pour les goûters rapides.
 
 					</div>
