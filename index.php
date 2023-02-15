@@ -26,7 +26,10 @@
 <br>
 <br>
 <body class="bg-gray-100">
+<div style="text-align: center;">
   <h1 class="text-3xl font-bold mb-8">Bienvenue sur Tasty Trip</h1>
+</div>
+
   <ul class="grid grid-cols-2 gap-4">
     <li class="bg-white rounded-lg shadow-md overflow-hidden">
       <a href="usa.php">
