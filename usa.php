@@ -456,20 +456,9 @@
 		  <div class="right box">
 			<h2>Nous Contacter</h2>
 			<div class="content">
-			  <form action="#">
-				<div class="email">
-				  <div class="text">Email *</div>
-				  <input type="email" required>
+			<a href="contact.php">Nous Contacter ici</a>
+			   
 				</div>
-				<div class="msg">
-				  <div class="text">Message *</div>
-				  <textarea rows="2" cols="25" required></textarea>
-				</div>
-				<div class="btn">
-				  <button type="submit">Envoyer</button>
-				</div>
-			  </form>
-			</div>
 		  </div>
 		</div>
 		<div class="bottom">
