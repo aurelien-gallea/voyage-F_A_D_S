@@ -1,4 +1,4 @@
-<footer class="text-white dark:text-black">
+<footer class="text-white">
   <link rel="stylesheet" href="stylefooter.css" />
   <div class="main-content">
     <div class="left box">
@@ -19,28 +19,28 @@
       <div class="content">
         <div class="place">
           <span class="fas fa-map-marker-alt"></span>
-          <span class="text">Toulon, France</span>
+          <span class="text-white ml-2 inline-block">Toulon, France</span>
         </div>
         <div class="phone">
           <span class="fas fa-phone-alt"></span>
-          <span class="text">+089-765432100</span>
+          <span class="text-white ml-2 inline-block">+089-765432100</span>
         </div>
         <div class="email">
           <span class="fas fa-envelope"></span>
-          <span class="text">abc@example.com</span>
+          <span class="text-white ml-2 inline-block">abc@example.com</span>
         </div>
       </div>
     </div>
     <div class="right box">
       <h2>Nous Contacter</h2>
       <div class="content">
-        <a href="contact.php">Nous Contacter ici</a>
+        <a href="contact.php" class="text-white ml-2 inline-block">Nous Contacter ici</a>
       </div>
     </div>
   </div>
   <div class="bottom">
     <div class="container">
-      <span class="credit">Tasty Trip | </span>
+    <span class="text-white ml-2 inline-block">Tasty Trip | </span>
       <span class="text-white ml-2 inline-block">2023 All rights reserved.</span>
     </div>
   </div>
