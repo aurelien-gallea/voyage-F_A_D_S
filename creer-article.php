@@ -123,12 +123,12 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 			<!---------------------- Formulaire d'article ---------------------->
 			<div class="flex flex-col justify-center items-center">
 				<article class="flex flex-col justify-center items-center">
-					<h2 class="font-medium leading-tight text-4xl mt-0 mb-2 color-3">Creer un article</h2>
-					<h5 class="ml-10 font-medium leading-tight text-xl mt-0 mb-2 color-5">Créez votre propre article ! Partagez vos voyages ou encore vos expériences culinaires exotiques !</H>
+					<h2 class="font-medium leading-tight text-4xl mt-0 mb-2 text-color-3">Creer un article</h2>
+					<h5 class="ml-10 font-medium leading-tight text-xl mt-0 mb-2 text-color-5">Créez votre propre article ! Partagez vos voyages ou encore vos expériences culinaires exotiques !</H>
 				</article>
 				<form method="POST" class="mt-5 w-3/6 mt-25 flex flex-col content-center justify-center bg-color-2 shadow-md rounded px-8 pt-6 pb-8 mb-4 dark:bg-gray-900 dark:border-gray-700">
-					<input type="text" name="article_titre" maxlength="80" class="block p-2.5 text-sm color-4 bg-color-3 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Titre" /><br />
-					<textarea name="article_contenu" maxlength="5000" class="block p-2.5 w-full text-sm color-4 bg-color-3 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Contenu de l'article..."></textarea><br />
+					<input type="text" name="article_titre" maxlength="80" class="block p-2.5 text-sm text-color-4 bg-color-3 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Titre" /><br />
+					<textarea name="article_contenu" maxlength="5000" class="block p-2.5 w-full text-sm text-color-4 bg-color-3 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Contenu de l'article..."></textarea><br />
 					<!--Bouton catégorie avec le menu déroulant-->
 					<button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-color-5 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Catégories<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
