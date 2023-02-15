@@ -22,7 +22,7 @@
 </head>
 <?php require_once('src/header.php'); ?>
 
-
+<br>
 <body class="bg-gray-100">
   <h1 class="text-3xl font-bold mb-8">Bienvenue sur Tasty Trip</h1>
   <ul class="grid grid-cols-2 gap-4">
@@ -57,6 +57,8 @@
       </a>
     </li>
   </ul>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <script src="src/tailwind-need-body.js"></script> 
 </body>
 <br>
 <footer class="text-white">
