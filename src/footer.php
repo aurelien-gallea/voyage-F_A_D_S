@@ -1,5 +1,5 @@
 <footer class="text-white">
-  <link rel="stylesheet" href="stylefooter.css" />
+  <link rel="stylesheet" href="css/stylefooter.css" />
   <div class="main-content">
     <div class="left box">
       <h2>A Propos</h2>
