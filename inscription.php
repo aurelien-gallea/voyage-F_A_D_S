@@ -60,24 +60,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
-    <link rel="stylesheet" href="css/voyages.css">
+    <!-- <link rel="stylesheet" href="css/voyages.css"> -->
     <link rel="stylesheet" href="css/tailwind-need.css">
     <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
 
     <title>S'inscrire</title>
 </head>
-<?php require_once('src/header-blog.php'); ?>
 
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen dark:bg-color-1">
+    <?php require_once('src/header-blog.php'); ?>
     <section class="flex-grow">
 
-        <div class="container mx-auto m-32  flex flex-col items-center bg-color-2 md:w-2/4 2xl:w-1/4 md:rounded-md">
-            <h1 class="text-center text-3xl m-5 font-light color-4">Nouveau compte</h1>
+        <div class="container mx-auto m-28  flex flex-col items-center  bg-color-5 dark:bg-color-3 md:w-2/4 2xl:w-1/4 md:rounded-md">
+            <h1 class="font-unbounded text-color-3 dark:text-color-4 text-center text-3xl m-5 font-light color-4">Nouveau compte</h1>
             <form class="flex flex-col justify-center" action="inscription.php" method="post">
                 <div>
                     <div class="flex  justify-center">
-                        <label for="login" class="bg-color-5 p-2 mt-3 rounded-l-md"><img width="30" src="assets/utilisateur.png" alt="icone utilisateur"> </label>
+                        <label for="login" class="bg-color-3 dark:bg-color-4 p-2 mt-3 rounded-l-md"><img width="30" src="assets/utilisateur.png" alt="icone utilisateur"> </label>
                         <input id="login" class="p-2 rounded-r-md mt-3 text-xl" type="text" name="login" id="login" placeholder="Nom d'utilisateur">
                     </div>
                     <small id="errorLogin" class="text-red-500">Entrez un nom d'utilisateur</small>
@@ -85,7 +85,7 @@
                 <div>
 
                     <div class="flex  justify-center"> 
-                        <label for="email" class="bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/email.png" alt="icone email"></label>
+                        <label for="email" class="bg-color-3 dark:bg-color-4 p-2  rounded-l-md"><img width="30" src="assets/email.png" alt="icone email"></label>
                         <input id="email" class="p-2 rounded-r-md  text-xl" type="email" name="email" id="email" placeholder="Email">
                     </div>
                     <small id="errorEmail" class=" text-red-500">Utilisez un email valide</small>
@@ -93,14 +93,14 @@
                 <div>
 
                     <div class="flex  justify-center">
-                        <label for="password" class="bg-color-5 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
+                        <label for="password" class="bg-color-3 dark:bg-color-4 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
                         <input id="password" class="p-2 rounded-r-md  text-xl" type="password" name="password" id="password" placeholder="Mot De Passe">    
                     </div>
                 </div> 
                 <div>
                     
                     <div class="flex  justify-center mt-2"> 
-                        <label for="password2" class="bg-color-5 p-2  mt-3 rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone mot de passe"></label>
+                        <label for="password2" class="bg-color-3 dark:bg-color-4 p-2  mt-3 rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone mot de passe"></label>
                         <input id="password2" class="p-2 rounded-r-md mt-3 text-xl" type="password" name="password2" id="password2" placeholder="Confimer MDP">
                     </div>
                     <div id="errorPassword">
@@ -109,7 +109,7 @@
                     </div>
                 </div>
             
-            <div id="divBtn" class="p-2  mb-5 w-full bg-color-5 text-center border rounded-md text-xl hover:bg-white hover:text-black">   
+            <div id="divBtn" class="p-2  mb-5 w-full bg-color-3 dark:bg-color-4 text-center border rounded-md text-xl hover:bg-white hover:text-black">   
                 <button id="btn" class="w-full" type="submit">S'incrire</button>
             </div>
             <div class="text-white mb-5">

@@ -5,20 +5,20 @@ content: [],
   theme: {
     extend: {
       colors: {
-  'color-1': '#000F08',
-  'color-2': '#1C3738',
-  'color-3': '#4D4847',
-  'color-4': '#F4FFF8',
-  'color-5': '#8BAAAD',
+  'color-1': '#111827',
+  'color-2': '#8BAAAD',
+  'color-3': '#90323D',
+  'color-4': '#FCF6B1',
+  'color-5': '#F18F01AD',
 },
       opacity: {
         54: ".24",
       },
       fontFamily: {
-        Unbounded: ['"Unbounded"'],
-      },
-    },
-  },
+        'unbounded': ['"Unbounded"']
+      }
+    }
+  }
 };
 
 
