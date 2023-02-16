@@ -31,11 +31,12 @@ session_start();
             <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-100 bg-fixed" style="background-image:url(assets/inde.jpeg)"></div>
         </section>
 
-        <section class=" w-full bg-color-5">
+        <!-- Intro et tombe -->
+        <section class="bg-color-5 dark:bg-color-1 dark:text-color-4">
             <h1 class="text-4xl font-bold text-center leading-none tracking-tight text-color-3 md:text-5xl lg:text-6xl italic">L'Inde, un voyage spirituel...</h1>
-            <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl">Tombe de Humayun à Delhi</h2>
+            <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl dark:text-color-4">Tombe de Humayun à Delhi</h2>
             <div class="flex flex-col lg:flex-row p-5 mt-5">
-                <div class="flex items-center lg:w-1/3 lg:order-1 m-20 ">
+                <div class="flex items-center lg:w-1/3 lg:order-1 m-20">
                     <img src="./assets/tomb.png" alt="Tombe de Humayun, Delhi">
                 </div>
                 <div class="lg:w-2/3 m-10">
@@ -55,14 +56,15 @@ session_start();
             <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-100 bg-fixed" style="background-image:url(assets/indiaparty.jpeg)"></div>
         </section>
 
-        <section class="bg-color-3">
+        <!-- Vieux Delhi -->
+        <section class="bg-color-3 dark:bg-color-1">
             <h2 class="font-bold text-center leading-none tracking-tight text-color-4 md:text-5xl">Vieux Delhi</h2>
             <div class="flex flex-col lg:flex-row p-5 mt-5">
                 <div class="lg:w-1/3 lg:order-1 m-10">
                     <img src="./assets/olddelhi.png" alt="Un vendeur de ce qui semble être des beignets les fait frire dans une marmite dans une rue bondée">
                 </div>
                 <div class="lg:w-2/3 text-white w-full">
-                    <p class="mt-10 text-justify text-center font-mono">
+                    <p class="mt-10 text-justify text-center font-mono dark:text-color-4">
                         Old Delhi est l’ancienne capitale de l’empire Moghol. Originellement appelé Shahjahanabad, c’est un condensé de l’Inde à l’état pur. Des millions d’habitants, des ruelles tortueuses dans tous les sens, des odeurs d’épices et d’encens, des rickshaws, des klaxons et des embouteillages. La vie, grouillante et effervescente, est rythmée par l’appel du muezzin de la Grande Mosquée.Le cœur historique de la ville recense de nombreuses choses à voir ou à faire. <br>
                         <br>
                         <br>
@@ -77,8 +79,9 @@ session_start();
             <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-100 bg-fixed" style="background-image:url(assets/indiagate.png)"></div>
         </section>
 
-        <section class="bg-color-2">
-            <h2 class="font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl">Parc national Sanjay Gandhi</h2>
+        <!-- Parc -->
+        <section class="bg-color-2 dark:bg-color-1 dark:text-color-4">
+            <h2 class="font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl dark:text-color-4">Parc national Sanjay Gandhi</h2>
             <div class="flex flex-col lg:flex-row p-5 mt-5">
                 <div class="lg:w-1/3 lg:order-1 m-10">
                     <img src="./assets/parc.png" alt="Une vue d'au-dessus du parc avec des arbres">
@@ -94,14 +97,16 @@ session_start();
             </div>
         </section>
 
+        <!-- Parallax -->
         <section class="pt-40 pb-32 relative">
             <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-100 bg-fixed" style="background-image:url(assets/india_0.jpg)"></div>
         </section>
 
-        <section class="bg-color-4">
+        <!-- Cuisine -->
+        <section class="bg-color-4 dark:bg-color-1 dark:text-color-4">
             <h1 class="text-4xl font-bold text-center leading-none tracking-tight text-color-3 md:text-5xl lg:text-6xl italic">...mais aussi appétissant.</h1>
             <div class="flex flex-col lg:flex-row p-5 mt-5">
-                <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl">Naan / nân</h2>
+                <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl dark:text-color-4">Naan / nân</h2>
                 <div class="lg:w-1/3 lg:order-1 mt-10">
                     <img src="./assets/naan.png" alt="Quelques pains naans empilés sur une assiette noire">
                 </div>
@@ -117,7 +122,7 @@ session_start();
             <br>
             <br>
             <div class="flex flex-col lg:flex-row p-5 mt-5">
-                <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl">Dhal / Dal</h2>
+                <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl dark:text-color-4">Dhal / Dal</h2>
                 <div class="lg:w-1/3 lg:order-1 mt-10">
                     <img src="./assets/dhal.png" alt="Un plat de curry dhal vu du dessus aux touches orangés et rouges">
                 </div>
