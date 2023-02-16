@@ -105,7 +105,7 @@ session_start();
                     <img src="./assets/naan.png" alt="Quelques pains naans empilés sur une assiette noire">
                 </div>
                 <div class="lg:w-2/3 w-full">
-                    <p class="mt-10 text-justify text-center font-mono">
+                    <p class="mt-10 mr-10 text-justify text-center font-mono">
                         Le mot nan (نان) est originaire d’Iran où il n’a pas une signification particulière, car il est simplement le mot générique pour tout type de pain, comme dans d’autres pays d’Asie occidentale ou chez d’autres groupes ethniques régionaux, tels que les Kurdes, les Turcs ou les Azerbaïdjanais. Dans les langues turques telles que l’ouzbèke et l’ouïghour, le pain est appelé nan. <br>
                         <br>
                         <br>
@@ -121,7 +121,7 @@ session_start();
                     <img src="./assets/dhal.png" alt="Un plat de curry dhal vu du dessus aux touches orangés et rouges">
                 </div>
                 <div class="lg:w-2/3 w-full">
-                    <p class="mt-10 text-justify text-center font-mono">
+                    <p class="mt-10 mr-10 text-justify text-center font-mono">
                         Le dahl, ou daal ou encore dal, est un incontournable de la cuisine indienne. Plat végétarien complet et à base de légumineuses, il constitue une source de protéines non négligeable et peut être consommé aussi bien en plat principal qu'en accompagnement. <br>
                         <br>
                         Il existe de nombreuses recettes de dahl mais les plus courantes sont le dahl tadka à base de lentilles corail, le dahl fry avec l'ajout de chana daal, sorte de pois chiches cassés et le dahl makahni, une préparation combinant lentilles du Puy et haricots rouges. Le parfum enivrant du dhal avec ses épices colorées et savoureuses embaume la cuisine et fait fondre de plaisir les papilles de la maison.
