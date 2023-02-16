@@ -1,8 +1,14 @@
 <?php
 session_start();
 require("src/connectionDB.php");
+
+
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
+
 if (isset($_POST['tri'])) {
-  switch ($_POST['tri']) {
+  try {
+    $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
+    switch ($_POST['tri']) {
       case 'date_desc':
         $articles = $bdd->prepare('SELECT * FROM articles ORDER BY date DESC');
         break;
@@ -10,19 +16,19 @@ if (isset($_POST['tri'])) {
         $articles = $bdd->prepare('SELECT * FROM articles ORDER BY date ASC');
         break;
       case 'login':
-        $articles = $bdd->prepare('SELECT articles.*, utilisateurs.login FROM articles INNER JOIN utilisateurs 
-        ON articles.id_utilisateur = utilisateurs.id ORDER BY utilisateurs.login');
+        $articles = $bdd->prepare('SELECT articles.*, utilisateurs.login FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id ORDER BY utilisateurs.login');
         break;
       case 'categories':
-        $articles = $bdd->prepare('SELECT articles.*, categories.nom FROM articles INNER JOIN cat_art 
-        ON articles.id = cat_art.id_art INNER JOIN categories ON categories.id = cat_art.id_cat 
-        ORDER BY categories.nom');
+        $articles = $bdd->prepare('SELECT articles.*, categories.nom FROM articles INNER JOIN cat_art ON articles.id = cat_art.id_art INNER JOIN categories ON categories.id = cat_art.id_cat ORDER BY categories.nom');
         break;
     }
     $articles->execute();
-  }  
- else {
+  } catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
+  }
+} else {
   try {
+    $bdd = new PDO("mysql:host=127.0.0.1;dbname=blog_voyage;charset=utf8", "root", "");
     $articles = $bdd->prepare('SELECT * FROM articles');
     $articles->execute();
   } catch (PDOException $e) {
@@ -96,9 +102,6 @@ if (isset($_POST['tri'])) {
       .bg-custom-F4FFF8 {
         background-color: #f4fff8;
       }
-
-    
-
     </style>
   </head>
   <?php require_once('src/header-blog.php'); ?>
@@ -109,11 +112,10 @@ if (isset($_POST['tri'])) {
    <br>
    <br> 
    <br>
-   <br>
-   <form action="articles.php" method="post">
+   <form action="articles2.php" method="post">
   <select name="tri">
-    <option value="date_asc">Date croissante</option>
-    <option value="date_desc">Date décroissante</option>
+  <option value="date_asc">Date croissante</option>
+  <option value="date_desc">Date décroissante</option>
     <option value="login">Utilisateur</option>
     <option value="categories">Catégories</option>
   </select>
@@ -268,13 +270,12 @@ input[type="submit"] {
   $result = $user->fetch();
 
   // Requête pour récupérer les noms des catégories associées à un article
-  $catName = $bdd->prepare('SELECT categories.nom FROM `cat_art` INNER JOIN categories 
-  ON categories.id = cat_art.id_cat WHERE cat_art.id_art = ?');
+  $catName = $bdd->prepare('SELECT categories.nom FROM `cat_art` INNER JOIN categories ON categories.id = cat_art.id_cat WHERE cat_art.id_art = ?');
   $catName->execute([$article['id']]);
-
+  
   setlocale(LC_ALL, 'fr_FR.UTF-8');
   $date = strftime('%d/%m/%Y à %I:%M', strtotime($article['date']));
-  
+
   ?>
   
   <div class="article">
@@ -292,9 +293,6 @@ input[type="submit"] {
 </div>
   <br>
   <br>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-    <script src="src/tailwind-need-body.js"></script> 
-    </body>
   <footer class="text-white">
   <link rel="stylesheet" href="stylefooter.css" />
   <div class="main-content">
