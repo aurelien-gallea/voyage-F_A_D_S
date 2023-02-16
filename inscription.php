@@ -80,7 +80,7 @@
                         <label for="login" class="bg-color-3 dark:bg-color-4 p-2 mt-3 rounded-l-md"><img width="30" src="assets/utilisateur.png" alt="icone utilisateur"> </label>
                         <input id="login" class="p-2 rounded-r-md mt-3 text-xl" type="text" name="login" id="login" placeholder="Nom d'utilisateur">
                     </div>
-                    <small id="errorLogin" class="text-red-500">Entrez un nom d'utilisateur</small>
+                    <small id="errorLogin" class="text-red-800 dark:text-color-4">Entrez un nom d'utilisateur</small>
                 </div>
                 <div>
 
@@ -88,7 +88,7 @@
                         <label for="email" class="bg-color-3 dark:bg-color-4 p-2  rounded-l-md"><img width="30" src="assets/email.png" alt="icone email"></label>
                         <input id="email" class="p-2 rounded-r-md  text-xl" type="email" name="email" id="email" placeholder="Email">
                     </div>
-                    <small id="errorEmail" class=" text-red-500">Utilisez un email valide</small>
+                    <small id="errorEmail" class=" text-red-800 dark:text-color-4">Utilisez un email valide</small>
                 </div>
                 <div>
 
@@ -104,8 +104,8 @@
                         <input id="password2" class="p-2 rounded-r-md mt-3 text-xl" type="password" name="password2" id="password2" placeholder="Confimer MDP">
                     </div>
                     <div id="errorPassword">
-                        <small class="text-red-500">Deux mots de passe identiques</small><br>
-                        <small class="text-red-500">Majuscule, minuscule, chiffre et caractère spécial</small>
+                        <small class="text-red-800 dark:text-color-4">Deux mots de passe identiques</small><br>
+                        <small class="text-red-800 dark:text-color-4">Majuscule, minuscule, chiffre et caractère spécial</small>
                     </div>
                 </div>
             
@@ -113,9 +113,9 @@
                 <button id="btn" class="w-full" type="submit">S'incrire</button>
             </div>
             <div class="text-white mb-5">
-                <small>Déjà un compte ?
+                <span>Déjà un compte ?
                     <a class="hover:text-orange-500" href="connexion.php">Clique ici</a>
-                </small>
+                </span>
             </div>
             <?php
         if(isset($_GET['error']) && !empty($_GET['message'])) {

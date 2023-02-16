@@ -46,14 +46,14 @@ function fetchLogin() {
     for(key in response) {
       if(response[key].login === login.value) {
         errorLogin.innerHTML = 'Identifiant déjà utilisé !'
-        errorLogin.classList.remove('text-red-500');
-        errorLogin.classList.add('text-orange-500');
+        errorLogin.classList.remove('text-red-800');
+        errorLogin.classList.add('text-orange-800');
         errorLogin.style.visibility = "visible";
         return used=1;
       } 
       errorLogin.innerHTML = 'Entrez un nom d\'utilisateur';
-      errorLogin.classList.remove('text-orange-500');
-      errorLogin.classList.add('text-red-500');
+      errorLogin.classList.remove('text-orange-800');
+      errorLogin.classList.add('text-red-800');
 
       if(login.value != "" && login.value.length >= 2) {
         errorLogin.style.visibility = "hidden";
@@ -81,8 +81,8 @@ email.addEventListener("keyup", () => {
   if (!regexMail.test(email.value)) {
     errorEmail.style.visibility = "visible";
     errorEmail.innerHTML = "Utilisez un email valide"
-    errorEmail.classList.remove('text-orange-500');
-    errorEmail.classList.add('text-red-500');
+    errorEmail.classList.remove('text-orange-800');
+    errorEmail.classList.add('text-red-800');
     buttonStatus();
   } else {
     fetch('./src/infos.php')
@@ -91,8 +91,8 @@ email.addEventListener("keyup", () => {
       for(key in response) {
         if(response[key].email === email.value) {
           errorEmail.innerHTML = 'Email déjà utilisé !'
-          errorEmail.classList.remove('text-red-500');
-          errorEmail.classList.add('text-orange-500');
+          errorEmail.classList.remove('text-red-800');
+          errorEmail.classList.add('text-orange-800');
           errorEmail.style.visibility = "visible";
           
           return usedMail=1;
