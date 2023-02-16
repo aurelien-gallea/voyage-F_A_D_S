@@ -18,17 +18,15 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
         
 
     if($resultat['login'] == $login &&  $password == $resultat['password']) {
-        // var_dump( $resultat['password'] == $pass);
         setcookie('login', htmlspecialchars($resultat['login']),time()+3600 ); 
         $id = $resultat['id'];
 
-       
         $_SESSION['id']  =$id;  
        $_SESSION['login'] = $login;
         $_SESSION['password'] = $password;
           
        $count++;
-      //  var_dump( $_SESSION['login']);
+      
       header('location:articles.php');
         exit();
     }
