@@ -66,50 +66,15 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
       rel="stylesheet"
     />
     <title>Page de Connexion</title>
-    <script>
-      tailwind.config = { darkMode: 'class',
-  // ...
-  content: [],
-        theme: {
-          extend: {
-            colors: {
-        'color-1': '#000F08',
-        'color-2': '#1C3738',
-        'color-3': '#4D4847',
-        'color-4': '#F4FFF8',
-        'color-5': '#8BAAAD',
-      },
-            opacity: {
-              54: ".24",
-            },
-            fontFamily: {
-              Unbounded: ['"Unbounded"'],
-            },
-          },
-        },
-      };
-    </script>
-
-    <script>
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-      if (
-        localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    </script>
-    <style>
-      .bg-custom-1C3738 {
-        background-color: #1c3738;
-      }
-      .bg-custom-F4FFF8 {
-        background-color: #f4fff8;
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/stylefooter.css">
+    <!-- <link rel="stylesheet" href="css/voyages.css"> -->
+    <link rel="stylesheet" href="css/tailwind-need.css">
+    <script src="src/tailwind-need.js"></script>
+    <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
   </head>
 
   <!-- ----------------------------------body--------------------------- -->
@@ -156,8 +121,9 @@ if(isset($_GET['erreur'])){
 
   }
 }
-  ?></div>
-                        <a href="#" class="text-sm text-white hover:underline dark:text-color-5">Mot de passe perdu?</a>
+  ?>
+  </div>
+                        
                     </div>
                     <button type="submit" class="w-full text-white bg-gray-600 hover:bg-color-5 focus:ring-4 focus:outline-none focus:ring-color-3 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-color-3 dark:hover:bg-color-5 dark:focus:ring-color-2">Connexion</button>
                     <div class="text-sm font-medium text-gray-500 dark:text-gray-300">

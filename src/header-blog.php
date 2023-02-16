@@ -73,7 +73,7 @@
             <?php
             if (isset($_SESSION['id'])) {
               $adminStatus = Update::selectStatusByUser($_SESSION['id']);
-              if ($adminStatus['droits'] != 'admin') {  ?>
+              if ($adminStatus['droits'] == 'admin') {  ?>
 
             <li>
               <a
