@@ -212,7 +212,7 @@ if (isset($_POST['tri'])) {
             font-size: 18px;
             display: grid;
             padding: 3px 5px;
-            background-color: #1c3738;
+            background-color: #111827;
             color: #f4fff8;
             border-radius: 55px;
             text-decoration: none;
