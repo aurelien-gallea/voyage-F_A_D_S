@@ -126,7 +126,7 @@ for ($d = 0; $d < count($commentaries); $d++) {
 
     } else if (isset($_POST['confirm']) && $_POST['confirm'] == 'com-' . $commentaries[$d]['id']) {
         $newCom = htmlspecialchars($_POST['newCom-' . $commentaries[$d]['id']]);
-        if ($newCom != $commentaries[$c]['id']) {
+        if ($newCom != $commentaries[$d]['id']) {
             Update::updateCom($newCom, $commentaries[$d]['id']);
             header('location:admin.php?success=5');
             exit();
