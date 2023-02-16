@@ -290,8 +290,8 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
     </section>
 
-    <section >
-        <div class="bg-color-3 dark:text-white">
+    <section>
+        <div class="bg-color-3 text-white">
             <div class=" text-white container mx-auto m-3 p-4 flex flex-col items-center">
                 <h2 class="font-unbounded text-2xl mt-2">Mes articles :</h2>
             </div>
@@ -308,10 +308,10 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                 <div class="flex flex-col  justify-center container p-3">
                                     <h3 class="text-xl mb-2">Titre : <?= $arrayArt[$i]['titre'] ?></h3>
                                     <div class="flex flex-wrap items-center gap-1">catégories:<?php
-                                                                                    for ($k = 0; $k < count($newArray); $k++) {
-                                                                                        echo '<span class="mx-2 p-2 bg-color-5 rounded">' . $newArray[$k] . '</span>';
-                                                                                    }
-                                                                                    ?> </div>
+                                                                                                for ($k = 0; $k < count($newArray); $k++) {
+                                                                                                    echo '<span class="mx-2 p-2 bg-color-5 rounded">' . $newArray[$k] . '</span>';
+                                                                                                }
+                                                                                                ?> </div>
                                 </div>
                                 <hr>
                                 <p class="break-words p-3 "><?= $arrayArt[$i]['article'] ?></p>
@@ -330,17 +330,21 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
                                 <div class="gap-5 mb-2">
                                     <label for="categories"> changer vos catégories ? (cochez les cases correspondantes) :</label>
-                                    <div id="dropdownSearch" class="z-10 bg-white rounded-lg shadow w-60 dark:bg-gray-700">
+                                    <button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-color-5 rounded-lg hover:opacity-90  focus:outline-none  dark:bg-color-1 dark:hover:opacity-90" type="button">Catégories<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg></button>
+                                    <!-- Dropdown menu -->
+                                    <div id="dropdownSearch" class="flex z-10 bg-amber-600 rounded-lg shadow w-60 dark:bg-gray-700 hidden" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(592.727px, 455.455px, 0px);" data-popper-placement="bottom">
                                         <?php Update::listOfCategories(); ?>
                                     </div>
                                 </div>
                                 <div class="flex flex-col gap-3 mb-2">
                                     <label for="<?= $arrayArt[$i]['titre'] ?>">Titre :</label>
-                                    <input class="dark:bg-color-1 p-1 rounded" type="text" name="<?= 'titre-' . $arrayArt[$i]['id'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
+                                    <input class="text-black dark:text-white dark:bg-color-1 p-1 rounded" type="text" name="<?= 'titre-' . $arrayArt[$i]['id'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
                                 </div>
                                 <div class="flex flex-col gap-3 mb-8">
                                     <label for="<?= $arrayArt[$i]['id'] ?>">article :</label>
-                                    <textarea class="dark:bg-color-1 p-1 rounded w-full h-80" name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
+                                    <textarea class="text-black dark:text-white dark:bg-color-1 p-1 rounded w-full h-80" name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
                                 </div>
                                 <div class="flex justify-between container p-3">
                                     <button class="cancelBtn border rounded p-3 hover:bg-white hover:text-black" type="submit" name="cancel">Annuler</button>
@@ -369,7 +373,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>">
                             <div class="artContainer text-white text-black dark:text-white bg-white dark:bg-color-1 hover:bg-gray-500">
                                 <div class="flex flex-col justify-between  container p-3">
-                                   <p> <span class="text-blue-500 text-xl"> <?= $login ?> </span> a posté le commentaire suivant le : <?= DateToFr::dateFR($commentaries[$i]['date']) ?></span></p>
+                                    <p> <span class="text-blue-500 text-xl"> <?= $login ?> </span> a posté le commentaire suivant le : <?= DateToFr::dateFR($commentaries[$i]['date']) ?></span></p>
                                     <p> <?= $commentaries[$i]['commentaire'] ?></p>
                                 </div>
                                 <hr>
