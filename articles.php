@@ -1,12 +1,8 @@
 <?php
 session_start();
 require("src/connectionDB.php");
-
-
 if (isset($_POST['tri'])) {
-  
-    
-    switch ($_POST['tri']) {
+  switch ($_POST['tri']) {
       case 'date_desc':
         $articles = $bdd->prepare('SELECT * FROM articles ORDER BY date DESC');
         break;
@@ -14,17 +10,19 @@ if (isset($_POST['tri'])) {
         $articles = $bdd->prepare('SELECT * FROM articles ORDER BY date ASC');
         break;
       case 'login':
-        $articles = $bdd->prepare('SELECT articles.*, utilisateurs.login FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id ORDER BY utilisateurs.login');
+        $articles = $bdd->prepare('SELECT articles.*, utilisateurs.login FROM articles INNER JOIN utilisateurs 
+        ON articles.id_utilisateur = utilisateurs.id ORDER BY utilisateurs.login');
         break;
       case 'categories':
-        $articles = $bdd->prepare('SELECT articles.*, categories.nom FROM articles INNER JOIN cat_art ON articles.id = cat_art.id_art INNER JOIN categories ON categories.id = cat_art.id_cat ORDER BY categories.nom');
+        $articles = $bdd->prepare('SELECT articles.*, categories.nom FROM articles INNER JOIN cat_art 
+        ON articles.id = cat_art.id_art INNER JOIN categories ON categories.id = cat_art.id_cat 
+        ORDER BY categories.nom');
         break;
     }
     $articles->execute();
   }  
  else {
   try {
-    
     $articles = $bdd->prepare('SELECT * FROM articles');
     $articles->execute();
   } catch (PDOException $e) {
@@ -270,7 +268,8 @@ input[type="submit"] {
   $result = $user->fetch();
 
   // Requête pour récupérer les noms des catégories associées à un article
-  $catName = $bdd->prepare('SELECT categories.nom FROM `cat_art` INNER JOIN categories ON categories.id = cat_art.id_cat WHERE cat_art.id_art = ?');
+  $catName = $bdd->prepare('SELECT categories.nom FROM `cat_art` INNER JOIN categories 
+  ON categories.id = cat_art.id_cat WHERE cat_art.id_art = ?');
   $catName->execute([$article['id']]);
 
   setlocale(LC_ALL, 'fr_FR.UTF-8');
