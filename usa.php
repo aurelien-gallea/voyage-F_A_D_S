@@ -31,10 +31,10 @@ session_start();
           extend: {
             colors: {
         'color-1': '#111827',
-        'color-2': '8BAAAD',
-        'color-3': '##90323D',
+        'color-2': '#8BAAAD',
+        'color-3': '#90323D',
         'color-4': '#FCF6B1',
-        'color-5': '##F18F01AD',
+        'color-5': '#F18F01AD',
       },
             opacity: {
               54: ".24",
