@@ -1,7 +1,12 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
 		<title>USA</title>
+		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/usa.css" />
@@ -13,6 +18,29 @@
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@0.2.28/bundled/lenis.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
 		
+	<script>
+      tailwind.config = { darkMode: 'class',
+  // ...
+  content: [],
+        theme: {
+          extend: {
+            colors: {
+        'color-1': '#000F08',
+        'color-2': '#1C3738',
+        'color-3': '#4D4847',
+        'color-4': '#F4FFF8',
+        'color-5': '#8BAAAD',
+      },
+            opacity: {
+              54: ".24",
+            },
+            fontFamily: {
+              Unbounded: ['"Unbounded"'],
+            },
+          },
+        },
+      };
+    </script>
 	</head>
 	<?php require_once('src/header.php'); ?>
 
@@ -175,9 +203,13 @@
 					<img src="assets/Chicago.jfif" alt="Chicago" width="700" height="300" style="float: left; margin-right: 10px;">
 					<h2 class="text-xl font-mono mt-4">Chicago</h2>
 					<p class="text-black-700 mt-2">Chicago est une ville située dans le nord des États-Unis, sur les rives du lac Michigan. C'est la troisième plus grande ville du pays, connue pour son architecture emblématique, sa scène musicale dynamique, sa cuisine délicieuse et sa forte culture sportive. Chicago est également un centre majeur de commerce et de transport, avec un port important reliant les Grands Lacs au fleuve Mississippi. La ville a une riche histoire, y compris son rôle dans le mouvement des droits civiques et comme foyer de la prohibition des années 1920.</p>
-					   <br><br>
+			
 					     <br><br>Activités : Il y a beaucoup d'activités à faire à Chicago, que ce soit pour les amateurs de culture, de sports ou de plein air. Vous pouvez visiter des musées célèbres comme l'Art Institute of Chicago, le Field Museum et le Museum of Science and Industry, ou assister à un spectacle de théâtre de renommée mondiale dans le quartier du Loop. Si vous êtes fan de sports, vous pouvez assister à un match des Cubs ou des White Sox de baseball, des Bears de football américain ou des Bulls de basketball. Pour profiter de la nature, vous pouvez vous promener le long de la plage de Lake Michigan, explorer les jardins du parc Lincoln ou vous détendre dans l'un des nombreux parcs de la ville.
-				        <br><br>Gastronomie : Chicago est célèbre pour sa pizza deep-dish, une tarte épaisse avec une croûte croustillante et une garniture généreuse de fromage et de sauce tomate. Il y a aussi la cuisine de rue, comme les hot-dogs à la Chicago, garnis de moutarde, d'oignons, de cornichons et de piments. La ville offre également une grande variété de restaurants gastronomiques, des steakhouses aux restaurants de fruits de mer en passant par les restaurants fusion. Enfin, ne manquez pas de goûter la cuisine polonaise traditionnelle à la Pączki Day, qui est célébrée tous les ans en février. 
+						 <br><br>
+						<img src="assets/Chicagobean.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+						 <br><br>Gastronomie : Chicago est célèbre pour sa pizza deep-dish, une tarte épaisse avec une croûte croustillante et une garniture généreuse de fromage et de sauce tomate. Il y a aussi la cuisine de rue, comme les hot-dogs à la Chicago, garnis de moutarde, d'oignons, de cornichons et de piments. La ville offre également une grande variété de restaurants gastronomiques, des steakhouses aux restaurants de fruits de mer en passant par les restaurants fusion. Enfin, ne manquez pas de goûter la cuisine polonaise traditionnelle à la Pączki Day, qui est célébrée tous les ans en février. 
+						 <br><br>
+						<img src="assets/chicagopizza.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
 						</div>
 				   <div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <div class="flex flex-col items-center">
@@ -188,6 +220,8 @@
 					   La ville abrite également de nombreux parcs et espaces verts, ainsi que le Liberty Bell, un symbole important de la liberté américaine.</p>
 				   
 					<br><br>Activités :  Il y a beaucoup d'activités à faire dans la ville, telles que la visite de l'Independence Hall, où la Déclaration d'Indépendance a été signée en 1776, ou le Musée d'Art de Philadelphie, qui abrite une collection remarquable de peintures américaines et européennes. Les amateurs de sport peuvent assister à un match des Eagles de Philadelphie ou des 76ers de Philadelphie au Lincoln Financial Field ou au Wells Fargo Center.
+					<br><br>
+						<img src="assets/cheesesteak.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
 					<br><br>Gastronomie : Philadelphie est célèbre pour son "cheesesteak", un sandwich au steak haché et au fromage fondu qui est un must pour les gourmets. La ville est également connue pour ses pretzels frais, ses hoagies (sandwichs au pain long) et ses délicieux desserts, tels que le water ice et les beignets. Il y a également une scène culinaire en constante évolution, avec de nombreux restaurants proposant une cuisine inventive et des plats locaux.
 
 
@@ -339,7 +373,7 @@
 				   
 				   Participer à une excursion dans les îles hawaïennes: Honolulu est le point de départ idéal pour explorer les îles hawaïennes, avec des excursions en bateau, en avion ou en hélicoptère pour visiter les îles voisines telles que Maui, Kauai et le Big Island.
 				   <br><br>
-					   <img src="assets/plathawaii.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+					   
 				   <br><br>Gastronomie : Honolulu propose une cuisine variée, allant des plats hawaïens traditionnels à la cuisine asiatique, en passant par la cuisine américaine moderne. Les plats célèbres incluent le poke, le spam musubi, le loco moco et le manapua. Il y a également de nombreux restaurants renommés qui proposent une cuisine inventive, ainsi que des stands de nourriture pop-up et des trucks à nourriture pour les goûters rapides.
 
 					</div>
@@ -418,65 +452,55 @@
 				<!-- Scripts -->
 			
 				<script src="assets/js/main.js"></script>
-
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <script src="src/tailwind-need-body.js"></script> 
 	</body>
-	<footer>
-	
-		<div class="main-content">
-		  <div class="left box">
-			<h2>A Propos</h2>
-			<div class="content">
-			  <p>Tasty Trip, site de voyage gourmand.</p>
-			  <div class="social">
-				<a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f"></span></a>
-				<a href="#"><span class="fab fa-twitter"></span></a>
-				<a href="https://instagram.com/coding.np"><span class="fab fa-instagram"></span></a>
-				<a href="https://youtube.com/c/codingnepal"><span class="fab fa-youtube"></span></a>
-				<a href="https://github.com/c/codingnepal"><span class="fab fa-github"></span></a>
-			  </div>
-			</div>
-		  </div>
-		  <div class="center box">
-			<h2>Addresse</h2>
-			<div class="content">
-			  <div class="place">
-				<span class="fas fa-map-marker-alt"></span>
-				<span class="text">Toulon, France</span>
-			  </div>
-			  <div class="phone">
-				<span class="fas fa-phone-alt"></span>
-				<span class="text">+089-765432100</span>
-			  </div>
-			  <div class="email">
-				<span class="fas fa-envelope"></span>
-				<span class="text">abc@example.com</span>
-			  </div>
-			</div>
-		  </div>
-		  <div class="right box">
-			<h2>Nous Contacter</h2>
-			<div class="content">
-			  <form action="#">
-				<div class="email">
-				  <div class="text">Email *</div>
-				  <input type="email" required>
-				</div>
-				<div class="msg">
-				  <div class="text">Message *</div>
-				  <textarea rows="2" cols="25" required></textarea>
-				</div>
-				<div class="btn">
-				  <button type="submit">Envoyer</button>
-				</div>
-			  </form>
-			</div>
-		  </div>
-		</div>
-		<div class="bottom">
-		
-			<span class="credit">Tasty Trip | </span>
-			<span class="far fa-copyright"></span><span> 2023 All rights reserved.</span>
-		  
-		</div>
-	  </footer>
+	<footer class="text-white">
+  <link rel="stylesheet" href="stylefooter.css" />
+  <div class="main-content">
+    <div class="left box">
+      <h2>A Propos</h2>
+      <div class="content">
+        <p>Tasty Trip, site de voyage gourmand.</p>
+        <div class="social">
+          <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f"></span></a>
+          <a href="#"><span class="fab fa-twitter"></span></a>
+          <a href="https://instagram.com/coding.np"><span class="fab fa-instagram"></span></a>
+          <a href="https://youtube.com/c/codingnepal"><span class="fab fa-youtube"></span></a>
+          <a href="https://github.com/c/codingnepal"><span class="fab fa-github"></span></a>
+        </div>
+      </div>
+    </div>
+    <div class="center box">
+      <h2>Addresse</h2>
+      <div class="content">
+        <div class="place">
+          <span class="fas fa-map-marker-alt"></span>
+          <span class="text-white ml-2 inline-block">Toulon, France</span>
+        </div>
+        <div class="phone">
+          <span class="fas fa-phone-alt"></span>
+          <span class="text-white ml-2 inline-block">+089-765432100</span>
+        </div>
+        <div class="email">
+          <span class="fas fa-envelope"></span>
+          <span class="text-white ml-2 inline-block">abc@example.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="right box">
+      <h2>Nous Contacter</h2>
+      <div class="content">
+        <a href="contact.php" class="text-white ml-2 inline-block">Nous Contacter ici</a>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+  <div class="container">
+    <span class="text-white ml-4 inline-block">Tasty Trip | </span>
+    <span class="text-white inline-block">2023 All rights reserved.</span>
+  </div>
+</div>
+
+</footer>
 </html>

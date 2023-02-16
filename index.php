@@ -1,7 +1,12 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Bienvenue sur Tasty Trip</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,12 +24,40 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
       rel="stylesheet"
     />
+    <script>
+      tailwind.config = { darkMode: 'class',
+  // ...
+  content: [],
+        theme: {
+          extend: {
+            colors: {
+        'color-1': '#000F08',
+        'color-2': '#1C3738',
+        'color-3': '#4D4847',
+        'color-4': '#F4FFF8',
+        'color-5': '#8BAAAD',
+      },
+            opacity: {
+              54: ".24",
+            },
+            fontFamily: {
+              Unbounded: ['"Unbounded"'],
+            },
+          },
+        },
+      };
+    </script>
 </head>
 <?php require_once('src/header.php'); ?>
 
-
+<br>
+<br>
+<br>
 <body class="bg-gray-100">
+<div style="text-align: center;">
   <h1 class="text-3xl font-bold mb-8">Bienvenue sur Tasty Trip</h1>
+</div>
+
   <ul class="grid grid-cols-2 gap-4">
     <li class="bg-white rounded-lg shadow-md overflow-hidden">
       <a href="usa.php">
@@ -51,71 +84,63 @@
       </a>
     </li>
     <li class="bg-white rounded-lg shadow-md overflow-hidden">
-      <a href="blog.php">
+      <a href="articles.php">
         <img src="assets/vignette blog.jpg" alt="Blog" class="w-full h-48 object-cover">
         <span class="block text-lg font-medium text-gray-800 py-4 px-6">Blog</span>
       </a>
     </li>
   </ul>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <script src="src/tailwind-need-body.js"></script> 
 </body>
 <br>
-<footer>
-      <div class="main-content">
-        <div class="left box">
-          <h2>A Propos</h2>
-          <div class="content">
-            <p>Tasty Trip, site de voyage gourmand.</p>
-            <div class="social">
-              <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f"></span></a>
-              <a href="#"><span class="fab fa-twitter"></span></a>
-              <a href="https://instagram.com/coding.np"><span class="fab fa-instagram"></span></a>
-              <a href="https://youtube.com/c/codingnepal"><span class="fab fa-youtube"></span></a>
-              <a href="https://github.com/c/codingnepal"><span class="fab fa-github"></span></a>
-            </div>
-          </div>
-        </div>
-        <div class="center box">
-          <h2>Addresse</h2>
-          <div class="content">
-            <div class="place">
-              <span class="fas fa-map-marker-alt"></span>
-              <span class="text">Toulon, France</span>
-            </div>
-            <div class="phone">
-              <span class="fas fa-phone-alt"></span>
-              <span class="text">+089-765432100</span>
-            </div>
-            <div class="email">
-              <span class="fas fa-envelope"></span>
-              <span class="text">abc@example.com</span>
-            </div>
-          </div>
-        </div>
-        <div class="right box">
-          <h2>Nous Contacter</h2>
-          <div class="content">
-            <form action="#">
-              <div class="email">
-                <div class="text">Email *</div>
-                <input type="email" required>
-              </div>
-              <div class="msg">
-                <div class="text">Message *</div>
-                <textarea rows="2" cols="25" required></textarea>
-              </div>
-              <div class="btn">
-                <button type="submit">Envoyer</button>
-              </div>
-            </form>
-          </div>
+<footer class="text-white">
+  <link rel="stylesheet" href="stylefooter.css" />
+  <div class="main-content">
+    <div class="left box">
+      <h2>A Propos</h2>
+      <div class="content">
+        <p>Tasty Trip, site de voyage gourmand.</p>
+        <div class="social">
+          <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f"></span></a>
+          <a href="#"><span class="fab fa-twitter"></span></a>
+          <a href="https://instagram.com/coding.np"><span class="fab fa-instagram"></span></a>
+          <a href="https://youtube.com/c/codingnepal"><span class="fab fa-youtube"></span></a>
+          <a href="https://github.com/c/codingnepal"><span class="fab fa-github"></span></a>
         </div>
       </div>
-      <div class="bottom">
-      
-          <span class="credit">Tasty Trip | </span>
-          <span class="far fa-copyright"></span><span> 2023 All rights reserved.</span>
-        
+    </div>
+    <div class="center box">
+      <h2>Addresse</h2>
+      <div class="content">
+        <div class="place">
+          <span class="fas fa-map-marker-alt"></span>
+          <span class="text-white ml-2 inline-block">Toulon, France</span>
+        </div>
+        <div class="phone">
+          <span class="fas fa-phone-alt"></span>
+          <span class="text-white ml-2 inline-block">+089-765432100</span>
+        </div>
+        <div class="email">
+          <span class="fas fa-envelope"></span>
+          <span class="text-white ml-2 inline-block">abc@example.com</span>
+        </div>
       </div>
-    </footer>
+    </div>
+    <div class="right box">
+      <h2>Nous Contacter</h2>
+      <div class="content">
+        <a href="contact.php" class="text-white ml-2 inline-block">Nous Contacter ici</a>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+  <div class="container">
+    <span class="text-white ml-4 inline-block">Tasty Trip | </span>
+    <span class="text-white inline-block">2023 All rights reserved.</span>
+  </div>
+</div>
+
+</footer>
    
 </html>
