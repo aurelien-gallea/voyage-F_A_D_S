@@ -26,6 +26,8 @@ const btnContainer = document.querySelectorAll('.btnContainer');
 const artChange = document.querySelectorAll('.artChange');
 const cancelBtn = document.querySelectorAll('.cancelBtn');
 const confirmBtn = document.querySelectorAll('.confirmBtn');
+const deleteBtn = document.querySelectorAll(".delete");
+
 block2.style.display = "none"; // on cache par défaut le block2: le changement de mdp
 
 // activation du boutton
@@ -80,7 +82,15 @@ function disabledForm2(nameInput, event) {
         }
     });
 }
+// la confirmation de suppression
+deleteBtn.forEach(element => {
+    element.addEventListener('click', (e) => {
+      deleteConfirm = confirm('Confirmer la suppresion ?');
 
+      !deleteConfirm ? e.preventDefault() : '';
+
+    });
+  });
 // on fait appraître / disparaître les blocs pour modifier l'article
 function showHidden(button) {
     

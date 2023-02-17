@@ -259,7 +259,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         <div>
                             <div class="btnContainer flex justify-center gap-10 container p-3">
                                 <button class="update border rounded p-3 hover:bg-color-5" type="submit" name="update" value="<?= $arrayUsers[$i]['id'] ?>">modifier droits</button>
-                                <button class=" border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?= "user-" . $arrayUsers[$i]['id'] ?>">Supprimer </button>
+                                <button class="delete border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?= "user-" . $arrayUsers[$i]['id'] ?>">Supprimer </button>
                             </div>
                             
                         </div>
@@ -316,7 +316,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             <hr>
                             <div class="btnContainer flex justify-center gap-10 container p-3">
                                 <button class="update border rounded p-3 hover:bg-color-5" type="submit" name="update" value="<?= $arrayCats[$i]['id'] ?>">Modifier</button>
-                                <button class=" border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?= 'cat-' . $arrayCats[$i]['id'] ?>">Supprimer</button>
+                                <button class="delete border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?= 'cat-' . $arrayCats[$i]['id'] ?>">Supprimer</button>
                             </div>
                         </div>
                         <!-- bloc pour maj categories -->
@@ -448,7 +448,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         </a>
                         <div class="btnContainer flex justify-center gap-10  container p-3">
                             <button class="update border rounded p-3 hover:bg-color-5" type="submit" name="update" value="<?=$commentaries[$i]['id']?>">Modifier</button>
-                            <button class=" border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?='com-' . $commentaries[$i]['id']?>">Supprimer</button>
+                            <button class="delete border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?='com-' . $commentaries[$i]['id']?>">Supprimer</button>
                         </div>
                          <!-- bloc pour maj commentaires -->
                          <div class="artChange  mt-5 hidden p-2">

@@ -1,14 +1,23 @@
 // buttons update
-const artContainer = document.querySelectorAll(".artContainer"); // div pour cacher le titre + boutton update/delete
 const update = document.querySelectorAll(".update"); // boutton pour cacher la div
 const btnContainer = document.querySelectorAll(".btnContainer");
 const artChange = document.querySelectorAll(".artChange");
 const cancelBtn = document.querySelectorAll(".cancelBtn");
 const confirmBtn = document.querySelectorAll(".confirmBtn");
-
+const deleteBtn = document.querySelectorAll(".delete");
 const menus = document.querySelectorAll(".menus");
 const menuContent = document.querySelectorAll(".menu-content");
 
+// la confirmation de suppression
+deleteBtn.forEach(element => {
+    element.addEventListener('click', (e) => {
+      deleteConfirm = confirm('Confirmer la suppresion ?');
+
+      !deleteConfirm ? e.preventDefault() : '';
+      
+    });
+  });
+// gestion des menus déroulants
 for (let i = 0; i < menuContent.length; i++) {
   menuContent[i].classList.toggle("hidden");
 
@@ -35,7 +44,7 @@ function showHidden(button) {
 
       artChange[i].classList.toggle("hidden");
       btnContainer[i].classList.toggle("hidden");
-      // artContainer[i].classList.toggle("hidden");
+    
     });
   }
 }
