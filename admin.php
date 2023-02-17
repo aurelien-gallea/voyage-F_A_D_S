@@ -126,7 +126,7 @@ for ($d = 0; $d < count($commentaries); $d++) {
 
     } else if (isset($_POST['confirm']) && $_POST['confirm'] == 'com-' . $commentaries[$d]['id']) {
         $newCom = htmlspecialchars($_POST['newCom-' . $commentaries[$d]['id']]);
-        if ($newCom != $commentaries[$c]['id']) {
+        if ($newCom != $commentaries[$d]['id']) {
             Update::updateCom($newCom, $commentaries[$d]['id']);
             header('location:admin.php?success=5');
             exit();
@@ -176,7 +176,6 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
-    <!-- <link rel="stylesheet" href="css/voyages.css"> -->
     <link rel="stylesheet" href="css/tailwind-need.css">
     <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -279,7 +278,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             </div>
                             <div class="flex flex-col md:flex-row gap-2 mb-2">
                                 <label for="<?= $arrayUsers[$i]['login'] ?>">Login:</label>
-                                <input class="dark:bg-color-1 text-black dark:text-white p-1 rounded" type="text" name="<?= 'login-' . $arrayUsers[$i]['id'] ?>" value="<?= $arrayUsers[$i]['login'] ?>">
+                                <input class="dark:bg-color-1 text-black dark:text-white p-1 rounded" maxlength="15" type="text" name="<?= 'login-' . $arrayUsers[$i]['id'] ?>" value="<?= $arrayUsers[$i]['login'] ?>">
                             </div>
                             <div class="flex justify-between  container p-3">
                                 <button class="cancelBtn border rounded p-3 hover:bg-color-5 hover:text-black" type="submit" name="cancel">Annuler</button>
@@ -382,21 +381,25 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
                         </div>
                         <!-- bloc pour maj article -->
-                        <div class="artChange  mt-5 hidden p-2">
+                        <div class="artChange  mt-5 hidden p-2 ">
 
-                            <div class="gap-5 mb-2">
-                                <label for="categories"> changer vos catégories ? (cochez les cases correspondantes) :</label>
-                                <div id="dropdownSearch" class="z-10 dark:bg-color-1 rounded-lg shadow w-60 dark:bg-gray-700">
+                            <div class="gap-5 mb-2 ">
+                                <label for="categories "> changer vos catégories ? (cochez les cases correspondantes) :</label>
+                                <button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-color-5 rounded-lg hover:opacity-90  focus:outline-none  dark:bg-color-1 dark:hover:opacity-90" type="button">Catégories<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+						            </svg></button>
+                                    <!-- Dropdown menu -->
+                                    <div id="dropdownSearch" class="flex z-10 bg-amber-600 rounded-lg shadow w-60 dark:bg-gray-700 hidden" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(592.727px, 455.455px, 0px);" data-popper-placement="bottom">
                                     <?php Update::listOfCategories(); ?>
-                                </div>
+                                    </div>
                             </div>
                             <div class="flex flex-col gap-3 mb-2">
                                 <label for="<?= $arrayArt[$i]['titre'] ?>">Titre :</label>
-                                <input class="text-black dark:text-white dark:bg-color-1 p-1 rounded" type="text" name="<?= 'titre-' . $arrayArt[$i]['id'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
+                                <input class="text-black dark:text-white dark:bg-color-1 p-1 rounded" maxlength="80" type="text" name="<?= 'titre-' . $arrayArt[$i]['id'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
                             </div>
                             <div class="flex flex-col gap-3 mb-8">
                                 <label for="<?= $arrayArt[$i]['id'] ?>">article :</label>
-                                <textarea class="text-black dark:text-white dark:bg-color-1 p-1 rounded w-full h-80"  name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
+                                <textarea class="text-black dark:text-white dark:bg-color-1 p-1 rounded w-full h-80" maxlength="5000"  name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
                             </div>
                             <div class="flex  justify-between  container p-3">
                                 <button class="cancelBtn border rounded p-3 hover:dark:bg-color-1 hover:text-black" type="submit" name="cancel">Annuler</button>
@@ -451,7 +454,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                          <div class="artChange  mt-5 hidden p-2">
                             <div class="flex flex-col md:flex-row gap-2 mb-2">
                                 <label for="<?= $commentaries[$i]['id'] ?>">Changer le commentaire:</label>
-                                <textarea  class="text-black dark:text-white dark:bg-color-1 p-1 rounded w-full h-60" type="text" name="<?='newCom-' . $commentaries[$i]['id']?>"><?= $commentaries[$i]['commentaire']?></textarea> 
+                                <textarea  class="text-black dark:text-white dark:bg-color-1 p-1 rounded w-full h-60" maxlength="1024" type="text" name="<?='newCom-' . $commentaries[$i]['id']?>"><?= $commentaries[$i]['commentaire']?></textarea> 
                             </div>
 
                             <div class="flex justify-between gap-5 container p-3">

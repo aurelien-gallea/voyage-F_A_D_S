@@ -19,7 +19,7 @@
 <?php require_once('src/header.php');?>
 <section class="flex-grow">
     <div class="mt-28 mb-10 text-center text-3xl text-color-3 font-unbounded ">
-        <h1>Contactez un membre de l'équipe</h1>
+        <h1>Contacter un membre de l'équipe</h1>
     </div>
     <div class="container text-lg mx-auto mb-10 flex flex-col md:w-1/2 gap-5 p-2">
         <div class="bg-color-5 dark:bg-color-3 rounded p-2 hover:opacity-90 ">
