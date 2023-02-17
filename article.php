@@ -187,7 +187,7 @@ $cat=$catName->fetchAll();
            <textarea maxlength="1024" name="commentaire" id="commentaire" rows="4" class="w-full px-0 text-sm text-gray-900 break-words bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="votre commentaire..." required></textarea>
        </div>
        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
-           <button type="submit" name="submit_commentaire" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-300 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+           <button type="submit" name="submit_commentaire" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-color-2 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-color-3">
                Envoyer le commentaire
            </button>
            <p id="char-count"></p> 
@@ -324,8 +324,8 @@ textarea.addEventListener("input", () => {
     
     <!-- Afficher le commentaire -->
         <div class="comments">
-            <div id="comment-<?= $commentaire['id'] ?>" class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <p class="font-normal text-gray-700 dark:text-gray-400"><?php echo $commentaire['commentaire']; ?></p>
+            <div id="comment-<?= $commentaire['id'] ?>" class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-color-2 hover:text-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <p class="font-normal text-gray-700 dark:text-gray-400 "><?php echo $commentaire['commentaire']; ?></p>
             </div>
         </div>
   </div> 

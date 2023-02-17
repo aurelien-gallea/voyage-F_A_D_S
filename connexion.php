@@ -1,9 +1,6 @@
 <?php session_start(); ?>
 
 <?php
-
-
-
 require_once('src/connectionDB.php');
 require_once('classes/Security.php');
 if(!empty($_POST['login']) && !empty($_POST['password'])) {
@@ -20,21 +17,16 @@ if(!empty($_POST['login']) && !empty($_POST['password'])) {
     if($resultat['login'] == $login &&  $password == $resultat['password']) {
         setcookie('login', htmlspecialchars($resultat['login']),time()+3600 ); 
         $id = $resultat['id'];
-
         $_SESSION['id']  =$id;  
        $_SESSION['login'] = $login;
         $_SESSION['password'] = $password;
-          
-       $count++;
-      
-      header('location:articles.php');
+           $count++;
+         header('location:articles.php');
         exit();
     }
 }
-    if($count!=1) {
-        
+    if($count!=1) {        
         $count = 0;
-
         header('Location: connexion.php?erreur=1');
         exit();
     } 
@@ -90,7 +82,7 @@ include'src/header.php';
 <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="flex content-center justify-center w-full z-10 h-screen m-auto p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
     <div class="relative w-full h-full m-auto max-w-md md:h-auto">
         <!-- Modal content -->
-        <div class="relative duration-700 ease-linear backdrop-blur-md rounded-lg shadow dark:bg-gray-700">
+        <div class="relative duration-700 ease-linear backdrop-blur-md rounded-lg shadow-xl dark:bg-gray-700">
         
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Connectez vous à TastyTrip!</h3>
@@ -107,25 +99,20 @@ include'src/header.php';
                         
                       </div>
                     <div class="flex justify-between">
-                        <!-- <div class="flex items-start"> -->
-                            <!-- <div class="flex items-center h-5"> -->
-                                <!-- <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded text-color-5 bg-gray-50 focus:ring-3 focus:ring-color-3 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-color-3 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required> -->
-                            <!-- </div>
-                            <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Se rappeler de moi</label>
-                        </div> -->
+                       
                        <div class="text-red-600"> <?php
-if(isset($_GET['erreur'])){
-  $erreur=$_GET['erreur'];
-  if($erreur==1){
-    echo "<p class='alert'>login ou mot de passe incorrect</p>";
+                          if(isset($_GET['erreur'])){
+                     $erreur=$_GET['erreur'];
+                        if($erreur==1){
+                       echo "<p class='alert'>login ou mot de passe incorrect</p>";
 
-  }
-}
-  ?>
-  </div>
+                         }
+                                }
+                            ?>
+                      </div>
                         
                     </div>
-                    <button type="submit" class="w-full text-white bg-gray-600 hover:bg-color-5 focus:ring-4 focus:outline-none focus:ring-color-3 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-color-3 dark:hover:bg-color-5 dark:focus:ring-color-2">Connexion</button>
+                    <button type="submit" class="w-full text-white bg-gray-600 hover:bg-color-5 hover:shadow-xl focus:ring-4 focus:outline-none focus:ring-color-3 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-color-5 dark:hover:bg-color-3 dark:focus:ring-color-2">Connexion</button>
                     <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                         Non inscrit? <a href="inscription.php" class="text-white hover:underline dark:text-color-5">Créer un compte</a>
                     </div>
@@ -169,9 +156,6 @@ togglePassword.addEventListener("click", function () {
 <?php 
 include'src/footer.php';
 ?>
-
-
- <!-- <script src="src/hidePass.js"></script> -->
 
     <script src="src/tailwind-need-body.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>

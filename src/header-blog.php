@@ -74,29 +74,20 @@
             if (isset($_SESSION['id'])) {
               $adminStatus = Update::selectStatusByUser($_SESSION['id']);
               if ($adminStatus['droits'] == 'admin') {  ?>
-
             <li>
               <a
                 href="admin.php"
-
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >Admin</a
               >
-            </li>
-
-                 
-                
+            </li>                 
              <? }
-                else {?>
-              
-
+                else {?>             
 
             <?php   
           }} ?>
            
-
             <li>
-
 
             <?php  if(empty($_SESSION)) {?>
               <a  href="connexion.php"
