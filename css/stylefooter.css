@@ -2,7 +2,7 @@ footer{
   position: relative;
   bottom: 0px;
   width: 100%;
-  background: #1c3738;
+  background: #111827;
   z-index: auto;
 }
 .main-content{
@@ -22,14 +22,14 @@ footer{
   position: relative;
 }
 .box .content:before {
-  position: absolute;
+  position: center;
   content: '';
   top: -10px;
   left: 50%;
   transform: translateX(-50%);
   height: 2px;
   width: 50%;
-  background: #1a1a1a;
+  background: #f4fff8;
 }
 
 .box .content:after{
@@ -52,7 +52,7 @@ footer{
 .left .content .social a span{
   height: 40px;
   width: 40px;
-  background: #1a1a1a;
+  background: #8baaad;
   line-height: 40px;
   text-align: center;
   font-size: 18px;
@@ -64,7 +64,7 @@ footer{
 }
 .center .content .fas{
   font-size: 1.4375rem;
-  background: #1a1a1a;
+  background: #8baaad;
   height: 45px;
   width: 45px;
   line-height: 45px;

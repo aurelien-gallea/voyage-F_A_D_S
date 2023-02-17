@@ -7,23 +7,14 @@ session_start();
 <head>
 	<title>Bienvenue sur Tasty Trip</title>
   
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@latest/dist/tailwind.min.css">
-
-    <link rel="stylesheet" href="css/voyages.css">
-    <link rel="stylesheet" href="stylefooter.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@0.2.28/bundled/lenis.js"></script>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="css/voyages.css"> -->
+    <link rel="stylesheet" href="css/tailwind-need.css">
+    <script src="src/tailwind-need.js"></script>
+    <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
     <script>
       tailwind.config = { darkMode: 'class',
   // ...
@@ -31,11 +22,11 @@ session_start();
         theme: {
           extend: {
             colors: {
-        'color-1': '#000F08',
-        'color-2': '#1C3738',
-        'color-3': '#4D4847',
-        'color-4': '#F4FFF8',
-        'color-5': '#8BAAAD',
+        'color-1': '#111827',
+        'color-2': '#8BAAAD',
+        'color-3': '#90323D',
+        'color-4': '#FCF6B1',
+        'color-5': '#F18F01AD',
       },
             opacity: {
               54: ".24",
@@ -91,11 +82,11 @@ session_start();
     </li>
   </ul>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-    <script src="src/tailwind-need-body.js"></script> 
+    <script src="src/tailwind-need-body.js"></script>
 </body>
 <br>
 <footer class="text-white">
-  <link rel="stylesheet" href="stylefooter.css" />
+  <link rel="stylesheet" href="css/stylefooter.css" />
   <div class="main-content">
     <div class="left box">
       <h2>A Propos</h2>
