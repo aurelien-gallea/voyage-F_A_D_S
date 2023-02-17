@@ -26,7 +26,7 @@ if (isset($_POST['submit_commentaire'])) {
   $stmt2->execute();  
 
   // Redirection vers la même page pour afficher les commentaires actualisés
-  header('Location: article3.php?id='. $id);
+  header('Location: article.php?id='. $id);
   exit;
 }
 
@@ -44,7 +44,7 @@ if (isset($_POST['modif_commentaire'])) {
   $stmt->bindParam(':id_utilisateur', $user_id, PDO::PARAM_INT);
   $stmt->bindParam(':id_article', $id, PDO::PARAM_INT);
   $stmt->execute();
-  header('Location: article3.php?id='. $id);
+  header('Location: article.php?id='. $id);
   exit;
 }
 
