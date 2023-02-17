@@ -60,7 +60,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
-    <!-- <link rel="stylesheet" href="css/voyages.css"> -->
     <link rel="stylesheet" href="css/tailwind-need.css">
     <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -78,7 +77,7 @@
                 <div>
                     <div class="flex  justify-center">
                         <label for="login" class="bg-color-3 dark:bg-color-4 p-2 mt-3 rounded-l-md"><img width="30" src="assets/utilisateur.png" alt="icone utilisateur"> </label>
-                        <input id="login" class="p-2 rounded-r-md mt-3 text-xl" type="text" name="login" id="login" placeholder="Nom d'utilisateur">
+                        <input id="login" maxlength="12" class="p-2 rounded-r-md mt-3 text-xl" type="text" name="login" id="login" placeholder="Nom d'utilisateur">
                     </div>
                     <small id="errorLogin" class="text-red-800 dark:text-color-4">Entrez un nom d'utilisateur</small>
                 </div>

@@ -14,7 +14,6 @@ session_start();
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
-    <!-- <link rel="stylesheet" href="css/voyages.css"> -->
     <link rel="stylesheet" href="css/tailwind-need.css">
     <script src="src/tailwind-need.js"></script>
     <link href="assets/esp-favicon.ico" rel="icon" type="image/x-icon" />

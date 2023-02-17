@@ -176,7 +176,6 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
-    <!-- <link rel="stylesheet" href="css/voyages.css"> -->
     <link rel="stylesheet" href="css/tailwind-need.css">
     <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -279,7 +278,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             </div>
                             <div class="flex flex-col md:flex-row gap-2 mb-2">
                                 <label for="<?= $arrayUsers[$i]['login'] ?>">Login:</label>
-                                <input class="dark:bg-color-1 text-black dark:text-white p-1 rounded" type="text" name="<?= 'login-' . $arrayUsers[$i]['id'] ?>" value="<?= $arrayUsers[$i]['login'] ?>">
+                                <input class="dark:bg-color-1 text-black dark:text-white p-1 rounded" maxlength="15" type="text" name="<?= 'login-' . $arrayUsers[$i]['id'] ?>" value="<?= $arrayUsers[$i]['login'] ?>">
                             </div>
                             <div class="flex justify-between  container p-3">
                                 <button class="cancelBtn border rounded p-3 hover:bg-color-5 hover:text-black" type="submit" name="cancel">Annuler</button>
@@ -396,11 +395,11 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             </div>
                             <div class="flex flex-col gap-3 mb-2">
                                 <label for="<?= $arrayArt[$i]['titre'] ?>">Titre :</label>
-                                <input class="text-black dark:text-white dark:bg-color-1 p-1 rounded" type="text" name="<?= 'titre-' . $arrayArt[$i]['id'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
+                                <input class="text-black dark:text-white dark:bg-color-1 p-1 rounded" maxlength="80" type="text" name="<?= 'titre-' . $arrayArt[$i]['id'] ?>" value="<?= $arrayArt[$i]['titre'] ?>">
                             </div>
                             <div class="flex flex-col gap-3 mb-8">
                                 <label for="<?= $arrayArt[$i]['id'] ?>">article :</label>
-                                <textarea class="text-black dark:text-white dark:bg-color-1 p-1 rounded w-full h-80"  name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
+                                <textarea class="text-black dark:text-white dark:bg-color-1 p-1 rounded w-full h-80" maxlength="5000"  name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
                             </div>
                             <div class="flex  justify-between  container p-3">
                                 <button class="cancelBtn border rounded p-3 hover:dark:bg-color-1 hover:text-black" type="submit" name="cancel">Annuler</button>
@@ -455,7 +454,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                          <div class="artChange  mt-5 hidden p-2">
                             <div class="flex flex-col md:flex-row gap-2 mb-2">
                                 <label for="<?= $commentaries[$i]['id'] ?>">Changer le commentaire:</label>
-                                <textarea  class="text-black dark:text-white dark:bg-color-1 p-1 rounded w-full h-60" type="text" name="<?='newCom-' . $commentaries[$i]['id']?>"><?= $commentaries[$i]['commentaire']?></textarea> 
+                                <textarea  class="text-black dark:text-white dark:bg-color-1 p-1 rounded w-full h-60" maxlength="1024" type="text" name="<?='newCom-' . $commentaries[$i]['id']?>"><?= $commentaries[$i]['commentaire']?></textarea> 
                             </div>
 
                             <div class="flex justify-between gap-5 container p-3">
