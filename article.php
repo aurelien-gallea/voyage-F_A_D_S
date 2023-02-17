@@ -320,7 +320,7 @@ textarea.addEventListener("input", () => {
 </div>
 <!-- ----------------------------fin du modal modifier -------------------------- -->
 <?php } ?>
-    </divwwwwwwww>
+    </div>
     
     <!-- Afficher le commentaire -->
         <div class="comments">
