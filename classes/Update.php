@@ -109,6 +109,17 @@ class Update
         }
         return $arrayComs;
     }
+    public static function selectAllCommentsByArticle($arrayComs, $id_article) {
+
+        require('src/connectionDB.php');
+        $coms = $bdd->prepare('SELECT * FROM commentaires WHERE id_article =?');
+        $coms->execute([$id_article]);
+        
+        while ($comsResponse = $coms->fetch(PDO::FETCH_ASSOC)) {
+            array_push($arrayComs, $comsResponse);
+        }
+        return $arrayComs;
+    }
     public static function selectAllUsers($array) {
 
         require('src/connectionDB.php');
