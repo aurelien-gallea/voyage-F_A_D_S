@@ -177,7 +177,7 @@ $cat=$catName->fetchAll();
            <textarea maxlength="1024" name="commentaire" id="commentaire" rows="4" class="w-full px-0 text-sm text-gray-900 dark:text-white break-words bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="votre commentaire..." required></textarea>
        </div>
        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
-           <button type="submit" name="submit_commentaire" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-color-2 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-color-3">
+           <button type="submit" name="submit_commentaire" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-color-2 rounded-lg focus:ring-4 focus:ring-color-4 dark:focus:ring-color-5 hover:bg-color-3">
                Envoyer le commentaire
            </button>
            <p class="text-gray-400 dark:text-white" id="char-count"></p> 
@@ -214,14 +214,14 @@ $cat=$catName->fetchAll();
             <div class="flex  justify-around ">
                 <!-- Bouton Modifier -->
                 <?php if ($is_author) { ?>
-                  <button data-modal-target="staticModal2_<?= $i ?>" data-modal-toggle="staticModal2_<?= $i ?>" class="inline-flex items-center py-1 px-2 m-1  text-white bg-red-900 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                  <button data-modal-target="staticModal2_<?= $i ?>" data-modal-toggle="staticModal2_<?= $i ?>" class="inline-flex items-center py-1 px-2 m-1  text-white bg-color-3 hover:bg-color-2 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-xs text-center dark:bg-color-3 dark:hover:bg-color-5 dark:focus:ring-color-2" type="button">
                    Modifier <?= $commentaire['id']?>
                   </button>
                 <?php } ?>
 
              <!-- Bouton Supprimer -->
                  <?php if ($is_author) { ?>
-                    <button data-modal-target="popup-modal_<?= $i ?>" data-modal-toggle="popup-modal_<?= $i ?>" data-comment-id="<?= $commentaire['id'] ?>" class="inline-flex items-center py-1 px-2 m-1 text-white bg-red-900 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                    <button data-modal-target="popup-modal_<?= $i ?>" data-modal-toggle="popup-modal_<?= $i ?>" data-comment-id="<?= $commentaire['id'] ?>" class="inline-flex items-center py-1 px-2 m-1 text-white bg-color-3 hover:bg-color-2 focus:ring-4 focus:outline-none focus:ring-color-4 font-medium rounded-lg text-xs text-center dark:bg-color-3 dark:hover:bg-color-5 dark:focus:ring-color-2" type="button">
                           Supprimer
                     </button>
                  <?php } ?>
@@ -282,8 +282,8 @@ $cat=$catName->fetchAll();
                  </div>
                   <!-- Modal footer -->
                  <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                   <button data-modal-hide="staticModal2_" type="submit" value="<?= $commentaire['id'] ?>"name="modif_commentaire"class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Modifier</button>
-                   <button data-modal-hide="staticModal2_<?= $i ?>" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Annuler</button>
+                   <button data-modal-hide="staticModal2_" type="submit" value="<?= $commentaire['id'] ?>"name="modif_commentaire"class="text-white bg-color-5 hover:bg-color-2 focus:ring-4 focus:outline-none focus:ring-color-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-color-3 dark:hover:bg-color-5 dark:focus:ring-color-2">Modifier</button>
+                   <button data-modal-hide="staticModal2_<?= $i ?>" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-color-4 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Annuler</button>
                  </div>
             </div>
         </div>
@@ -295,7 +295,7 @@ $cat=$catName->fetchAll();
     <!-- Afficher le commentaire -->
         <div class="comments">
             <div id="comment-<?= $commentaire['id'] ?>" class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-color-2 hover:text-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <p class="font-normal text-gray-700 dark:text-gray-400 "><?php echo $commentaire['commentaire']; ?></p>
+                <p class="font-normal text-gray-700 dark:text-gray-400 break-words"><?php echo $commentaire['commentaire']; ?></p>
             </div>
         </div>
     </div>

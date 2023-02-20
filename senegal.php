@@ -141,7 +141,7 @@ Le Sénégal
     <div id="defaultTabContent">
         <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="about" role="tabpanel" aria-labelledby="about-tab">
         
-        <div class="flex flex-row justify-between">  
+        <div class="flex flex-row justify-between flex-wrap">  
           <div></div> 
         <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white"> Le Sénégal</h2>
             <div class="flex flex-end w-10 h-8">  
@@ -308,7 +308,7 @@ La Casamance est frontalière de la Gambie au nord, de la Guinée-Bissau et de l
     <div class="relative h-full w-full overflow-hidden rounded-lg md:h-96 max-sm:h-80">
          <!-- Item 1 -->
         <div class="hidden duration-200 ease-linear" data-carousel-item>
-            <img src="assets/sene.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="assets/sene.png" class="absolute justify-center block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-200 ease-linear" data-carousel-item>
