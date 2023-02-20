@@ -321,7 +321,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             <div>
                                 <div class="btnContainer container text-black dark:text-white bg-white dark:bg-color-3 flex flex-wrap justify-between gap-2  p-3">
                                     <button class="update border rounded p-3 hover:bg-orange-500" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier</button>
-                                    <button class=" border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer</button>
+                                    <button class="delete border rounded p-3 hover:bg-red-500" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer</button>
                                 </div>
                             </div>
                             <!-- bloc pour maj article -->
@@ -370,7 +370,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                 for ($i = 0; $i < $nbComs; $i++) { ?>
                     <div class="border rounded my-4">
                         <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>">
-                            <div class="artContainer text-white text-black dark:text-white bg-white dark:bg-color-1 hover:bg-gray-500">
+                            <div class="artContainer  text-black dark:text-white bg-white dark:bg-color-1 hover:bg-gray-500">
                                 <div class="flex flex-col justify-between  container p-3">
                                     <p> <span class="text-blue-500 text-xl"> <?= $login ?> </span> a posté le commentaire suivant le : <?= DateToFr::dateFR($commentaries[$i]['date']) ?></span></p>
                                     <p> <?= $commentaries[$i]['commentaire'] ?></p>
