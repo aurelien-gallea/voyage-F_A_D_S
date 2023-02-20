@@ -1,6 +1,6 @@
 const prog = document.querySelector('.progress');
 let scrollPosition = 0;
-const maxScrollPosition = 7830;
+const maxScrollPosition = 8830;
 
 document.addEventListener("scroll", () => {
     scrollPosition = window.scrollY;
