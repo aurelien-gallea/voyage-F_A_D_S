@@ -88,7 +88,7 @@ if (isset($_POST['suppr_commentaire'])) {
 if (isset($_POST['sort_order'])) {
   $sort_order2 = $_POST['sort_order'];
 } else {
-  $sort_order2 = 'desc';
+  $sort_order2 = 'asc';
 }
 
     $stmt = $bdd->prepare("SELECT commentaires.*, utilisateurs.login FROM commentaires
@@ -145,15 +145,16 @@ $cat=$catName->fetchAll();
 
   <!-- ----------------------------------body--------------------------- -->
 
-     <body class="   relative  content-center justify-center  max-[800px]:pt40   w-full h-full m-auto bg-gray-200 dark:bg-gray-600 mt-10 max-[800px]:pt50 " >
-     <div class="flex flex-col   ">
+     <body class="relative  content-center justify-center  max-[800px]:pt40   w-full h-full m-auto bg-gray-200 dark:bg-gray-600 mt-10 max-[800px]:pt50 " >
+    
+     <div class="flex flex-col">
      <?php include'src/header-blog.php';?>
     
      <section  class=" flex-grow top-20 flex flex-col w-5/6 content-center justify-center place-self-center    m-auto  md:inset-0   ">
 
     <div class="flex flex-col items-center   bg-white border border-gray-200 rounded-lg shadow max-[767px]:pt-1 md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="assets/illustration1.png" alt="">
-    <div class="flex flex-col justify-between p-4 leading-normal">
+     <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="assets/illustration1.png" alt="">
+     <div class="flex flex-col justify-between p-4 leading-normal">
         <h5 class="mb-2 text-2xl font-bold break-words tracking-tight text-gray-900 dark:text-white">Article - <?php echo $article['titre']; ?></h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 break-words"><?php echo $article['article']; ?></p>
         <div class="flex flex-row mb-1 max-[800px]:flex-col font-normal text-gray-900 dark:text-gray-400"><p>catégorie : 
@@ -163,7 +164,7 @@ $cat=$catName->fetchAll();
             
           <?php }?></p>
         </div>
-    </div>
+     </div>
 </div>
 
   <!----------------------|| Ajout commentaire ||----------------------------------------------->
@@ -173,13 +174,13 @@ $cat=$catName->fetchAll();
    <div class=" mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
        <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
            <label for="commentaire" class="sr-only">Votre commentaire</label>
-           <textarea maxlength="1024" name="commentaire" id="commentaire" rows="4" class="w-full px-0 text-sm text-gray-900 break-words bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="votre commentaire..." required></textarea>
+           <textarea maxlength="1024" name="commentaire" id="commentaire" rows="4" class="w-full px-0 text-sm text-gray-900 dark:text-white break-words bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="votre commentaire..." required></textarea>
        </div>
        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
            <button type="submit" name="submit_commentaire" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-color-2 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-color-3">
                Envoyer le commentaire
            </button>
-           <p id="char-count"></p> 
+           <p class="text-gray-400 dark:text-white" id="char-count"></p> 
        </div>
    </div>
 </form>
@@ -200,18 +201,14 @@ $cat=$catName->fetchAll();
     
   <?php for ($i = 0; $i < sizeof($commentaires); $i++) {
     $commentaire = $commentaires[$i];
-    $is_author = $commentaire['id_utilisateur'] === $user_id;?>
-    
-     
+    $is_author = $commentaire['id_utilisateur'] === $user_id;?>        
  <div class="flex items-center justify-between px-4 py-2 border-t border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
-       
-
-        <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+     
+        <div class="block p-6 bg-white border border-gray-200 rounded-lg w-full shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div class="flex flex-row items-center justify-between mb-2">
                <h5 class="text-sm font-bold tracking-tight text-gray-900 dark:text-white"> 
                   <?php echo $commentaire['login'] . ' a posté le commentaire suivant : le ' ?><?php echo DateToFr::dateFr($commentaire['date']); ?>
-               </h5>
-               
+               </h5>              
    
                <!-------- Modal toggle ------------->
             <div class="flex  justify-around ">
@@ -219,7 +216,7 @@ $cat=$catName->fetchAll();
                 <?php if ($is_author) { ?>
                   <button data-modal-target="staticModal2_<?= $i ?>" data-modal-toggle="staticModal2_<?= $i ?>" class="inline-flex items-center py-1 px-2 m-1  text-white bg-red-900 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                    Modifier <?= $commentaire['id']?>
-                 </button>
+                  </button>
                 <?php } ?>
 
              <!-- Bouton Supprimer -->
@@ -227,7 +224,7 @@ $cat=$catName->fetchAll();
                     <button data-modal-target="popup-modal_<?= $i ?>" data-modal-toggle="popup-modal_<?= $i ?>" data-comment-id="<?= $commentaire['id'] ?>" class="inline-flex items-center py-1 px-2 m-1 text-white bg-red-900 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                           Supprimer
                     </button>
-                  <?php } ?>
+                 <?php } ?>
             </div>
         </div>
                <!-- Fenetre modal suppression -->
