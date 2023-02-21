@@ -329,11 +329,11 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
                                 <div class="gap-5 mb-2">
                                     <label for="categories"> changer vos catégories ? (cochez les cases correspondantes) :</label>
-                                    <button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-color-5 rounded-lg hover:opacity-90  focus:outline-none  dark:bg-color-1 dark:hover:opacity-90" type="button">Catégories<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <button id="dropdownSearchButton-<?= $arrayArt[$i]['id'] ?>" data-dropdown-toggle="dropdownSearch-<?= $arrayArt[$i]['id'] ?>" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-color-5 rounded-lg hover:opacity-90  focus:outline-none  dark:bg-color-1 dark:hover:opacity-90" type="button">Catégories<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                         </svg></button>
                                     <!-- Dropdown menu -->
-                                    <div id="dropdownSearch" class="flex z-10 bg-amber-600 rounded-lg shadow w-60 dark:bg-gray-700 hidden" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(592.727px, 455.455px, 0px);" data-popper-placement="bottom">
+                                    <div id="dropdownSearch-<?= $arrayArt[$i]['id'] ?>" class="flex z-10 bg-amber-600 rounded-lg shadow w-60 dark:bg-gray-700 hidden" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(592.727px, 455.455px, 0px);" data-popper-placement="bottom">
                                         <?php Update::listOfCategories(); ?>
                                     </div>
                                 </div>
