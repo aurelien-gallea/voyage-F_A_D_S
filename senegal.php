@@ -221,13 +221,13 @@ La Casamance est frontalière de la Gambie au nord, de la Guinée-Bissau et de l
       <div class="w-3/4 p-2 rounded sm:w-1/3">
         <a
           class="spotlight"
-          href="assets/yassa.jpg"
-          data-src-800="assets/yassa.jpg"
-          data-src-1200="assets/yassa.jpg"
-          data-src-2400="assets/yassa.jpg"
-          data-src-3800="assets/yassa.jpg"
+          href="assets/yassa2.jpg"
+          data-src-800="assets/yassa2.jpg"
+          data-src-1200="assets/yassa2.jpg"
+          data-src-2400="assets/yassa2.jpg"
+          data-src-3800="assets/yassa2.jpg"
         >
-          <img  src="assets/yassa.jpg " />
+          <img  src="assets/yassa2.jpg " />
           <p>yassa au poulet</p>
         </a>
       </div>
