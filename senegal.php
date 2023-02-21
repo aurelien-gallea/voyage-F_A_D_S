@@ -18,8 +18,7 @@
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@0.2.28/bundled/lenis.js"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
     <title>Le sénégal</title>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -37,69 +36,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://rawcdn.githack.com/nextapps-de/spotlight/0.7.8/dist/js/spotlight.min.js"></script>
-<link
-      rel="stylesheet"
-      href="https://rawcdn.githack.com/nextapps-de/spotlight/0.7.8/dist/css/spotlight.min.css"
-    />
-    <script>
+<link      rel="stylesheet"      href="https://rawcdn.githack.com/nextapps-de/spotlight/0.7.8/dist/css/spotlight.min.css"    />
 
-const observer = new IntersectionObserver(callback);
-
-const targets = document.querySelectorAll(".js-show-on-scroll");
-targets.forEach(function (target) {
-  target.classList.add("opacity-0");
-  observer.observe(target);
-});
-
-
-</script>
-  </head>
+</head>
 
   <!-- ----------------------------------body--------------------------- -->
-  <style>
-   
 
-  </style>
-<script>
-
-$(window).scroll(function() {
-  var scrollPosition = $(this).scrollTop();
-  if (scrollPosition > 200) {
-    $(".hidden").addClass("block");
-  }
-});
-</script>
-
-
-    <body>
+ <body>
 
       <?php 
       include'src/header.php';
       ?>
-
-<!-- <div class="p-4">
-
-  <div id="section-1" class="toTop hidden h-screen bg-gray-300 p-4 pt-20">Hello<div style="scroll-behavior: smooth;"class="p-20">
-  <a href="#section-2">Go to Section 2</a>
-</div></div>
-  <div class="toTop hidden h-screen bg-gray-600 p-4 my-4 js-show-on-scroll">Hello</div>
-
-  <div class="toTop hidden grid grid-cols-2 gap-4 my-4">
-    <div class="toTop hidden bg-red-500 p-4 h-64 text-white js-show-on-scroll">
-      <h1>Hello world</h1>
-    </div>
-
-    <div id="section-2"class="hidden toTop bg-green-500 p-4 h-64 text-white js-show-on-scroll">
-      <h1>Hello world</h1>
-    </div>
-  </div>
-
-  <div class="hidden toTop h-screen bg-gray-300 p-4 my-4 js-show-on-scroll">Hello</div>
-  <div class="hidden h-screen bg-gray-300 p-4 js-show-on-scroll">Hello</div>
-
-</div> -->
-
-
 
 <div class="text-sm min-h-screen flex items-center justify-center bg-white">
 
@@ -109,19 +56,13 @@ $(window).scroll(function() {
 
 <div class="w-full h-full bg-no-repeat absolute inset-0 bg-cover bg-center z-0 object-cover  rounded-t-lg  md:h-auto " 
 style="background-image: url('assets/sene2.jpg')" alt="">
-
-
-
-<div class="absolut  z-40">
+<div class="absolut z-40">
   <p class="text-3xl">
 Le Sénégal
   </p>
  
 </div>
-<div class=" z-10  flex items-center w-5/6 h-screen">
-
-
-
+<div class=" z-10  flex items-center w-6/7 h-screen">
 
 <div class="  mx-auto text-center w-5/6 bg-white border  border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
@@ -158,11 +99,14 @@ Il est bordé par l'océan Atlantique à l'ouest, la Mauritanie au nord-nord-est
 
 Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa source dans le Fouta-Djalon en Guinée. Le climat est tropical et sec avec deux saisons : la saison sèche et la saison des pluies.
 </p>
+<h3 class="mb-3 text-m font-extrabold tracking-tight text-gray-900 dark:text-white"> La cuisine Sénégalaise</h3>
+
+<p>La cuisine sénégalaise est souvent décrite comme l'une des plus riches et la plus variée d'Afrique de l'Ouest. Elle présente un certain nombre de similitudes avec celles des autres pays de cette région,</p>
 <div
         data-popover
         id="popover-image"
         role="tooltip"
-        class="absolute z-10 invisible inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-96 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600"
+        class="absolute z-10 invisible inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-2xl opacity-0 w-1/2 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600"
       >
         <div class="grid grid-cols-5">
           <div class="col-span-3 p-3">
@@ -173,7 +117,7 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
               </h3>
               <p>
                 S’étendant sur une surface de 196 712 km2, le Sénégal dispose d'une importante façade maritime, 
-                à l'ouest, avec l'océan Atlantique (530 km de côtes)4.  Au sud-est, la frontière avec la Guinée est 
+                à l'ouest, avec l'océan Atlantique (530 km de côtes).  Au sud-est, la frontière avec la Guinée est 
                 traversée par les contreforts de la montagne du Fouta-Djalon, et celle avec la Guinée-Bissau, 
                 au sud-sud-ouest, est traversée par une forêt tropicale. Au sud, la Gambie forme une enclave 
                 et sépare la région de la Casamance du reste du pays.
@@ -190,9 +134,6 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
         <div data-popper-arrow></div>
       </div>         
         </div>
-
-
-
         <div class="hidden p-4  bg-white rounded-lg md:p-8 dark:bg-gray-800" id="services" role="tabpanel" aria-labelledby="services-tab">
             <h2 class="mb-5 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">Dakar</h2>
             <!-- List -->
@@ -202,9 +143,10 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
              (estimation 20182) 
             que compte l'ensemble de la région de Dakar.
             </p>
+            <h2 class="mb-5 text-xl font-bold tracking-tight text-gray-900 dark:text-white"> Les bons plans Tasty Trip :</h2>
 
             <div class="container flex flex-wrap mx-auto">
-      <div class="w-full p-2 rounded lg:w-1/3">
+      <div class="w-4/5 p-2 rounded sm:w-1/3">
         <a
           class="spotlight"
           href="assets/monkey.jpg"
@@ -214,9 +156,10 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
           data-src-3800="assets/monkey.jpg"
         >
           <img src="assets/monkey.jpg" />
+          <p>Singe de la réserve de Bandia</p>
         </a>
       </div>
-      <div class="w-full p-2 rounded lg:w-1/3">
+      <div class="w-4/5 p-2 rounded sm:w-1/3">
         <a
           class="spotlight"
           href="assets/zebu.jpg"
@@ -226,9 +169,10 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
           data-src-3800="assets/zebu.jpg"
         >
           <img src="assets/zebu.jpg" />
+          <p>brochettes de zébu</p>
         </a>
       </div>
-      <div class="w-full p-2 rounded lg:w-1/3">
+      <div class="w-4/5 p-2 rounded sm:w-1/3">
         <a
           class="spotlight"
           href="assets/zebre.jpg"
@@ -238,6 +182,8 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
           data-src-3800="assets/zebre.jpg"
         >
           <img src="assets/zebre.jpg" />
+          <p>Zèbre de la réserve de Bandia</p>
+
         </a>
       </div>
     </div>
@@ -251,16 +197,15 @@ Géographie
 
 
 La Casamance est frontalière de la Gambie au nord, de la Guinée-Bissau et de la Guinée au sud et de la région de Tambacounda délimitée par la rivière Koulountou à l'est. Elle est bordée par l'océan Atlantique à l'ouest.
- La Casamance représente un septième de la superficie totale du Sénégal.
+ 
                     </p>
                     <div>
-
                     </div>
-                    <h2 class="mb-5 text-xl font-extrabold tracking-tight text-gray-900 dark:text-white"
-                    >foodies</h2>
+                    <h2 class="mb-5 text-xl font-bold tracking-tight text-gray-900 dark:text-white"> Les bons plans Tasty Trip :</h2>
+                   
                     <p>               </p>
                     <div class="container flex flex-wrap  mx-auto">
-      <div class="w-full p-2 rounded lg:w-1/3">
+      <div class="w-3/4  p-2 rounded sm:w-1/3">
         <a
           class="spotlight"
           href="assets/mangue.jpg"
@@ -270,21 +215,23 @@ La Casamance est frontalière de la Gambie au nord, de la Guinée-Bissau et de l
           data-src-3800="assets/mangue.jpg"
         >
           <img src="assets/mangue.jpg" />
+          <p>mangue de casamence</p>
         </a>
       </div>
-      <div class="w-full p-2 max-h-12  rounded lg:w-1/3">
+      <div class="w-3/4 p-2 rounded sm:w-1/3">
         <a
           class="spotlight"
-          href="assets/yassa.jpg"
-          data-src-800="assets/yassa.jpg"
-          data-src-1200="assets/yassa.jpg"
-          data-src-2400="assets/yassa.jpg"
-          data-src-3800="assets/yassa.jpg"
+          href="assets/yassa2.jpg"
+          data-src-800="assets/yassa2.jpg"
+          data-src-1200="assets/yassa2.jpg"
+          data-src-2400="assets/yassa2.jpg"
+          data-src-3800="assets/yassa2.jpg"
         >
-          <img class="max-h-56 aspect-square" src="assets/yassa.jpg " />
+          <img  src="assets/yassa2.jpg " />
+          <p>yassa au poulet</p>
         </a>
       </div>
-      <div class="w-full p-2 rounded lg:w-1/3">
+      <div class="w-3/4  p-2 rounded sm:w-1/3">
         <a
           class="spotlight"
           href="assets/poisson.jpg"
@@ -294,46 +241,47 @@ La Casamance est frontalière de la Gambie au nord, de la Guinée-Bissau et de l
           data-src-3800="assets/poisson.jpg"
         >
           <img src="assets/poisson.jpg" />
+          <p>yassa au poisson</p>
         </a>
       </div>
     </div>
-
-                </div>
+   </div>
                
         </div>
-        <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="photos" role="tabpanel" aria-labelledby="photos-tab">
+        <!------------------------------- caroussel ----------------------->
+        <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800 flex justify-center " id="photos" role="tabpanel" aria-labelledby="photos-tab">
 
         <div id="animation-carousel" class="relative w-5/6" data-carousel="static">
     <!-- Carousel wrapper -->
-    <div class="relative h-full w-full overflow-hidden rounded-lg md:h-96 max-sm:h-80">
+    <div class="relative h-full w-full overflow-hidden justify-center rounded-lg md:h-96 max-sm:h-80">
          <!-- Item 1 -->
         <div class="hidden duration-200 ease-linear" data-carousel-item>
-            <img src="assets/sene.png" class="absolute justify-center block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="assets/sene.png" class="absolute justify-center block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="sénégal">
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-200 ease-linear" data-carousel-item>
-            <img src="assets/pirogue.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="assets/pirogue.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="pirogue">
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-200 ease-linear" data-carousel-item="active">
-            <img src="assets/zebre.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="assets/zebre.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="zebre">
         </div>
         <!-- Item 4 -->
         <div class="hidden duration-200 ease-linear" data-carousel-item>
-            <img src="assets/vache.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="assets/vache.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="vache">
         </div>
         
     </div>
     <!-- Slider controls -->
     <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-200/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
             <span class="sr-only">Previous</span>
         </span>
     </button>
     <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-200/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             <span class="sr-only">Next</span>
         </span>
     </button>
