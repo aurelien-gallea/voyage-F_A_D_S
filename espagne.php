@@ -236,7 +236,7 @@ session_start();
             
         </article>
     </section>
-    <div class="fixed bottom-0 bg-color-3 dark:bg-color-4 z-10 progress"></div>
+    <div class="fixed bottom-0 bg-color-3 dark:bg-color-4 z-10 progress self-start"></div>
         <?php require_once('src/footer.php'); ?>
    
     <script src="src/espagne.js"></script>

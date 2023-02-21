@@ -77,7 +77,7 @@
                 <div>
                     <div class="flex  justify-center">
                         <label for="login" class="bg-color-3 dark:bg-color-4 p-2 mt-3 rounded-l-md"><img width="30" src="assets/utilisateur.png" alt="icone utilisateur"> </label>
-                        <input id="login" maxlength="12" class="p-2 rounded-r-md mt-3 text-xl" type="text" name="login" id="login" placeholder="Nom d'utilisateur">
+                        <input id="login" maxlength="12" class="p-2 rounded-r-md mt-3 text-xl" type="text" name="login"  placeholder="Nom d'utilisateur">
                     </div>
                     <small id="errorLogin" class="text-red-800 dark:text-color-4">Entrez un nom d'utilisateur</small>
                 </div>
@@ -85,7 +85,7 @@
 
                     <div class="flex  justify-center"> 
                         <label for="email" class="bg-color-3 dark:bg-color-4 p-2  rounded-l-md"><img width="30" src="assets/email.png" alt="icone email"></label>
-                        <input id="email" class="p-2 rounded-r-md  text-xl" type="email" name="email" id="email" placeholder="Email">
+                        <input id="email" class="p-2 rounded-r-md  text-xl" type="email" name="email"  placeholder="Email">
                     </div>
                     <small id="errorEmail" class=" text-red-800 dark:text-color-4">Utilisez un email valide</small>
                 </div>
@@ -93,14 +93,14 @@
 
                     <div class="flex  justify-center">
                         <label for="password" class="bg-color-3 dark:bg-color-4 p-2  rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone icone mot de passe"></label>
-                        <input id="password" class="p-2 rounded-r-md  text-xl" type="password" name="password" id="password" placeholder="Mot De Passe">    
+                        <input id="password" class="p-2 rounded-r-md  text-xl" type="password" name="password" placeholder="Mot De Passe">    
                     </div>
                 </div> 
                 <div>
                     
                     <div class="flex  justify-center mt-2"> 
                         <label for="password2" class="bg-color-3 dark:bg-color-4 p-2  mt-3 rounded-l-md"><img width="30" src="assets/mot-de-passe.png" alt="icone mot de passe"></label>
-                        <input id="password2" class="p-2 rounded-r-md mt-3 text-xl" type="password" name="password2" id="password2" placeholder="Confimer MDP">
+                        <input id="password2" class="p-2 rounded-r-md mt-3 text-xl" type="password" name="password2"  placeholder="Confimer MDP">
                     </div>
                     <div id="errorPassword">
                         <small class="text-red-800 dark:text-color-4">Deux mots de passe identiques</small><br>
@@ -113,7 +113,7 @@
             </div>
             <div class="text-white mb-5">
                 <span>Déjà un compte ?
-                    <a class="hover:text-orange-500" href="connexion.php">Clique ici</a>
+                    <a class="hover:text-orange-500" href="connexion.php">Cliquez ici</a>
                 </span>
             </div>
             <?php
