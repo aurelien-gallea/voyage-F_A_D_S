@@ -34,51 +34,53 @@ if (isset($_POST['submit_commentaire'])) {
 
 
 //--------------modifier le commentaire
-// require('src/connectionDB.php');
-// $id = (int) $_GET['id'];
-//         $coms = $bdd->prepare('SELECT * FROM commentaires WHERE id_article =:id');
-//         $coms->bindParam(':id', $id, PDO::PARAM_INT);
-//         $coms->execute();
+require('src/connectionDB.php');
 
-// $arrayCom = [];
-// $commentaires = Update::selectAllCommentsByArticle($arrayCom, $id);
+$id = (int) $_GET['id'];
+$coms = $bdd->prepare('SELECT * FROM commentaires WHERE id_article = :id');
+$coms->bindParam(':id', $id, PDO::PARAM_INT);
+$coms->execute();
+$commentaires = $coms->fetchAll(PDO::FETCH_ASSOC);
 
+for ($d = 0; $d < count($commentaires); $d++) {
+  $commentaire = $commentaires[$d];
+  if (isset($_POST['modif_commentaire']) && isset($_POST['id_commentaire']) && $_POST['id_commentaire'] == $commentaire['id']) {
+    $newCom = htmlspecialchars($_POST['commentaire-'.$commentaire['id']]);
+    if ($newCom != $commentaire['commentaire']) {
+      $stmt = $bdd->prepare("UPDATE commentaires SET commentaire = :commentaire WHERE id = :id AND id_utilisateur = :id_utilisateur AND id_article = :id_article");
+      $stmt->bindParam(':commentaire', $newCom, PDO::PARAM_STR);
+      $stmt->bindParam(':id', $commentaire['id'], PDO::PARAM_INT);
+      $stmt->bindParam(':id_utilisateur', $user_id, PDO::PARAM_INT);
+      $stmt->bindParam(':id_article', $id, PDO::PARAM_INT);
+      $stmt->execute();
+      header('Location: article.php?id='. $id);
+      exit;
+    }
+  }
 
+  if (isset($_POST['modif_commentaire']) && isset($_POST['commentaire']) && isset($_POST['commentaire-'.$commentaire['id']])) {
+    $newCom = htmlspecialchars($_POST['commentaire-'.$commentaire['id']]);
+    if ($newCom != $commentaire['commentaire']) {
+        $stmt = $bdd->prepare("UPDATE commentaires SET commentaire = :commentaire WHERE id = :id AND id_utilisateur = :id_utilisateur AND id_article = :id_article");
+        $stmt->bindParam(':commentaire', $newCom, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $commentaire['id'], PDO::PARAM_INT);
+        $stmt->bindParam(':id_utilisateur', $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':id_article', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        header('Location: article.php?id='. $id);
+ echo "newCom = " . $newCom . "<br>";
+echo "commentaire_id = " . $commentaire_id . "<br>";
+echo "user_id = " . $user_id . "<br>";
+echo "article_id = " . $article_id . "<br>";
+echo "UPDATE commentaires SET commentaire = '" . $newCom . "' WHERE id = " . $commentaire_id . " AND id_utilisateur = " . $user_id . " AND id_article = " . $article_id;
+echo $stmt->rowCount() . " lignes affectées";
+        
+    }
+    
+ exit;
+  }
 
-// // $commentaire= $_POST['commentaire-'.$commentaire['id']];
-
-// for ($d = 0; $d < count($commentaires); $d++) {  
-
-
-//   $commentaires = Update::selectAllCommentsByArticle($arrayCom, $id);
-
-//  if (isset($_POST['modif_commentaire']) && $_POST['commentaire'] == 'commentaire-'.$commentaries[$d]['id']) {
-
-
-//     // var_dump($commentaires[$d]);
-
-//       $newCom = htmlspecialchars($_POST['commentaire-'.$commentaire[$d]['id']]);
-//       if ($newCom != $commentaire[$d]['commentaire']) {
-//          Update::updateCom($newCom, $commentaire[$d]['id']);
-//          header('location:article.php?id='. $id);
-//          exit();
-//       }
-//    }
-//    if (isset($_POST['modif_commentaire']) && isset($_POST['commentaire']) && isset($_POST['commentaire-'.$commentaire[$d]['id']])) {
-
-//       $value = $_POST['commentaire-'.$commentaire[$d]['id']];
-//       $comment_id = $_POST['modif_commentaire'];
-//       $stmt = $bdd->prepare("UPDATE commentaires SET commentaire = :commentaire WHERE id = :id AND id_utilisateur = :id_utilisateur AND id_article = :id_article");
-//       $stmt->bindParam(':commentaire', $value, PDO::PARAM_STR);
-//       $stmt->bindParam(':id', $comment_id, PDO::PARAM_INT);
-//       $stmt->bindParam(':id_utilisateur', $user_id, PDO::PARAM_INT);
-//       $stmt->bindParam(':id_article', $id, PDO::PARAM_INT);
-//       $stmt->execute();
-//       header('Location: article.php?id='. $id);
-//       exit;
-//    }
-// }
-
+}
 
 //Effacer commentaire
 if (isset($_POST['suppr_commentaire'])) {
@@ -98,8 +100,6 @@ if (isset($_POST['suppr_commentaire'])) {
       $statement->execute();
   }
 }
-
-
 
 
 ?>
@@ -176,6 +176,7 @@ $cat=$catName->fetchAll();
     <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
   </head>
+
 
   <!-- ----------------------------------body--------------------------- -->
 
@@ -326,8 +327,7 @@ $cat=$catName->fetchAll();
         </div>
     </div>
     <!-- ----------------------------fin du modal modifier -------------------------- -->
-    <?php } ?>
-    
+    <?php } ?>    
     
     <!-- Afficher le commentaire -->
         <div class="comments">
@@ -337,8 +337,6 @@ $cat=$catName->fetchAll();
         </div>
     </div>
 </div> 
-
-
  <?php } ?>
 </form>
 
@@ -359,10 +357,7 @@ if (isset($_POST['suppr_commentaire'])) {
 include'src/footer.php';
 ?>
 
-
  </div>
-
-
 
     <script src="src/tailwind-need-body.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
