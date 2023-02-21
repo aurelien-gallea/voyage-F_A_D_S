@@ -4,6 +4,8 @@ require_once('src/connectionDB.php');
 require_once('classes/Security.php');
 require_once('classes/Date.php');
 require_once('classes/Verifycom.php');
+require_once('classes/Update.php');
+
 
 if (isset($_GET['id'])) {
   $id = (int) $_GET['id'];
@@ -30,23 +32,53 @@ if (isset($_POST['submit_commentaire'])) {
   exit;
 }
 
-//modifier commentaire
-if (isset($_POST['modif_commentaire'])) {
-  $value = $_POST['commentaire'];
-  $comment_id = $_POST['modif_commentaire'];
-  $stmt = $bdd->prepare("UPDATE commentaires
-  SET commentaire = :commentaire
-  WHERE id = :id
-  AND id_utilisateur = :id_utilisateur
-  AND id_article = :id_article");
-  $stmt->bindParam(':commentaire', $value, PDO::PARAM_STR);
-  $stmt->bindParam(':id', $comment_id, PDO::PARAM_INT);
-  $stmt->bindParam(':id_utilisateur', $user_id, PDO::PARAM_INT);
-  $stmt->bindParam(':id_article', $id, PDO::PARAM_INT);
-  $stmt->execute();
-  header('Location: article.php?id='. $id);
-  exit;
-}
+
+//--------------modifier le commentaire
+// require('src/connectionDB.php');
+// $id = (int) $_GET['id'];
+//         $coms = $bdd->prepare('SELECT * FROM commentaires WHERE id_article =:id');
+//         $coms->bindParam(':id', $id, PDO::PARAM_INT);
+//         $coms->execute();
+
+// $arrayCom = [];
+// $commentaires = Update::selectAllCommentsByArticle($arrayCom, $id);
+
+
+
+// // $commentaire= $_POST['commentaire-'.$commentaire['id']];
+
+// for ($d = 0; $d < count($commentaires); $d++) {  
+
+
+//   $commentaires = Update::selectAllCommentsByArticle($arrayCom, $id);
+
+//  if (isset($_POST['modif_commentaire']) && $_POST['commentaire'] == 'commentaire-'.$commentaries[$d]['id']) {
+
+
+//     // var_dump($commentaires[$d]);
+
+//       $newCom = htmlspecialchars($_POST['commentaire-'.$commentaire[$d]['id']]);
+//       if ($newCom != $commentaire[$d]['commentaire']) {
+//          Update::updateCom($newCom, $commentaire[$d]['id']);
+//          header('location:article.php?id='. $id);
+//          exit();
+//       }
+//    }
+//    if (isset($_POST['modif_commentaire']) && isset($_POST['commentaire']) && isset($_POST['commentaire-'.$commentaire[$d]['id']])) {
+
+//       $value = $_POST['commentaire-'.$commentaire[$d]['id']];
+//       $comment_id = $_POST['modif_commentaire'];
+//       $stmt = $bdd->prepare("UPDATE commentaires SET commentaire = :commentaire WHERE id = :id AND id_utilisateur = :id_utilisateur AND id_article = :id_article");
+//       $stmt->bindParam(':commentaire', $value, PDO::PARAM_STR);
+//       $stmt->bindParam(':id', $comment_id, PDO::PARAM_INT);
+//       $stmt->bindParam(':id_utilisateur', $user_id, PDO::PARAM_INT);
+//       $stmt->bindParam(':id_article', $id, PDO::PARAM_INT);
+//       $stmt->execute();
+//       header('Location: article.php?id='. $id);
+//       exit;
+//    }
+// }
+
 
 //Effacer commentaire
 if (isset($_POST['suppr_commentaire'])) {
@@ -69,6 +101,7 @@ if (isset($_POST['suppr_commentaire'])) {
 
 
 
+
 ?>
 
 
@@ -88,19 +121,19 @@ if (isset($_POST['suppr_commentaire'])) {
 if (isset($_POST['sort_order'])) {
   $sort_order2 = $_POST['sort_order'];
 } else {
-  $sort_order2 = 'asc';
+  $sort_order2 = 'desc';
 }
 
     $stmt = $bdd->prepare("SELECT commentaires.*, utilisateurs.login FROM commentaires
                        INNER JOIN utilisateurs ON utilisateurs.id = commentaires.id_utilisateur
                        WHERE commentaires.id_article = :id_article
-                       ORDER BY commentaires.date  " . $sort_order2);
+                       ORDER BY commentaires.id  " . $sort_order2);
 $stmt->bindParam(':id_article', $id_article, PDO::PARAM_INT);
 $stmt->execute();
 
 $commentaires = $stmt->fetchAll();
 
-//Catégories des commentaires
+//Catégories des articles
 $id_article= (int) $_GET['id'];
 $catName = $bdd->prepare('SELECT cat_art.id_cat, categories.nom 
 FROM `cat_art` 
@@ -109,8 +142,12 @@ ON categories.id = cat_art.id_cat
 WHERE cat_art.id_art = ?');
 $catName->execute([$id_article]);
 $cat=$catName->fetchAll();
+
+
+
 ?>
   
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -128,13 +165,10 @@ $cat=$catName->fetchAll();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.js" integrity="sha512-nO7wgHUoWPYGCNriyGzcFwPSF+bPDOR+NvtOYy2wMcWkrnCNPKBcFEkU80XIN14UVja0Gdnff9EmydyLlOL7mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css " rel="stylesheet"/>
      
      
     <title>article</title>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/stylefooter.css">
     <!-- <link rel="stylesheet" href="css/voyages.css"> -->
@@ -149,6 +183,7 @@ $cat=$catName->fetchAll();
     
      <div class="flex flex-col">
      <?php include'src/header-blog.php';?>
+     <!-- <?= var_dump($commentaires);?> -->
     
      <section  class=" flex-grow top-20 flex flex-col w-5/6 content-center justify-center place-self-center    m-auto  md:inset-0   ">
 
@@ -202,7 +237,7 @@ $cat=$catName->fetchAll();
   <?php for ($i = 0; $i < sizeof($commentaires); $i++) {
     $commentaire = $commentaires[$i];
     $is_author = $commentaire['id_utilisateur'] === $user_id;?>        
- <div class="flex items-center justify-between px-4 py-2 border-t border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+ <div class="flex items-center justify-between px-4 py-2 border-gray-200 dark:border-gray-700  dark:text-gray-400">
      
         <div class="block p-6 bg-white border border-gray-200 rounded-lg w-full shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div class="flex flex-row items-center justify-between mb-2">
@@ -274,12 +309,14 @@ $cat=$catName->fetchAll();
                      <div class=" artChange  mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
                          <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
                               <label for="commentaire" class="sr-only">Votre commentaire</label>
-                              <textarea maxlength="1024" name="commentaire" id="commentaire" rows="4" class="w-full px-0 text-sm text-gray-900 break-words bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="votre commentaire..."   >
+                              <!-- commentaire id         faire un tableau  -->
+                              <textarea maxlength="1024" name="commentaire-<?= $commentaire['id'] ?>" id="commentaire" rows="4" class="w-full px-0 text-sm text-gray-900 break-words bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="votre commentaire..."   >
                                    <?php echo $commentaire['commentaire']; ?>
                               </textarea>
                          </div>
                      </div>
                  </div>
+
                   <!-- Modal footer -->
                  <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                    <button data-modal-hide="staticModal2_" type="submit" value="<?= $commentaire['id'] ?>"name="modif_commentaire"class="text-white bg-color-5 hover:bg-color-2 focus:ring-4 focus:outline-none focus:ring-color-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-color-3 dark:hover:bg-color-5 dark:focus:ring-color-2">Modifier</button>
