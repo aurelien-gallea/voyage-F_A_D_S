@@ -103,7 +103,7 @@
                         <input id="password2" class="p-2 rounded-r-md mt-3 text-xl" type="password" name="password2"  placeholder="Confimer MDP">
                     </div>
                     <div id="errorPassword">
-                        <small class="text-red-800 dark:text-color-4">Deux mots de passe identiques</small><br>
+                        <small class="text-red-800 dark:text-color-4">Deux mots de passe identiques, 8 caractères minimum</small><br>
                         <small class="text-red-800 dark:text-color-4">Majuscule, minuscule, chiffre et caractère spécial</small>
                     </div>
                 </div>

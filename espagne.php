@@ -24,7 +24,7 @@ session_start();
     <?php require_once('src/header.php'); ?>
 
     <div class="mt-28">
-        <h1 class="font-unbounded text-center text-4xl mb-10 text-color-3 dark:text-color-4">Envie d'aventures ? Visitez l'Espagne</h1>
+        <h1 class="font-unbounded text-center text-4xl mb-10 text-color-3 dark:text-color-4">Visitez l'Espagne</h1>
         <img src="./assets/esp-bg.jpg" alt="une mere tiens la main de son enfant dans une rue espagnole">
     </div>
     <section>
@@ -87,7 +87,7 @@ session_start();
                         <h3 class="font-unbounded text-2xl font-bold px-5 text-color-3 dark:text-color-4">La Rambla, l'avenue phare de Barcelone</h3>
                         <p class="font-unbounded font-light p-5">une découverte inoubliable !</p>
                     </div>
-                    <div>
+                    <div class="px-4">
                         <img class="bg-white" src="./assets/esp-la-rambla-barcelone.png" alt="plan de la rambla barcelone">
                     </div>
                 </div>
