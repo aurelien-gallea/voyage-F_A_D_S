@@ -31,7 +31,9 @@ session_start();
 			<header id="header">
 				<img src="assets/logo.png" alt="Logo" width="300px" height="200px" margin-right="10px">
 				<h1 class="text-2xl font-sans mb-4" style="text-align: right;">USA Tour</h1>
-				<h3 class="text-2xl font-sans mb-4" style="text-align: center;">Découvrer les meilleurs destinations à visiter.</h3>
+				<h3 class="text-2xl font-sans mb-4 p-4 rounded-lg bg-black text-white" style="text-align: center; margin: 20px;">Découvrez les meilleurs destinations à visiter.</h3>
+
+
 				
 			</header>
 			
@@ -364,7 +366,7 @@ session_start();
 			         <br>
 					 <br>
 
-			         <h3 class="text-2xl font-mono mb-4" style="text-align: center;">Merci de votre visite et à bientôt</h3>
+			         <h3 class="text-2xl font-sans mb-4 p-4 rounded-lg bg-black text-white" style="text-align: center; margin: 50px;">Merci de votre visite et à bientôt</h3>
 			    </div>
 		
 		
