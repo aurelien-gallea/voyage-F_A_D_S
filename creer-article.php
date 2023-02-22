@@ -118,7 +118,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 				$lastID = $bdd->prepare('SELECT MAX(id) FROM articles');
 				$lastID->execute();
 				$idArticle = $lastID->fetch();
-				$message = '<a class="flex flex-col justify-center items-center font-medium leading-tight text-xl mt-0 mb-2 text-white bg-color-3" href="https://sylvia-terren.students-laplateforme.io/voyage/article.php?id=' . $idArticle["MAX(id)"] . '">Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !</a>';
+				$message = '<a class="flex flex-col justify-center items-center font-medium leading-tight text-xl mt-0 mb-2 text-white bg-color-3" href="http://localhost/voyage-F_A_D_S/article.php?id=' . $idArticle["MAX(id)"] . '">Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !</a>';
 				echo $message;
 			}
 			//Bouton aller sur l'article POST2
