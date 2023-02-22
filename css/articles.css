@@ -23,7 +23,7 @@
     
 }
 .page-articles {
-    background-image: url('assets/beach.jpg');
+    background-image: url('../assets/beach.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;

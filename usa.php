@@ -13,6 +13,7 @@ session_start();
 		<link rel="stylesheet" href="stylefooter.css" />
 		
 		
+		
 		<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -64,7 +65,7 @@ session_start();
 			       <br>
 				   <h2 class="text-2xl font-sans mb-4" style="text-align: center;">Villes et Lieux Insolites</h2>
 				   <div class="flex flex-col items-center">
-					<img src="assets/New-york.jpg" alt="New York" width="700" height="300" style="float: left; margin-right: 10px;">
+					<img src="assets/newyork.jpg" alt="New York" width="700" height="300" style="float: left; margin-right: 10px;">
 					<br>
 					<h2 class="text-xl font-mono mt-4">New York</h2>
 					<p >La ville qui ne dort jamais offre une architecture étonnante, une gastronomie variée et une multitude d'activités à faire. 
@@ -98,7 +99,7 @@ session_start();
 				  <div class="h-1 bg-gray-300 rounded my-5"></div>
 				  <br>
 				   <div class="flex flex-col items-center">
-					 <img src="assets/San francisco.jpg" alt="San Francisco" width="700" height="300" style="float: left; margin-right: 10px;">
+					 <img src="assets/sanfrancisco.jpg" alt="San Francisco" width="700" height="300" style="float: left; margin-right: 10px;">
 					 <h2 class="text-xl font-mono mt-4">San Francisco</h2>
 					 <p class="text-black-700 mt-2">Cette ville située sur la côte ouest offre une vue imprenable sur le Golden Gate Bridge, ainsi qu'une cuisine délicieuse et une vie nocturne animée.San Francisco est une ville située sur la côte ouest des États-Unis, en Californie.
 					   C'est une destination populaire pour les touristes en raison de sa scène culturelle vibrante, de ses attractions historiques et de ses vues imprenables sur la baie de San Francisco. 
