@@ -323,16 +323,16 @@ session_start();
 					</div>
 					<div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <br>
-				   <div class="flex flex-col gap-6">
+				   <div class="flex flex-col center">
 					 <img src="assets/La Nouvelle Orléans.jfif" alt="La Nouvelle Orléans" width="700" height="300" style="float: left;">
 					 <h2 class="text-xl font-mono mt-4">La Nouvelle-Orléans</h2>
 					 <p class="text-black-700 mt-2">La Nouvelle-Orléans est riche en histoire et en culture, connue pour son patrimoine français et espagnol. 
 					   La Nouvelle-Orléans est célèbre pour sa musique, telle que le jazz, la musique de la Nouvelle-Orléans et le blues, ainsi que pour sa cuisine, notamment les plats cajuns et creoles. 
 					   La ville abrite également de nombreux festivals célèbres, tels que le Mardi Gras et le Jazz Fest. Enfin, La Nouvelle-Orléans est connue pour ses bâtiments historiques, tels que le French Quarter et le St. Louis Cathedral, ainsi que pour son architecture colorée et ses rues animées.</p>
 					   <br><br>
-					   <div class="flex flex-col">
-					  <img src="assets/mardigras.jpg" alt="La Nouvelle Orléans" width="500" height="300" style="float: right;">
-					  <img src="assets/nojazz.jfif" alt="La Nouvelle Orléans" width="500" height="300" style="float: right;">
+					   <div class="flex flex-col center">
+					  <img src="assets/mardigras.jpg" alt="La Nouvelle Orléans" width="500" height="300" style="float: right; margin-right: 10px;">
+					  
 					</div>
 					  <br><br>Activités : La Nouvelle-Orléans propose un large éventail d'options pour les visiteurs et les résidents. Voici quelques-unes des activités les plus populaires à faire à La Nouvelle-Orléans:
 					
@@ -363,7 +363,7 @@ session_start();
 					   <br><br>
 					   <div class="flex flex-col items-center">
 					   <img src="assets/hawaii surf.jfif" alt="New York" width="500" height="300" style="float: right;">
-					   <img src="assets/hawaii statue.jpg" alt="New York" width="300" height="500" style="float: right;">
+					   
 					   </div>
 					   <br><br>Activités : Honolulu propose un large éventail d'options pour les visiteurs et les résidents. Voici quelques-unes des activités les plus populaires à faire à Honolulu:
 
