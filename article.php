@@ -14,10 +14,8 @@ if (isset($_GET['id'])) {
 
 // nouveau commentaire
 if (isset($_POST['submit_commentaire'])) {
-  // Récupération des données du formulaire
   $commentaire = htmlspecialchars($_POST['commentaire']);
   $login = $_SESSION['login'];
-
   $stmt2 = $bdd->prepare(" INSERT INTO commentaires (id_utilisateur, id_article, commentaire, date)
   SELECT utilisateurs.id, :id_article, :commentaire, NOW()
   FROM utilisateurs
@@ -89,7 +87,6 @@ if (isset($_POST['suppr_commentaire'])) {
   $statement = $bdd->prepare($query);
   $statement->bindValue(':id', $id_commentaire);
   $statement->execute();
-
   $commentaire = $statement->fetch();
   
   // Vérifier si l'utilisateur actuel est l'auteur du commentaire
@@ -110,7 +107,6 @@ if (isset($_POST['suppr_commentaire'])) {
 
     require_once('src/connectionDB.php');
     $id = (int) $_GET['id'];
-    
     $stmt = $bdd->prepare("SELECT * FROM articles WHERE id = :id");
     $stmt->bindParam(':id', $id);
     $stmt->execute();
@@ -130,7 +126,6 @@ if (isset($_POST['sort_order'])) {
                        ORDER BY commentaires.id  " . $sort_order2);
 $stmt->bindParam(':id_article', $id_article, PDO::PARAM_INT);
 $stmt->execute();
-
 $commentaires = $stmt->fetchAll();
 
 //Catégories des articles
@@ -142,9 +137,6 @@ ON categories.id = cat_art.id_cat
 WHERE cat_art.id_art = ?');
 $catName->execute([$id_article]);
 $cat=$catName->fetchAll();
-
-
-
 ?>
   
 
@@ -180,7 +172,7 @@ $cat=$catName->fetchAll();
 
   <!-- ----------------------------------body--------------------------- -->
 
-     <body class="relative  content-center justify-center  max-[800px]:pt40   w-full h-full m-auto bg-gray-200 dark:bg-gray-600 mt-10 max-[800px]:pt50 " >
+     <body class="relative  content-center justify-center  max-[800px]:pt40   w-full h-full m-auto bg-gray-200 dark:bg-gray-600 mt-28 max-[800px]:pt50 " >
     
      <div class="flex flex-col">
      <?php include'src/header-blog.php';?>
