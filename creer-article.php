@@ -8,7 +8,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 //pour les fonctions static
-require("classes/update.php");
+require("classes/Update.php");
 //on se connecte à la bdd
 require("src/connectionDB.php");
 
@@ -91,7 +91,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 			<div class="flex flex-col justify-center items-center">
 				<article class="flex flex-col justify-center items-center">
 					<h2 class="font-medium leading-tight text-4xl mt-0 mb-2 text-color-3">Creer un article</h2>
-					<h5 class="ml-10 font-medium leading-tight text-xl mt-0 mb-2 text-color-5">Créez votre propre article ! Partagez vos voyages ou encore vos expériences culinaires exotiques !</H>
+					<h5 class="ml-10 font-medium leading-tight text-xl mt-0 mb-2 text-color-5">Créez votre propre article ! Partagez vos voyages ou encore vos expériences culinaires exotiques !</h5>
 				</article>
 				<form method="POST" class="mt-5 w-3/6 mt-25 flex flex-col content-center justify-center bg-color-2 shadow-md rounded px-8 pt-6 pb-8 mb-4 dark:bg-gray-900 dark:border-gray-700">
 					<input type="text" name="article_titre" maxlength="80" class="block p-2.5 text-sm text-color-4 bg-color-3 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Titre" /><br />
@@ -118,7 +118,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 				$lastID = $bdd->prepare('SELECT MAX(id) FROM articles');
 				$lastID->execute();
 				$idArticle = $lastID->fetch();
-				$message = '<a class="flex flex-col justify-center items-center font-medium leading-tight text-xl mt-0 mb-2 text-white bg-color-3" href="http://localhost/voyage-F_A_D_S/article.php?id=' . $idArticle["MAX(id)"] . '">Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !</a>';
+				$message = '<a class="flex flex-col justify-center items-center font-medium leading-tight text-xl mt-0 mb-2 text-white bg-color-3" href="https://sylvia-terren.students-laplateforme.io/voyage/article.php?id=' . $idArticle["MAX(id)"] . '">Votre article est maintenant disponible sur le blog. Allons voir si quelqu\'un y a répondu !</a>';
 				echo $message;
 			}
 			//Bouton aller sur l'article POST2
