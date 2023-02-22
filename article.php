@@ -172,7 +172,7 @@ $cat=$catName->fetchAll();
 
   <!-- ----------------------------------body--------------------------- -->
 
-     <body class="relative  content-center justify-center  max-[800px]:pt40   w-full h-full m-auto bg-gradient-to-b from-color-5 to-color-4 dark:bg-gray-600 mt-28 max-[800px]:pt50 " >
+     <body class="relative  content-center justify-center  max-[800px]:pt40   w-full h-full m-auto bg-gradient-to-b from-color-5 to-color-4  dark:from-color-2 dark:to-color-1 dark:bg-gray-600 mt-28 max-[800px]:pt50 " >
     
      <div class="flex flex-col">
      <?php include'src/header-blog.php';?>
