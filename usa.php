@@ -10,9 +10,6 @@ session_start();
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/stylefooter.css" />
-		
-		
-		
 		<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,29 +20,6 @@ session_start();
     <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
 		
-	<script>
-      tailwind.config = { darkMode: 'class',
-  // ...
-  content: [],
-        theme: {
-          extend: {
-            colors: {
-        'color-1': '#111827',
-        'color-2': '#8BAAAD',
-        'color-3': '#90323D',
-        'color-4': '#FCF6B1',
-        'color-5': '#F18F01AD',
-      },
-            opacity: {
-              54: ".24",
-            },
-            fontFamily: {
-              Unbounded: ['"Unbounded"'],
-            },
-          },
-        },
-      };
-    </script>
 	</head>
 	<?php require_once('src/header.php'); ?>
  
