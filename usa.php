@@ -10,7 +10,7 @@ session_start();
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/usa.css" />
-		<link rel="stylesheet" href="stylefooter.css" />
+		<link rel="stylesheet" href="assets/stylefooter.css" />
 		
 		
 		
