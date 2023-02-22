@@ -20,29 +20,21 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
       rel="stylesheet"/>
     <title>Le sénégal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/stylefooter.css">
-    <link rel="stylesheet" href="css/senegal.css">
-    <link rel="stylesheet" href="css/tailwind-need.css">
+   
     <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/Flip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://rawcdn.githack.com/nextapps-de/spotlight/0.7.8/dist/js/spotlight.min.js"></script>
-<link      rel="stylesheet"      href="https://rawcdn.githack.com/nextapps-de/spotlight/0.7.8/dist/css/spotlight.min.css"    />
+<link rel="stylesheet" href="https://rawcdn.githack.com/nextapps-de/spotlight/0.7.8/dist/css/spotlight.min.css"    />
 
 </head>
 
   <!-- ----------------------------------body--------------------------- -->
 
- <body>
+ <body class="bg-color-5">
 
       <?php 
       include'src/header.php';
@@ -54,17 +46,15 @@
 </div>     
     
 
-<div class="w-full h-full bg-no-repeat absolute inset-0 bg-cover bg-center z-0 object-cover  rounded-t-lg  md:h-auto " 
+<div class="w-full h-full bg-no-repeat absolute inset-0 bg-cover bg-center z-0 object-cover  rounded-t-lg  min-[320px]:h-full md:h-auto " 
 style="background-image: url('assets/sene2.jpg')" alt="">
 <div class="absolut z-40">
-  <p class="text-3xl">
-Le Sénégal
-  </p>
+ 
  
 </div>
-<div class=" z-10  flex items-center w-6/7 h-screen">
+<div class=" z-10  flex items-center pt-20 w-6/7 h-screen">
 
-<div class="  mx-auto text-center w-5/6 bg-white border  border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div class="  mx-auto text-center w-7/8 sm:w-5/6 bg-white border  border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
         <li class="mr-2">
             <button id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about" aria-selected="true" class="inline-block p-4 text-color-3 rounded-tl-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-color-3">Le Sénégal</button>
@@ -90,44 +80,42 @@ Le Sénégal
             </div>
        </div> 
   
-            <p class="mb-3 text-gray-500 dark:text-gray-400">Le Sénégal, en forme longue la république du Sénégal    , est un État d'Afrique de l'Ouest.
+            <p class="mb-3 text-gray-500 text-sm dark:text-gray-400">Le Sénégal, en forme longue la république du Sénégal    , est un État d'Afrique de l'Ouest.
 
-Il est bordé par l'océan Atlantique à l'ouest, la Mauritanie au nord-nord-est, le Mali à l'est-sud-est, la Guinée au sud-est et la Guinée-Bissau au sud-sud-ouest. La Gambie forme une quasi-enclave dans le <a href="#"
-          class="text-color-3 underline dark:text-color4 hover:no-underline"
+Il est bordé par l'océan Atlantique à l'ouest, la Mauritanie au nord-nord-est, le Mali à l'est-sud-est, la Guinée au sud-est et la Guinée-Bissau au sud-sud-ouest. La Gambie forme une quasi-enclave dans le 
+Sénégal
+          , pénétrant à plus de 302 km à l'intérieur de ses terres. Les îles du Cap-Vert sont situées à 560 km de la <a href="#"
+class="text-color-3 underline dark:text-color4 hover:no-underline"
           data-popover-target="popover-image"
-          >Sénégal</a >, pénétrant à plus de 302 km à l'intérieur de ses terres. Les îles du Cap-Vert sont situées à 560 km de la côte sénégalaise.
+          data-tooltip-placement="bottom"
+          >côte sénégalaise</a >.
 
 Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa source dans le Fouta-Djalon en Guinée. Le climat est tropical et sec avec deux saisons : la saison sèche et la saison des pluies.
 </p>
-<h3 class="mb-3 text-m font-extrabold tracking-tight text-gray-900 dark:text-white"> La cuisine Sénégalaise</h3>
+<h3 class="mb-3 text-m font-extrabold  text-gray-900 dark:text-white"> La cuisine Sénégalaise</h3>
 
-<p>La cuisine sénégalaise est souvent décrite comme l'une des plus riches et la plus variée d'Afrique de l'Ouest. Elle présente un certain nombre de similitudes avec celles des autres pays de cette région,</p>
+<p class="text-gray-900 text-sm dark:text-white">La cuisine sénégalaise est souvent décrite comme l'une des plus riches et la plus variée d'Afrique de l'Ouest. Elle présente un certain nombre de similitudes avec celles des autres pays de cette région,</p>
 <div
         data-popover
         id="popover-image"
         role="tooltip"
-        class="absolute z-10 invisible inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-2xl opacity-0 w-1/2 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600"
+        data-tooltip-placement="bottom"
+        class="absolute z-10 invisible left-10  w-fit inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-2xl p-5 opacity-0  dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600"
       >
-        <div class="grid grid-cols-5">
-          <div class="col-span-3 p-3">
-            <div class="space-y-2">
-              <h3 class="font-semibold text-gray-900 dark:text-white">
-                Géographie physique
-
-              </h3>
-              <p>
-                S’étendant sur une surface de 196 712 km2, le Sénégal dispose d'une importante façade maritime, 
-                à l'ouest, avec l'océan Atlantique (530 km de côtes).  Au sud-est, la frontière avec la Guinée est 
-                traversée par les contreforts de la montagne du Fouta-Djalon, et celle avec la Guinée-Bissau, 
-                au sud-sud-ouest, est traversée par une forêt tropicale. Au sud, la Gambie forme une enclave 
-                et sépare la région de la Casamance du reste du pays.
-              </p>
+        <div class="">
+          <div class="flex">
+          <h3 class="font-semibold text-gray-900 dark:text-white"> Géographie physique</h3>
+               
+              
+             <div class=" flex-row ">
+              
+            
              
             </div>
           </div>
           <img
             src="assets/Senegal_carte.png"
-            class="h-5/6 col-span-2"
+            class="content-center place-items-center flex-row w-56"
             alt="senegal map"
           />
         </div>
@@ -145,8 +133,8 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
             </p>
             <h2 class="mb-5 text-xl font-bold tracking-tight text-gray-900 dark:text-white"> Les bons plans Tasty Trip :</h2>
 
-            <div class="container flex flex-wrap mx-auto">
-      <div class="w-4/5 p-2 rounded sm:w-1/3">
+            <div class="container flex flex-wrap mx-auto dark:text-white">
+      <div class="w-4/5 p-2 rounded min-[320px]:w-1/3 dark:text-white">
         <a
           class="spotlight"
           href="assets/monkey.jpg"
@@ -159,7 +147,7 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
           <p>Singe de la réserve de Bandia</p>
         </a>
       </div>
-      <div class="w-4/5 p-2 rounded sm:w-1/3">
+      <div class="w-4/5 p-2 rounded min-[320px]:w-1/3">
         <a
           class="spotlight"
           href="assets/zebu.jpg"
@@ -172,7 +160,7 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
           <p>brochettes de zébu</p>
         </a>
       </div>
-      <div class="w-4/5 p-2 rounded sm:w-1/3">
+      <div class="w-4/5 p-2 rounded min-[320px]:w-1/3">
         <a
           class="spotlight"
           href="assets/zebre.jpg"
@@ -205,7 +193,7 @@ La Casamance est frontalière de la Gambie au nord, de la Guinée-Bissau et de l
                    
                     <p>               </p>
                     <div class="container flex flex-wrap  mx-auto">
-      <div class="w-3/4  p-2 rounded sm:w-1/3">
+      <div class="w-3/4  p-2 rounded min-[320px]:w-1/3">
         <a
           class="spotlight"
           href="assets/mangue.jpg"
@@ -218,7 +206,7 @@ La Casamance est frontalière de la Gambie au nord, de la Guinée-Bissau et de l
           <p>mangue de casamence</p>
         </a>
       </div>
-      <div class="w-3/4 p-2 rounded sm:w-1/3">
+      <div class="w-3/4 p-2 rounded min-[320px]:w-1/3">
         <a
           class="spotlight"
           href="assets/yassa2.jpg"
@@ -231,7 +219,7 @@ La Casamance est frontalière de la Gambie au nord, de la Guinée-Bissau et de l
           <p>yassa au poulet</p>
         </a>
       </div>
-      <div class="w-3/4  p-2 rounded sm:w-1/3">
+      <div class="w-3/4  p-2 rounded min-[320px]:w-1/3">
         <a
           class="spotlight"
           href="assets/poisson.jpg"
@@ -249,11 +237,11 @@ La Casamance est frontalière de la Gambie au nord, de la Guinée-Bissau et de l
                
         </div>
         <!------------------------------- caroussel ----------------------->
-        <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800 flex justify-center " id="photos" role="tabpanel" aria-labelledby="photos-tab">
+        <div class="hidden bg-white rounded-lg md:p-8 dark:bg-gray-800 flex justify-center " id="photos" role="tabpanel" aria-labelledby="photos-tab">
 
         <div id="animation-carousel" class="relative w-5/6" data-carousel="static">
     <!-- Carousel wrapper -->
-    <div class="relative h-full w-full overflow-hidden justify-center rounded-lg md:h-96 max-sm:h-80">
+    <div class="relative h-full w-full overflow-hidden justify-center rounded-lg  min-[200px]:h-96">
          <!-- Item 1 -->
         <div class="hidden duration-200 ease-linear" data-carousel-item>
             <img src="assets/sene.png" class="absolute justify-center block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="sénégal">
@@ -317,7 +305,7 @@ const callback = function (entries) {
 
 
 
-  <div class="z-10"></div>
+  <div class="z-10 mt-10"></div>
 
   <?php 
 include'src/footer.php';
