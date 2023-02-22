@@ -55,7 +55,7 @@ if (isset($_POST['tri'])) {
   <?php require_once('src/header-blog.php'); ?>
   <!-- ----------------------------------body--------------------------- -->
 
-  <body class="page-articles">
+  <body>
  
    <br>
    <br> 
