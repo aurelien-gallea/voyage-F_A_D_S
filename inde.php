@@ -36,11 +36,11 @@ session_start();
             <h1 class="text-4xl font-bold text-center leading-none tracking-tight text-color-3 md:text-5xl lg:text-6xl italic">L'Inde, un voyage spirituel...</h1>
             <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl dark:text-color-4">Tombe de Humayun à Delhi</h2>
             <div class="flex flex-col lg:flex-row p-5 mt-5">
-                <div class="flex items-center lg:w-1/3 lg:order-1 m-20">
+                <div class="lg:w-1/3 lg:order-1 m-10">
                     <img src="./assets/tomb.png" alt="Tombe de Humayun, Delhi">
                 </div>
-                <div class="lg:w-2/3 m-10">
-                    <p class="mt-10 text-justify text-center font-mono">
+                <div class="lg:w-2/3 text-white w-full">
+                    <p class="mt-10 text-justify text-center font-mono dark:text-color-4">
                         La tombe de Humayun, à Delhi, est le premier des grands mausolées dynastiques qui deviendront emblématiques de l’architecture moghole dont le style architectural parviendra à son apogée 80 ans plus tard avec l’édification du Taj Mahal. Le monument funéraire s’élève sur un site de 27,04 hectares qui accueille d’autres sépultures mogholes contemporaines du XVIe siècle comme le Nila Gumbad, les tombes d’Isa Khan, Bu Halima, Afsarwala, la tombe du Barbier et l’ensemble de l’Arab Serai où vivaient les artisans employés à la construction de la tombe de Humayun.
                         <br>
                         <br>
@@ -103,39 +103,39 @@ session_start();
         </section>
 
         <!-- Cuisine -->
-        <section class="bg-color-4 dark:bg-color-1 dark:text-color-4">
+        <section class="bg-color-5 dark:bg-color-1 dark:text-color-4">
             <h1 class="text-4xl font-bold text-center leading-none tracking-tight text-color-3 md:text-5xl lg:text-6xl italic">...mais aussi appétissant.</h1>
+            <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl dark:text-color-4">Dhal / Dal</h2>
+
             <div class="flex flex-col lg:flex-row p-5 mt-5">
-                <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl dark:text-color-4">Naan / nân</h2>
-                <div class="lg:w-1/3 lg:order-1 mt-10">
-                    <img src="./assets/naan.png" alt="Quelques pains naans empilés sur une assiette noire">
-                </div>
-                <div class="lg:w-2/3 w-full">
-                    <p class="mt-10 mr-10 text-justify text-center font-mono">
-                        Le mot nan (نان) est originaire d’Iran où il n’a pas une signification particulière, car il est simplement le mot générique pour tout type de pain, comme dans d’autres pays d’Asie occidentale ou chez d’autres groupes ethniques régionaux, tels que les Kurdes, les Turcs ou les Azerbaïdjanais. Dans les langues turques telles que l’ouzbèke et l’ouïghour, le pain est appelé nan. <br>
-                        <br>
-                        <br>
-                        Les recettes de naan varient avec ou sans oeufs, car beaucoup d’hindous ne consomment pas d’oeufs. Certains remplacent également la levure par de la levure chimique ou l’ajoutent à celle-ci. D’autres utilisent une combinaison de bicarbonate de soude et de crème de tartre.
-                    </p>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="flex flex-col lg:flex-row p-5 mt-5">
-                <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl dark:text-color-4">Dhal / Dal</h2>
-                <div class="lg:w-1/3 lg:order-1 mt-10">
+                <div class="lg:w-1/3 lg:order-1 m-10">
                     <img src="./assets/dhal.png" alt="Un plat de curry dhal vu du dessus aux touches orangés et rouges">
                 </div>
-                <div class="lg:w-2/3 w-full">
-                    <p class="mt-10 mr-10 text-justify text-center font-mono">
-                        Le dahl, ou daal ou encore dal, est un incontournable de la cuisine indienne. Plat végétarien complet et à base de légumineuses, il constitue une source de protéines non négligeable et peut être consommé aussi bien en plat principal qu'en accompagnement. <br>
+                <div class="lg:w-2/3 text-white w-full">
+                    <p class="mt-10 text-justify text-center font-mono dark:text-color-4">
+                        Le dahl, ou daal ou encore dal, est un incontournable de la cuisine indienne. Plat végétarien complet et à base de légumineuses, il constitue une source de protéines non négligeable et peut être consommé aussi bien en plat principal qu'en accompagnement. <br> <br>
                         <br>
                         Il existe de nombreuses recettes de dahl mais les plus courantes sont le dahl tadka à base de lentilles corail, le dahl fry avec l'ajout de chana daal, sorte de pois chiches cassés et le dahl makahni, une préparation combinant lentilles du Puy et haricots rouges. Le parfum enivrant du dhal avec ses épices colorées et savoureuses embaume la cuisine et fait fondre de plaisir les papilles de la maison.
                     </p>
                 </div>
             </div>
+
+            <h2 class="mt-10 font-bold text-center leading-none tracking-tight text-color-1 md:text-5xl dark:text-color-4">Naan / nân</h2>
+            <div class="flex flex-col lg:flex-row p-5 mt-5">
+                <div class="lg:w-1/3 lg:order-1 m-10">
+                    <img src="./assets/naan.png" alt="Quelques pains naans empilés sur une assiette noire">
+                </div>
+                <div class="lg:w-2/3 text-white w-full">
+                    <p class="mt-10 text-justify text-center font-mono dark:text-color-4">
+                        Le mot nan (نان) est originaire d’Iran où il n’a pas une signification particulière, car il est simplement le mot générique pour tout type de pain, comme dans d’autres pays d’Asie occidentale ou chez d’autres groupes ethniques régionaux, tels que les Kurdes, les Turcs ou les Azerbaïdjanais. Dans les langues turques telles que l’ouzbèke et l’ouïghour, le pain est appelé nan. <br>
+                        <br>
+                        Les recettes de naan varient avec ou sans oeufs, car beaucoup d’hindous ne consomment pas d’oeufs. Certains remplacent également la levure par de la levure chimique ou l’ajoutent à celle-ci. D’autres utilisent une combinaison de bicarbonate de soude et de crème de tartre.
+                    </p>
+                </div>
+            </div>
         </section>
 
+		<!-- Parallax -->
         <section class="pt-40 pb-32 relative">
             <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-100 bg-fixed" style="background-image:url(assets/india2.png)"></div>
         </section>
