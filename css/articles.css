@@ -1,0 +1,134 @@
+/* CSS Page Articles */
+
+/* Ajoutez une couleur de fond pour le conteneur d'articles */
+.articles {
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+/* Ajoutez une bordure pour les articles individuels */
+.article {
+    width: 50%;
+    border: 3px solid #000f08;
+    border-radius: 55px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    margin: 20px auto;
+    
+    
+}
+.page-articles {
+    background-image: url('assets/beach.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.page-articles {
+    font-size: 35px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: left;
+    margin-top: -100px;
+    margin-bottom: -10px;
+    margin-left: 330px;
+    color: #fff;
+    text-decoration: underline;
+
+/* Modifiez la taille de police et la police pour le titre de l'article */
+}
+.article h2 {
+    font-size: 24px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Modifiez la couleur du texte pour la date */
+.article h3 {
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 10px;
+    text-align: right;
+    color: #333;
+}
+
+ /* Modifiez la couleur du texte pour le nom d'utilisateur */
+.article h4 {
+    font-size: 16px;
+    font-family: 'Georgia', sans-serif;
+    margin-bottom: 10px;
+    text-align: left;
+    color: #333;
+}
+/* Modifiez la couleur du texte pour le nom d'utilisateur */
+.article h5 {
+ display: inline-block;
+ font-size: 16px;
+ font-family: 'Georgia', sans-serif;
+ margin-bottom: 30px;
+ text-align: right;
+ color: #333;
+}
+
+
+/* Modifiez la taille de police et la police pour le contenu de l'article */
+.article p {
+    font-size: 16px;
+    font-family: Georgia, serif;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    text-align: left;
+    
+}
+
+/* Modifiez la couleur de fond pour le bouton "Afficher plus" */
+.article a {
+    font-size: 18px;
+    display: grid;
+    padding: 3px 5px;
+    background-color: #111827;
+    color: #f4fff8;
+    border-radius: 55px;
+    text-decoration: none;
+}
+.page-articles form {
+width: 80%;
+margin: 0 auto;
+text-align: center;
+}
+
+.page-articles select {
+width: 20%;
+padding: 10px;
+font-size: 16px;
+margin-bottom: 20px;
+border-radius: 5px;
+text-align: center;
+}
+
+.page-articles input[type="submit"] {
+background-color: #f4fff8;
+color: black;
+padding: 5px 10px;
+border-radius: 5px;
+border: none;
+cursor: pointer;
+}
+
+@media (max-width: 767px) {
+.page-articles form {
+width: 100%;
+}
+
+.page-articles select {
+width: 100%;
+}
+}
+
+
+
