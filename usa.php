@@ -30,7 +30,7 @@ session_start();
 		
 			<header id="header">
 				<img src="assets/logo.png" alt="Logo" width="300px" height="200px" margin-right="10px">
-				<h1 class="text-2xl font-sans mb-4" style="text-align: center;">USA Tour</h1>
+				<h1 class="text-2xl font-sans mb-4" style="text-align: right;">USA Tour</h1>
 				<h3 class="text-2xl font-sans mb-4" style="text-align: center;">Découvrer les meilleurs destinations à visiter.</h3>
 				
 			</header>
@@ -38,7 +38,7 @@ session_start();
 			       <br>
 				   <h2 class="text-2xl font-sans mb-4" style="text-align: center;">Villes et Lieux Insolites</h2>
 				   <div class="flex flex-col items-center">
-					<img src="assets/newyork.jpg" alt="New York" width="700" height="300" style="float: left; margin-right: 10px;">
+					<img src="assets/newyork.jpg" alt="New York" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					<br>
 					<h2 class="text-xl font-mono mt-4">New York</h2>
 					<p >La ville qui ne dort jamais offre une architecture étonnante, une gastronomie variée et une multitude d'activités à faire. 
@@ -61,7 +61,7 @@ session_start();
 					  
 					  En somme, New York offre une variété d'activités pour tous les goûts et tous les âges, offrant une expérience unique et inoubliable pour les visiteurs et les résidents.
 					<br><br>
-					<img src="assets/hotdogs.jpg" alt="New York" width="500" height="300" style="float: left; margin-right: 10px;">
+					<img src="assets/hotdogs.jpg" alt="New York" class="rounded shadow" width="500" height="300" style="float: left; margin-right: 10px;">
 					  <br>
 					  <br>Gastronomie : La cuisine new-yorkaise est souvent associée à des plats classiques tels que les bagels, les pizzas, les hot-dogs et les sandwichs au pastrami. Cependant, la ville offre également une cuisine internationale de haute qualité, notamment des restaurants de cuisine asiatique, européenne, africaine et latino-américaine.
 
@@ -72,7 +72,7 @@ session_start();
 				  <div class="h-1 bg-gray-300 rounded my-5"></div>
 				  <br>
 				   <div class="flex flex-col items-center">
-					 <img src="assets/sanfrancisco.jpg" alt="San Francisco" width="700" height="300" style="float: left; margin-right: 10px;">
+					 <img src="assets/sanfrancisco.jpg" alt="San Francisco" class="rounded shadow"width="700" height="300" style="float: left; margin-right: 10px;">
 					 <h2 class="text-xl font-mono mt-4">San Francisco</h2>
 					 <p class="text-black-700 mt-2">Cette ville située sur la côte ouest offre une vue imprenable sur le Golden Gate Bridge, ainsi qu'une cuisine délicieuse et une vie nocturne animée.San Francisco est une ville située sur la côte ouest des États-Unis, en Californie.
 					   C'est une destination populaire pour les touristes en raison de sa scène culturelle vibrante, de ses attractions historiques et de ses vues imprenables sur la baie de San Francisco. 
@@ -94,19 +94,19 @@ session_start();
 					
 					En somme, San Francisco offre une variété d'activités et de scènes gastronomiques pour tous les goûts, offrant une expérience unique et inoubliable pour les visiteurs et les résidents.
 					<br><br>
-					<img src="assets/crab.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+					<img src="assets/crab.jpg" alt="New York" class="rounded shadow" width="500" height="300" style="float: right; margin-right: 10px;">
 					<br>
 					<br>Gastronomie : San Francisco est célèbre pour sa cuisine locale et inventive, qui reflète les influences de la cuisine californienne, asiatique et mexicaine. La ville abrite également de nombreux restaurants gastronomiques renommés ainsi que des food trucks de rue proposant des plats de rue délicieux. 
 					</div>
 					<div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <br>
 				   <div class="flex flex-col items-center">
-					 <img src="assets/Las Vegas.jpg" alt="Las Vegas" width="700" height="300" style="float: left; margin-right: 10px;">
+					 <img src="assets/Las Vegas.jpg" alt="Las Vegas" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					 <h2 class="text-xl font-mono mt-4">Las Vegas</h2>
 					 <p class="text-black-700 mt-2">Cette ville du désert est connue pour ses casinos flamboyants et ses spectacles incroyables. Il y a également de nombreux restaurants de renom et des activités en plein air à découvrir.<br>Las Vegas offre également une variété d'autres activités, notamment des centres commerciaux, des restaurants, des parcs d'attractions et des musées. La ville est également une destination populaire pour les mariages, les réunions d'affaires et les congrès.
 			       Las Vegas est située dans le désert de Mojave, ce qui en fait un endroit chaud et aride. Cependant, grâce à son climat désertique, la ville offre également de nombreuses activités de plein air, telles que la randonnée, la vélo et le camping.</p>
 				   <br><br>
-					<img src="assets/casino.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+					<img src="assets/casino.jpg" alt="New York" class="rounded shadow" width="500" height="300" style="float: right; margin-right: 10px;">
 				   <br><br>Activités : Las Vegas propose une variété d'options pour les visiteurs et les résidents. Voici quelques-unes des activités les plus populaires à faire à Las Vegas:
 
 				   Assister à un spectacle de casino: Las Vegas abrite de nombreux spectacles de casinos, allant de la musique en direct à des shows de magie.
@@ -123,7 +123,7 @@ session_start();
 				<div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <br>
 				   <div class="flex flex-col items-center">
-					 <img src="assets/Los Angeles.jfif" alt="Los Angeles" width="700" height="300" style="float: left; margin-right: 10px;">
+					 <img src="assets/Los Angeles.jfif" alt="Los Angeles" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					 <h2 class="text-xl font-mono mt-4">Los Angeles</h2>
 					 <p class="text-black-700 mt-2">Los Angeles est une ville située en Californie. 
 					   C'est la deuxième plus grande ville du pays et un centre économique, culturel et touristique important. 
@@ -131,7 +131,7 @@ session_start();
 					   La ville abrite également de nombreux sites touristiques, tels que le Walk of Fame, le Griffith Observatory et le Sunset Strip. 
 					   Enfin, Los Angeles est connue pour ses plages de renom, tels que Venice Beach et Malibu, ainsi que pour sa cuisine diversifiée et sa scène gastronomique en évolution.</p>
 					   <br><br>
-					   <img src="assets/hollywood.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+					   <img src="assets/hollywood.jpg" alt="New York" class="rounded shadow" width="500" height="300" style="float: right; margin-right: 10px;">
 					   <br><br> Activités : Los Angeles propose une variété d'options pour les visiteurs et les résidents. Voici quelques-unes des activités les plus populaires à faire à Los Angeles:
 
 				   Visiter les plages célèbres: découvrez les plages emblématiques de Los Angeles, telles que Venice Beach et Santa Monica Beach.
@@ -146,21 +146,21 @@ session_start();
 				   
 				   Déguster la cuisine californienne inventive: découvrez les restaurants proposant une cuisine inventive, reflétant les influences locales et internationales.
 				   <br><br>
-					   <img src="assets/tacos.jfif" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+					   <img src="assets/tacos.jfif" alt="New York" class="rounded shadow" width="500" height="300" style="float: right; margin-right: 10px;">
 				   <br><br>Gastronomie :  Los Angeles abrite une variété de restaurants, allant des options de restauration rapide aux restaurants gastronomiques renommés. La ville est particulièrement connue pour sa cuisine californienne inventive, qui reflète les influences de la cuisine mexicaine, asiatique et méditerranéenne.
 
 					</div>
 					<div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <br>
 				   <div class="flex flex-col items-center">
-					 <img src="assets/Washington DC.jpg" alt="Washington" width="700" height="300" style="float: left; margin-right: 10px;">
+					 <img src="assets/Washington DC.jpg" alt="Washington" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					 <h2 class="text-xl font-mono mt-4">Washington D.C.</h2>
 					 <p class="text-black-700 mt-2">Washington D.C. est la capitale des États-Unis. 
 					   C'est un centre politique important et abrite le siège du gouvernement fédéral, y compris la Maison Blanche, le Capitole et le Supreme Court. 
 					   La ville est également connue pour ses nombreux musées et monuments, tels que le Lincoln Memorial, le National Mall et le National Museum of American History. 
 					    Washington D.C. attire également de nombreux touristes pour sa riche histoire et son patrimoine culturel.</p>
 						<br><br>
-						<img src="assets/abraham lincoln.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+						<img src="assets/abraham lincoln.jpg" alt="New York" class="rounded shadow" width="500" height="300" style="float: right; margin-right: 10px;">
 						<br><br>Activités : Washington D.C. propose une variété d'options pour les visiteurs et les résidents. Voici quelques-unes des activités les plus populaires à faire à Washington D.C.:
 
 				  Visiter le Lincoln Memorial: ce monument historique célèbre la vie et les réalisations du 16ème président des États-Unis, Abraham Lincoln.
@@ -179,20 +179,20 @@ session_start();
 					<div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <br>
 				   <div class="flex flex-col items-center">
-					<img src="assets/Chicago.jfif" alt="Chicago" width="700" height="300" style="float: left; margin-right: 10px;">
+					<img src="assets/Chicago.jfif" alt="Chicago" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					<h2 class="text-xl font-mono mt-4">Chicago</h2>
 					<p class="text-black-700 mt-2">Chicago est une ville située dans le nord des États-Unis, sur les rives du lac Michigan. C'est la troisième plus grande ville du pays, connue pour son architecture emblématique, sa scène musicale dynamique, sa cuisine délicieuse et sa forte culture sportive. Chicago est également un centre majeur de commerce et de transport, avec un port important reliant les Grands Lacs au fleuve Mississippi. La ville a une riche histoire, y compris son rôle dans le mouvement des droits civiques et comme foyer de la prohibition des années 1920.</p>
 			
 					     <br><br>Activités : Il y a beaucoup d'activités à faire à Chicago, que ce soit pour les amateurs de culture, de sports ou de plein air. Vous pouvez visiter des musées célèbres comme l'Art Institute of Chicago, le Field Museum et le Museum of Science and Industry, ou assister à un spectacle de théâtre de renommée mondiale dans le quartier du Loop. Si vous êtes fan de sports, vous pouvez assister à un match des Cubs ou des White Sox de baseball, des Bears de football américain ou des Bulls de basketball. Pour profiter de la nature, vous pouvez vous promener le long de la plage de Lake Michigan, explorer les jardins du parc Lincoln ou vous détendre dans l'un des nombreux parcs de la ville.
 						 <br><br>
-						<img src="assets/Chicagobean.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+						<img src="assets/Chicagobean.jpg" alt="New York" class="rounded shadow" width="500" height="300" style="float: right; margin-right: 10px;">
 						 <br><br>Gastronomie : Chicago est célèbre pour sa pizza deep-dish, une tarte épaisse avec une croûte croustillante et une garniture généreuse de fromage et de sauce tomate. Il y a aussi la cuisine de rue, comme les hot-dogs à la Chicago, garnis de moutarde, d'oignons, de cornichons et de piments. La ville offre également une grande variété de restaurants gastronomiques, des steakhouses aux restaurants de fruits de mer en passant par les restaurants fusion. Enfin, ne manquez pas de goûter la cuisine polonaise traditionnelle à la Pączki Day, qui est célébrée tous les ans en février. 
 						 <br><br>
-						<img src="assets/chicagopizza.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+						<img src="assets/chicagopizza.jpg" alt="New York" class="rounded shadow" width="500" height="300" style="float: right; margin-right: 10px;">
 						</div>
 				   <div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <div class="flex flex-col items-center">
-					 <img src="assets/Philadelphia.jpg" alt="Philadelphie" width="700" height="300" style="float: left; margin-right: 10px;">
+					 <img src="assets/Philadelphia.jpg" alt="Philadelphie" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					 <h2 class="text-xl font-mono mt-4">Philadelphie</h2>
 					 <p class="text-black-700 mt-2">Philadelphia est une ville historique qui a joué un rôle important dans la fondation des États-Unis, notamment en tant que siège de la révolution américaine et en accueillant la signature de la Déclaration d'indépendance en 1776. 
 					   Philadelphia est également connue pour son architecture historique, ses nombreux musées et son riche patrimoine culinaire, notamment le sandwich à la viande de Philly. 
@@ -200,7 +200,7 @@ session_start();
 				   
 					<br><br>Activités :  Il y a beaucoup d'activités à faire dans la ville, telles que la visite de l'Independence Hall, où la Déclaration d'Indépendance a été signée en 1776, ou le Musée d'Art de Philadelphie, qui abrite une collection remarquable de peintures américaines et européennes. Les amateurs de sport peuvent assister à un match des Eagles de Philadelphie ou des 76ers de Philadelphie au Lincoln Financial Field ou au Wells Fargo Center.
 					<br><br>
-						<img src="assets/cheesesteak.jpg" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+						<img src="assets/cheesesteak.jpg" alt="New York" class="rounded shadow" width="500" height="300" style="float: right; margin-right: 10px;">
 					<br><br>Gastronomie : Philadelphie est célèbre pour son "cheesesteak", un sandwich au steak haché et au fromage fondu qui est un must pour les gourmets. La ville est également connue pour ses pretzels frais, ses hoagies (sandwichs au pain long) et ses délicieux desserts, tels que le water ice et les beignets. Il y a également une scène culinaire en constante évolution, avec de nombreux restaurants proposant une cuisine inventive et des plats locaux.
 
 
@@ -211,13 +211,13 @@ session_start();
 				<div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <br>
 				   <div class="flex flex-col items-center">
-					 <img src="assets/Boston.jpg" alt="Boston" width="700" height="300" style="float: left; margin-right: 10px;">
+					 <img src="assets/Boston.jpg" alt="Boston" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					 <h2 class="text-xl font-mono mt-4">Boston</h2>
 					 <p class="text-black-700 mt-2">Boston est une ville tout autant historique que Philadelphie, car elle a également joué un rôle important dans la fondation des États-Unis en tant que centre de la révolution américaine. 
 					   Boston est connu pour ses nombreux sites historiques, tels que le Freedom Trail, le Old North Church et le USS Constitution Museum. La ville est également réputée pour son université prestigieuse, Harvard, ainsi que pour ses nombreux parcs et espaces verts. 
 					   Enfin, Boston est célèbre pour sa cuisine locale, telle que le "Boston Clam Chowder" et les "Boston Baked Beans".</p>
 					   <br><br>
-					   <img src="assets/baseball.jfif" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+					   <img src="assets/baseball.jfif" alt="New York" class="rounded shadow" width="500" height="300" style="float: right; margin-right: 10px;">
 					<br><br>Activités : Boston offre une variété d'options pour les visiteurs et les résidents. Voici quelques-unes des activités les plus populaires à faire à Boston:
 
 					Visiter le Freedom Trail: ce sentier historique vous guide à travers 16 lieux importants de l'histoire américaine, notamment le cimetière de la vieille église et le monument aux minutemen de Lexington.
@@ -244,7 +244,7 @@ session_start();
 				<div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <br>
 				   <div class="flex flex-col items-center">
-					 <img src="assets/Atlanta.jfif" alt="Atlanta" width="700" height="300" style="float: left; margin-right: 10px;">
+					 <img src="assets/Atlanta.jfif" alt="Atlanta" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					 <h2 class="text-xl font-mono mt-4">Atlanta</h2>
 					 <p class="text-black-700 mt-2">Atlanta est ville moderne et dynamique, connue pour son rôle important dans les affaires, la finance et la technologie. 
 					   Atlanta est également une destination touristique populaire pour ses nombreux sites historiques, tels que la Maison Martin Luther King Jr. et la Oakland Cemetery. La ville abrite également le World of Coca-Cola, un musée consacré à l'histoire de la célèbre marque de boissons.
@@ -269,7 +269,7 @@ session_start();
 					<div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <br>
 				   <div class="flex flex-col items-center">
-					 <img src="assets/Miami.jfif" alt="Miami" width="700" height="300" style="float: left; margin-right: 10px;">
+					 <img src="assets/Miami.jfif" alt="Miami" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					 <h2 class="text-xl font-mono mt-4">Miami</h2>
 					 <p class="text-black-700 mt-2">Miami est une destination touristique populaire pour ses plages de sable blanc et ses eaux turquoises. 
 					   Miami est également connue pour son architecture Art déco, son quartier cubain animé et sa vie nocturne effervescente. 
@@ -289,77 +289,17 @@ session_start();
 				   
 				   Déguster de la cuisine cubaine dans le quartier de Little Havana: ce quartier regorge de restaurants proposant de la cuisine cubaine traditionnelle, tels que des sandwichs cubains, des plats de riz et de haricots noirs et de la viande grillée.
 				   <br><br>
-				   <img src="assets/fish.jfif" alt="New York" width="500" height="300" style="float: right; margin-right: 10px;">
+				   <img src="assets/fish.jfif" alt="New York" class="rounded shadow" width="500" height="300" style="float: right; margin-right: 10px;">
 				  <br >
 				   <br><br>Gastronomie : Miami propose une cuisine cubaine traditionnelle, ainsi que des options gastronomiques plus modernes, telles que des restaurants de poissons et fruits de mer, des restaurants de fruits de mer, des restaurants de cuisine néo-latine et des restaurants gastronomiques proposant une cuisine inventive.
 
 					</div>
 					<div class="h-1 bg-gray-300 rounded my-5"></div>
-				   <br>
-				   <div class="flex flex-col center">
-					 <img src="assets/La Nouvelle Orléans.jfif" alt="La Nouvelle Orléans" width="700" height="300" style="float: left;">
-					 <h2 class="text-xl font-mono mt-4">La Nouvelle-Orléans</h2>
-					 <p class="text-black-700 mt-2">La Nouvelle-Orléans est riche en histoire et en culture, connue pour son patrimoine français et espagnol. 
-					   La Nouvelle-Orléans est célèbre pour sa musique, telle que le jazz, la musique de la Nouvelle-Orléans et le blues, ainsi que pour sa cuisine, notamment les plats cajuns et creoles. 
-					   La ville abrite également de nombreux festivals célèbres, tels que le Mardi Gras et le Jazz Fest. Enfin, La Nouvelle-Orléans est connue pour ses bâtiments historiques, tels que le French Quarter et le St. Louis Cathedral, ainsi que pour son architecture colorée et ses rues animées.</p>
-					   <br><br>
-					   <div class="flex flex-col center">
-					  <img src="assets/mardigras.jpg" alt="La Nouvelle Orléans" width="500" height="300" style="float: right; margin-right: 10px;">
-					  
-					</div>
-					  <br><br>Activités : La Nouvelle-Orléans propose un large éventail d'options pour les visiteurs et les résidents. Voici quelques-unes des activités les plus populaires à faire à La Nouvelle-Orléans:
-					
-				   Se promener dans le Quartier Français: ce quartier historique est célèbre pour ses bâtiments colorés, ses rues pavées et ses galeries d'art.
-				   
-				   Participer à la célébration du Mardi Gras: le Mardi Gras est l'une des fêtes les plus célèbres de La Nouvelle-Orléans, avec des défilés colorés, de la musique en direct et des activités animées pour les visiteurs et les résidents.
-				   
-				   Visiter le cimetière Saint-Louis: ce cimetière historique est connu pour ses tombes intéressantes et ses sculptures complexes.
-				   
-				   Se détendre dans le parc de City Park: ce parc de 1300 hectares offre des activités pour tous les âges, notamment des chemins pédestres, des étangs pour la pêche, des terrains de golf et un jardin botanique.
-				   
-				   Participer à un concert de jazz: La Nouvelle-Orléans est célèbre pour sa scène de jazz animée, avec des concerts tous les soirs dans des clubs de jazz et des bars à cocktails historiques.
-				   
-				   Déguster de la cuisine créole dans un restaurant local: La Nouvelle-Orléans propose une cuisine créole riche et délicieuse, servie dans des restaurants renommés tels que Commanders Palace, Galatoire's et Dooky Chase's.
-				   <br><br>Gastronomie: la cuisine de La Nouvelle-Orléans est une fusion de cultures française, africaine, créole et cajun. Les plats célèbres incluent des écrevisses étouffées, des jambalayas, des gumbos, des po'boys, des beignets et bien plus encore. La ville regorge de restaurants renommés, de bars à cocktails historiques et de petits stands de nourriture qui proposent une cuisine authentique.
-
-					</div>
-					<div class="h-1 bg-gray-300 rounded my-5"></div>
-				   <br>
-				   <div class="flex flex-col gap-6">
-					 <img src="assets/Honolulu.webp" alt="Honolulu" width="700" height="300" style="float: left; margin-right: 10px;">
-					 <h2 class="text-xl font-mono mt-4">Honolulu</h2>
-					 <p class="text-black-700 mt-2">Honolulu est la capitale et la ville la plus peuplée de l'État d'Hawaii. 
-					   C'est une destination touristique populaire pour ses plages de sable blanc et ses eaux turquoises, ainsi que pour son climat tropical. 
-					   Honolulu est également célèbre pour son patrimoine historique, tels que le Palais Iolani et le sanctuaire de la reine Liliuokalani. 
-					   La ville abrite également de nombreux musées, tels que le Musée d'art de Honolulu et le Musée Bishop, ainsi que des sites naturels, tels que le Diamond Head et les jardins botaniques de Foster. 
-					   Enfin, Honolulu est connue pour sa cuisine locale, telle que le "plate lunch" et le "Poke", ainsi que pour sa scène musicale hawaïenne.</p>
-					   <br><br>
-					   <div class="flex flex-col items-center">
-					   <img src="assets/hawaii surf.jfif" alt="New York" width="500" height="300" style="float: right;">
-					   
-					   </div>
-					   <br><br>Activités : Honolulu propose un large éventail d'options pour les visiteurs et les résidents. Voici quelques-unes des activités les plus populaires à faire à Honolulu:
-
-				   Se détendre sur Waikiki Beach: cette plage célèbre est un incontournable pour les visiteurs, avec des activités telles que le surf, la natation, le paddleboarding et la plongée.
-				   
-				   Visiter le Musée Bishop: ce musée d'histoire naturelle propose des expositions sur la faune et la flore hawaïennes, ainsi que sur la culture et l'histoire de Hawaï.
-				   
-				   Explorer le Diamond Head State Monument: ce monument naturel offre une vue imprenable sur Honolulu et la mer, ainsi que des sentiers de randonnée pour les amateurs de plein air.
-				   
-				   Assister à un spectacle de hula: les spectacles de hula sont un aspect important de la culture hawaïenne, avec des performances de danse traditionnelle dans les hôtels, les restaurants et les théâtres de la ville.
-				   
-				   Déguster des plats hawaïens traditionnels dans un restaurant local: Honolulu propose une cuisine hawaïenne délicieuse, avec des plats tels que le poi, le kalua pig et le laulau, servis dans des restaurants tels que Helena's Hawaiian Food et Ono Seafood.
-				   
-				   Participer à une excursion dans les îles hawaïennes: Honolulu est le point de départ idéal pour explorer les îles hawaïennes, avec des excursions en bateau, en avion ou en hélicoptère pour visiter les îles voisines telles que Maui, Kauai et le Big Island.
-				   <br><br>
-					   
-				   <br><br>Gastronomie : Honolulu propose une cuisine variée, allant des plats hawaïens traditionnels à la cuisine asiatique, en passant par la cuisine américaine moderne. Les plats célèbres incluent le poke, le spam musubi, le loco moco et le manapua. Il y a également de nombreux restaurants renommés qui proposent une cuisine inventive, ainsi que des stands de nourriture pop-up et des trucks à nourriture pour les goûters rapides.
-
-					</div>
+				  
 					<div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <br>
 					 <div class="flex flex-col items-center">
-					   <img src="assets/Statue de la liberté.jfif" alt="La Statue de la Liberté" width="500" height="700" style="float: left; margin-right: 10px;">
+					   <img src="assets/Statue de la liberté.jfif" alt="La Statue de la Liberté" class="rounded shadow" width="500" height="700" style="float: left; margin-right: 10px;">
 					   <h2 class="text-xl font-mono mt-4">La Statue de la Liberté</h2>
 					   <p class="text-black-700 mt-2">La Statue de la Liberté est un monument emblématique des États-Unis situé sur une île près de New York Harbor.<br>Il a été offert par les citoyens français en 1886 pour célébrer le centenaire de l'indépendance américaine. La statue, conçue par Frédéric Auguste Bartholdi, représente une figure féminine tenant une torche dans une main et un livre ouvert dans l'autre, symbolisant l'éclairage et la démocratie.
 
@@ -368,56 +308,56 @@ session_start();
 					 <div class="h-1 bg-gray-300 rounded my-5"></div>
 					 <br>
 					 <div class="flex flex-col items-center">
-					   <img src="assets/Grand Canyon.jfif" alt="Le Grand Canyon" width="700" height="300" style="float: left; margin-right: 10px;">
+					   <img src="assets/Grand Canyon.jfif" alt="Le Grand Canyon" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					   <h2 class="text-xl font-mono mt-4">Le Grand Canyon</h2>
 					   <p class="text-black-700 mt-2">Le Grand Canyon est un site naturel situé dans le nord de l'Arizona aux États-Unis.<br>Le Grand Canyon est connu pour ses couches de roches de différentes couleurs et âges exposées par l'érosion, offrant un aperçu unique de l'histoire géologique de la Terre. Il est considéré comme l'une des plus grandes merveilles naturelles du monde et est un parc national populaire pour les randonnées, les activités en plein air et les excursions en rafting en eau vive.</p>
 					 </div>
 					 <div class="h-1 bg-gray-300 rounded my-5"></div>
 					 <br>
 					 <div class="flex flex-col items-center">
-					   <img src="assets/Monument Valley.jpg" alt="Monument Valley" width="700" height="300" style="float: left; margin-right: 10px;">
+					   <img src="assets/Monument Valley.jpg" alt="Monument Valley" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					   <h2 class="text-xl font-mono mt-4">Monument Valley</h2>
 					   <p class="text-black-700 mt-2">Monument Valley est un paysage naturel emblématique des États-Unis, situé dans l'Arizona et l'Utah. Il se compose de formations de roches en grès rouge caractéristiques, telles que des buttes et des méandres imposants.<br> C'est un lieu de tournage fréquent pour des films et des publicités, en raison de sa beauté naturelle et de son paysage unique. Monument Valley est également un site sacré pour les Navajo, qui habitent la région et considèrent les formations rocheuses comme des lieux spirituels importants.</p>
 					 </div>
 					 <div class="h-1 bg-gray-300 rounded my-5"></div>
 					 <br>
 					 <div class="flex flex-col items-center">
-					   <img src="assets/Death Valley.jfif" alt="Death Valley" width="700" height="300" style="float: left; margin-right: 10px;">
+					   <img src="assets/Death Valley.jfif" alt="Death Valley" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					   <h2 class="text-xl font-mono mt-4">Death Valley</h2>
 					   <p class="text-black-700 mt-2">La Death Valley (La Vallée de la Mort en français) est une vallée aride et inhospitalière, renommée pour ses paysages désertiques uniques et ses températures extrêmement élevées.<br> La Vallée de la Mort abrite également des géomorphologies intéressantes telles que des formations rocheuses uniques, des dunes de sable, et des canyons. C'est un site touristique populaire pour les amateurs de nature et d'aventure.</p>
 					 </div>
 					 <div class="h-1 bg-gray-300 rounded my-5"></div>
 					 <br>
 					 <div class="flex flex-col items-center">
-					   <img src="assets/Sequoia Forest.jpeg" alt="La Grande Forêt de Sequoias" width="400" height="600" style="float: left; margin-right: 10px;">
+					   <img src="assets/Sequoia Forest.jpeg" alt="La Grande Forêt de Sequoias" class="rounded shadow" width="400" height="600" style="float: left; margin-right: 10px;">
 					   <h2 class="text-xl font-mono mt-4">La Grande Forêt de Sequoias</h2>
 					   <p class="text-black-700 mt-2">Cette Forêt est célèbre pour ses arbres géants de la famille des séquoias, qui sont les plus grands arbres du monde par leur volume.<br> La forêt abrite également d'autres espèces d'arbres anciennes et diverses formes de vie animale. Les séquoias géants attirent des milliers de visiteurs chaque année, qui viennent explorer les forêts et admirer les arbres imposants. Les séquoias géants sont considérés comme des symboles de la puissance de la nature et de la résistance à travers les âges.</p>
 					 </div>
 					 <div class="h-1 bg-gray-300 rounded my-5"></div>
 					 <br>
 					 <div class="flex flex-col items-center">
-					   <img src="assets/Mont Rushmore.jpg" alt="Le Mont Rushmore" width="700" height="300" style="float: left; margin-right: 10px;">
+					   <img src="assets/Mont Rushmore.jpg" alt="Le Mont Rushmore" class="rounded shadow"width="700" height="300" style="float: left; margin-right: 10px;">
 					   <h2 class="text-xl font-mono mt-4">Le Mont Rushmore</h2>
 					   <p class="text-black-700 mt-2">Monument national situé dans le Dakota du Sud, aux États-Unis. Il est célèbre pour ses sculptures géantes de la tête de quatre présidents américains : George Washington, Thomas Jefferson, Theodore Roosevelt et Abraham Lincoln. Les sculptures ont été creusées à même la montagne au cours de plusieurs années par le sculpteur Gutzon Borglum et son équipe. Le Mont Rushmore est devenu un symbole important de l'histoire et de l'identité américaines, et il attire des millions de visiteurs chaque année.</p>
 					 </div>
 					 <div class="h-1 bg-gray-300 rounded my-5"></div>
 					 <br>
 					 <div class="flex flex-col items-center">
-					   <img src="assets/Alcatraz.jfif" alt="Alcatraz" width="700" height="300" style="float: left; margin-right: 10px;">
+					   <img src="assets/Alcatraz.jfif" alt="Alcatraz" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					   <h2 class="text-xl font-mono mt-4">Alcatraz</h2>
 					   <p class="text-black-700 mt-2">Alcatraz est une île située en face de San Francisco.<br> Elle est célèbre pour avoir été utilisée comme prison fédérale pendant plusieurs décennies, entre les années 1930 et 1960.<br> Alcatraz a été considérée comme l'une des prisons les plus sûres et les plus inévadables de l'époque, et elle a accueilli de nombreux criminels célèbres. Depuis son abandon en 1963, l'île a été transformée en parc national et est ouverte aux visiteurs, qui peuvent explorer les bâtiments historiques et apprendre sur son passé. Alcatraz est devenu un site touristique populaire et un symbole de la justice pénale aux États-Unis.</p>
 					 </div>
 					 <div class="h-1 bg-gray-300 rounded my-5"></div>
 					 <br>
 					 <div class="flex flex-col items-center">
-					   <img src="assets/Yellowstone.jfif" alt="Le Yellowstone" width="700" height="300" style="float: left; margin-right: 10px;">
+					   <img src="assets/Yellowstone.jfif" alt="Le Yellowstone" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					   <h2 class="text-xl font-mono mt-4">Le Yellowstone</h2>
 					   <p class="text-black-700 mt-2">Le Yellowstone est le plus ancien parc national des États-Unis et l'un des plus importants du monde.<br> Il est situé principalement dans l'État du Wyoming, mais s'étend également dans les États de Montana et d'Idaho. Yellowstone est célèbre pour ses geysers uniques et ses sources chaudes, ainsi que pour ses paysages spectaculaires de montagnes, de lacs et de forêts.<br> Le parc abrite également une faune diversifiée, notamment des ours, des bisons, des loups et des élans. Yellowstone est visité par des millions de personnes chaque année et est considéré comme un joyau de la nature américaine.</p>
 					 </div>
 					 <div class="h-1 bg-gray-300 rounded my-5"></div>
 					 <br>
 					 <div class="flex flex-col items-center">
-					   <img src="assets/Grand Téton.jfif" alt="Le Grand Téton" width="700" height="300" style="float: left; margin-right: 10px;">
+					   <img src="assets/Grand Téton.jfif" alt="Le Grand Téton" class="rounded shadow" width="700" height="300" style="float: left; margin-right: 10px;">
 					   <h2 class="text-xl font-mono mt-4">Le Grand Téton</h2>
 					   <p class="text-black-700 mt-2">Le Grand Teton est un massif montagneux situé dans le parc national de Grand Teton, dans l'État du Wyoming, aux États-Unis. Il s'agit du plus haut sommet du parc et est célèbre pour sa forme distincte et son relief escarpé.<br> Le Grand Teton est un site de randonnée populaire, offrant des vues spectaculaires sur les montagnes et les vallées environnantes. Le parc national de Grand Teton abrite également une faune variée, notamment des grizzlis, des bisons, des élans et des oiseaux migrateurs.<br>Le Grand Teton est considéré comme un symbole de la beauté sauvage de l'Ouest américain.</p>
 					 </div>
