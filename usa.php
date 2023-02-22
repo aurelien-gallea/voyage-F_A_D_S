@@ -9,7 +9,6 @@ session_start();
 		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/usa.css" />
 		<link rel="stylesheet" href="assets/stylefooter.css" />
 		
 		
@@ -49,11 +48,13 @@ session_start();
     </script>
 	</head>
 	<?php require_once('src/header.php'); ?>
-
+ 
 	<body class="is-preload">
-
+	
 		
-		
+		<br>
+		<br>
+		<br>
 		
 			<header id="header">
 				<img src="assets/logo.png" alt="Logo" width="300px" height="200px" margin-right="10px">
@@ -459,7 +460,7 @@ session_start();
 			
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script src="src/tailwind-need-body.js"></script>
-	<script src="assets/js/main.js"></script>
+	
 	</body>
 	<?php require_once("src/footer.php");
   ?>
