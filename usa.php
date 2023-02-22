@@ -298,7 +298,7 @@ session_start();
 				   <br><br>Gastronomie : Miami propose une cuisine cubaine traditionnelle, ainsi que des options gastronomiques plus modernes, telles que des restaurants de poissons et fruits de mer, des restaurants de fruits de mer, des restaurants de cuisine néo-latine et des restaurants gastronomiques proposant une cuisine inventive.
 
 					</div>
-					<div class="h-1 bg-gray-300 rounded my-5"></div>
+					
 				  
 					<div class="h-1 bg-gray-300 rounded my-5"></div>
 				   <br>
