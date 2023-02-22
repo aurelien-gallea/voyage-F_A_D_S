@@ -281,7 +281,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                 <input class="dark:bg-color-1 text-black dark:text-white p-1 rounded" maxlength="15" type="text" name="<?= 'login-' . $arrayUsers[$i]['id'] ?>" value="<?= $arrayUsers[$i]['login'] ?>">
                             </div>
                             <div class="flex justify-between  container p-3">
-                                <button class="cancelBtn border rounded p-3 hover:bg-color-5 hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="cancelBtn border rounded p-3 hover:text-black hover:dark:bg-color-1 hover:dark:text-white" type="submit" name="cancel">Annuler</button>
                                 <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?= "user-" . $arrayUsers[$i]['id'] ?>">Confirmer</button>
                             </div>
                         </div>
@@ -327,7 +327,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             </div>
                             
                             <div class="flex justify-between  gap-10 container p-3 text-white">
-                                <button class="cancelBtn border rounded p-3 hover:dark:bg-color-1 hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="cancelBtn border rounded p-3 hover:text-black hover:dark:bg-color-1 hover:dark:text-white" type="submit" name="cancel">Annuler</button>
                                 <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?= 'cat-' . $arrayCats[$i]['id'] ?>">Confirmer</button>
                             </div>
                         </div>
@@ -373,7 +373,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             <div class="text-right"> dernière modification le : <?= DateToFr::dateFR($arrayArt[$i]['date']);  ?> par <span class="<?= Update::printStatus($statusByUser['nom']) ?>"><?= $result['login'] ?></span></div>
                             <hr>
                         </div>
-                        <div>
+                        <div >
                             <div class="btnContainer flex justify-center gap-10  container p-3">
                                 <button class="update border rounded p-3 hover:bg-color-5" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier article</button>
                                 <button class=" border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button>
@@ -402,7 +402,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                 <textarea class="text-black dark:text-white dark:bg-color-1 p-1 rounded w-full h-80" maxlength="5000"  name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
                             </div>
                             <div class="flex  justify-between  container p-3">
-                                <button class="cancelBtn border rounded p-3 hover:dark:bg-color-1 hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="cancelBtn border rounded p-3 hover:text-black hover:dark:bg-color-1 hover:dark:text-white" type="submit" name="cancel">Annuler</button>
                                 <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?= $arrayArt[$i]['id'] ?>">Confirmer</button>
                             </div>
                         </div>
@@ -458,7 +458,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             </div>
 
                             <div class="flex justify-between gap-5 container p-3">
-                                <button class="cancelBtn border rounded p-3 hover:dark:bg-color-1 hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="cancelBtn border rounded p-3 hover:text-black hover:dark:bg-color-1 hover:dark:text-white" type="submit" name="cancel">Annuler</button>
                                 <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?='com-' . $commentaries[$i]['id']?>">Confirmer</button>
                             </div>
                         </div>
