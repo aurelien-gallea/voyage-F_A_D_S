@@ -91,6 +91,8 @@ class="text-color-3 underline dark:text-color4 hover:no-underline"
           >côte sénégalaise</a >.
 Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa source dans le Fouta-Djalon en Guinée. Le climat est tropical et sec avec deux saisons : la saison sèche et la saison des pluies.
 </p>
+<hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
+
 <h3 class="mb-3 text-m font-extrabold  text-gray-900 dark:text-white"> La cuisine Sénégalaise</h3>
 <p class="text-gray-900 text-sm dark:text-white">La cuisine sénégalaise est souvent décrite comme l'une des plus riches et la plus variée d'Afrique de l'Ouest. Elle présente un certain nombre de similitudes avec celles des autres pays de cette région,</p>
 <div
