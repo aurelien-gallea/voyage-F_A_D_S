@@ -34,7 +34,7 @@
 
   <!-- ----------------------------------body--------------------------- -->
 
- <body class="bg-color-5">
+ <body class="bg-gray-900">
 
       <?php 
       include'src/header.php';
@@ -54,7 +54,7 @@ style="background-image: url('assets/sene2.jpg')" alt="">
 </div>
 <div class=" z-10  flex items-center pt-20 w-6/7 h-screen">
 
-<div class="  mx-auto text-center w-7/8 sm:w-5/6 bg-white border  border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div class="  mx-auto text-center w-7/8 sm:w-5/6 bg-white border  max-w-5xl  border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
         <li class="mr-2">
             <button id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about" aria-selected="true" class="inline-block p-4 text-color-3 rounded-tl-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-color-3">Le Sénégal</button>
@@ -89,11 +89,9 @@ class="text-color-3 underline dark:text-color4 hover:no-underline"
           data-popover-target="popover-image"
           data-tooltip-placement="bottom"
           >côte sénégalaise</a >.
-
 Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa source dans le Fouta-Djalon en Guinée. Le climat est tropical et sec avec deux saisons : la saison sèche et la saison des pluies.
 </p>
 <h3 class="mb-3 text-m font-extrabold  text-gray-900 dark:text-white"> La cuisine Sénégalaise</h3>
-
 <p class="text-gray-900 text-sm dark:text-white">La cuisine sénégalaise est souvent décrite comme l'une des plus riches et la plus variée d'Afrique de l'Ouest. Elle présente un certain nombre de similitudes avec celles des autres pays de cette région,</p>
 <div
         data-popover
@@ -104,13 +102,10 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
       >
         <div class="">
           <div class="flex">
-          <h3 class="font-semibold text-gray-900 dark:text-white"> Géographie physique</h3>
-               
+          <h3 class="font-semibold text-gray-900 dark:text-white"> Géographie physique</h3> 
               
              <div class=" flex-row ">
-              
-            
-             
+           
             </div>
           </div>
           <img
@@ -283,24 +278,6 @@ La Casamance est frontalière de la Gambie au nord, de la Guinée-Bissau et de l
 </div>
 
 </div>
-
-<script>
-
-const callback = function (entries) {
-  entries.forEach((entry) => {
-    console.log(entry);
-
-    if (entry.isIntersecting) {
-      entry.target.classList.add("animate-fadeIn");
-    } else {
-      entry.target.classList.remove("animate-fadeIn");
-    }
-  });
-};
-</script>
-
-
-
 
 
 
