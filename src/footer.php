@@ -41,7 +41,7 @@ Ici, nous croyons que la nourriture est l'une des meilleures façons de découvr
       <div class="content">
       <div class="contact">
         <a href="contact.php" class="text-white ml-2 inline-block">Pour nous contacter c'est ici !
-          <br>Nous ferons de notre mieux pour répondre à votre demande dans les meilleurs délais. Si vous préférez nous appeler, notre numéro de téléphone est le<br> 01 23 45 67 89.<br> Nous sommes également disponibles sur les réseaux sociaux, alors n'hésitez pas à nous suivre sur Facebook, Twitter et Instagram pour être informé de nos dernières actualités.
+          <br>Nous ferons de notre mieux pour répondre à votre demande dans les meilleurs délais.<br> Si vous préférez nous appeler, notre numéro de téléphone est le<br> 01 23 45 67 89.<br> Nous sommes également disponibles sur les réseaux sociaux, alors n'hésitez pas à nous suivre sur Facebook, Twitter et Instagram pour être informé de nos dernières actualités.
 </a>
       </div>
       </div>
