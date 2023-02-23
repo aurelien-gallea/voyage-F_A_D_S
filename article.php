@@ -32,8 +32,7 @@ if (isset($_POST['submit_commentaire'])) {
 
 
 //--------------modifier le commentaire
-require('src/connectionDB.php');
-
+if (isset($_GET['id'])) {
 $id = (int) $_GET['id'];
 $coms = $bdd->prepare('SELECT * FROM commentaires WHERE id_article = :id');
 $coms->bindParam(':id', $id, PDO::PARAM_INT);
@@ -42,19 +41,23 @@ $commentaires = $coms->fetchAll(PDO::FETCH_ASSOC);
 
 for ($d = 0; $d < count($commentaires); $d++) {
   $commentaire = $commentaires[$d];
-  if (isset($_POST['modif_commentaire']) && isset($_POST['id_commentaire']) && $_POST['id_commentaire'] == $commentaire['id']) {
-    $newCom = htmlspecialchars($_POST['commentaire-'.$commentaire['id']]);
-    if ($newCom != $commentaire['commentaire']) {
-      $stmt = $bdd->prepare("UPDATE commentaires SET commentaire = :commentaire WHERE id = :id AND id_utilisateur = :id_utilisateur AND id_article = :id_article");
-      $stmt->bindParam(':commentaire', $newCom, PDO::PARAM_STR);
-      $stmt->bindParam(':id', $commentaire['id'], PDO::PARAM_INT);
-      $stmt->bindParam(':id_utilisateur', $user_id, PDO::PARAM_INT);
-      $stmt->bindParam(':id_article', $id, PDO::PARAM_INT);
-      $stmt->execute();
-      header('Location: article.php?id='. $id);
-      exit;
-    }
+ if (isset($_POST['modif_commentaire']) && isset($_POST['id_commentaire']) && $_POST['id_commentaire'] == $commentaire['id']) {
+  $newCom = htmlspecialchars($_POST['commentaire-'.$commentaire['id']]);
+  if ($newCom != $commentaire['commentaire']) {
+    $commentaire_id = $commentaire['id'];
+    $user_id = $userArticle['id'];
+    $article_id = $id;
+    $stmt = $bdd->prepare("UPDATE commentaires SET commentaire = :commentaire WHERE id = :id AND id_utilisateur = :id_utilisateur AND id_article = :id_article");
+    $stmt->bindParam(':commentaire', $newCom, PDO::PARAM_STR);
+    $stmt->bindParam(':id', $commentaire_id, PDO::PARAM_INT);
+    $stmt->bindParam(':id_utilisateur', $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(':id_article', $article_id, PDO::PARAM_INT);
+    $stmt->execute();
+    header('Location: article.php?id='. $id);
+    exit;
   }
+}
+
 
   if (isset($_POST['modif_commentaire']) && isset($_POST['commentaire']) && isset($_POST['commentaire-'.$commentaire['id']])) {
     $newCom = htmlspecialchars($_POST['commentaire-'.$commentaire['id']]);
@@ -79,7 +82,7 @@ echo $stmt->rowCount() . " lignes affectées";
   }
 
 }
-
+}
 //Effacer commentaire
 if (isset($_POST['suppr_commentaire'])) {
   $id_commentaire = $_POST['suppr_commentaire'];
@@ -90,8 +93,8 @@ if (isset($_POST['suppr_commentaire'])) {
   $commentaire = $statement->fetch();
   
   // Vérifier si l'utilisateur actuel est l'auteur du commentaire
-  if ($commentaire['id_utilisateur'] == $_SESSION['id']) {
-      $query = "DELETE FROM commentaires WHERE id = :id";
+  if (isset($_SESSION['id']) && $commentaire['id_utilisateur'] == $_SESSION['id']) {      
+    $query = "DELETE FROM commentaires WHERE id = :id";
       $statement = $bdd->prepare($query);
       $statement->bindValue(':id', $id_commentaire);
       $statement->execute();
@@ -106,12 +109,10 @@ if (isset($_POST['suppr_commentaire'])) {
 //Récupération de l'id de l'article--------------------->
 
     require_once('src/connectionDB.php');
-    $id = (int) $_GET['id'];
-    $stmt = $bdd->prepare("SELECT * FROM articles WHERE id = :id");
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    $article = $stmt->fetch();
-    $id_article = (int) $_GET['id'];
+$stmt = $bdd->prepare("SELECT * FROM articles WHERE id = :id");
+$stmt->bindParam(':id', $id);
+$stmt->execute();
+$article = $stmt->fetch();
 
 //  Récupération des commentaires, du login grace à la liaison sur l'ID des tables commentaires et utilisateurs.
 if (isset($_POST['sort_order'])) {
@@ -119,15 +120,13 @@ if (isset($_POST['sort_order'])) {
 } else {
   $sort_order2 = 'desc';
 }
-
-    $stmt = $bdd->prepare("SELECT commentaires.*, utilisateurs.login FROM commentaires
+$stmt = $bdd->prepare("SELECT commentaires.*, utilisateurs.login FROM commentaires
                        INNER JOIN utilisateurs ON utilisateurs.id = commentaires.id_utilisateur
-                       WHERE commentaires.id_article = :id_article
+                       WHERE commentaires.id_article = :id
                        ORDER BY commentaires.id  " . $sort_order2);
-$stmt->bindParam(':id_article', $id_article, PDO::PARAM_INT);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
 $commentaires = $stmt->fetchAll();
-
 //Catégories des articles
 $id_article= (int) $_GET['id'];
 $catName = $bdd->prepare('SELECT cat_art.id_cat, categories.nom 
@@ -150,7 +149,7 @@ $userArticle = $stmt->fetch();
 $userArt = $userArticle['id'];
 
 // récupération des articles par utilisateur
-$stmt = $bdd->prepare("SELECT articles.titre FROM articles
+$stmt = $bdd->prepare("SELECT  articles.id, articles.titre FROM articles
 INNER JOIN utilisateurs ON utilisateurs.id = articles.id_utilisateur
 WHERE utilisateurs.id= :id_u");
 $stmt->bindParam(':id_u', $userArt, PDO::PARAM_INT);
@@ -213,8 +212,9 @@ $userComment = $stmt->fetchAll();
           <?php }?></p>
         </div>
         <div class="flex flex-row dark:text-gray-200">
-        <p class=" ">Auteur :  &nbsp</p><p class="underline"> 
-         <!-- Modal toggle -->
+        <p class=" ">Auteur :  &nbsp</p><p class="underline">
+
+         <!-- Modal toggle pour la liste des articles de cette auteur -->
 <button data-modal-target="defaultModal3" data-modal-toggle="defaultModal3" 
 class="block rounded-lg bg-color-2 px-2 py-1 shadow-l text-center text-sm font-medium text-white
  hover:bg-color-5 focus:outline-none focus:ring-4 focus:ring-color-3 dark:bg-color-2 dark:hover:bg-color-4 dark:focus:ring-color-4" type="button">
@@ -223,12 +223,12 @@ class="block rounded-lg bg-color-2 px-2 py-1 shadow-l text-center text-sm font-m
         </p>
        
           
-<!-- Main modal -->
+<!-- Main modal  liste des articles de cette auteur-->
 <div id="defaultModal3" tabindex="-1" aria-hidden="true" class="h-modal fixed top-0 left-0 right-0 z-50 hidden w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
   <div class="relative h-full w-full max-w-2xl md:h-auto">
-    <!-- Modal content -->
+    <!-- Modal content  liste des articles de cette auteur-->
     <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
-      <!-- Modal header -->
+      <!-- Modal header  liste des articles de cette auteur-->
       <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Liste des articles de <?php echo $userArticle['login']; ?></h3>
         <button type="button" class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal3">
@@ -236,15 +236,17 @@ class="block rounded-lg bg-color-2 px-2 py-1 shadow-l text-center text-sm font-m
           <span class="sr-only">Fermer</span>
         </button>
       </div>
-      <!-- Modal body -->
+      <!-- Modal body  liste des articles de cette auteur-->
       <div class="space-y-6 p-6">
 <?php foreach ($userComment as $item) {?>  
             <div class="flex flex-row mb-1 max-[800px]:flex-col font-normal text-gray-900 dark:text-gray-400 bg-color-3 rounded-lg shadow-lg  hover:shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80">            
-          <div class="flex flex-column self-center bg-color-3 w-5/6 hover:bg-color-5 m-2 p-2 text-white rounded-lg shadow-lg  hover:shadow-xl">
-           <!-- <a href="http://localhost/voyage/voyage-F_A_D_S/article.php?id=<?= $item['id']?>" > -->
+         <a class =" w-5/6"href="http://localhost/voyage/voyage-F_A_D_S/article.php?id=<?= $item['id']?>" > 
+         <div class="flex flex-column self-center  bg-color-3  hover:bg-color-5 m-2 p-2 text-white rounded-lg shadow-lg  hover:shadow-xl">
+           
            <?php echo $item['titre'];?>
-          <!-- </a>   -->
-          </div>   
+           </div>
+          </a>  
+             
            </div>      
           <?php }?>
       </div>
@@ -347,7 +349,6 @@ class="block rounded-lg bg-color-2 px-2 py-1 shadow-l text-center text-sm font-m
          
     <!------------------------------------------------modal Modifier--------------------------------->
     <?php if ($is_author) { ?>
-
     <div id="staticModal2_<?= $i ?>" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
         <div class="relative w-full h-full max-w-2xl md:h-auto">
           <!-- Modal content -->
@@ -407,21 +408,15 @@ if (isset($_POST['suppr_commentaire'])) {
   }
 }
 ?>
-
 <!-- ------------------fin afficher les commentaires--------------------------------------------- -->
-
 </section>
 <?php 
 include'src/footer.php';
 ?>
-
  </div>
-
     <script src="src/tailwind-need-body.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>   
   </body>
-
 </html>
 
 
