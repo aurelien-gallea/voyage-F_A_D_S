@@ -40,7 +40,7 @@
   </div>
   <div class="bottom">
   <div class="container">
-    <span class="text-white ml-4 inline-block">Tasty Trip | </span>
+    <span class="text-white ml-4 inline-block">&copy;Tasty Trip | </span>
     <span class="text-white inline-block">2023 All rights reserved.</span>
   </div>
 </div>
