@@ -71,7 +71,7 @@ if (isset($_POST['tri'])) {
     </select>
   </div>
   <div class="flex justify-center">
-    <button type="submit" class="bg-color-1 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-blue-700">Trier</button>
+    <button type="submit" class="bg-color-1 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-color-3">Trier</button>
   </div>
 </form>
 
