@@ -64,10 +64,10 @@ if (isset($_POST['tri'])) {
   <div class="flex flex-col mb-4">
     <label for="tri" class="mb-2 font-bold text-lg text-gray-900">Trier par:</label>
     <select name="tri" id="tri" class="px-3 py-2 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-blue-500">
-      <option value="date_asc">Date croissante</option>
-      <option value="date_desc">Date décroissante</option>
-      <option value="login">Utilisateur</option>
-      <option value="categories">Catégories</option>
+      <option value="date_asc" class="text-center">Date croissante</option>
+      <option value="date_desc" class="text-center">Date décroissante</option>
+      <option value="login" class="text-center">Utilisateur</option>
+      <option value="categories" class="text-center">Catégories</option>
     </select>
   </div>
   <button type="submit" class="bg-color-1 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-blue-700">Trier</button>
