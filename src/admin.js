@@ -11,7 +11,7 @@ const searchBar = document.querySelectorAll(".searchBar");
 const found = document.querySelectorAll(".found");
 const categories = document.querySelectorAll(".categories");
 
-// la barre de recherche
+// les barres de recherche
 for (let i = 0; i < searchBar.length; i++) {
     
   searchBar[i].addEventListener('keyup', () => {
@@ -22,7 +22,6 @@ for (let i = 0; i < searchBar.length; i++) {
       }
       
     }
-
     // on fait apparaitre le résutat de notre recherche
     for (let j = 0; j < found.length; j++) {
       const result = found[j];
