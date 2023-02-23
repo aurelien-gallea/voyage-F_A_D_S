@@ -34,7 +34,7 @@
     <div class="right box">
       <h2>Nous Contacter</h2>
       <div class="content">
-        <a href="contact.php" class="text-white ml-2 inline-block">Pour nous Contacter c'est ici</a>
+        <a href="contact.php" class="text-white ml-2 inline-block">Pour nous contacter, c'est ici</a>
       </div>
     </div>
   </div>
