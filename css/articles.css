@@ -20,12 +20,7 @@
     
     
 }
-body {
-    background-image: url('../assets/beach.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
+
 h1 {
     font-size: 35px;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -94,13 +89,13 @@ h1 {
     border-radius: 55px;
     text-decoration: none;
 }
-form {
+.form {
 width: 80%;
 margin: 0 auto;
 text-align: center;
 }
 
-select {
+.select {
 width: 20%;
 padding: 10px;
 font-size: 16px;
@@ -109,7 +104,7 @@ border-radius: 5px;
 text-align: center;
 }
 
-input[type="submit"] {
+.input[type="submit"] {
 background-color: #f4fff8;
 color: black;
 padding: 5px 10px;
@@ -119,11 +114,11 @@ cursor: pointer;
 }
 
 @media (max-width: 767px) {
-form {
+.form {
 width: 100%;
 }
 
-select {
+.select {
 width: 100%;
 }
 }

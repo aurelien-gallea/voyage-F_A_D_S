@@ -55,21 +55,24 @@ if (isset($_POST['tri'])) {
   <?php require_once('src/header-blog.php'); ?>
   <!-- ----------------------------------body--------------------------- -->
 
-  <body>
+  <body class="bg-color-4 dark:bg-color-5 bg-center bg-no-repeat bg-cover">
  
    <br>
    <br> 
    <br>
-   <form action="articles.php" method="post">
-  <select name="tri">
-  <option value="date_asc">Date croissante</option>
-  <option value="date_desc">Date décroissante</option>
-    <option value="login">Utilisateur</option>
-    <option value="categories">Catégories</option>
-  </select>
-  <br>
-  <input type="submit" value="Trier">
+   <form action="articles.php" method="post" class="max-w-sm mx-auto">
+  <div class="flex flex-col mb-4">
+    <label for="tri" class="mb-2 font-bold text-lg text-gray-900">Trier par:</label>
+    <select name="tri" id="tri" class="px-3 py-2 border-2 border-gray-400 rounded-lg focus:outline-none focus:border-blue-500">
+      <option value="date_asc">Date croissante</option>
+      <option value="date_desc">Date décroissante</option>
+      <option value="login">Utilisateur</option>
+      <option value="categories">Catégories</option>
+    </select>
+  </div>
+  <button type="submit" class="bg-color-1 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-blue-700">Trier</button>
 </form>
+
 </body>
 
   
