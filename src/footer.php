@@ -27,14 +27,14 @@
         </div>
         <div class="email">
           <span class="fas fa-envelope"></span>
-          <span class="text-white ml-2 inline-block">abc@example.com</span>
+          <span class="text-white ml-2 inline-block">contact.tastytrip@.com</span>
         </div>
       </div>
     </div>
     <div class="right box">
       <h2>Nous Contacter</h2>
       <div class="content">
-        <a href="contact.php" class="text-white ml-2 inline-block">Nous Contacter ici</a>
+        <a href="contact.php" class="text-white ml-2 inline-block">Pour nous Contacter c'est ici</a>
       </div>
     </div>
   </div>
