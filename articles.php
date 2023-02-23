@@ -97,16 +97,17 @@ if (isset($_POST['tri'])) {
 
   ?>
   
-  <div class="article">
-    <h2><?= htmlspecialchars($article['titre']) ?></h2>
-    <h3><?= htmlspecialchars($date) ?></h3>
-    <h4><?= htmlspecialchars($result['login']) ?></h4>
-    <?php while ($cat = $catName->fetch()): ?>
-      <h5><?= htmlspecialchars($cat['nom']) ?></h5>
-    <?php endwhile; ?>
-    <p><?= htmlspecialchars($article['article']) ?></p>
-    <a href="article.php?id=<?= $article['id'] ?>">Afficher plus</a>
-  </div>
+  <div class="article bg-white shadow-md rounded-lg p-4 md:p-6 lg:p-8 xl:p-10">
+  <h2 class="text-2xl lg:text-3xl font-bold mb-2"><?= htmlspecialchars($article['titre']) ?></h2>
+  <h3 class="text-lg mb-4"><?= htmlspecialchars($date) ?></h3>
+  <h4 class="text-md mb-2"><?= htmlspecialchars($result['login']) ?></h4>
+  <?php while ($cat = $catName->fetch()): ?>
+    <h5 class="text-sm mb-2"><?= htmlspecialchars($cat['nom']) ?></h5>
+  <?php endwhile; ?>
+  <p class="text-base leading-7"><?= htmlspecialchars($article['article']) ?></p>
+  <a href="article.php?id=<?= $article['id'] ?>" class="inline-block text-blue-500 hover:text-blue-700 mt-4 md:mt-6 lg:mt-8 xl:mt-10">Afficher plus</a>
+</div>
+
 <?php endforeach; ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 <script src="src/tailwind-need-body.js"></script>
