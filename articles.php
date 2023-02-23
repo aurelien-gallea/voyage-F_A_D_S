@@ -70,7 +70,9 @@ if (isset($_POST['tri'])) {
       <option value="categories" class="text-center">Catégories</option>
     </select>
   </div>
-  <button type="submit" class="bg-color-1 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-blue-700">Trier</button>
+  <div class="flex justify-center">
+    <button type="submit" class="bg-color-1 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-blue-700">Trier</button>
+  </div>
 </form>
 
 </body>
