@@ -15,7 +15,29 @@ session_start();
     <link rel="stylesheet" href="css/tailwind-need.css">
     <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
-  
+    <script>
+      tailwind.config = { darkMode: 'class',
+  // ...
+  content: [],
+        theme: {
+          extend: {
+            colors: {
+        'color-1': '#111827',
+        'color-2': '#8BAAAD',
+        'color-3': '#90323D',
+        'color-4': '#FCF6B1',
+        'color-5': '#F18F01AD',
+      },
+            opacity: {
+              54: ".24",
+            },
+            fontFamily: {
+              Unbounded: ['"Unbounded"'],
+            },
+          },
+        },
+      };
+    </script>
 </head>
 <?php require_once('src/header.php'); ?>
 
@@ -58,12 +80,18 @@ session_start();
         <span class="block text-lg font-medium text-gray-800 py-4 px-6">Blog</span>
       </a>
     </li>
+    <li class="bg-white rounded-lg shadow-md overflow-hidden">
+      <a href="contact.php">
+      <img src="assets/vignettecontact.png" alt="Contact" class="w-full h-48 object-cover" style="object-position: center bottom;">
+
+        <span class="block text-lg font-medium text-gray-800 py-4 px-6">Nous Contacter</span>
+      </a>
+    </li>
   </ul>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script src="src/tailwind-need-body.js"></script>
 </body>
 <br>
-
   <?php require_once("src/footer.php");
   ?>
    
