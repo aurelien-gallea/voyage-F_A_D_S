@@ -11,7 +11,6 @@ const searchBar = document.querySelectorAll(".searchBar");
 const found = document.querySelectorAll(".found");
 const categories = document.querySelectorAll(".categories");
 
-console.log(categories[0].textContent);
 // la barre de recherche
 for (let i = 0; i < searchBar.length; i++) {
     
@@ -30,27 +29,14 @@ for (let i = 0; i < searchBar.length; i++) {
       
       let word = result.textContent;
       
-      if(word.includes(searchBar[i].value) )  {
+      if(word.includes(searchBar[i].value))  {
         
         result.classList.remove("hidden");
       } else {
         result.classList.add("hidden");
 
-      }      
-    }
-    // for (let g = 0; g < categories.length; g++) {
-    //   let cats = categories[g];
-    //   cats = categories.textContent;
-
-    //   if(cats.includes(searchBar[i].value))  {
-        
-    //     result.classList.remove("hidden");
-    //   } else {
-    //     result.classList.add("hidden");
-
-    //   }     
-      
-    // }
+      }   
+    }   
   });
 }
 
@@ -79,7 +65,7 @@ for (let i = 0; i < menuContent.length; i++) {
         menus[i].textContent = "Fermer menu";
       }
       e.preventDefault();
-
+      // on ferme les menus déroulants ouvert si on clique sur un autre boutons
       for (let j = 0; j < menuContent.length; j++) {
         if (i == j) {
           continue;
