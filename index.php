@@ -15,29 +15,7 @@ session_start();
     <link rel="stylesheet" href="css/tailwind-need.css">
     <script src="src/tailwind-need.js"></script>
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
-    <script>
-      tailwind.config = { darkMode: 'class',
-  // ...
-  content: [],
-        theme: {
-          extend: {
-            colors: {
-        'color-1': '#111827',
-        'color-2': '#8BAAAD',
-        'color-3': '#90323D',
-        'color-4': '#FCF6B1',
-        'color-5': '#F18F01AD',
-      },
-            opacity: {
-              54: ".24",
-            },
-            fontFamily: {
-              Unbounded: ['"Unbounded"'],
-            },
-          },
-        },
-      };
-    </script>
+  
 </head>
 <?php require_once('src/header.php'); ?>
 
