@@ -137,6 +137,28 @@ ON categories.id = cat_art.id_cat
 WHERE cat_art.id_art = ?');
 $catName->execute([$id_article]);
 $cat=$catName->fetchAll();
+
+
+
+// auteur de l'article 
+$stmt = $bdd->prepare("SELECT utilisateurs.id, utilisateurs.login FROM articles
+INNER JOIN utilisateurs ON utilisateurs.id = articles.id_utilisateur
+WHERE articles.id = :id_article");
+$stmt->bindParam(':id_article', $id_article, PDO::PARAM_INT);
+$stmt->execute();
+$userArticle = $stmt->fetch();
+$userArt = $userArticle['id'];
+
+// récupération des articles par utilisateur
+$stmt = $bdd->prepare("SELECT articles.titre FROM articles
+INNER JOIN utilisateurs ON utilisateurs.id = articles.id_utilisateur
+WHERE utilisateurs.id= :id_u");
+$stmt->bindParam(':id_u', $userArt, PDO::PARAM_INT);
+$stmt->execute(); 
+$userComment = $stmt->fetchAll();
+
+
+
 ?>
   
 
@@ -172,7 +194,7 @@ $cat=$catName->fetchAll();
 
   <!-- ----------------------------------body--------------------------- -->
 
-     <body class="relative  content-center justify-center  max-[800px]:pt40   w-full h-full m-auto bg-gradient-to-b from-color-5 to-color-4  dark:from-color-2 dark:to-color-1 dark:bg-gray-600 mt-28 max-[800px]:pt50 " >
+     <body class="relative  content-center justify-center  max-[800px]:pt40   w-full h-full m-auto bg-gradient-to-b duration-100 ease-linear from-color-5 duration-500 ease-linear to-color-4  dark:from-color-2 dark:to-color-1 dark:bg-gray-600 mt-28 max-[800px]:pt50 " >
     
      <div class="flex flex-col">
      <?php include'src/header-blog.php';?>
@@ -180,25 +202,68 @@ $cat=$catName->fetchAll();
     
      <section  class=" flex-grow top-20 flex flex-col w-5/6 content-center justify-center place-self-center    m-auto  md:inset-0   ">
 
-    <div class="flex flex-col items-center   bg-white border border-gray-200 rounded-lg shadow max-[767px]:pt-1 md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div class="flex flex-col items-center   duration-300 ease-linear bg-white border border-gray-200 rounded-lg shadow max-[767px]:pt-1 md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
      <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="assets/illustration1.png" alt="">
      <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5 class="mb-2 text-2xl font-bold break-words tracking-tight text-gray-900 dark:text-white">Article - <?php echo $article['titre']; ?></h5>
+        <h5 class="mb-2 antialiased text-2xl font-bold break-words tracking-tight text-gray-900 dark:text-white">Article - <?php echo $article['titre']; ?></h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 break-words"><?php echo $article['article']; ?></p>
         <div class="flex flex-row mb-1 max-[800px]:flex-col font-normal text-gray-900 dark:text-gray-400"><p>catégorie : 
-          <?php foreach ($cat as $item) {?> 
-            
-          <?php echo $item['nom'];?> <p> &nbsp &nbsp </p>
-            
+          <?php foreach ($cat as $item) {?>             
+          <?php echo $item['nom'];?> <p> &nbsp &nbsp </p>            
           <?php }?></p>
         </div>
+        <div class="flex flex-row dark:text-gray-200">
+        <p class=" ">Auteur :  &nbsp</p><p class="underline"> 
+         <!-- Modal toggle -->
+<button data-modal-target="defaultModal3" data-modal-toggle="defaultModal3" 
+class="block rounded-lg bg-color-2 px-2 py-1 shadow-l text-center text-sm font-medium text-white
+ hover:bg-color-5 focus:outline-none focus:ring-4 focus:ring-color-3 dark:bg-color-2 dark:hover:bg-color-4 dark:focus:ring-color-4" type="button">
+ <?php echo $userArticle['login']; ?></button>
+ 
+        </p>
+       
+          
+<!-- Main modal -->
+<div id="defaultModal3" tabindex="-1" aria-hidden="true" class="h-modal fixed top-0 left-0 right-0 z-50 hidden w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
+  <div class="relative h-full w-full max-w-2xl md:h-auto">
+    <!-- Modal content -->
+    <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+      <!-- Modal header -->
+      <div class="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Liste des articles de <?php echo $userArticle['login']; ?></h3>
+        <button type="button" class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal3">
+          <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+          <span class="sr-only">Fermer</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="space-y-6 p-6">
+<?php foreach ($userComment as $item) {?>  
+            <div class="flex flex-row mb-1 max-[800px]:flex-col font-normal text-gray-900 dark:text-gray-400 bg-color-3 rounded-lg shadow-lg  hover:shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80">            
+          <div class="flex flex-column self-center bg-color-3 w-5/6 hover:bg-color-5 m-2 p-2 text-white rounded-lg shadow-lg  hover:shadow-xl">
+           <!-- <a href="http://localhost/voyage/voyage-F_A_D_S/article.php?id=<?= $item['id']?>" > -->
+           <?php echo $item['titre'];?>
+          <!-- </a>   -->
+          </div>   
+           </div>      
+          <?php }?>
+      </div>
+      <!-- Modal footer -->
+      <div class="flex items-center space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-600">
+        <button data-modal-hide="defaultModal3" type="button" class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:outline-none focus:ring-4 focus:ring-color-3 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
      </div>
 </div>
 
   <!----------------------|| Ajout commentaire ||----------------------------------------------->
 <form action="article.php?id=<?php echo $id; ?>" method="post">
    <div class=" mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
-       <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
+       <div class="px-4 py-2 duration-100 ease-linear bg-white rounded-t-lg dark:bg-gray-800">
            <label for="commentaire" class="sr-only">Votre commentaire</label>
            <textarea maxlength="1024" name="commentaire" id="commentaire" rows="4" 
                      class="w-full px-0 text-sm text-gray-900 dark:text-white break-words bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" 
@@ -225,19 +290,19 @@ $cat=$catName->fetchAll();
         });
 </script>
    <!-- ----------------affichage des commentaires----------------- -->
-<form action="" method="post">
+
     
   <?php for ($i = 0; $i < sizeof($commentaires); $i++) {
     $commentaire = $commentaires[$i];
     $is_author = $commentaire['id_utilisateur'] === $user_id;?>        
  <div class="flex items-center justify-between px-4 py-2 border-gray-200 dark:border-gray-700  dark:text-gray-400">
      
-        <div class="block p-6 bg-white border border-gray-200 rounded-lg w-full shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="block p-6 duration-200 ease-linear bg-white border border-gray-200 rounded-lg w-full shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div class="flex flex-row items-center justify-between mb-2">
                <h5 class="text-sm font-bold tracking-tight text-gray-900 dark:text-white"> 
                   <?php echo $commentaire['login'] . ' a posté le commentaire suivant : le ' ?><?php echo DateToFr::dateFr($commentaire['date']); ?>
                </h5>              
-   
+   <form action="" method="post">
                <!-------- Modal toggle ------------->
             <div class="flex  justify-around ">
                 <!-- Bouton Modifier -->
@@ -303,7 +368,7 @@ $cat=$catName->fetchAll();
                          <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
                               <label for="commentaire" class="sr-only">Votre commentaire</label>
                               <!-- commentaire id         faire un tableau  -->
-                              <textarea maxlength="1024" name="commentaire-<?= $commentaire['id'] ?>" id="commentaire" rows="4" class="w-full px-0 text-sm text-gray-900 break-words bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="votre commentaire..."   >
+                              <textarea maxlength="1024" name="commentaire-<?= $commentaire['id'] ?>" id="commentaireMod" rows="4" class="w-full px-0 text-sm text-gray-900 break-words bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="votre commentaire..."   >
                                    <?php echo $commentaire['commentaire']; ?>
                               </textarea>
                          </div>
@@ -329,8 +394,9 @@ $cat=$catName->fetchAll();
         </div>
     </div>
 </div> 
- <?php } ?>
 </form>
+ <?php } ?>
+
 
  <?php
 if (isset($_POST['suppr_commentaire'])) {

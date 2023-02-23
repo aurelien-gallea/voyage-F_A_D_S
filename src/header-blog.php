@@ -52,32 +52,25 @@
               <a
                 href="articles.php"
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-color-3 md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                > Articles</a
-              >
+                > Articles</a>              
             </li>
             <li>
               <a
                 href="creer-article.php"
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-color-3 md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Créer un article</a
-              >
-            </li>
-          
-          
+                >Créer un article</a>              
+            </li>                   
             <?php
             if (isset($_SESSION['id'])) {
               $adminStatus = Update::selectStatusByUser($_SESSION['id']);
               if ($adminStatus['droits'] == 'admin') {  ?>
             <li>
-              <a
-                href="admin.php"
+              <a href="admin.php"                
                 class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-bg-custom-1C3738 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Admin</a
-              >
+                >Admin</a>              
             </li>                 
              <? }
-                else {?>             
-
+                else {?>           
             <?php   
           }} ?>
            
@@ -122,27 +115,20 @@
 <div id="userDropdown" class="z-10 duration-100 ease-linear hidden bg-white divide-y divide-gray-100 rounded-lg shadow-xl w-44 dark:bg-gray-700 dark:divide-gray-600">
     <div class="px-4 py-3 text-sm text-gray-900 dark:text-white"> 
       <!-- <div class="font-small truncate">Bienvenue</div> -->
-
-      <div class=""><p class="text-lg font-bold hover:text-color-5 decoration-dotted uppercase"><?=  $_SESSION['login']?></p></div>
+<?php  if(empty($_SESSION)) {?>
+  <a  href="connexion.php"
+    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+    >Se connecter</a>   <?php }
+    else{?>
+      <div class=""><p class="text-lg font-bold hover:text-color-5 decoration-dotted uppercase">
+        <?=  $_SESSION['login']?></p></div>
     </div>
     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
       <li>
         <a href="profil.php" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white after:content-['_↗']">Profil</a>
       </li>
-    <li>
-     
-    
-    <div class="py-1">
-
-      
-
-<?php  if(empty($_SESSION)) {?>
-  <a  href="connexion.php"
-    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-    >Se connecter</a> 
-
-    <?php }
-    else{?>
+    <li>      
+    <div class="py-1">   
   <a  href="src/logout.php"
     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
     >Se déconnecter</a>  

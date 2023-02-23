@@ -55,7 +55,7 @@ style="background-image: url('assets/sene2.jpg')" alt="">
 <div class=" z-10  flex items-center pt-20 w-6/7 h-screen">
 
 <div class="  mx-auto text-center w-7/8 sm:w-5/6 bg-white border  max-w-5xl  border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
+    <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg duration-500 ease-linear bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
         <li class="mr-2">
             <button id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about" aria-selected="true" class="inline-block p-4 text-color-3 rounded-tl-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-color-3">Le Sénégal</button>
         </li>
@@ -70,7 +70,7 @@ style="background-image: url('assets/sene2.jpg')" alt="">
         </li>
     </ul>
     <div id="defaultTabContent">
-        <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="about" role="tabpanel" aria-labelledby="about-tab">
+        <div class="hidden p-4 duration-500 ease-linear bg-white rounded-lg md:p-8 dark:bg-gray-800" id="about" role="tabpanel" aria-labelledby="about-tab">
         
         <div class="flex flex-row justify-between flex-wrap">  
           <div></div> 
@@ -100,7 +100,7 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
         id="popover-image"
         role="tooltip"
         data-tooltip-placement="bottom"
-        class="absolute z-10 invisible left-10  w-fit inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-2xl p-5 opacity-0  dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600"
+        class="absolute z-50 duration-200 ease-linear invisible left-10  w-fit inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-2xl p-5 opacity-0  dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600"
       >
         <div class="">
           <div class="flex">
@@ -112,14 +112,14 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
           </div>
           <img
             src="assets/Senegal_carte.png"
-            class="content-center place-items-center flex-row w-56"
+            class="content-center place-items-center transition ease-in-out delay-150 hover:scale-110 flex-row w-56 duration-300"
             alt="senegal map"
           />
         </div>
         <div data-popper-arrow></div>
       </div>         
         </div>
-        <div class="hidden p-4  bg-white rounded-lg md:p-8 dark:bg-gray-800" id="services" role="tabpanel" aria-labelledby="services-tab">
+        <div class="duration-200 ease-linear hidden p-4  bg-white rounded-lg md:p-8 dark:bg-gray-800" id="services" role="tabpanel" aria-labelledby="services-tab">
             <h2 class="mb-5 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">Dakar</h2>
             <!-- List -->
             <p class="dark:text-white">
@@ -131,7 +131,7 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
             <h2 class="mb-5 text-xl font-bold tracking-tight text-gray-900 dark:text-white"> Les bons plans Tasty Trip :</h2>
 
             <div class="container flex flex-wrap mx-auto dark:text-white">
-      <div class="w-4/5 p-2 rounded min-[320px]:w-1/3 dark:text-white">
+      <div class=" transition ease-in-out  hover:-translate-y-1 hover:scale-110  w-4/5 p-2 rounded min-[320px]:w-1/3 dark:text-white  duration-300">
         <a
           class="spotlight"
           href="assets/monkey.jpg"
@@ -144,7 +144,7 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
           <p>Singe de la réserve de Bandia</p>
         </a>
       </div>
-      <div class="w-4/5 p-2 rounded min-[320px]:w-1/3">
+      <div class="transition ease-in-out  hover:-translate-y-1 hover:scale-110 w-4/5 p-2 rounded min-[320px]:w-1/3  duration-300">
         <a
           class="spotlight"
           href="assets/zebu.jpg"
@@ -157,7 +157,7 @@ Le pays doit son nom au fleuve qui le borde à l'est et au nord et qui prend sa 
           <p>brochettes de zébu</p>
         </a>
       </div>
-      <div class="w-4/5 p-2 rounded min-[320px]:w-1/3">
+      <div class="transition ease-in-out  hover:-translate-y-1 hover:scale-110 w-4/5 p-2 rounded min-[320px]:w-1/3  duration-300">
         <a
           class="spotlight"
           href="assets/zebre.jpg"
