@@ -1,7 +1,5 @@
-/* CSS Page Articles */
-
-/* Ajoutez une couleur de fond pour le conteneur d'articles */
-.articles {
+ /* Ajoutez une couleur de fond pour le conteneur d'articles */
+ .articles {
     background-color: rgba(255, 255, 255, 0.5);
     display: flex;
     flex-wrap: wrap;
@@ -17,18 +15,13 @@
     border-radius: 55px;
     padding: 20px;
     text-align: center;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.7);
     margin: 20px auto;
     
     
 }
-.page-articles {
-    background-image: url('../assets/beach.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-.page-articles {
+
+h1 {
     font-size: 35px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: left;
@@ -58,7 +51,7 @@
 }
 
  /* Modifiez la couleur du texte pour le nom d'utilisateur */
-.article h4 {
+ .article h4 {
     font-size: 16px;
     font-family: 'Georgia', sans-serif;
     margin-bottom: 10px;
@@ -91,18 +84,18 @@
     font-size: 18px;
     display: grid;
     padding: 3px 5px;
-    background-color: #111827;
+    background-color: #1c3738;
     color: #f4fff8;
     border-radius: 55px;
     text-decoration: none;
 }
-.page-articles form {
+.form {
 width: 80%;
 margin: 0 auto;
 text-align: center;
 }
 
-.page-articles select {
+.select {
 width: 20%;
 padding: 10px;
 font-size: 16px;
@@ -111,7 +104,7 @@ border-radius: 5px;
 text-align: center;
 }
 
-.page-articles input[type="submit"] {
+.input[type="submit"] {
 background-color: #f4fff8;
 color: black;
 padding: 5px 10px;
@@ -121,14 +114,20 @@ cursor: pointer;
 }
 
 @media (max-width: 767px) {
-.page-articles form {
+.form {
 width: 100%;
 }
 
-.page-articles select {
+.select {
 width: 100%;
 }
 }
-
-
-
+@media (max-width: 767px) {
+    .article {
+    width: 100%;
+    }
+    
+    .articles {
+    width: 100%;
+    }
+    }
