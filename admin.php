@@ -25,6 +25,7 @@ $arrayStatus = [];
 $arrayStatus = Update::selectAllStatusByUser($arrayStatus);
 $arrayCats = [];
 $arrayCats = Update::allCategories($arrayCats);
+$countUsers = count($arrayUsers);
 
 for ($z = 0; $z < count($arrayUsers); $z++) {
 
@@ -192,6 +193,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
             <span class="text-center text-3xl m-5 font-light ">Les stats du blog</span>
             <span class="text-2xl pb-5">articles écrits : <?php if (isset($count)) echo $count; ?> </span>
             <span class="text-2xl pb-5">commentaires écrits : <?php if (isset($arrayComs)) echo $nbComs; ?> </span>
+            <span class="text-2xl pb-5">nombre d'utilisateurs : <?php if (isset($arrayUsers)) echo $countUsers; ?> </span>
         </div>
     </section>
     <section>
@@ -234,24 +236,27 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
             <div class="bg-color-3 ">
                 <div class="container mx-auto m-4 text-white p-2 gap-2  flex flex-col md:flex-row justify-center items-center">
                     <h2 class="font-unbounded text-2xl">Les utilisateurs :</h2>
-                    <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-5 dark:bg-color-1">Ouvrir menu</span>
+                    <span class="menus self-end mx-4 p-2 rounded border cursor-pointer bg-color-5 dark:bg-color-1">Ouvrir menu</span>
                 </div>
                 <div class="menu-content container mx-auto my-2  p-2  flex flex-col md:w-1/2 ">
 
-
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-2 border rounded my-4 py-2">
+                        <label class="text-white">Rechercher :</label>
+                        <input type="text" class="searchBar text-black dark:text-white dark:bg-color-1 rounded-md">
+                    </div>
                     <?php
                     for ($i = 0; $i < count($arrayUsers); $i++) {
 
 
                     ?>
-                    <div class="border rounded my-4 text-white">
+                    <div class="found border rounded my-4 text-white">
 
                         <div class="text-white bg-color-3 dark:bg-color-1 ">
                             <div class="flex flex-col md:flex-row gap-5 justify-between  container p-3">
                                 <h3>ID : <span class="text-yellow-500"> <?= $arrayUsers[$i]['id'] ?> </span></h3>
                                 <p>login : <span class="<?= Update::printStatus($arrayStatus[$i]['droits'])?>"> <?= $arrayUsers[$i]['login'] ?> </span></p>
                                 <span> email : <?= $arrayUsers[$i]['email'] ?></span>
-                                <p>Droits: <span class="<?= Update::printStatus($arrayStatus[$i]['droits'])?>"><?= $arrayStatus[$i]['droits'] ?></span></p>
+                                <p>Droits: <span class="status <?= Update::printStatus($arrayStatus[$i]['droits'])?>"><?= $arrayStatus[$i]['droits'] ?></span></p>
                             </div>
                             
                         </div>
@@ -281,7 +286,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                 <input class="dark:bg-color-1 text-black dark:text-white p-1 rounded" maxlength="15" type="text" name="<?= 'login-' . $arrayUsers[$i]['id'] ?>" value="<?= $arrayUsers[$i]['login'] ?>">
                             </div>
                             <div class="flex justify-between  container p-3">
-                                <button class="cancelBtn border rounded p-3 hover:bg-color-5 hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="cancelBtn border rounded p-3 hover:text-black hover:dark:bg-color-1 hover:dark:text-white" type="submit" name="cancel">Annuler</button>
                                 <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?= "user-" . $arrayUsers[$i]['id'] ?>">Confirmer</button>
                             </div>
                         </div>
@@ -292,7 +297,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
             <div class="bg-color-3">
                 <div class="container mx-auto m-4 text-white p-2 gap-2  flex flex-col md:flex-row justify-center items-center">
                     <h2 class="font-unbounded text-2xl">Les catégories :</h2>
-                    <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-5 dark:bg-color-1">Ouvrir menu</span>
+                    <span class="menus self-end mx-4 p-2 rounded border cursor-pointer bg-color-5 dark:bg-color-1">Ouvrir menu</span>
                 </div>
 
                 <div class="menu-content container mx-auto my-2  p-2  flex flex-col md:w-1/2 ">
@@ -302,10 +307,14 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         <button type="submit" class=" border p-2 rounded hover:bg-green-500" name="addNew" value="cat">Ajouter</button>
                         
                     </div>
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-2 border rounded my-4 py-2">
+                        <label class="text-white">Rechercher une catégorie :</label>
+                        <input type="text" class="searchBar text-black dark:text-white dark:bg-color-1 rounded-md">
+                    </div>
                     <?php
                     // on affiche les catégories ------------------------------------------
                     for ($i = 0; $i < count($arrayCats); $i++) { ?>
-                    <div class="border rounded my-4">
+                    <div class="found border rounded my-4">
 
                         <div class="text-white ">
                             
@@ -327,7 +336,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             </div>
                             
                             <div class="flex justify-between  gap-10 container p-3 text-white">
-                                <button class="cancelBtn border rounded p-3 hover:dark:bg-color-1 hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="cancelBtn border rounded p-3 hover:text-black hover:dark:bg-color-1 hover:dark:text-white" type="submit" name="cancel">Annuler</button>
                                 <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?= 'cat-' . $arrayCats[$i]['id'] ?>">Confirmer</button>
                             </div>
                         </div>
@@ -342,7 +351,10 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                     <span class="menus mx-4 p-2 rounded border cursor-pointer bg-color-5 dark:bg-color-1">Ouvrir menu</span>
                 </div>
                 <div class="menu-content container mx-auto m-4  p-2  flex flex-col md:w-1/2  ">
-
+                <div class="flex flex-col  md:flex-row justify-center items-center gap-2 border rounded my-4 py-2">
+                        <label class="text-white">Rechercher :</label>
+                        <input type="text" class="searchBar text-black dark:text-white dark:bg-color-1 rounded-md">
+                    </div>
                     <?php
 
                     // on affiche les articles qu'on a push précédemment dans un tableau
@@ -357,11 +369,11 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                         $status->execute([$result['id']]);
                         $statusByUser = $status->fetch();
                     ?>
-                    <div class="border rounded my-4">
-                        <div class="artContainer text-white bg-color-3 dark:bg-color-1">
+                    <div class="found border rounded my-4">
+                        <div class=" artContainer text-white bg-color-3 dark:bg-color-1">
                             <div class="flex flex-col  gap-3 flex-wrap justify-between container p-3">
                                 <h3 class="text-xl mb-2">Titre : <?= $arrayArt[$i]['titre'] ?></h3>
-                                <div class="flex flex-wrap gap-1 items-center">catégories:<?php
+                                <div class="categories flex flex-wrap gap-1 items-center">catégories:<?php
                                                 for ($k = 0; $k < count($newArray); $k++) {
                                                     echo '<small class="mx-2 p-2 bg-color-5 rounded">' . $newArray[$k] . '</small>';
                                                 }
@@ -370,10 +382,10 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             <hr>
                             <p class="break-all  p-3"><?= $arrayArt[$i]['article'] ?></p>
                             <hr>
-                            <div class="text-right"> dernière modification le : <?= DateToFr::dateFR($arrayArt[$i]['date']);  ?> par <span class="<?= Update::printStatus($statusByUser['nom']) ?>"><?= $result['login'] ?></span></div>
+                            <div class="text-right p-2"> dernière modification le : <?= DateToFr::dateFR($arrayArt[$i]['date']);  ?> par <span class="<?= Update::printStatus($statusByUser['nom']) ?>"><?= $result['login'] ?></span></div>
                             <hr>
                         </div>
-                        <div>
+                        <div >
                             <div class="btnContainer flex justify-center gap-10  container p-3">
                                 <button class="update border rounded p-3 hover:bg-color-5" type="submit" name="update" value="<?= $arrayArt[$i]['id'] ?>">modifier article</button>
                                 <button class=" border rounded p-3 hover:bg-red-800" type="submit" name="delete" value="<?= $arrayArt[$i]['id'] ?> ">Supprimer article</button>
@@ -402,7 +414,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                                 <textarea class="text-black dark:text-white dark:bg-color-1 p-1 rounded w-full h-80" maxlength="5000"  name="<?= $arrayArt[$i]['id'] ?>"><?= $arrayArt[$i]['article'] ?></textarea>
                             </div>
                             <div class="flex  justify-between  container p-3">
-                                <button class="cancelBtn border rounded p-3 hover:dark:bg-color-1 hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="cancelBtn border rounded p-3 hover:text-black hover:dark:bg-color-1 hover:dark:text-white" type="submit" name="cancel">Annuler</button>
                                 <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?= $arrayArt[$i]['id'] ?>">Confirmer</button>
                             </div>
                         </div>
@@ -421,6 +433,10 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                 </div>
                 <div class="menu-content container mx-auto flex flex-col md:w-1/2">
                     <span> Cliquez sur le commentaire pour être redirigé vers la page de  l'article</span>
+                    <div class="flex flex-col  md:flex-row justify-center items-center gap-2 border rounded my-4 py-2">
+                        <label class="text-white">Rechercher :</label>
+                        <input type="text" class="searchBar text-black dark:text-white dark:bg-color-1 rounded-md">
+                    </div>
                     <?php
                     // on affiche les commentaires qu'on a push précédemment dans un tableau
                     
@@ -436,8 +452,8 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
 
                         
                         ?>
-                    <div class="border rounded my-4">
-                        <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>">
+                    <div class="found border rounded my-4">
+                        <a href="article.php?id=<?= $commentaries[$i]['id_article'] ?>" target="_blank">
                             <div class="artContainer text-white bg-color-3 dark:bg-color-1 hover:bg-white hover:text-black">
                                 <div class="flex flex-col justify-between  container p-3">
                                     <p><span class="<?=Update::printStatus($statusByUser['nom']) ?>"> <?= $author['login']  ?></span> a posté le commentaire suivant le : <?=DateToFr::dateFR($commentaries[$i]['date'])  ?></p>
@@ -458,7 +474,7 @@ while ($articles = $stats->fetch(PDO::FETCH_ASSOC)) {
                             </div>
 
                             <div class="flex justify-between gap-5 container p-3">
-                                <button class="cancelBtn border rounded p-3 hover:dark:bg-color-1 hover:text-black" type="submit" name="cancel">Annuler</button>
+                                <button class="cancelBtn border rounded p-3 hover:text-black hover:dark:bg-color-1 hover:dark:text-white" type="submit" name="cancel">Annuler</button>
                                 <button class="confirmBtn border rounded p-3 hover:bg-green-500" type="submit" name="confirm" value="<?='com-' . $commentaries[$i]['id']?>">Confirmer</button>
                             </div>
                         </div>

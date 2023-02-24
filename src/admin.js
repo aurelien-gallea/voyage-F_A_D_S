@@ -7,6 +7,37 @@ const confirmBtn = document.querySelectorAll(".confirmBtn");
 const deleteBtn = document.querySelectorAll(".delete");
 const menus = document.querySelectorAll(".menus");
 const menuContent = document.querySelectorAll(".menu-content");
+const searchBar = document.querySelectorAll(".searchBar");
+const found = document.querySelectorAll(".found");
+const categories = document.querySelectorAll(".categories");
+
+// les barres de recherche
+for (let i = 0; i < searchBar.length; i++) {
+    
+  searchBar[i].addEventListener('keyup', () => {
+    // on controle tous les inputs en meme temps pour ameliorer l'accessibilité
+    for (let k = 0; k < searchBar.length; k++) {
+      if(searchBar[i].value !== searchBar[k].value) {
+        searchBar[k].value = searchBar[i].value;
+      }
+      
+    }
+    // on fait apparaitre le résutat de notre recherche
+    for (let j = 0; j < found.length; j++) {
+      const result = found[j];
+      
+      let word = result.textContent;
+      
+      if(word.includes(searchBar[i].value))  {
+        
+        result.classList.remove("hidden");
+      } else {
+        result.classList.add("hidden");
+
+      }   
+    }   
+  });
+}
 
 // la confirmation de suppression
 deleteBtn.forEach(element => {
@@ -26,13 +57,28 @@ for (let i = 0; i < menuContent.length; i++) {
       menus[i].classList.toggle("bg-color-1");
       menus[i].classList.toggle("bg-color-5");
       menuContent[i].classList.toggle("hidden");
-      
+       
       if (menuContent[i].classList.contains("hidden")) {
-          menus[i].textContent = "Ouvrir menu";
+        menus[i].textContent = "Ouvrir menu";
+      } else {
+        menus[i].textContent = "Fermer menu";
+      }
+      e.preventDefault();
+      // on ferme les menus déroulants ouvert si on clique sur un autre boutons
+      for (let j = 0; j < menuContent.length; j++) {
+        if (i == j) {
+          continue;
         } else {
-            menus[i].textContent = "Fermer menu";
+          if(!menuContent[j].classList.contains("hidden")) {
+
+            menus[j].classList.toggle("bg-color-5");
+            menus[j].classList.toggle("bg-color-1");
+            menuContent[j].classList.toggle("hidden");
+            menus[j].textContent = "Ouvrir menu";
+          }
+          
         }
-        e.preventDefault();
+    }
     });
 }
 
